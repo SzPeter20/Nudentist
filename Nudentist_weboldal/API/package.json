@@ -8,7 +8,7 @@
         "start": "node server",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "NSZ",
+    "author": "ZIPSZ",
     "license": "ISC",
     "dependencies": {
         "cors": "^2.8.5",
