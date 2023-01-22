@@ -15,11 +15,13 @@
 :root{
     /* ===== Colors ===== */
     --body-color: #E4E9F7;
-    --sidebar-color: #FFF;
-    --primary-color: #695CFE;
+    --sidebar-color: #456990ff;
+    --primary-color: #e90fb2;
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
-    --text-color: #707070;
+    --text-color:#DDD ;
+    --icon-color:#151515; 
+    --bodytext-color:#000000;
 
     /* ====== Transition ====== */
     --tran-03: all 0.2s ease;
@@ -38,15 +40,6 @@ body{
 ::selection{
     background-color: var(--primary-color);
     color: #fff;
-}
-
-body.dark{
-    --body-color: #18191a;
-    --sidebar-color: #242526;
-    --primary-color: #3a3b3c;
-    --primary-color-light: #3a3b3c;
-    --toggle-color: #fff;
-    --text-color: red;
 }
 
 /* ===== Sidebar ===== */
@@ -81,6 +74,7 @@ body.dark{
 }
 
 .sidebar .icon{
+    
     min-width: 60px;
     border-radius: 6px;
     height: 100%;
@@ -92,7 +86,7 @@ body.dark{
 
 .sidebar .text,
 .sidebar .icon{
-    color: var(--text-color);
+    color: var(--icon-color);
     transition: var(--tran-03);
 }
 
@@ -101,6 +95,7 @@ body.dark{
     font-weight: 500;
     white-space: nowrap;
     opacity: 1;
+    color: var(--text-color);
 }
 .sidebar.close .text{
     opacity: 0;
@@ -301,18 +296,33 @@ body.dark .switch::before{
     background-color: var(--body-color);
     transition: var(--tran-05);
 }
-.home .text{
+.home .idopontok{
     font-size: 30px;
     font-weight: 500;
-    color: var(--text-color);
+    color: var(--bodytext-color);
     padding: 12px 60px;
+    text-align: center;
 }
-
+.home .slogen{
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--bodytext-color);
+    padding: 12px 60px;
+    text-align: left;
+}
+.home table td{
+    padding: 50px;
+    
+}
+.home .mapouter{
+    padding-left: 65px;
+}
+h1{
+    text-align: center;
+    color: red;
+}
 .sidebar.close ~ .home{
     left: 78px;
     height: 100vh;
     width: calc(100% - 78px);
-}
-body.dark .home .text{
-    color: var(--text-color);
 }
