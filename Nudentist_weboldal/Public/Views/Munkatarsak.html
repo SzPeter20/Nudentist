@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../Assets/css/Home.css">
+    <title>Munkatársak</title>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>    
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <form role="search" ng-controller="userCtrl" ng-if="!loggedUser">
+
+                    <input type="email" class="form-control me-1" id="floatingInput" placeholder="E-mail cím" ng-model="user.email">
+
+                    <input type="password" class="form-control me-1" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
+
+                    <button class="btn btn-primary me-1" ng-click="login()">Belépés</button>
+                    <button class="btn btn-primary me-1">Regisztráció</button>
+                </form>
+                <ul class="menu-links">
+                   
+                     <li class="nav-link">
+                        <a href="./Homepage.html">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Főoldal</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="./Munkatarsak.html">
+                            <i class='bx bx-user-plus icon' ></i>
+                            <span class="text nav-text">Munkatársak</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bxs-virus-block icon'></i>
+                            <span class="text nav-text">Kezelések</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-money icon' ></i>
+                            <span class="text nav-text">Árak</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="./Elerhetosegek.html">
+                            <i class='bx bx-phone-call icon' ></i>
+                            <span class="text nav-text">Elérhetőségek</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="./Bemutatkozas.html">
+                            <i class='bx bx-pencil icon' ></i>
+                            <span class="text nav-text">Bemutatkozás</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+
+    </nav>
+
+    <section class="home">
+        
+    </section>
+
+    <script>
+        const body = document.querySelector('body'),
+      sidebar = body.querySelector('nav'),
+      toggle = body.querySelector(".toggle");
+      
+
+
+toggle.addEventListener("click" , () =>{
+    sidebar.classList.toggle("close");
+})
+    </script>
+</html>
