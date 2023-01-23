@@ -225,13 +225,6 @@ header .image-text .profession{
 .mode .sun-moon i.sun{
     opacity: 0;
 }
-body.dark .mode .sun-moon i.sun{
-    opacity: 1;
-}
-body.dark .mode .sun-moon i.moon{
-    opacity: 0;
-}
-
 .menu-bar .bottom-content .toggle-switch{
     position: absolute;
     right: 0;
