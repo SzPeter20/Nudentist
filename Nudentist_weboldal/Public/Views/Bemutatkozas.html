@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bemutatkozás</title>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../Assets/css/Bemutatkozas.css">
+    <title>Munkatársak</title>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>    
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <form role="search" ng-controller="userCtrl" ng-if="!loggedUser">
+
+                    <input type="email" class="form-control me-1" id="floatingInput" placeholder="E-mail cím" ng-model="user.email">
+
+                    <input type="password" class="form-control me-1" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
+
+                    <button class="btn btn-primary me-1" ng-click="login()">Belépés</button>
+                    <button class="btn btn-primary me-1">Regisztráció</button>
+                </form>
+                <ul class="menu-links">
+                   
+                     <li class="nav-link">
+                        <a href="./Homepage.html">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Főoldal</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="./Munkatarsak.html">
+                            <i class='bx bx-user-plus icon' ></i>
+                            <span class="text nav-text">Munkatársak</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bxs-virus-block icon'></i>
+                            <span class="text nav-text">Kezelések</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-money icon' ></i>
+                            <span class="text nav-text">Árak</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="./Elerhetosegek.html">
+                            <i class='bx bx-phone-call icon' ></i>
+                            <span class="text nav-text">Elérhetőségek</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="./Bemutatkozas.html">
+                            <i class='bx bx-pencil icon' ></i>
+                            <span class="text nav-text">Bemutatkozás</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+
+    </nav>
+
+    <section class="home">
+        <div class="text">
+            <h1>Bemutatkozás</h1>
+            <h3>Üdvözlet kedves olvasó!</h3><br>
+            
+            <p>Örülök, hogy szakít időt arra, hogy elolvassa szerény kis vállalkozásunk történetét. Ezt a céget, a Nudentist, édesapámmal az idősebb Takács Józseffel alapítottuk még 2018 decemberében.</p><br>
+            
+            <p>Kezdetben mint egy veterán és egy kezdő orvos bármiféle komoly kapcsolatok vagy megtakarítás nélkül vágtunk bele. 
+            Nehéz volt. Eleinte ugyebár még egy ismeretlen cég voltunk így kevés páciensönk volt. Úgy az első fél évben elég spórolósan éltünk. Még a zsíros kenyeret is elég felemódján kentük meg. De minden jól elvégzett munka után egy kicsit nőtt az a fajta megbízhatóság és hírnév ami nekünk kellett.</p><br>
+            <p>Az elmúlt évek alatt kicsinyke vállakozásunk sokszorosára nőtte ki magát. Ahol egyszer csak egy apa és fia álltak most hat másik doktor áll. Az adminisztrációs munka amit szerény személyem immáron egy profi kezében van. 
+            Két kis műtő helyiségből ahol addig dolgoztunk ameddig csak volt munka lett hat műtő és mostmár felváltva dolgozik 6-6 munkatárs.</p><br>
+            
+            <p>Azoknak akik az elejétől is velünk voltak köszönjük a bizalmukat. Azoknak akik ezentől fognak minket választani köszönjük a lehetőséget.</p><br>
+            <p>Tisztelettel, köszönettel és egy cseppnyi büszkeséggel Takács József. Az ifjabbik</p>
+            
+        </div>
+    </section>
+
+    <script>
+        const body = document.querySelector('body'),
+      sidebar = body.querySelector('nav'),
+      toggle = body.querySelector(".toggle");
+      
+
+
+toggle.addEventListener("click" , () =>{
+    sidebar.classList.toggle("close");
+})
+    </script>
+</html>
