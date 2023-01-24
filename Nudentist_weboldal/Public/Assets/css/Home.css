@@ -10,6 +10,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    
 }
 
 :root{
@@ -55,32 +56,34 @@ body{
     z-index: 100;  
 }
 .sidebar.close{
-    width: 88px;
+    width: 100px;
 }
-
+.sidebar button{
+    transition: var(--tran-03);
+}
 /* ===== Reusable code - Here ===== */
 .sidebar li{
     height: 50px;
     list-style: none;
     display: flex;
-    align-items: center;
+    align-items: left;
     margin-top: 10px;
 }
 
 .sidebar header .image,
 .sidebar .icon{
-    min-width: 60px;
+    min-width: 70px;
     border-radius: 6px;
 }
 
 .sidebar .icon{
     
-    min-width: 60px;
+    min-width: 70px;
     border-radius: 6px;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     font-size: 20px;
 }
 
@@ -91,7 +94,7 @@ body{
 }
 
 .sidebar .text{
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 500;
     white-space: nowrap;
     opacity: 1;
@@ -164,27 +167,7 @@ body.dark .sidebar header .toggle{
 }
 
 .sidebar .menu{
-    margin-top: 40px;
-}
-
-.sidebar li.search-box{
-    border-radius: 6px;
-    background-color: var(--primary-color-light);
-    cursor: pointer;
-    transition: var(--tran-05);
-}
-
-.sidebar li.search-box input{
-    height: 100%;
-    width: 100%;
-    outline: none;
-    border: none;
-    background-color: var(--primary-color-light);
-    color: var(--text-color);
-    border-radius: 6px;
-    font-size: 17px;
-    font-weight: 500;
-    transition: var(--tran-05);
+    margin-top: 45px;
 }
 .sidebar li a{
     list-style: none;
@@ -227,25 +210,6 @@ body.dark .sidebar li a:hover .text{
     position: relative;
     transition: var(--tran-05);
 }
-
-.menu-bar .mode .sun-moon{
-    height: 50px;
-    width: 60px;
-}
-
-.mode .sun-moon i{
-    position: absolute;
-}
-.mode .sun-moon i.sun{
-    opacity: 0;
-}
-body.dark .mode .sun-moon i.sun{
-    opacity: 1;
-}
-body.dark .mode .sun-moon i.moon{
-    opacity: 0;
-}
-
 .menu-bar .bottom-content .toggle-switch{
     position: absolute;
     right: 0;
@@ -302,6 +266,7 @@ body.dark .switch::before{
     color: var(--bodytext-color);
     padding: 12px 60px;
     text-align: center;
+    line-height: 80px;
 }
 .home .slogen{
     font-size: 30px;
