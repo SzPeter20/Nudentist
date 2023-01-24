@@ -1,7 +1,8 @@
 .tartalom{
     text-align: center;
     font-size: 24px;
-    line-height: 60px;
+    line-height: 50px;
+    padding-top: 20px;
 }
 
 #cim{
@@ -11,10 +12,13 @@ font-size: 100px;
 a{
     text-decoration: none;
 }
-
-
-
-
+input{
+    height: 30px;
+    font-size: 20px;
+}
+h2{
+    text-align: center;
+}
 
 
 
@@ -76,7 +80,8 @@ body{
 
 /* ===== Reusable code - Here ===== */
 .sidebar li{
-    height: 50px;
+    padding-top: 120px;
+    height: 80px;
     list-style: none;
     display: flex;
     align-items: center;
@@ -329,6 +334,13 @@ body.dark .switch::before{
 .home table td{
     padding: 50px;
     
+}
+.home .text{
+    font-size: 25px;
+    font-weight: 500px;
+    color: var(--bodytext-color);
+    padding: 22px 60px;
+    text-align: left;
 }
 .home .mapouter{
     padding-left: 65px;
