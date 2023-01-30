@@ -11,16 +11,20 @@
     <title>Főoldal</title>
 </head>
 <body>
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
-        Menü
-      </button>
-      
-      <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="staticBackdropLabel">Menü</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
+     
+        
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Menü</button>
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Menü</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
         <div class="offcanvas-body">
+            <Header>
+                <i class='bx bx-chevron-right toggle' data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"></i>
+            </Header>
+            
             <nav class="navbar">
                 <div class="menu-bar">
                     <div class="menu">
@@ -32,7 +36,7 @@
                             <input type="password" class="form-control mb-3" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
         
                             <button class="btn btn-primary mb-3" ng-click="login()">Belépés</button>
-                            <a href="./Regisztracio.html" class="btn btn-danger mb-3">Regisztracio</a>
+                            <a href="../Public/Views/Regisztracio.html" class="btn btn-danger mb-3">Regisztracio</a>
                         </form>
                         <ul class="menu-links">
                            
@@ -44,27 +48,27 @@
                             </li>
         
                             <li class="nav-link">
-                                <a href="./Munkatarsak.html">
+                                <a href="../Public/Views/Munkatarsak.html">
                                     <i class='bx bx-user-plus icon' ></i>
                                     <span class="text nav-text">Munkatársak</span>
                                 </a>
                             </li>
         
                             <li class="nav-link">
-                                <a href="#">
+                                <a href="../Public/Views/Kezelesek.html">
                                     <i class='bx bxs-virus-block icon'></i>
                                     <span class="text nav-text">Kezelések</span>
                                 </a>
                             </li>
                             <li class="nav-link">
-                                <a href="./Elerhetosegek.html">
+                                <a href="../Public/Views/Elerhetosegek.html">
                                     <i class='bx bx-phone-call icon' ></i>
                                     <span class="text nav-text">Elérhetőségek</span>
                                 </a>
                             </li>
         
                             <li class="nav-link">
-                                <a href="./Bemutatkozas.html">
+                                <a href="../Public/Views/Bemutatkozas.html">
                                     <i class='bx bx-pencil icon' ></i>
                                     <span class="text nav-text">Bemutatkozás</span>
                                 </a>
@@ -91,25 +95,43 @@
       <section class="home">
         <div class="idopontok">
             <h1>Nudentist</h1>
-            <table>
-                <tr>
+            <table class="table table-dark table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Hétfő</th>
+                    <th scope="col">Kedd</th>
+                    <th scope="col">Szerda</th>
+                    <th scope="col">Csütörtök</th>
+                    <th scope="col">Péntek</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
                     <td>
-                        Hétfő<br>8-16 óra
+                         8-16 
                     </td>
                     <td>
-                        Kedd<br>14-20 óra 
+                        8-16 
                     </td>
                     <td>
-                        Szerda<br>10-16 óra
+                        10-16 
                     </td>
                     <td>
-                        Csütörtök<br>14-20 óra
+                        14-20 
                     </td>
                     <td>
-                        Péntek<br>9-15 óra
+                        9-15 
                     </td>
                 </tr>
-            </table>
+                <tr>
+                    <td>óra</td>
+                    <td>óra</td>
+                    <td>óra</td>
+                    <td>óra</td>
+                    <td>óra</td>
+                </tr>
+                </tbody>
+              </table>
         </div>
         <div class="slogen">
             <h4>
