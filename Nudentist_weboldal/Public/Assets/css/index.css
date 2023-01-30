@@ -20,14 +20,28 @@
     --tran-05: all 0.3s ease;
 }
     
-    
+form{
+    padding-left: 55px ;
+    margin: auto;
+}
 
-body{
+.offcanvas-body{
+    width: 100%;
+    background-color:#456990ff;
+}
+.offcanvas-start{
+    width: 80%;
     
+}
+.offcanvas-title{
+    width: 80%;
+}
+body{
+    background-image: url(../HelperImages/pink_background.png);
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
-    min-height: 100vh;
+    
     background-color: var(--body-color);
     transition: var(--tran-05);
 }
@@ -41,11 +55,11 @@ body{
     top: 0;
     left: 0;
     height: 100%;
-    width: 270px;
+    width: 80px;
     padding: 10px 14px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
-    z-index: 100;  
+    z-index:50;  
 }
 .menu{
     margin-top: 40px;
@@ -66,10 +80,11 @@ body{
     font-size: 20px;
 }
 .menu .text{
-    font-size: 17px;
+    font-size: 30px;
     font-weight: 500;
     white-space: nowrap;
     opacity: 1;
+    text-align: center;
 }
 .menu li a{
     list-style: none;
@@ -100,17 +115,18 @@ body{
     position: absolute;
     top: 0;
     top: 0;
-    left: 250px;
-    height: 100vh;
+    left: 150px;
+    height: max-content;
     width: calc(100% - 250px);
     background-color: var(--body-color);
-    transition: var(--tran-05);
+    
 }
+
 .home .idopontok{
     font-size: 30px;
     font-weight: 500;
     color: var(--bodytext-color);
-    padding: 12px 60px;
+    padding: 15px 60px;
     text-align: center;
     line-height: 80px;
 }
@@ -122,7 +138,7 @@ body{
     text-align: left;
 }
 .home table td{
-    padding: 50px;
+    padding: 100px;
     
 }
 .home .mapouter{
