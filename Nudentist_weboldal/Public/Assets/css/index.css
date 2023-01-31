@@ -42,12 +42,12 @@ form{
 }
 body{
     background-image: url(../HelperImages/pink_background.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    
+    background-repeat:no-repeat;
+    background-size:cover;
+    position:relative;
+    background-position:center;
     background-color: var(--body-color);
-    transition: var(--tran-05);
+    
 }
 
 ::selection{
@@ -116,16 +116,13 @@ body{
     display: none;
 }
 .home{
-    background-image: url('../HelperImages/pink_background.png');
+   
     background-repeat: no-repeat;
     background-size: cover;
-    position: absolute;
-    top: 0;
-    top: 0;
-    left: 150px;
+    position: relative;
     height: max-content;
     width: calc(100% - 250px);
-    background-color: var(--body-color);
+    
     
 }
 header .toggle{
@@ -169,11 +166,10 @@ header .toggle{
     width: 500px;
 }
 .home table td{
-    
+    margin: 75px;
+    padding: 125px;
     border-spacing: 130px;
-    width: 100%;
-    
-    
+    width: 100%;  
 }
 
 .home .mapouter{
