@@ -163,11 +163,13 @@ header .toggle{
     text-align: left;
 }
 .home table{
-    border-spacing: 30px;
-    width: 100%;
+    border-spacing: 50px;
+    width: 80%;
 }
 .home table td{
-    border-spacing: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 50px;
     width: 20%;  
 }
 

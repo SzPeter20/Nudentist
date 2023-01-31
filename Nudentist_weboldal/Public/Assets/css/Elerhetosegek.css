@@ -23,6 +23,12 @@
     --tran-05: all 0.3s ease;
     
 }
+.tartalom h4{
+    margin-left: 10%;
+}
+.tartalom p{
+    margin-left: 30%;
+}
     
 form{
     padding-left: 55px ;
@@ -163,15 +169,16 @@ header .toggle{
     text-align: left;
 }
 .home table{
-    border-spacing: 30px;
-    width: 100%;
+    border-spacing: 50px;
+    width: 80%;
 }
 .home table td{
-    border-spacing: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 50px;
     width: 20%;  
 }
 
 .home .mapouter{
     padding-left: 65px;
 }
-
