@@ -150,7 +150,7 @@ header .toggle{
     font-size: 30px;
     font-weight: 500;
     color: var(--bodytext-color);
-    padding: 15px 60px;
+    margin-left:30%;
     text-align: center;
     line-height: 80px;
 }
@@ -163,13 +163,11 @@ header .toggle{
 }
 .home table{
     border-spacing: 30px;
-    width: 500px;
+    width: 100%;
 }
 .home table td{
-    margin: 75px;
-    padding: 125px;
-    border-spacing: 130px;
-    width: 100%;  
+    border-spacing: 100px;
+    width: 20%;  
 }
 
 .home .mapouter{
