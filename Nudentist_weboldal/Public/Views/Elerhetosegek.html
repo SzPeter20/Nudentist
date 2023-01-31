@@ -14,92 +14,85 @@
 <body>
 
 
-    
-    <nav class="sidebar close">
-        <header>
-            <div class="image-text">
-                <span class="image">
-                    <img src="" alt="">
-                </span>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class='bx bx-menu icon'></i></button>
 
-                <div class="text logo-text">
-                    
-                </div>
-            </div>
-
-            <i class='bx bx-chevron-right toggle'></i>
-        </header>
-
-        
-
-        <div class="menu-bar">
-            <div class="menu">
-                <form role="search" ng-controller="userCtrl" ng-if="!loggedUser">
-
-                    <input type="email" class="form-control me-1" id="floatingInput" placeholder="E-mail cím" ng-model="user.email">
-
-                    <input type="password" class="form-control me-1" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
-
-                    <button class="btn btn-primary me-1" ng-click="login()">Belépés</button>
-                    <button class="btn btn-secondary me-1" ><a href="Regisztracio.html">  Regisztráció</a></button>
-                </form>
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Menü</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+            <div class="offcanvas-body">
+                <Header>
+                    <i class='bx bx-chevron-right toggle' data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"></i>
+                </Header>
                 
-
-                <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="./Homepage.html">
-                            <i class='bx bx-home-alt icon' ></i>
-                            <span class="text nav-text">Főoldal</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="./Munkatarsak.html">
-                            <i class='bx bx-user-plus icon' ></i>
-                            <span class="text nav-text">Munkatársak</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="./Kezelesek.html">
-                            <i class='bx bxs-virus-block icon'></i>
-                            <span class="text nav-text">Kezelések</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="./Elerhetosegek.html">
-                            <i class='bx bx-phone-call icon' ></i>
-                            <span class="text nav-text">Elérhetőségek</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="./Bemutatkozas.html">
-                            <i class='bx bx-pencil icon' ></i>
-                            <span class="text nav-text">Bemutatkozás</span>
-                        </a>
-                    </li>
-
-                   
-
-                </ul>
-            </div>
-
-            <div class="bottom-content">
-                <li class="">
-                    <a href="#">
-                        <i class='bx bx-log-out icon' ></i>
-                        <span class="text nav-text">Kijelentkezés</span>
-                    </a>
-                </li>
-
+                <nav class="navbar">
+                        <div class="menu-bar">
+                            <div class="menu">
+                                <form role="search" ng-controller="userCtrl" ng-if="!loggedUser">
+                
+                                    <input type="email" class="form-control mb-3" id="floatingInput" placeholder="E-mail cím" ng-model="user.email">
                 
                 
-            </div>
-        </div>
-
-    </nav>
+                                    <input type="password" class="form-control mb-3" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
+                
+                                    <button class="btn btn-primary mb-3" ng-click="login()">Belépés</button>
+                                    <a href="../Public/Views/Regisztracio.html" class="btn btn-danger mb-3">Regisztracio</a>
+                                </form>
+                                <ul class="menu-links">
+                                
+                                    <li class="nav-link">
+                                        <a href="../Views/Homepage.html">
+                                            <i class='bx bx-home-alt icon' ></i>
+                                            <span class="text nav-text">Főoldal</span>
+                                        </a>
+                                    </li>
+                
+                                    <li class="nav-link">
+                                        <a href="../Views/Munkatarsak.html">
+                                            <i class='bx bx-user-plus icon' ></i>
+                                            <span class="text nav-text">Munkatársak</span>
+                                        </a>
+                                    </li>
+                
+                                    <li class="nav-link">
+                                        <a href="../Views/Kezelesek.html">
+                                            <i class='bx bxs-virus-block icon'></i>
+                                            <span class="text nav-text">Kezelések</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-link">
+                                        <a href="../Views/Elerhetosegek.html">
+                                            <i class='bx bx-phone-call icon' ></i>
+                                            <span class="text nav-text">Elérhetőségek</span>
+                                        </a>
+                                    </li>
+                
+                                    <li class="nav-link">
+                                        <a href="../Views/Bemutatkozas.html">
+                                            <i class='bx bx-pencil icon' ></i>
+                                            <span class="text nav-text">Bemutatkozás</span>
+                                        </a>
+                                    </li>
+                                    
+                                    
+                                </ul>
+                            </div>
+                            <!--
+                                <div class="bottom-content">
+                                <li class="">
+                                    <a href="#">
+                                        <i class='bx bx-log-out icon' ></i>
+                                        <span class="text nav-text">Logout</span>
+                                    </a>
+                                </li>
+                            </div>
+                            -->
+                            
+                        </div>
+                    </div>
+                </nav>
+          </div>
 
     
 
@@ -144,34 +137,8 @@
 
 
     
-    <script>
-        const body = document.querySelector('body'),
-      sidebar = body.querySelector('nav'),
-      toggle = body.querySelector(".toggle"),
-      searchBtn = body.querySelector(".search-box"),
-      modeSwitch = body.querySelector(".toggle-switch"),
-      modeText = body.querySelector(".mode-text");
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
-
-toggle.addEventListener("click" , () =>{
-    sidebar.classList.toggle("close");
-})
-
-searchBtn.addEventListener("click" , () =>{
-    sidebar.classList.remove("close");
-})
-
-modeSwitch.addEventListener("click" , () =>{
-    body.classList.toggle("dark");
-    
-    if(body.classList.contains("dark")){
-        modeText.innerText = "Light mode";
-    }else{
-        modeText.innerText = "Dark mode";
-        
-    }
-});
-    </script>
 
     
 </body>
