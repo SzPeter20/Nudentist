@@ -1,28 +1,3 @@
-.tartalom{
-    text-align: center;
-    font-size: 24px;
-    line-height: 50px;
-    padding-top: 20px;
-}
-
-#cim{
-font-size: 100px;
-}
-
-a{
-    text-decoration: none;
-}
-input{
-    height: 30px;
-    font-size: 20px;
-}
-h2{
-    text-align: center;
-}
-
-
-
-/*Sidebar*/
 /* Google Font Import - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 *{
@@ -31,7 +6,6 @@ h2{
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-
 :root{
     /* ===== Colors ===== */
     --body-color: #E4E9F7;
@@ -43,59 +17,64 @@ h2{
     --icon-color:#151515; 
     --bodytext-color:#000000;
 
-    /* ====== Transition ====== */
     --tran-03: all 0.2s ease;
     --tran-03: all 0.3s ease;
     --tran-04: all 0.3s ease;
     --tran-05: all 0.3s ease;
+    
+}
+    
+form{
+    padding-left: 55px ;
+    margin: auto;
 }
 
-body{
+.offcanvas-body{
+    width: 100%;
+    background-color:#456990ff;
+}
+.offcanvas-start{
+    width: 80%;
     
-    min-height: 100vh;
+}
+.offcanvas-title{
+    width: 80%;
+}
+body{
+    background-image: url(../HelperImages/pink_background.png);
+    background-repeat:no-repeat;
+    background-size:cover;
+    position:relative;
+    background-position:center;
     background-color: var(--body-color);
-    transition: var(--tran-05);
+    
 }
 
 ::selection{
     background-color: var(--primary-color);
     color: #fff;
 }
-
-/* ===== Sidebar ===== */
- .sidebar{
+.sidebar{
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
-    width: 250px;
+    width: 80px;
     padding: 10px 14px;
-    background: var(--sidebar-color);
+    background-color: var(--sidebar-color);
     transition: var(--tran-05);
-    z-index: 100;  
+    z-index:50;  
 }
-.sidebar.close{
-    width: 88px;
+.menu{
+    margin-top: 40px;
 }
-
-/* ===== Reusable code - Here ===== */
-.sidebar li{
-    padding-top: 120px;
-    height: 80px;
+.menu li{
+    height: 50px;
     list-style: none;
     display: flex;
-    align-items: center;
     margin-top: 10px;
 }
-
-.sidebar header .image,
-.sidebar .icon{
-    min-width: 60px;
-    border-radius: 6px;
-}
-
-.sidebar .icon{
-    
+.menu .icon{
     min-width: 60px;
     border-radius: 6px;
     height: 100%;
@@ -103,62 +82,50 @@ body{
     align-items: center;
     justify-content: center;
     font-size: 20px;
-}
-
-.sidebar .text,
-.sidebar .icon{
     color: var(--icon-color);
     transition: var(--tran-03);
 }
-
-.sidebar .text{
-    font-size: 17px;
+.menu .text{
+    color: var(--bodytext-color);
+    font-size: 30px;
     font-weight: 500;
     white-space: nowrap;
     opacity: 1;
-    color: var(--text-color);
+    text-align: center;
 }
-.sidebar.close .text{
-    opacity: 0;
-}
-/* =========================== */
-
-.sidebar header{
-    position: relative;
-}
-
-.sidebar header .image-text{
+.menu li a{
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
     display: flex;
     align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
 }
-.sidebar header .logo-text{
+.menu-bar{
+    height: calc(100% - 55px);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
 }
-header .image-text .name {
-    margin-top: 2px;
-    font-size: 18px;
-    font-weight: 600;
+.menu-bar::-webkit-scrollbar{
+    display: none;
 }
-
-header .image-text .profession{
-    font-size: 16px;
-    margin-top: -2px;
-    display: block;
+.home{
+   
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: max-content;
+    width: calc(100% - 250px);
+    
+    
 }
-
-.sidebar header .image{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sidebar header .image img{
-    width: 40px;
-    border-radius: 6px;
-}
-
-.sidebar header .toggle{
+header .toggle{
     position: absolute;
     top: 50%;
     right: -25px;
@@ -175,154 +142,18 @@ header .image-text .profession{
     cursor: pointer;
     transition: var(--tran-05);
 }
-
-body.dark .sidebar header .toggle{
-    color: var(--text-color);
-}
-
-.sidebar.close .toggle{
-    transform: translateY(-50%) rotate(0deg);
-}
-
-.sidebar .menu{
-    margin-top: 40px;
-}
-
-.sidebar li.search-box{
-    border-radius: 6px;
-    background-color: var(--primary-color-light);
-    cursor: pointer;
-    transition: var(--tran-05);
-}
-
-.sidebar li.search-box input{
-    height: 100%;
-    width: 100%;
-    outline: none;
-    border: none;
-    background-color: var(--primary-color-light);
-    color: var(--text-color);
-    border-radius: 6px;
-    font-size: 17px;
-    font-weight: 500;
-    transition: var(--tran-05);
-}
-.sidebar li a{
-    list-style: none;
-    height: 100%;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: var(--tran-03);
-}
-
-.sidebar li a:hover{
-    background-color: var(--primary-color);
-}
-.sidebar li a:hover .icon,
-.sidebar li a:hover .text{
-    color: var(--sidebar-color);
-}
-body.dark .sidebar li a:hover .icon,
-body.dark .sidebar li a:hover .text{
-    color: var(--text-color);
-}
-
-.sidebar .menu-bar{
-    height: calc(100% - 55px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-y: scroll;
-}
-.menu-bar::-webkit-scrollbar{
-    display: none;
-}
-.sidebar .menu-bar .mode{
-    border-radius: 6px;
-    background-color: var(--primary-color-light);
-    position: relative;
-    transition: var(--tran-05);
-}
-
-.menu-bar .mode .sun-moon{
-    height: 50px;
-    width: 60px;
-}
-
-.mode .sun-moon i{
-    position: absolute;
-}
-.mode .sun-moon i.sun{
-    opacity: 0;
-}
-body.dark .mode .sun-moon i.sun{
-    opacity: 1;
-}
-body.dark .mode .sun-moon i.moon{
-    opacity: 0;
-}
-
-.menu-bar .bottom-content .toggle-switch{
-    position: absolute;
-    right: 0;
-    height: 100%;
-    min-width: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    cursor: pointer;
-}
-.toggle-switch .switch{
-    position: relative;
-    height: 22px;
-    width: 40px;
-    border-radius: 25px;
-    background-color: var(--toggle-color);
-    transition: var(--tran-05);
-}
-
-.switch::before{
-    content: '';
-    position: absolute;
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    background-color: var(--sidebar-color);
-    transition: var(--tran-04);
-}
-
-body.dark .switch::before{
-    left: 20px;
-}
-
-.home{
-    background-image: url('../HelperImages/pink_background.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    top: 0;
-    left: 250px;
-    height: 100vh;
-    width: calc(100% - 250px);
-    background-color: var(--body-color);
-    transition: var(--tran-05);
+.home h1{
+    text-align: center;
+    color: red;
 }
 .home .idopontok{
     font-size: 30px;
     font-weight: 500;
     color: var(--bodytext-color);
-    padding: 12px 60px;
+    margin-left:30%;
+    margin-right:30%;
     text-align: center;
+    line-height: 80px;
 }
 .home .slogen{
     font-size: 30px;
@@ -331,27 +162,16 @@ body.dark .switch::before{
     padding: 12px 60px;
     text-align: left;
 }
+.home table{
+    border-spacing: 30px;
+    width: 100%;
+}
 .home table td{
-    padding: 50px;
-    
+    border-spacing: 100px;
+    width: 20%;  
 }
-.home .text{
-    font-size: 25px;
-    font-weight: 500px;
-    color: var(--bodytext-color);
-    padding: 22px 60px;
-    text-align: left;
-}
+
 .home .mapouter{
     padding-left: 65px;
 }
-h1{
-    
-    text-align: center;
-    color: red;
-}
-.sidebar.close ~ .home{
-    left: 78px;
-    height: 100vh;
-    width: calc(100% - 78px);
-}
+
