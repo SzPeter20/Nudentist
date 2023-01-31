@@ -142,7 +142,9 @@ header .toggle{
     cursor: pointer;
     transition: var(--tran-05);
 }
-.home h1{
+ h1{
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     color: red;
 }
@@ -151,7 +153,6 @@ header .toggle{
     font-weight: 500;
     color: var(--bodytext-color);
     margin-left:30%;
-    margin-right:30%;
     text-align: center;
     line-height: 80px;
 }
@@ -164,14 +165,21 @@ header .toggle{
 }
 .home table{
     border-spacing: 30px;
-    width: 100%;
+    width: 80%;
 }
 .home table td{
-    border-spacing: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 50px;
     width: 20%;  
 }
 
 .home .mapouter{
     padding-left: 65px;
+    width: 700px;
+    height: 700px;
+}
+.menugomb{
+    margin: 20px;
 }
 
