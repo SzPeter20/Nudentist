@@ -65,6 +65,7 @@ body{
     transition: var(--tran-05);
     z-index:50;  
 }
+
 .menu{
     margin-top: 40px;
 }
@@ -115,6 +116,9 @@ body{
 .menu-bar::-webkit-scrollbar{
     display: none;
 }
+.home::-webkit-scrollbar{
+    display: none;
+}
 .home{
    
     background-repeat: no-repeat;
@@ -122,7 +126,7 @@ body{
     position: relative;
     height: max-content;
     width: calc(100% - 250px);
-    
+    overflow-y: scroll;
     
 }
 header .toggle{
