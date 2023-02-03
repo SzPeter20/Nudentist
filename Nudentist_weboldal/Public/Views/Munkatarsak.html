@@ -85,15 +85,18 @@
         <hr>
         <div class="row">
 
-        <div class="card" ng-repeat="pizza in pizzak">
+        <div class="card" ng-repeat="munkas in munkatarsak">
 
-        <img src="../Public/assets/img/nopic.png" class="img img-thumbnail" ng-if="pizza.filename == ''">
-        <img src="../Public/uploads/{{ pizza.filename }}" class="img img-thumbnail" ng-if="pizza.filename != ''">
+        <img src="../Public/assets/img/nopic.png" class="img img-thumbnail" ng-if="munkas.filename == ''">
+        <img src="../Public/uploads/{{ munkas.filename }}" class="img img-thumbnail" ng-if="munkas.filename != ''">
         <div class="card-body">
-            <h5 class="card-title">{{ pizza.name }}</h5>
-            <h6>{{ pizza.price | number: decimals }} {{ penznem }}</h6>
-            <p class="card-text">{{ pizza.description }}</p>
-            <p class="card-text text-muted fs-6">({{ pizza.kcal }} kcal )</p>
+            <h5 class="card-title">{{ munkas.name }}</h5>
+            <h6>{{munkas.leiras}}</h6>
+            <p class="card-text">{{munkas.email}}</p>
+            <p class="card-text">{{munkas.telefonszama}}</p>
+            <p class="card-text">{{munkas.szakterulet}}</p>
+            <p class="card-text">{{munkas.tanulmanyok}}</p>
+            <p class="card-text text-muted fs-6"></p>
         </div>
 
         
