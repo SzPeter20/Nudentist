@@ -145,6 +145,7 @@ header .toggle{
     transition: var(--tran-05);
 }
  h1{
+    font-size: 40px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
