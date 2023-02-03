@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+</head>
+<body>
+    
+    <button class="btn btn-primary menugomb" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class='bx bx-menu icon'></i></button>
+
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Menü</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+              <div class="offcanvas-body">
+                  <Header>
+                      <i class='bx bx-chevron-right toggle' data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"></i>
+                  </Header>
+                  
+                  <nav class="navbar">
+                          <div class="menu-bar">
+                              <div class="menu">
+                                  <form role="search" ng-controller="userCtrl" ng-if="!loggedUser">
+                  
+                                      <input type="email" class="form-control mb-3" id="floatingInput" placeholder="E-mail cím" ng-model="user.email">
+                  
+                  
+                                      <input type="password" class="form-control mb-3" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
+                  
+                                      <button class="btn btn-primary mb-3" ng-click="login()">Belépés</button>
+                                      <a href="../Views/Regisztracio.html" class="btn btn-danger mb-3">Regisztracio</a>
+                                  </form>
+                                  <ul class="menu-links">
+                                  
+                                      <li class="nav-link">
+                                          <a href="../Views/Homepage.html">
+                                              <i class='bx bx-home-alt icon' ></i>
+                                              <span class="text nav-text">Főoldal</span>
+                                          </a>
+                                      </li>
+                  
+                                      <li class="nav-link">
+                                          <a href="../Views/Munkatarsak.html">
+                                              <i class='bx bx-user-plus icon' ></i>
+                                              <span class="text nav-text">Munkatársak</span>
+                                          </a>
+                                      </li>
+                  
+                                      <li class="nav-link">
+                                          <a href="../Views/Kezelesek.html">
+                                              <i class='bx bxs-virus-block icon'></i>
+                                              <span class="text nav-text">Kezelések</span>
+                                          </a>
+                                      </li>
+                                      <li class="nav-link">
+                                          <a href="../Views/Elerhetosegek.html">
+                                              <i class='bx bx-phone-call icon' ></i>
+                                              <span class="text nav-text">Elérhetőségek</span>
+                                          </a>
+                                      </li>
+                  
+                                      <li class="nav-link">
+                                          <a href="../Views/Bemutatkozas.html">
+                                              <i class='bx bx-pencil icon' ></i>
+                                              <span class="text nav-text">Bemutatkozás</span>
+                                          </a>
+                                      </li>
+                                      
+                                      
+                                  </ul>
+                              </div>
+                              <!--
+                                  <div class="bottom-content">
+                                  <li class="">
+                                      <a href="#">
+                                          <i class='bx bx-log-out icon' ></i>
+                                          <span class="text nav-text">Logout</span>
+                                      </a>
+                                  </li>
+                              </div>
+                              -->
+                              
+                          </div>
+                      </div>
+                  </nav>
+    </div>
+
+    <img src="" alt="">
+    <p>Név:</p>
+    <input type="text">
+    <p>E-mail cím:</p>
+    <input type="email">
+    <p>Telefonszám:</p>
+    <input type="number">
+
+    <button>Adatmódosítás</button>
+    <button>Fiók törlése</button>
+</body>
+</html>
