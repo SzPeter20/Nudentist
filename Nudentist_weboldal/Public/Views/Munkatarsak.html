@@ -81,9 +81,25 @@
     </nav>
 
     <section class="home">
-        <div class="text">
-            
+        <h3 class="mt-3">Munkatársak</h3>
+        <hr>
+        <div class="row">
+
+        <div class="card" ng-repeat="pizza in pizzak">
+
+        <img src="../Public/assets/img/nopic.png" class="img img-thumbnail" ng-if="pizza.filename == ''">
+        <img src="../Public/uploads/{{ pizza.filename }}" class="img img-thumbnail" ng-if="pizza.filename != ''">
+        <div class="card-body">
+            <h5 class="card-title">{{ pizza.name }}</h5>
+            <h6>{{ pizza.price | number: decimals }} {{ penznem }}</h6>
+            <p class="card-text">{{ pizza.description }}</p>
+            <p class="card-text text-muted fs-6">({{ pizza.kcal }} kcal )</p>
         </div>
+
+        
+    </div>
+
+</div>
     </section>
 
     <script>
@@ -97,4 +113,7 @@ toggle.addEventListener("click" , () =>{
     sidebar.classList.toggle("close");
 })
     </script>
+
+        
+    </body>
 </html>
