@@ -4,7 +4,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     $rootScope.posts
 
     $scope.registration = function() {
-        if ($scope.user.name == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null) {
+        if ($scope.user.name == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null|| $scope.user.phone == null) {
             alert('Nem adtál meg minden kötelező adatot!');
         } else {
             if ($scope.user.pass1 != $scope.user.pass2) {
@@ -19,7 +19,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                         email: $scope.user.email,
                         password: CryptoJS.SHA1($scope.user.pass1).toString(),
                         phone: $scope.user.phone,
-                        address: $scope.user.address,
+                        jogok: "user"
                         
                     }
 
@@ -51,7 +51,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                 if (res.data.length == 0) {
                     alert('Hibás belépési adatok!');
                 } else {
-                    if (res.data[0].status == 0) {
+                    if (res.data[0].jogok == "tiltott") {
                         alert('Tiltott felhasználó!');
                     } else {
 
@@ -63,11 +63,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                             last: res.data[0].last
                         }
                         DB.update('users', res.data[0].ID, data).then(function(res) {
-                            sessionStorage.setItem('SocialApp', angular.toJson($rootScope.loggedUser));
-                        });
-
-                        DB.select('posts', 'userID', $rootScope.loggedUser.ID).then(function(res) {
-                            $rootScope.posts = res.data.length;
+                            sessionStorage.setItem('Dentism', angular.toJson($rootScope.loggedUser));
                         });
                     }
                 }
@@ -77,7 +73,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
 
     $scope.logout = function() {
         $rootScope.loggedUser = null;
-        sessionStorage.removeItem('SocialApp');
+        sessionStorage.removeItem('Dentism');
         $location.path('/');
     }
 });
