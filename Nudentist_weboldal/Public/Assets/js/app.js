@@ -20,28 +20,29 @@ app.config(function($routeProvider) {
     $routeProvider
     // bárki számára
         .when('/', {
-            templateUrl: '../public/Views/Homepage.html',
-        })
-        .when('/reg', {
-            templateUrl: '/public/views/Regisztracio.html',
+            templateUrl: '/Public/Views/Homepage.html',
             controller: 'userCtrl'
         })
-        .when('/profil', {
-            templateUrl: '/public/views/profil.html',
-            controller: 'profilCtrl'
+        .when('/reg', {
+        templateUrl: '/Public/views/Regisztracio.html',
+            controller: 'userCtrl'
         })
-       /* // admin funkciók
+        .when('/bemutatkozas', {
+            templateUrl: '/Public/views/bemutatkozas.html',
+            controller: 'userCtrl'
+        })
+        // orvos funkciók
         .when('/profil', {
             resolve: {
                 function($rootScope, $location) {
-                    if ($rootScope.loggedUser.rights != 'admin') {
+                    if ($rootScope.loggedUser.rights != 'orvos') {
                         $location.path('/');
                     }
                 }
             },
             templateUrl: '/public/views/profil.html',
             controller: 'profilCtrl'
-        })*/
+        })
         
         
         .otherwise('/')
