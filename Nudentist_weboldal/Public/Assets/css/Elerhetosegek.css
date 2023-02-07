@@ -50,6 +50,7 @@ body{
     background-color: #fdc5c6;
     background-image: url(../HelperImages/pink_background.png);
     background-size:cover;
+    background-repeat: no-repeat;
     position:relative;
     height: 100%;
     
