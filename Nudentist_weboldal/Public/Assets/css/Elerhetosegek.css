@@ -29,6 +29,9 @@
 .tartalom p{
     margin-left: 30%;
 }
+.tartalom{
+    margin-bottom: 20%;
+}
     
 form{
     padding-left: 55px ;
@@ -53,8 +56,10 @@ body{
     background-repeat: no-repeat;
     position:relative;
     height: 100%;
-    
+    font-weight: bold;
+    line-height: 80px;
 }
+
 
 ::selection{
     background-color: var(--primary-color);

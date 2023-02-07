@@ -1,7 +1,6 @@
 app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
 
     $scope.user = {};
-    $rootScope.posts
 
     $scope.registration = function() {
         if ($scope.user.name == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null|| $scope.user.phone == null) {
