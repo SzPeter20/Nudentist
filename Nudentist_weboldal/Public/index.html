@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" ng-app="Nudentist">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,7 +37,7 @@
                             <input type="password" class="form-control mb-3" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
         
                             <button class="btn btn-primary mb-3" ng-click="login()">Belépés</button>
-                            <a href="../Public/Views/Regisztracio.html" class="btn btn-danger mb-3">Regisztracio</a>
+                            <a href="#!/reg" class="btn btn-danger mb-3">Regisztráció</a>
                         </form>
                         <ul class="menu-links">
                            
@@ -305,5 +305,25 @@
     <script src="../Public/Assets/js/swiper-bundle.min.js"></script>
     <script src="../Public/Assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+<script src="../Public/Assets/js/jquery.min.js"></script>
+<script src="../Assets/js/bootstrap.min.js"></script>
+<script src="../Assets/js/angular.min.js"></script>
+<script src="../Assets/js/angular-route.min.js"></script>
+<script src="../Assets/js/aos.js"></script>
+<script src="../Public/Assets/js/app.js"></script>
+<script src="../Assets/js/sha1.js"></script>
+<script src="../Assets/js/moment.min.js"></script>
+<script src="../Public/Assets/js/dbFactory.js"></script>
+<script src="../Assets/js/swiper-bundle.min.js"></script>
+<script src="../Assets/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script>
+     toggle = body.querySelector(".toggle");
+</script>
+<script src="../Public/controllers/userCtrl.js"></script>
+<script src="../Public/controllers/profilokCtrl.js"></script>
+<script src="../Public/controllers/kezelesekCtrl.js"></script>
+<script src="../Public/controllers/munkatarsakCtrl.js"></script>
 </body>
 </html>
