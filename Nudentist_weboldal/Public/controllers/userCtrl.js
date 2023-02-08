@@ -17,7 +17,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                         name: $scope.user.name,
                         email: $scope.user.email,
                         password: CryptoJS.SHA1($scope.user.pass1).toString(),
-                        phone: $scope.user.phone,
+                        telefonszam: $scope.user.phone,
                         jogok: "user"
                         
                     }
