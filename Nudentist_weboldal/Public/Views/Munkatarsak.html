@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" ng-app="Nudentist">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -140,11 +140,14 @@
             </div>
           </div>
           <div class="col">
-            <div class="card h-100">
+            <div class="card h-100" ng-repeat="munkas in munkatarsak"> 
               <img src="../Assets/HelperImages/IbrahimLajos.jpg" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title">{{munkas.nev}}</h5>
+                <p class="card-text">{{munkas.bemutatkozas}}</p>
+                <p class="card-text">{{munkas.elerhetosegek}}</p>
+                <p class="card-text">{{munkas.szakterulet}}</p>
+                <p class="card-text">{{munkas.tanulmanyok}}</p>
               </div>
             </div>
           </div>
