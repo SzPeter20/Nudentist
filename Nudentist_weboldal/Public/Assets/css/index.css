@@ -183,8 +183,8 @@ header .toggle{
   }
 .home .mapouter{
     padding-left: 65px;
-    width: 700px;
-    height: 700px;
+    width: 800px;
+    height: 800px;
 }
 .menugomb{
     margin: 20px;
@@ -223,7 +223,7 @@ header .toggle{
     top: 0;
     height: 100%;
     width: 100%;
-    background-color: #4070F4;
+    background-color: var(--sidebar-color);
     border-radius: 25px 25px 0 25px;
   }
   .overlay::before,
@@ -234,7 +234,7 @@ header .toggle{
     bottom: -40px;
     height: 40px;
     width: 40px;
-    background-color: #4070F4;
+    background-color: var(--sidebar-color);
   }
   .overlay::after{
     border-radius: 0 25px 0 0;
@@ -253,7 +253,7 @@ header .toggle{
     width: 100%;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid #4070F4;
+    border: 4px solid var(--sidebar-color);
   }
   .name{
     font-size: 18px;
@@ -270,22 +270,22 @@ header .toggle{
     font-size: 16px;
     color: #FFF;
     padding: 8px 16px;
-    background-color: #4070F4;
+    background-color:var(--sidebar-color);
     border-radius: 6px;
     margin: 14px;
     cursor: pointer;
     transition: all 0.3s ease;
   }
   .button:hover{
-    background: #265DF2;
+    background: var(--sidebar-color);
   }
   
   .swiper-navBtn{
-    color: #6E93f7;
+    color: var(--sidebar-color);
     transition: color 0.3s ease;
   }
   .swiper-navBtn:hover{
-    color: #4070F4;
+    color: var(--sidebar-color);
   }
   .swiper-navBtn::before,
   .swiper-navBtn::after{
@@ -298,11 +298,11 @@ header .toggle{
     left: 0;
   }
   .swiper-pagination-bullet{
-    background-color: #6E93f7;
+    background-color:var(--sidebar-color);
     opacity: 1;
   }
   .swiper-pagination-bullet-active{
-    background-color: #4070F4;
+    background-color: var(--sidebar-color);
   }
   
   @media screen and (max-width: 768px) {
