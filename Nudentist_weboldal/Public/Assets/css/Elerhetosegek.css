@@ -8,7 +8,7 @@
 }
 :root{
     /* ===== Colors ===== */
-    --body-color: #E4E9F7;
+    --body-color: #fdc5c6;
     --sidebar-color: #456990ff;
     --primary-color: #e90fb2;
     --primary-color-light: #F6F5FF;
@@ -28,6 +28,10 @@
 }
 .tartalom p{
     margin-left: 30%;
+    
+}
+.tartalom{
+    margin-bottom: 20%;
 }
     
 form{
@@ -47,14 +51,16 @@ form{
     width: 80%;
 }
 body{
+    background-color: #fdc5c6;
     background-image: url(../HelperImages/pink_background.png);
-    background-repeat:no-repeat;
     background-size:cover;
+    background-repeat: no-repeat;
     position:relative;
-    background-position:center;
-    background-color: var(--body-color);
-    
+    height: 100%;
+    font-weight: bold;
+    line-height: 80px;
 }
+
 
 ::selection{
     background-color: var(--primary-color);
@@ -122,7 +128,6 @@ body{
     display: none;
 }
 .home{
-   
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;

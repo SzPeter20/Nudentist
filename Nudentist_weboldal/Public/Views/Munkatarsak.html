@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" ng-app="Nudentist">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -92,37 +92,107 @@
             </nav>
       </div>
 
-    <section class="home">
-        <h3 class="mt-3">Munkatársak</h3>
-        <hr>
-        <div class="row">
 
-        <div class="card" ng-repeat="munkas in munkatarsak">
-
-        <img src="../Public/assets/img/nopic.png" class="img img-thumbnail" ng-if="munkas.filename == ''">
-        <img src="../Public/uploads/{{ munkas.filename }}" class="img img-thumbnail" ng-if="munkas.filename != ''">
-        <div class="card-body">
-            <h5 class="card-title">{{ munkas.name }}</h5>
-            <h6>{{munkas.leiras}}</h6>
-            <p class="card-text">{{munkas.email}}</p>
-            <p class="card-text">{{munkas.telefonszama}}</p>
-            <p class="card-text">{{munkas.szakterulet}}</p>
-            <p class="card-text">{{munkas.tanulmanyok}}</p>
-            <p class="card-text text-muted fs-6"></p>
+    
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <img src="../Assets/HelperImages/Asztalossimon.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
         </div>
-
-        
-    </div>
-
-</div>
-    </section>
-
+        <div class="col">
+          <div class="card h-100">
+            <img src="../Assets/HelperImages/genericman.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a short card.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="../Assets/HelperImages/genericwoman.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="../Assets/HelperImages/IbrahimLajos.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+              <img src="../Assets/HelperImages/IbrahimLajos.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100" ng-repeat="munkas in munkatarsak"> 
+              <img src="../Assets/HelperImages/IbrahimLajos.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{munkas.nev}}</h5>
+                <p class="card-text">{{munkas.bemutatkozas}}</p>
+                <p class="card-text">{{munkas.elerhetosegek}}</p>
+                <p class="card-text">{{munkas.szakterulet}}</p>
+                <p class="card-text">{{munkas.tanulmanyok}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="../Assets/HelperImages/IbrahimLajos.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="../Assets/HelperImages/IbrahimLajos.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="../Assets/HelperImages/IbrahimLajos.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+      </div>
+    
+    <script src="../Assets/js/jquery.min.js"></script>
+    <script src="../Assets/js/bootstrap.min.js"></script>
+    <script src="../Assets/js/angular.min.js"></script>
+    <script src="../Assets/js/angular-route.min.js"></script>
+    <script src="../Assets/js/aos.js"></script>
+    <script src="../Assets/js/sha1.js"></script>
+    <script src="../Assets/js/moment.min.js"></script>
+    <script src="../Assets/js/dbFactory.js"></script>
     <script src="../Assets/js/swiper-bundle.min.js"></script>
     <script src="../Assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script>
-         toggle = body.querySelector(".toggle");
-    </script>
+    <script src="../controllers/munkatarsakCtrl.js"></script>
 
         
     </body>

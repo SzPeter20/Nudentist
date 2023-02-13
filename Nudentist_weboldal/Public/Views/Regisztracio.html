@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu" ng-app="Nudentist">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -115,13 +115,13 @@
             <div class="form-floating mb-3 tartalom">
                 <p>Jelszó:</p>
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
-                
+                <p>A jelszónak tartalmaznia kell: 1 nagy betű 1 kis betű 1 szám és minimum 8 karakter</p>
             </div>
             
             <div class="form-floating mb-3 tartalom">
                 <p>Jelszó megerősítése:</p>
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass2">
-                
+                <p>A jelszónak tartalmaznia kell: 1 nagy betű 1 kis betű 1 szám és minimum 8 karakter</p>
             </div>
             <div class="tartalom">
                 <p class="mb-3">A <em>*</em>-al jelölt mezők kitöltése kötelező!</p>
@@ -134,7 +134,7 @@
         </section>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
+        <script src="../controllers/userCtrl.js"></script>
     
 </body>
 </html>

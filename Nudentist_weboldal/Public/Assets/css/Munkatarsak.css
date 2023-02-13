@@ -8,7 +8,7 @@
 }
 :root{
     /* ===== Colors ===== */
-    --body-color: #E4E9F7;
+    --body-color: #fdc5c6;
     --sidebar-color: #456990ff;
     --primary-color: #e90fb2;
     --primary-color-light: #F6F5FF;
@@ -22,20 +22,17 @@
     --tran-04: all 0.3s ease;
     --tran-05: all 0.3s ease;
     
-}
-    
 form{
     padding-left: 55px ;
     margin: auto;
 }
-
 .offcanvas-body{
     width: 100%;
     background-color:#456990ff;
 }
 .offcanvas-start{
     width: 80%;
-    
+ 
 }
 .offcanvas-title{
     width: 80%;
@@ -44,12 +41,16 @@ body{
     background-image: url(../HelperImages/pink_background.png);
     
     
+
     background-repeat:no-repeat;
     background-size:cover;
     position:relative;
     background-position:center;
     background-color: var(--body-color);
-    
+
+    margin: 15px;
+    padding: 15px;
+
 }
 
 ::selection{
@@ -183,6 +184,7 @@ header .toggle{
   }
 .home .mapouter{
     padding-left: 65px;
+
     width: 800px;
     height: 800px;
 }
@@ -313,3 +315,4 @@ header .toggle{
       display: none;
     }
   }
+
