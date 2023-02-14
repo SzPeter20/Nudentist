@@ -28,11 +28,27 @@ app.config(function($routeProvider) {
             controller: 'userCtrl'
         })
         .when('/bemutatkozas', {
-            templateUrl: '/Public/views/bemutatkozas.html',
+            templateUrl: '/Public/views/Bemutatkozas.html',
             controller: 'userCtrl'
         })
+        .when('/kezelesek', {
+            templateUrl: '/Public/views/Kezelesek.html',
+            controller: 'kezelesekCtrl'
+        })
+        .when('/uzenetek', {
+            templateUrl: '/Public/views/Uzenetek.html',
+            controller: 'profilokCtrl'
+        })
+        .when('/jelszomod', {
+            templateUrl: '/Public/views/Passwordmod.html',
+            controller: 'profilokCtrl'
+        })
+        .when('/userprofil', {
+            templateUrl: '/Public/views/Userprofil.html',
+            controller: 'profilokCtrl'
+        })
         // orvos funkciók
-        .when('/profil', {
+        .when('/doktorprofil', {
             resolve: {
                 function($rootScope, $location) {
                     if ($rootScope.loggedUser.rights != 'orvos') {
@@ -40,8 +56,8 @@ app.config(function($routeProvider) {
                     }
                 }
             },
-            templateUrl: '/public/views/profil.html',
-            controller: 'profilCtrl'
+            templateUrl: '/public/views/Doktorprofil.html',
+            controller: 'profilokCtrl'
         })
         
         

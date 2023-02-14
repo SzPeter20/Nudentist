@@ -3,7 +3,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     $scope.user = {};
 
     $scope.registration = function() {
-        if ($scope.user.name == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null|| $scope.user.phone == null) {
+        if ($scope.user.name == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null) {
             alert('Nem adtál meg minden kötelező adatot!');
         } else {
             if ($scope.user.pass1 != $scope.user.pass2) {

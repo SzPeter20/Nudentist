@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu" ng-app="Nudentist">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -104,7 +104,7 @@
                 <div class="accordion-body">
                   <ul>
                     <li ng-repeat="rontgen in rontgenek">
-                      <p>{{rontgen.name}}</p>
+                      <a href=""><p>{{rontgen.name}}</p></a>
                     </li>
                   </ul>
                 </div>
@@ -120,7 +120,7 @@
                 <div class="accordion-body">
                   <ul>
                     <li ng-repeat="potlas in potlasok">
-                      <p>{{potlas.name}}</p>
+                      <a href=""> <p>{{potlas.name}}</p></a>
                     </li>
                   </ul>                
                 </div>
@@ -136,7 +136,7 @@
                 <div class="accordion-body">
                   <ul>
                     <li ng-repeat="konzerv in konzervalok">
-                      <p>{{konzerv.name}}</p>
+                      <a href=""> <p>{{konzerv.name}}</p></a>
                     </li>
                   </ul>                
                 </div>
@@ -152,7 +152,7 @@
                   <div class="accordion-body">
                     <ul>
                       <li ng-repeat="para in parodonok">
-                        <p>{{para.name}}</p>
+                        <a href=""> <p>{{para.name}}</p></a>
                       </li>
                     </ul>                  
                   </div>
@@ -168,7 +168,7 @@
                   <div class="accordion-body">
                     <ul>
                       <li ng-repeat="seb in sebeszetek">
-                        <p>{{seb.name}}</p>
+                        <a href=""> <p>{{seb.name}}</p></a>
                       </li>
                     </ul>                  
                   </div>
@@ -184,7 +184,7 @@
                   <div class="accordion-body">
                     <ul>
                       <li ng-repeat="surg in surgossegeg">
-                        <p>{{surg.name}}</p>
+                        <a href=""> <p>{{surg.name}}</p></a>
                       </li>
                     </ul>                  
                   </div>
@@ -200,7 +200,7 @@
                   <div class="accordion-body">
                     <ul>
                       <li ng-repeat="lat in lathatatlanok">
-                        <p>{{lat.name}}</p>
+                        <a href=""> <p>{{lat.name}}</p></a>
                       </li>
                     </ul>
                   </div>
