@@ -118,14 +118,16 @@ body{
 .home::-webkit-scrollbar{
     display: none;
 }
-.text{
+
+.text-tartalom{
     font-size: 25px;
     font-weight: 500;
     color: var(--bodytext-color);
-    
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
     text-align: justify;
-    margin: 25px;
-    padding: 25px;
+    margin: 45px;
+    padding: 45px;
 }
 .embed-responsive{
     margin-left: auto;
@@ -152,9 +154,19 @@ header .toggle{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    
     color: red;
 }
 .menugomb{
     margin: 20px;
+}
+img{
+    float: right;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    height: auto;
+    padding: 15px;
+    
 }
 
