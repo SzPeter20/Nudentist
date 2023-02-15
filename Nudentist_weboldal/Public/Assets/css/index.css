@@ -52,12 +52,6 @@ body{
     background-color: var(--body-color);
     
 }
-
-::selection{
-    background-color: var(--primary-color);
-    color: #fff;
-    
-}
 .sidebar{
     position: fixed;
     top: 0;
@@ -154,14 +148,6 @@ header .toggle{
     text-align: center;
     color: red;
 }
-.home .idopontok{
-  font-size: 30px;
-  font-weight: 500;
-  color: var(--bodytext-color);
-  margin-left:30%;
-  text-align: center;
-  line-height: 80px;
-}
  .slogen{
     font-size: 45px;
     font-weight: 500;
@@ -170,29 +156,31 @@ header .toggle{
     text-align: left;
 }
 table{
+  width: 100%;
   backdrop-filter: blur(10px);
   border-radius: 10px;
+  
 }
 .table td{
     
-    opacity:88%;
+  
     font-size: 25px;
-    font-weight: bold;
+    
     margin-left: auto;
     margin-right: auto;
-    border-spacing: 20px;
+    
    
     text-align: center;
 }
 .table th{
   
-  opacity:88%;
+  
   text-align: center;
-  font-size: 32px;
+  font-size: 35px;
   font-weight: bold;
   margin-left: auto;
   margin-right: auto;
-  border-spacing: 20px;
+  
   
   
 }

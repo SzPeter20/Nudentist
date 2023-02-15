@@ -161,12 +161,8 @@ header .toggle{
     margin: 20px;
 }
 img{
-    float: right;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
-    height: auto;
-    padding: 15px;
     
+    padding: 5px;
+    margin: 5px;
 }
 
