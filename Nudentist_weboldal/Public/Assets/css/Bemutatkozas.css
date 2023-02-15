@@ -129,7 +129,7 @@ body{
     margin: auto;
     
 }
-.home .text{
+.text-tartalom{
     font-size: 25px;
     font-weight: 500;
     color: var(--bodytext-color);
