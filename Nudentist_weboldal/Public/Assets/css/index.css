@@ -23,7 +23,9 @@
     --tran-05: all 0.3s ease;
     
 }
-    
+.cleanslate w24tz-current-time w24tz-middle{
+  border: 2px solid black;
+}
 form{
     padding-left: 55px ;
     margin: auto;
