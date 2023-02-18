@@ -1,0 +1,5 @@
+CREATE OR REPLACE VIEW cartDetails AS
+(
+    SELECT carts.ID, userID , pizzaID, pizzas.name, amount, pizzas.price, (pizzas.price*amount) as summary FROM carts
+    INNER JOIN pizzas ON carts.pizzaID = pizzas.ID
+)

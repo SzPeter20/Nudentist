@@ -1,9 +1,13 @@
-app.controller('munkatarsakCtrl', function($scope, DB, $rootScope,) {
-    $scope.munkatarsak=[];
-    $scope.munkas={};
-   
+app.controller('MunkatarsakCtrl', function($scope, DB, $rootScope, fileUpload) {
+
+    $scope.Munkatarsak = [];
+    $scope.Munkatars = {};
+    $scope.db = [];
+
     DB.selectAll('orvosok').then(function(res) {
-        $scope.munkatarsak= res.data;
-        
-    });
+        $scope.Munkatarsak = res.data;
+        for (let i = 0; i < $scope.Munkatarsak.length; i++) {
+            $scope.db[i] = 1;
+        }
+    });  
 });

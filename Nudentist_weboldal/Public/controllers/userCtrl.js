@@ -14,12 +14,11 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                     alert('A megadott jelszó nem felel meg a minimális biztonsági követelményeknek!');
                 } else {
                     let data = {
-                        name: $scope.user.name,
+                        nev: $scope.user.name,
                         email: $scope.user.email,
                         password: CryptoJS.SHA1($scope.user.pass1).toString(),
                         telefonszam: $scope.user.phone,
-                        jogok: "user"
-                        
+                        jogok: 'user'
                     }
 
                     DB.insert('users', data).then(function(res) {
@@ -50,19 +49,17 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                 if (res.data.length == 0) {
                     alert('Hibás belépési adatok!');
                 } else {
-                    if (res.data[0].jogok == "tiltott") {
+                    if (res.data[0].status == 0) {
                         alert('Tiltott felhasználó!');
                     } else {
 
                         res.data[0].last = moment(new Date()).format('YYYY-MM-DD H:m:s');
                         $rootScope.loggedUser = res.data[0];
-                        console.log($rootScope.loggedUser)
-                        
                         let data = {
                             last: res.data[0].last
                         }
                         DB.update('users', res.data[0].ID, data).then(function(res) {
-                            sessionStorage.setItem('Dentism', angular.toJson($rootScope.loggedUser));
+                            sessionStorage.setItem('NudentistAPP', angular.toJson($rootScope.loggedUser));
                         });
                     }
                 }
@@ -72,7 +69,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
 
     $scope.logout = function() {
         $rootScope.loggedUser = null;
-        sessionStorage.removeItem('Dentism');
+        sessionStorage.removeItem('NudentistAPP');
         $location.path('/');
     }
 });

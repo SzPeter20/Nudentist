@@ -2,10 +2,27 @@ require('dotenv').config();
 const express = require('express');
 var mysql = require('mysql');
 const moment = require('moment');
+const path = require('path');
+const cors = require('cors');
+const multer = require('multer');
+const fs = require('fs');
+
+// Image file Upload settings
+var storage = multer.diskStorage({
+    destination: '../Public/uploads/',
+    filename: function(req, file, cb) {
+        let file_name = file.originalname.replace(path.extname(file.originalname), "") + '-' + Date.now() + path.extname(file.originalname);
+        cb(null, file_name);
+    }
+});
+
+var upload = multer({ storage: storage });
+
 const app = express();
 const port = process.env.PORT;
 const token = process.env.TOKEN;
 const debug = process.env.DEBUG;
+const version = process.env.VERSION;
 
 var pool = mysql.createPool({
     connectionLimit: 10,
@@ -15,7 +32,43 @@ var pool = mysql.createPool({
     database: process.env.DBNAME
 });
 
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// file upload
+app.post('/fileUpload', upload.single('file'), (req, res) => {
+    log(req.socket.remoteAddress, `1 File uploaded to /Public/uploads (${req.file.filename}`);
+    res.status(200).json(req.file);
+});
+
+// file Delete
+app.delete('/fileDelete/:table/:id', tokencheck(), (req, res) => {
+    let table = req.params.table;
+    let id = req.params.id;
+    pool.query(`SELECT filename FROM ${table} WHERE ID=${id}`, (err, results) => {
+        if (err) {
+            log(req.socket.remoteAddress, err);
+            res.status(500).send(err);
+        } else {
+            if (results[0].filename != '') {
+                fs.rm('../Public/uploads/' + results[0].filename, (err) => {
+                    if (err) {
+                        log(req.socket.remoteAddress, err);
+                        res.status(500).send(err);
+                    }
+                });
+            }
+            res.status(200).json(results[0].filename);
+        }
+    });
+});
+
+// GET VERSION INFO
+app.get('/', (req, res) => {
+    log(req.socket.remoteAddress, `Sent version information.`);
+    res.status(200).send(`2/14.szft Backend MySQL API ${version}.`);
+});
 
 // LOGINCHECK
 app.post('/login', tokencheck(), (req, res) => {
@@ -119,7 +172,6 @@ app.post('/:table', tokencheck(), (req, res) => {
             log(req.socket.remoteAddress, err);
             res.status(500).send(err);
         } else {
-            console.log(results)
             log(req.socket.remoteAddress, `${results.affectedRows} record inserted to ${table} table.`);
             res.status(200).send(results);
         }
@@ -169,11 +221,12 @@ app.delete('/:table', tokencheck(), (req, res) => {
 });
 
 // DELETE ONE RECORD
-app.delete('/:table/:id', tokencheck(), (req, res) => {
+app.delete('/:table/:field/:value', tokencheck(), (req, res) => {
     var table = req.params.table;
-    var id = req.params.id;
+    var field = req.params.field;
+    var value = req.params.value;
 
-    pool.query(`DELETE FROM ${table} WHERE ID=${id}`, (err, results) => {
+    pool.query(`DELETE FROM ${table} WHERE ${field}=${value}`, (err, results) => {
         if (err) {
             log(req.socket.remoteAddress, err);
             res.status(500).send(err);
@@ -183,6 +236,7 @@ app.delete('/:table/:id', tokencheck(), (req, res) => {
         }
     });
 });
+
 
 app.listen(port, () => {
     log('SERVER', `Listening started on port ${port}.`);
