@@ -26,6 +26,17 @@
 .cleanslate w24tz-current-time w24tz-middle{
   border: 2px solid black;
 }
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  letter-spacing: 3px;
+  padding: 10px;
+  font-size: 80%;
+}
+textarea {
+  min-height: 200px !important;
+}
 form{
     padding-left: 55px ;
     margin: auto;

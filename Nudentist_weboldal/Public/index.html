@@ -33,12 +33,12 @@
                         <div class="menu">
                             <form role="search" ng-controller="userCtrl" ng-if="!loggedUser">
 
-                            <input type="email" class="form-control me-1" id="floatingInput" placeholder="E-mail cím" ng-model="user.email">
+                            <input type="email" class="form-control mb-3" id="floatingInput" placeholder="E-mail cím" ng-model="user.email">
 
-                            <input type="password" class="form-control me-1" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
+                            <input type="password" class="form-control mb-3" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
 
-                            <button class="btn btn-primary me-1" ng-click="login()">Belépés</button>
-                            <a href="#!/reg" class="btn btn-secondary">Regisztráció</a>
+                            <button class="btn btn-primary mb-3" ng-click="login()">Belépés</button>
+                            <a href="#!/reg" class="btn btn-danger mb-3">Regisztráció</a>
                         </form>
                         <form class="d-flex" role="search" ng-controller="userCtrl" ng-if="loggedUser">
 
@@ -120,13 +120,14 @@
             </div>
         </main>
         
-        <footer>
-            {{ settings.company }} - {{ settings.author }} - {{ aktYear }}
-        </footer>
+        
 
-
+        
 
     </div>
+    <footer>
+        {{ settings.company }} - {{ settings.author }} - {{ aktYear }}
+    </footer>
     <script src="./assets/js/bootstrap.min.js"></script>
     <script src="./assets/js/swiper-bundle.min.js"></script>
     <script src="./assets/js/script.js"></script>
