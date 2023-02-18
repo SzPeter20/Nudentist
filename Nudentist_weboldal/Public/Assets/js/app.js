@@ -9,7 +9,7 @@ app.run(function($rootScope, $locale, DB) {
     $rootScope.loggedUser = {};
     $rootScope.settings.appTitle = 'NudentistApp';
     $rootScope.settings.company = 'Bajai SZC Türr István Technikum';
-    $rootScope.settings.author = '2/14.szft szoftverfejlesztő';
+    $rootScope.settings.author = 'Zámbó Illés és Szabó Péter';
     $rootScope.penznem = 'Ft';
     $rootScope.decimals = 0;
     $rootScope.exch = 1;
@@ -40,6 +40,14 @@ app.config(function($routeProvider) {
         })
         .when('/munkatarsak', {
             templateUrl: 'views/Munkatarsak.html',
+            controller: 'MunkatarsakCtrl'
+        })
+        .when('/kezelesek', {
+            templateUrl: 'views/Kezelesek.html',
+            controller: 'kezelesekCtrl.js'
+        })
+        .when('/elerhetoseg', {
+            templateUrl: 'views/Elerhetosegek.html',
             controller: 'MunkatarsakCtrl'
         })
         // admin funkciók
