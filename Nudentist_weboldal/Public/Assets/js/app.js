@@ -54,7 +54,7 @@ app.config(function($routeProvider) {
         .when('/idopontokkezelese', {
             resolve: {
                 function($rootScope, $location) {
-                    if ($rootScope.loggedUser.rights != 'admin') {
+                    if ($rootScope.loggedUser.jogok != 'admin') {
                         $location.path('/');
                     }
                 }
@@ -65,7 +65,7 @@ app.config(function($routeProvider) {
         .when('/uzenetek', {
             resolve: {
                 function($rootScope, $location) {
-                    if ($rootScope.loggedUser.rights != 'admin') {
+                    if ($rootScope.loggedUser.jogok != 'admin') {
                         $location.path('/');
                     }
                 }
@@ -77,7 +77,7 @@ app.config(function($routeProvider) {
         .when('/uzenetek', {
             resolve: {
                 function($rootScope, $location) {
-                    if ($rootScope.loggedUser.rights != 'user' && $rootScope.loggedUser.rights != 'admin') {
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin') {
                         $location.path('/');
                     }
                 }

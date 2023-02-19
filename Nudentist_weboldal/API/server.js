@@ -74,9 +74,9 @@ app.get('/', (req, res) => {
 app.post('/login', tokencheck(), (req, res) => {
     var table = req.body.table;
     var email = req.body.email;
-    var passwd = req.body.password;
+    var password = req.body.password;
 
-    pool.query(`SELECT * FROM ${table}  WHERE email=? AND passwd=?`, [email, passwd], (err, results) => {
+    pool.query(`SELECT * FROM ${table}  WHERE email=? AND password=?`, [email, password], (err, results) => {
         if (err) {
             log(req.socket.remoteAddress, err);
             res.status(500).send(err);
