@@ -70,7 +70,7 @@ app.config(function($routeProvider) {
                     }
                 }
             },
-            templateUrl: 'views/uzenetek.html',
+            templateUrl: 'views/Uzenetek.html',
             controller: 'uzenetCtrl'
         })
         // user funkciók
@@ -84,6 +84,17 @@ app.config(function($routeProvider) {
             },
             templateUrl: 'views/uzenetek.html',
             controller: 'uzenetCtrl'
+        })
+        .when('/profilom', {
+            resolve: {
+                function($rootScope, $location) {
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin') {
+                        $location.path('/');
+                    }
+                }
+            },
+            templateUrl: 'views/Userprofil.html',
+            controller: 'userCtrl'
         })
         .otherwise('/')
 });

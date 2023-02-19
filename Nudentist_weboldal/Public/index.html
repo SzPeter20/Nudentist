@@ -42,11 +42,11 @@
                             <button class="btn btn-primary mb-3" ng-click="login()">Belépés</button>
                             <a href="#!/reg" class="btn btn-danger mb-3">Regisztráció</a>
                         </form>
-                        <form class="d-flex" role="search" ng-controller="userCtrl" ng-if="loggedUser">
-
-                            <input type="text" class="form-control me-1" id="floatingInput" ng-model="loggedUser.nev" disabled>
-
-                            <button class="btn btn-primary me-1" ng-click="logout()">Kilépés</button>
+                        <form class="" role="search" ng-controller="userCtrl" ng-if="loggedUser">
+                            
+                            <input type="text" class="form-control mb-3" id="floatingInput" ng-model="loggedUser.nev" disabled>
+                            
+                            <button class="btn btn-secondary mb-3" ng-click="logout()">Kilépés</button>
 
                         </form>
                             <ul class="menu-links">
@@ -85,27 +85,35 @@
                                     </a>
                                 </li>
                                 
-    
-                                <!-- admin functions -->
-                                <li class="nav-item" ng-if="loggedUser && (loggedUser.rights==='admin')">
-                                    <a class="nav-link text nav-text" href="#!/pizzak">Időpontok kezelése</a>
+                                
+                                     <!-- admin functions -->
+                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='admin')">
+                                    <i class='bx bx-calendar icon' ></i>
+                                    <a class="nav-link text nav-text" href="#!/idopontokkezelese">Időpontok</a>
                                 </li>
     
-                                <li class="nav-item" ng-if="loggedUser && (loggedUser.rights==='admin')">
-                                    <a class="nav-link text nav-text" href="#!/rendelesek">Páciensek kezelése</a>
-                                </li>  
+                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='admin')">
+                                    <i class='bx bx-calendar-edit icon' ></i>
+                                    <a class="nav-link text nav-text" href="#!/paciensek">Páciensek</a>
+                                </li>
+                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='admin')">
+                                    <i class='bx bx-message icon' ></i>
+                                    <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>
+                                </li>    
+                                <!-- user functions -->
+                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='user')">
+                                    <i class='bx bx-message icon' ></i>
+                                    <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>
+                                </li>
+                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='user')">
+                                    <i class='bx bx-user-voice icon' ></i>
+                                    <a class="nav-link text nav-text" href="#!/profilom">Profilom</a>
+                                </li>       
                             </ul>
                         </div>
-                        <!--
-                            <div class="bottom-content">
-                            <li class="">
-                                <a href="#">
-                                    <i class='bx bx-log-out icon' ></i>
-                                    <span class="text nav-text">Logout</span>
-                                </a>
-                            </li>
-                        </div>
-                        -->
+                        
+                           
+                        
                         
                     </div>
                 </div>

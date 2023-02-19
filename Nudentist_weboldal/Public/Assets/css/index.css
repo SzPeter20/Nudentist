@@ -17,15 +17,10 @@
     --icon-color:#151515; 
     --bodytext-color:#000000;
 
-    --tran-03: all 0.2s ease;
-    --tran-03: all 0.3s ease;
-    --tran-04: all 0.3s ease;
-    --tran-05: all 0.3s ease;
+    
     
 }
-.cleanslate w24tz-current-time w24tz-middle{
-  border: 2px solid black;
-}
+
 footer {
   background-color: black;
   color: white;
