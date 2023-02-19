@@ -34,17 +34,17 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
         }
     };
     $scope.mod = function() {
-        if ($scope.user.name == null || $scope.user.email == null || $scope.user.phone == null ) {
+        if ($scope.user.name == null || $scope.user.email == null) {
             alert('Nem adtál meg minden kötelező adatot!');
         } else {
                     let data = {
                         nev: $scope.user.name,
                         email: $scope.user.email,
-                        telefonszam: $scope.user.phone,
+                        telefonszam: $scope.user.phone
                     }
 
-                    DB.update('users', loggedUser.ID,data).then(function(res) {
-                        if (res.data.affectedRows = 0) {
+                    DB.update('users',loggedUser.ID, data).then(function(res) {
+                        if (res.data.affectedRows != 0) {
                             alert('A regisztráció sikeres! Beléphetsz az oldalra!');
                             $scope.user = {};
                         } else {
@@ -52,9 +52,9 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                         }
                     });
                 }
-            }
-       
-    
+            };
+     
+   
 
     $scope.login = function() {
         if ($scope.user.email == null || $scope.user.pass1 == null) {
