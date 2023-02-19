@@ -14,12 +14,6 @@ app.run(function($rootScope, $locale, DB) {
     $rootScope.decimals = 0;
     $rootScope.exch = 1;
     $rootScope.loggedUser = angular.fromJson(sessionStorage.getItem('NudentistApp'));
-    if ($rootScope.loggedUser) {
-
-        DB.select('carts', 'userID', $rootScope.loggedUser.ID).then(function(res) {
-            $rootScope.itemsInCart = res.data.length;
-        });
-    }
 
 });
 
