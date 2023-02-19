@@ -51,7 +51,7 @@ app.config(function($routeProvider) {
             controller: 'MunkatarsakCtrl'
         })
         // admin funkciók
-        .when('/pizzak', {
+        .when('/idopontokkezelese', {
             resolve: {
                 function($rootScope, $location) {
                     if ($rootScope.loggedUser.rights != 'admin') {
@@ -59,10 +59,10 @@ app.config(function($routeProvider) {
                     }
                 }
             },
-            templateUrl: 'views/pizzak.html',
-            controller: 'pizzaCtrl'
+            templateUrl: 'views/idopontokezelese.html',
+            controller: 'valamilyenCtrl'
         })
-        .when('/rendelesek', {
+        .when('/uzenetek', {
             resolve: {
                 function($rootScope, $location) {
                     if ($rootScope.loggedUser.rights != 'admin') {
@@ -70,22 +70,11 @@ app.config(function($routeProvider) {
                     }
                 }
             },
-            templateUrl: 'views/rendelesek.html',
-            controller: 'rendelesCtrl'
-        })
-        .when('/statisztika', {
-            resolve: {
-                function($rootScope, $location) {
-                    if ($rootScope.loggedUser.rights != 'admin') {
-                        $location.path('/');
-                    }
-                }
-            },
-            templateUrl: 'views/statisztika.html',
-            controller: 'statisztikaCtrl'
+            templateUrl: 'views/uzenetek.html',
+            controller: 'uzenetCtrl'
         })
         // user funkciók
-        .when('/kosar', {
+        .when('/uzenetek', {
             resolve: {
                 function($rootScope, $location) {
                     if ($rootScope.loggedUser.rights != 'user' && $rootScope.loggedUser.rights != 'admin') {
@@ -93,19 +82,8 @@ app.config(function($routeProvider) {
                     }
                 }
             },
-            templateUrl: 'views/kosar.html',
-            controller: 'kosarCtrl'
-        })
-        .when('/rendeleseim', {
-            resolve: {
-                function($rootScope, $location) {
-                    if ($rootScope.loggedUser.rights != 'user' && $rootScope.loggedUser.rights != 'admin') {
-                        $location.path('/');
-                    }
-                }
-            },
-            templateUrl: 'views/rendeleseim.html',
-            controller: 'rendelesCtrl'
+            templateUrl: 'views/uzenetek.html',
+            controller: 'uzenetCtrl'
         })
         .otherwise('/')
 });
