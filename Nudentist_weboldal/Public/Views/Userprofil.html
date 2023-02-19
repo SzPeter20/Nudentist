@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ settings.appTitle }}</title>
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/aos.css">
+    <link rel="stylesheet" href="./assets/css/aos.css">
     
 
 </head>                   
@@ -27,14 +27,13 @@
                     <h4 class="text-right">Profil módosítás</h4>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Keresztnév</label><input type="text" class="form-control" placeholder="Keresztnév" value=""></div>
-                    <div class="col-md-6"><label class="labels">Vezetéknév</label><input type="text" class="form-control" value="" placeholder="Vezetéknév"></div>
+                    <div class="col-md-6"><label class="labels">Keresztnév</label><input type="text" class="form-control" placeholder="Keresztnév" ng-model="user.name" value=""></div>     
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Telefonszám</label><input type="text" class="form-control" placeholder="Adja meg Telefonszámát" value=""></div>
-                    <div class="col-md-12"><label class="labels">E-mail cím</label><input type="text" class="form-control" placeholder="Adja meg e-mail címét" value=""></div>
+                    <div class="col-md-12"><label class="labels">Telefonszám</label><input type="text" class="form-control" placeholder="Adja meg Telefonszámát" ng-model="user.email"></div>
+                    <div class="col-md-12"><label class="labels">E-mail cím</label><input type="text" class="form-control" placeholder="Adja meg e-mail címét" ng-model="user.phone"></div>
                 </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Profil módosítás mentése</button></div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" ng-click="mod()">Profil módosítás mentése</button></div>
             </div>
         </div>
         
