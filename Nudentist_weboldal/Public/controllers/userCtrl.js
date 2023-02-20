@@ -34,6 +34,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
         }
     };
     $scope.mod = function() {
+        console.log($rootScope.loggedUser)
         if ($scope.user.name == null || $scope.user.email == null) {
             alert('Nem adtál meg minden kötelező adatot!');
         } else {
@@ -43,17 +44,36 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                         telefonszam: $scope.user.phone
                     }
 
-                    DB.update('users',loggedUser.ID, data).then(function(res) {
+                    DB.update('users',$rootScope.loggedUser.ID, data).then(function(res) {
                         if (res.data.affectedRows != 0) {
-                            alert('A regisztráció sikeres! Beléphetsz az oldalra!');
+                            alert('Adatok sikeresen megváltoztatva!');
                             $scope.user = {};
                         } else {
                             alert('Váratlan hiba történt az adatbázis művelet során!');
                         }
-                    });
                 }
-            };
-     
+            );
+        }
+    };
+    $scope.passwdmod=function(){
+        if($scope.user.password1==null||$scope.user.password2==null||$scope.password1!=$scope.password2){
+            alert('A megadott jelszavak nem egyeznek meg!')
+        }else if($rootScope.loggedUser.password==$scope.user.password1){
+            alert('Az új jelszó nem egyezhet a régi jelszóval!')
+        }else{
+            let data={
+                password:$scope.user.password1
+            }
+            DB.update('users',$rootScope.loggedUser.ID,data).then(function(res){
+                if (res.data.affectedRows != 0) {
+                    alert('Jelszó sikeresen megváltoztatva!');
+                    $scope.user = {};
+                } else {
+                    alert('Váratlan hiba történt az adatbázis művelet során!');
+                }
+            })
+        }
+    }
    
 
     $scope.login = function() {
