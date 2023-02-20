@@ -27,13 +27,14 @@
                     <h4 class="text-right">Profil módosítás</h4>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Keresztnév</label><input type="text" class="form-control" placeholder="Keresztnév" ng-model="user.name" value=""></div>     
+                    <div class="col-md-6"><label class="labels">Név</label><input type="text" class="form-control" placeholder="{{loggedUser.nev}}" ng-model="user.name" value=""></div>     
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Telefonszám</label><input type="text" class="form-control" placeholder="Adja meg Telefonszámát" ng-model="user.email"></div>
-                    <div class="col-md-12"><label class="labels">E-mail cím</label><input type="text" class="form-control" placeholder="Adja meg e-mail címét" ng-model="user.phone"></div>
+                    <div class="col-md-12"><label class="labels">Telefonszám</label><input type="text" class="form-control" placeholder="Adja meg Telefonszámát" ng-model="user.phone"></div>
+                    <div class="col-md-12"><label class="labels">E-mail cím</label><input type="text" class="form-control" placeholder="Adja meg e-mail címét" ng-model="user.email"></div>
                 </div>
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" ng-click="mod()">Profil módosítás mentése</button></div>
+                <div class="mt-5 text-center"><a href="#!/jelszomod"><button class="btn btn-primary profile-button" type="button">Jelszó módosítás</button></a></div>
             </div>
         </div>
         

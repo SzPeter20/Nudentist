@@ -53,7 +53,7 @@ app.config(function($routeProvider) {
                     }
                 }
             },
-            templateUrl: 'views/idopontokezelese.html',
+            templateUrl: 'views/Idopontok.html',
             controller: 'valamilyenCtrl'
         })
         .when('/uzenetek', {
@@ -88,6 +88,18 @@ app.config(function($routeProvider) {
                 }
             },
             templateUrl: 'views/Userprofil.html',
+            controller: 'userCtrl'
+        })
+        .otherwise('/')
+        .when('/jelszomod', {
+            resolve: {
+                function($rootScope, $location) {
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin') {
+                        $location.path('/');
+                    }
+                }
+            },
+            templateUrl: 'views/Passwordmod.html',
             controller: 'userCtrl'
         })
         .otherwise('/')

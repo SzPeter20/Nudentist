@@ -43,7 +43,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                         telefonszam: $scope.user.phone
                     }
 
-                    DB.update('users',loggedUser.ID, data).then(function(res) {
+                    DB.update('users',$rootScope.loggedUser.ID, data).then(function(res) {
                         if (res.data.affectedRows != 0) {
                             alert('A regisztráció sikeres! Beléphetsz az oldalra!');
                             $scope.user = {};
