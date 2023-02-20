@@ -1,329 +1,161 @@
 <!DOCTYPE html>
-<html lang="hu" ng-app="Nudentist">
+<html lang="hu" ng-app="NudentistApp">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>{{ settings.appTitle }}</title>
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../Public/Assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="../Public/Assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./assets/css/aos.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
 
-    <title>Főoldal</title>
 </head>
-<body>
-     
-        
-    <button class="btn btn-primary menugomb" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class='bx bx-menu icon'></i></button>
 
-<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+<body>
+
+     <button class="btn btn-primary menugomb" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class='bx bx-menu icon'></i></button>
+        
+           <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Menü</h5>
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><img src="./Assets/HelperImages/logo1.png" class="img-fluid w-25" alt="" srcset="">Menü</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    
   </div>
         <div class="offcanvas-body">
             <Header>
                 <i class='bx bx-chevron-right toggle' data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"></i>
             </Header>
-            
-            <nav class="navbar">
-                <div class="menu-bar">
-                    <div class="menu">
-                        <form role="search" ng-controller="userCtrl" ng-if="!loggedUser">
-        
+                <nav class="navbar">
+                    <div class="menu-bar">
+                        
+                        <div class="menu">
+                            <form role="search" ng-controller="userCtrl" ng-if="!loggedUser">
+
                             <input type="email" class="form-control mb-3" id="floatingInput" placeholder="E-mail cím" ng-model="user.email">
-        
-        
+
                             <input type="password" class="form-control mb-3" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
-        
+
                             <button class="btn btn-primary mb-3" ng-click="login()">Belépés</button>
                             <a href="#!/reg" class="btn btn-danger mb-3">Regisztráció</a>
                         </form>
-                        <ul class="menu-links">
+                        <form class="" role="search" ng-controller="userCtrl" ng-if="loggedUser">
+                            
+                            <input type="text" class="form-control mb-3" id="floatingInput" ng-model="loggedUser.nev" disabled>
+                            
+                            <button class="btn btn-secondary mb-3" ng-click="logout()">Kilépés</button>
+
+                        </form>
+                            <ul class="menu-links">
+                            
+                                <li class="nav-link">
+                                    <a href="#!/">
+                                        <i class='bx bx-home-alt icon' ></i>
+                                        <span class="text nav-text">Főoldal</span>
+                                    </a>
+                                </li>
+            
+                                <li class="nav-link">
+                                    <a href="#!/munkatarsak">
+                                        <i class='bx bx-user-plus icon' ></i>
+                                        <span class="text nav-text">Munkatársak</span>
+                                    </a>
+                                </li>
+            
+                                <li class="nav-link">
+                                    <a href="#!/kezelesek">
+                                        <i class='bx bxs-virus-block icon'></i>
+                                        <span class="text nav-text">Kezelések</span>
+                                    </a>
+                                </li>
+                                <li class="nav-link">
+                                    <a href="#!/elerhetoseg">
+                                        <i class='bx bx-phone-call icon' ></i>
+                                        <span class="text nav-text">Elérhetőségek</span>
+                                    </a>
+                                </li>
+            
+                                <li class="nav-link">
+                                    <a href="#!/bemutatkozas">
+                                        <i class='bx bx-pencil icon' ></i>
+                                        <span class="text nav-text">Bemutatkozás</span>
+                                    </a>
+                                </li>
+                                
+                                
+                                     <!-- admin functions -->
+                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='admin')">
+                                    <i class='bx bx-calendar icon' ></i>
+                                    <a class="nav-link text nav-text" href="#!/idopontokkezelese">Időpontok</a>
+                                </li>
+    
+                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='admin')">
+                                    <i class='bx bx-calendar-edit icon' ></i>
+                                    <a class="nav-link text nav-text" href="#!/paciensek">Páciensek</a>
+                                </li>
+                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='admin')">
+                                    <i class='bx bx-message icon' ></i>
+                                    <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>
+                                </li>    
+                                <!-- user functions -->
+                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='user')">
+                                    <i class='bx bx-message icon' ></i>
+                                    <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>
+                                </li>
+                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='user')">
+                                    <i class='bx bx-user-voice icon' ></i>
+                                    <a class="nav-link text nav-text" href="#!/profilom">Profilom</a>
+                                </li>       
+                            </ul>
+                        </div>
+                        
                            
-                             <li class="nav-link">
-                                <a href="#!/">
-                                    <i class='bx bx-home-alt icon' ></i>
-                                    <span class="text nav-text">Főoldal</span>
-                                </a>
-                            </li>
-        
-                            <li class="nav-link">
-                                <a href="../Public/Views/Munkatarsak.html">
-                                    <i class='bx bx-user-plus icon' ></i>
-                                    <span class="text nav-text">Munkatársak</span>
-                                </a>
-                            </li>
-        
-                            <li class="nav-link">
-                                <a href="../Public/Views/Kezelesek.html">
-                                    <i class='bx bxs-virus-block icon'></i>
-                                    <span class="text nav-text">Kezelések</span>
-                                </a>
-                            </li>
-                            <li class="nav-link">
-                                <a href="../Public/Views/Elerhetosegek.html">
-                                    <i class='bx bx-phone-call icon' ></i>
-                                    <span class="text nav-text">Elérhetőségek</span>
-                                </a>
-                            </li>
-        
-                            <li class="nav-link">
-                                <a href=".#!/bemutatkozas">
-                                    <i class='bx bx-pencil icon' ></i>
-                                    <span class="text nav-text">Bemutatkozás</span>
-                                </a>
-                            </li>
-                            
-                            
-                        </ul>
+                        
+                        
                     </div>
-                    <!--
-                        <div class="bottom-content">
-                        <li class="">
-                            <a href="#">
-                                <i class='bx bx-log-out icon' ></i>
-                                <span class="text nav-text">Logout</span>
-                            </a>
-                        </li>
-                    </div>
-                    -->
-                    
                 </div>
-            </div>
             </nav>
       </div>
-      <h1>Nudentist</h1>
-      <div class="slide-container swiper">
-        <div class="slide-content">
-            <div class="card-wrapper swiper-wrapper">
-                <div class="card swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-
-                        <div class="card-image">
-                            <img src="../Public/Assets/HelperImages/idosebbtalacs.jpg" alt="" srcset=""  class="card-img">
-                        </div>
-                    </div>
-
-                    <div class="card-content">
-                        <h2 class="name">Takács József</h2>
-                        <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                          
                         
-                        <button class="button">View More</button>
-                    </div>
-                </div>
-                <div class="card swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
 
-                        <div class="card-image">
-                            <img src="../Public/Assets/HelperImages/ifjtakacs.jpg" alt="" class="card-img">
-                        </div>
-                    </div>
-
-                    <div class="card-content">
-                        <h2 class="name">Ifj.Takács József</h2>
-                        <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-
-                        <button class="button">View More</button>
-                    </div>
-                </div>
-                <div class="card swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-
-                        <div class="card-image">
-                            <img src="../Public/Assets/HelperImages/genericman.png" alt="" class="card-img">
-                        </div>
-                    </div>
-
-                    <div class="card-content">
-                        <h2 class="name">Generic Men</h2>
-                        <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-
-                        <button class="button">View More</button>
-                    </div>
-                </div>
-                <div class="card swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-
-                        <div class="card-image">
-                            <img src="../Public/Assets/HelperImages/Asztalossimon.jpg" alt="" class="card-img">
-                        </div>
-                    </div>
-
-                    <div class="card-content">
-                        <h2 class="name">Asztalos Simon</h2>
-                        <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-
-                        <button class="button">View More</button>
-                    </div>
-                </div>
-                <div class="card swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-
-                        <div class="card-image">
-                            <img src="../Public/Assets/HelperImages/IbrahimLajos.jpg" alt="" class="card-img">
-                        </div>
-                    </div>
-
-                    <div class="card-content">
-                        <h2 class="name">Ibrahim Lajos</h2>
-                        <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-
-                        <button class="button">View More</button>
-                    </div>
-                </div>
-                <div class="card swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-
-                        <div class="card-image">
-                            <img src="../Public/Assets/HelperImages/LajosneKlara.jpg" alt="" class="card-img">
-                        </div>
-                    </div>
-
-                    <div class="card-content">
-                        <h2 class="name">Ibrahim Lajosné Klára</h2>
-                        <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-
-                        <button class="button">View More</button>
-                    </div>
-                </div>
-                <div class="card swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-
-                        <div class="card-image">
-                            <img src="../Public/Assets/HelperImages/MiyachanKOvacs.jpg" alt="" class="card-img">
-                        </div>
-                    </div>
-
-                    <div class="card-content">
-                        <h2 class="name">Kovács Miyachan</h2>
-                        <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-
-                        <button class="button">View More</button>
-                    </div>
-                </div>
-                <div class="card swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-
-                        <div class="card-image">
-                            <img src="../Public/Assets/HelperImages/genericwoman.png" alt="" class="card-img">
-                        </div>
-                    </div>
-
-                    <div class="card-content">
-                        <h2 class="name">Generic Woman</h2>
-                        <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-
-                        <button class="button">View More</button>
-                    </div>
-                </div>
-                <div class="card swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-
-                        <div class="card-image">
-                            <img src="../Public/Assets/HelperImages/SimonfiTamas.png" alt="" class="card-img">
-                        </div>
-                    </div>
-
-                    <div class="card-content">
-                        <h2 class="name">Simonfi Tamás</h2>
-                        <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-
-                        <button class="button">View More</button>
-                    </div>
-                </div>
+            
+        
+        <main>
+            
+            <div class="container-fluid" ng-view>
+                tartalom
             </div>
-        </div>
+        </main>
+        
+        
 
-        <div class="swiper-button-next swiper-navBtn"></div>
-        <div class="swiper-button-prev swiper-navBtn"></div>
-        <div class="swiper-pagination"></div>
+        
+
     </div>
-        
-      <section class="home">
-        
-        <div class="idopontok">
-            
-            <table class="table table-responsive">
-                <thead>
-                  <tr>
-                    <th>Hétfő</th>
-                    <th>Kedd</th>
-                    <th>Szerda</th>
-                    <th>Csütörtök</th>
-                    <th>Péntek</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                         8-16 
-                    </td>
-                    <td>
-                        8-16 
-                    </td>
-                    <td>
-                        10-16 
-                    </td>
-                    <td>
-                        14-20 
-                    </td>
-                    <td>
-                        9-15 
-                    </td>
-                </tr>
-                <tr>
-                    <td>óra</td>
-                    <td>óra</td>
-                    <td>óra</td>
-                    <td>óra</td>
-                    <td>óra</td>
-                </tr>
-                </tbody>
-              </table>
-        </div>
-        <div class="slogen">
-            <h4>
-                    Megfizethető árakon minőségi szolgáltatásokat nyújtani.                
-            </h4>
-        </div>
+    <footer>
+        {{ settings.company }} - {{ settings.author }} 
+    </footer>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/swiper-bundle.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/angular.min.js"></script>
+    <script src="./assets/js/angular-route.min.js"></script>
+    <script src="./assets/js/aos.js"></script>
+    <script src="./assets/js/sha1.js"></script>
+    <script src="./assets/js/moment.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/dbFactory.js"></script>
     
-        
-        <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=baja&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://pdflist.com/" alt="pdf download">Pdf download</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:400px;}.gmap_iframe {height:400px!important;}</style></div>
-            
-    </section>      
+    <!-- controllers -->
+    <script src="./controllers/userCtrl.js"></script>
     
-    <script src="../Public/Assets/js/swiper-bundle.min.js"></script>
-    <script src="../Public/Assets/js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
-<script src="../Public/Assets/js/jquery.min.js"></script>
-<script src="../Assets/js/bootstrap.min.js"></script>
-<script src="../Assets/js/angular.min.js"></script>
-<script src="../Assets/js/angular-route.min.js"></script>
-<script src="../Assets/js/aos.js"></script>
-<script src="../Public/Assets/js/app.js"></script>
-<script src="../Assets/js/sha1.js"></script>
-<script src="../Assets/js/moment.min.js"></script>
-<script src="../Public/Assets/js/dbFactory.js"></script>
-<script src="../Assets/js/swiper-bundle.min.js"></script>
-<script src="../Assets/js/script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-<script>
-     toggle = body.querySelector(".toggle");
-</script>
-<script src="../Public/controllers/userCtrl.js"></script>
-<script src="../Public/controllers/profilokCtrl.js"></script>
-<script src="../Public/controllers/kezelesekCtrl.js"></script>
-<script src="../Public/controllers/munkatarsakCtrl.js"></script>
+    <script src="./controllers/MunkatarsakCtrl.js"></script>
+    
 </body>
+
 </html>

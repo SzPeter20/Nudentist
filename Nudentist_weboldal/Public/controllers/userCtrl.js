@@ -14,12 +14,11 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                     alert('A megadott jelszó nem felel meg a minimális biztonsági követelményeknek!');
                 } else {
                     let data = {
-                        name: $scope.user.name,
+                        nev: $scope.user.name,
                         email: $scope.user.email,
                         password: CryptoJS.SHA1($scope.user.pass1).toString(),
                         telefonszam: $scope.user.phone,
-                        jogok: "user"
-                        
+                        jogok: 'user'
                     }
 
                     DB.insert('users', data).then(function(res) {
@@ -34,6 +33,28 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
             }
         }
     };
+    $scope.mod = function() {
+        if ($scope.user.name == null || $scope.user.email == null) {
+            alert('Nem adtál meg minden kötelező adatot!');
+        } else {
+                    let data = {
+                        nev: $scope.user.name,
+                        email: $scope.user.email,
+                        telefonszam: $scope.user.phone
+                    }
+
+                    DB.update('users',loggedUser.ID, data).then(function(res) {
+                        if (res.data.affectedRows != 0) {
+                            alert('A regisztráció sikeres! Beléphetsz az oldalra!');
+                            $scope.user = {};
+                        } else {
+                            alert('Váratlan hiba történt az adatbázis művelet során!');
+                        }
+                    });
+                }
+            };
+     
+   
 
     $scope.login = function() {
         if ($scope.user.email == null || $scope.user.pass1 == null) {
@@ -50,19 +71,17 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                 if (res.data.length == 0) {
                     alert('Hibás belépési adatok!');
                 } else {
-                    if (res.data[0].jogok == "tiltott") {
+                    if (res.data[0].status == 0) {
                         alert('Tiltott felhasználó!');
                     } else {
 
                         res.data[0].last = moment(new Date()).format('YYYY-MM-DD H:m:s');
                         $rootScope.loggedUser = res.data[0];
-                        console.log($rootScope.loggedUser)
-                        
                         let data = {
                             last: res.data[0].last
                         }
                         DB.update('users', res.data[0].ID, data).then(function(res) {
-                            sessionStorage.setItem('Dentism', angular.toJson($rootScope.loggedUser));
+                            sessionStorage.setItem('NudentistAPP', angular.toJson($rootScope.loggedUser));
                         });
                     }
                 }
@@ -72,7 +91,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
 
     $scope.logout = function() {
         $rootScope.loggedUser = null;
-        sessionStorage.removeItem('Dentism');
+        sessionStorage.removeItem('NudentistAPP');
         $location.path('/');
     }
 });
