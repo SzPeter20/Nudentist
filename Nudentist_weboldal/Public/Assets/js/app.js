@@ -38,7 +38,7 @@ app.config(function($routeProvider) {
         })
         .when('/kezelesek', {
             templateUrl: 'views/Kezelesek.html',
-            controller: 'kezelesekCtrl.js'
+            controller: 'kezelesekCtrl'
         })
         .when('/elerhetoseg', {
             templateUrl: 'views/Elerhetosegek.html',
