@@ -3,7 +3,7 @@
     <section class="home">
         <div class="accordion" id="accordionExample">
             <div class="accordion-item" ng-repeat="kategoria in kategoriak">
-              <h2 class="accordion-header" id="headingOne">
+              <h2 class="accordion-header" id="heading{{kategoria.id}}">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{kategoria.kategoria}}collapse" aria-expanded="true" aria-controls="{{kategoria.kategoria}}collapse">
                   {{kategoria.kategoria}}
                 </button>
@@ -12,7 +12,7 @@
                 <div class="accordion-body">
                   <ul>
                     <li ng-repeat="kezeles in kezelesek"  ng-if="kezeles.kategoria==kategoria.kategoria">
-                      <a href=""><p >{{kezeles.neve}}</p></a>
+                      <a href="#!/kezeles"><p>{{kezeles.neve}}</p></a>
                     </li>
                   </ul>
                 </div>

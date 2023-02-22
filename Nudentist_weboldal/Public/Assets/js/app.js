@@ -40,6 +40,10 @@ app.config(function($routeProvider) {
             templateUrl: 'views/Kezelesek.html',
             controller: 'kezelesekCtrl'
         })
+        .when('/kezeles', {
+            templateUrl: 'views/Kezeles.html',
+            controller: 'kezelesekCtrl'
+        })
         .when('/elerhetoseg', {
             templateUrl: 'views/Elerhetosegek.html',
             controller: 'MunkatarsakCtrl'
