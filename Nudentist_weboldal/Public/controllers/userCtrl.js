@@ -56,13 +56,19 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
         }
     };
     $scope.passwdmod=function(){
+        var pwd_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
         if($scope.user.password1==null||$scope.user.password2==null||$scope.password1!=$scope.password2){
             alert('A megadott jelszavak nem egyeznek meg!')
         }else if($rootScope.loggedUser.password==$scope.user.password1){
             alert('Az új jelszó nem egyezhet a régi jelszóval!')
-        }else{
+        }else if($scope.user.password1!=$scope.user.password2){
+            alert('A megadott jelszavak nem egyeznek meg!')
+        }else if(!$scope.user.password1.match(pwd_pattern)){
+            alert('A megadott jelszó nem felel meg a minimális biztonsági követelményeknek!');
+        }
+        else{
             let data={
-                password:$scope.user.password1
+                password:CryptoJS.SHA1($scope.user.password1).toString()
             }
             DB.update('users',$rootScope.loggedUser.ID,data).then(function(res){
                 if (res.data.affectedRows != 0) {

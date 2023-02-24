@@ -48,6 +48,10 @@ app.config(function($routeProvider) {
             templateUrl: 'views/Elerhetosegek.html',
             controller: 'MunkatarsakCtrl'
         })
+        .when('/passwordmod', {
+            templateUrl: 'views/Passwordmod.html',
+            controller: 'userCtrl'
+        })
         // admin funkciók
         .when('/idopontokkezelese', {
             resolve: {
@@ -94,7 +98,6 @@ app.config(function($routeProvider) {
             templateUrl: 'views/Userprofil.html',
             controller: 'userCtrl'
         })
-        .otherwise('/')
 });
 
 app.directive('fileModel', function($parse) {
