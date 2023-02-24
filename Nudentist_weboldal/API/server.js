@@ -116,6 +116,20 @@ app.get('/:table/:id', tokencheck(), (req, res) => {
         }
     });
 });
+// GET DISTINCT RECORDS BY FIELD
+app.get('/:table/:field/distinct',tokencheck(),(req,res)=>{
+    var table = req.params.table;
+    var field = req.params.field;
+    pool.query(`SELECT DISTINCT ${field} FROM ${table}`,(err,results)=>{
+        if (err) {
+            log(req.socket.remoteAddress, err);
+            res.status(500).send(err);
+        } else {
+            log(req.socket.remoteAddress, `${results.length} record sent form ${table} table.`);
+            res.status(200).send(results);
+        }
+    })
+})
 
 // GET RECORDS BY field
 app.get('/:table/:field/:value', tokencheck(), (req, res) => {

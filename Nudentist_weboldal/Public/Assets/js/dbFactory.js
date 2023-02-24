@@ -52,6 +52,21 @@ app.factory('DB', function($http, $q) {
             });
             return deferred.promise;
         },
+        selectDistinct: function(tablename, field) {
+            var deferred = $q.defer();
+            $http({
+                method: 'GET',
+                url: url + '/' + tablename + '/' + field+'/distinct',
+                headers: {
+                    'Authorization': token
+                }
+            }).then(function(res) {
+                deferred.resolve(res);
+            }, function(res) {
+                deferred.reject(res);
+            });
+            return deferred.promise;
+        },
 
         insert: function(tablename, values) {
             var deferred = $q.defer();

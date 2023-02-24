@@ -45,17 +45,7 @@ app.config(function($routeProvider) {
             controller: 'MunkatarsakCtrl'
         })
         // admin funkciók
-        .when('/idopontokkezelese', {
-            resolve: {
-                function($rootScope, $location) {
-                    if ($rootScope.loggedUser.jogok != 'admin') {
-                        $location.path('/');
-                    }
-                }
-            },
-            templateUrl: 'views/Idopontok.html',
-            controller: 'IdopontokCtrl'
-        })
+        
         .when('/uzenetek', {
             resolve: {
                 function($rootScope, $location) {
@@ -68,6 +58,17 @@ app.config(function($routeProvider) {
             controller: 'uzenetCtrl'
         })
         // user funkciók
+        .when('/idopontokkezelese', {
+            resolve: {
+                function($rootScope, $location) {
+                    if ($rootScope.loggedUser.jogok != 'user') {
+                        $location.path('/');
+                    }
+                }
+            },
+            templateUrl: 'views/Idopontok.html',
+            controller: 'IdopontokCtrl'
+        })
         .when('/uzenetek', {
             resolve: {
                 function($rootScope, $location) {
