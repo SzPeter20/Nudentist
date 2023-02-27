@@ -118,25 +118,22 @@ body{
 .home::-webkit-scrollbar{
     display: none;
 }
-.home{
-   
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    height: max-content;
-    width: 100%;
-    overflow-y: scroll;
-    margin: auto;
-    
-}
+
+
 .text-tartalom{
-    font-size: 25px;
+    font-size: 20px;
+
     font-weight: 500;
     color: var(--bodytext-color);
-    
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
     text-align: justify;
-    margin: 25px;
-    padding: 25px;
+    margin: auto;
+    padding: auto;
+}
+.embed-responsive{
+    margin-left: auto;
+    margin-right: auto;
 }
 header .toggle{
     position: absolute;
@@ -159,9 +156,15 @@ header .toggle{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    
     color: red;
 }
 .menugomb{
     margin: 20px;
+}
+img{
+    
+    padding: 5px;
+    margin: 5px;
 }
 

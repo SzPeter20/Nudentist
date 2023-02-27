@@ -1,122 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil</title>
-</head>
-<body>
+    <title>{{ settings.appTitle }}</title>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./assets/css/aos.css">
     
-    <button class="btn btn-primary menugomb" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class='bx bx-menu icon'></i></button>
 
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Menü</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</head>                   
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="./Assets/HelperImages/genericman.png">
+                <span class="font-weight-bold">{{loggedUser.nev}}</span>
+                <span class="text-black-50">{{loggedUser.email}}</span>
+                <span class="text-black-50">{{loggedUser.telefonszam}}</span>
+                <span></span>
+            </div>
         </div>
-              <div class="offcanvas-body">
-                  <Header>
-                      <i class='bx bx-chevron-right toggle' data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"></i>
-                  </Header>
-                  
-                  <nav class="navbar">
-                          <div class="menu-bar">
-                              <div class="menu">
-                                  <form role="search" ng-controller="userCtrl" ng-if="!loggedUser">
-                  
-                                      <input type="email" class="form-control mb-3" id="floatingInput" placeholder="E-mail cím" ng-model="user.email">
-                  
-                  
-                                      <input type="password" class="form-control mb-3" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
-                  
-                                      <button class="btn btn-primary mb-3" ng-click="login()">Belépés</button>
-                                      <a href="../Views/Regisztracio.html" class="btn btn-danger mb-3">Regisztráció</a>
-                                  </form>
-                                  <ul class="menu-links">
-                                  
-                                      <li class="nav-link">
-                                          <a href="../Views/Homepage.html">
-                                              <i class='bx bx-home-alt icon' ></i>
-                                              <span class="text nav-text">Főoldal</span>
-                                          </a>
-                                      </li>
-                  
-                                      <li class="nav-link">
-                                          <a href="../Views/Munkatarsak.html">
-                                              <i class='bx bx-user-plus icon' ></i>
-                                              <span class="text nav-text">Munkatársak</span>
-                                          </a>
-                                      </li>
-                  
-                                      <li class="nav-link">
-                                          <a href="../Views/Kezelesek.html">
-                                              <i class='bx bxs-virus-block icon'></i>
-                                              <span class="text nav-text">Kezelések</span>
-                                          </a>
-                                      </li>
-                                      <li class="nav-link">
-                                          <a href="../Views/Elerhetosegek.html">
-                                              <i class='bx bx-phone-call icon' ></i>
-                                              <span class="text nav-text">Elérhetőségek</span>
-                                          </a>
-                                      </li>
-                  
-                                      <li class="nav-link">
-                                          <a href="../Views/Bemutatkozas.html">
-                                              <i class='bx bx-pencil icon' ></i>
-                                              <span class="text nav-text">Bemutatkozás</span>
-                                          </a>
-                                      </li>
-                                      
-                                      
-                                  </ul>
-                              </div>
-                              <!--
-                                  <div class="bottom-content">
-                                  <li class="">
-                                      <a href="#">
-                                          <i class='bx bx-log-out icon' ></i>
-                                          <span class="text nav-text">Logout</span>
-                                      </a>
-                                  </li>
-                              </div>
-                              -->
-                              
-                          </div>
-                      </div>
-                  </nav>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profil módosítás</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Keresztnév</label><input type="text" class="form-control" placeholder="Adja meg a nevét" ng-model="user.name"></div>     
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Telefonszám</label><input type="text" class="form-control" placeholder="Adja meg Telefonszámát" ng-model="user.phone"></div>
+                    <div class="col-md-12"><label class="labels">E-mail cím</label><input type="text" class="form-control" placeholder="Adja meg e-mail címét" ng-model="user.email"></div>
+                </div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" ng-click="mod()">Profil módosítás mentése</button></div>
+                <a href="#!/passwordmod"> <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" >Jelszó megváltoztatása</button> </div></a>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="p-3 py-5">
+                <div class="col-md-5"><label class="labels">Utoljára belépve</label>
+                <span class="text-black-50">{{loggedUser.last}}</span>
+            </div>
+        </div>
     </div>
-
-    <h1>Felhasználói profil</h1>
-    <img src="" alt="">
-    <p>Név:</p>
-    <input type="text">
-    <p>E-mail cím:</p>
-    <input type="email">
-    <p>Telefonszám:</p>
-    <input type="number">
-
-    <button>Adatmódosítás</button>
-    <button>Fiók törlése</button>
-
-    <h2>Kedvenc orvosok</h2>
-    <table>
-        <tr>
-            <td>
-                <img src="" alt="">
-            </td>
-            <td>
-                <p>
-
-                </p>
-            </td>
-            <td>
-                <button class="btn btn-danger btn-sm">
-                    <i class="bi bi-trash-fill" title="Orvos eltávolítása" ng-click="doctorremove()"></i>
-                </button>
-            </td>
-        </tr>
-    </table>
-</body>
-</html>
+</div>
+</div>
+</div>
+  

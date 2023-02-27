@@ -17,13 +17,21 @@
     --icon-color:#151515; 
     --bodytext-color:#000000;
 
-    --tran-03: all 0.2s ease;
-    --tran-03: all 0.3s ease;
-    --tran-04: all 0.3s ease;
-    --tran-05: all 0.3s ease;
+    
     
 }
-    
+
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  letter-spacing: 3px;
+  padding: 10px;
+  font-size: 80%;
+}
+textarea {
+  min-height: 200px !important;
+}
 form{
     padding-left: 55px ;
     margin: auto;
@@ -43,18 +51,14 @@ form{
 body{
     background-image: url(../HelperImages/pink_background.png);
     
-    height: max-content;
+    padding: 10px;
+    margin: 10px;
     background-repeat:no-repeat;
     background-size:cover;
     position:relative;
     background-position:center;
     background-color: var(--body-color);
     
-}
-
-::selection{
-    background-color: var(--primary-color);
-    color: #fff;
 }
 .sidebar{
     position: fixed;
@@ -96,6 +100,7 @@ body{
     text-align: center;
 }
 .menu li a{
+    
     list-style: none;
     height: 100%;
     background-color: transparent;
@@ -106,6 +111,7 @@ body{
     border-radius: 6px;
     text-decoration: none;
     transition: var(--tran-03);
+    
 }
 .menu-bar{
     height: calc(100% - 55px);
@@ -146,52 +152,61 @@ header .toggle{
     cursor: pointer;
     transition: var(--tran-05);
 }
+.logo{
+ 
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    text-align: center;
+}
  h1{
+    
+    font-size: 65px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     color: red;
 }
-
-.home .slogen{
-    font-size: 30px;
+ .slogen{
+    font-size: 45px;
     font-weight: 500;
     color: var(--bodytext-color);
     padding: 12px 60px;
     text-align: left;
 }
- table{
+table{
+  width: 100%;
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
   
-    font-size: 18px;
-    
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
 }
-.home table td{
-    width: max-contents;
+.table td{
+    
+  
+    font-size: 25px;
+    
     margin-left: auto;
     margin-right: auto;
+    
+   
     text-align: center;
-    
 }
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-  }
-.home .mapouter{
-    padding-left: 65px;
-    width: 80%;
-    height: fit-content;
-    padding-bottom: 20px;
+.table th{
+  
+  
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  
 }
+
 .menugomb{
     margin: 20px;
 }
 .slide-container{
-    max-width: 1120px;
+    max-width: 1250px;
     width: 100%;
     padding: 40px 0;
     margin-left: auto;
