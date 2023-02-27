@@ -1,3 +1,4 @@
+
 app.controller('profilokCtrl', function($scope, DB, $rootScope,){
 
     $scope.doktorok=[];

@@ -6,7 +6,9 @@ app.controller('kezelesekCtrl', function($scope, DB, $rootScope,) {
 
     DB.selectAll('kezelesek').then(function(res) {
         $scope.kezelesek= res.data;
-        
+        for (let i = 0; i < $scope.kezelesek.length; i++) {
+            $scope.db[i] = 1;
+        }
     });
     DB.selectDistinct('kezelesek','kategoria').then(function(res){
         $scope.kategoriak=res.data;
