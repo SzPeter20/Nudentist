@@ -12,6 +12,6 @@ app.controller('MunkatarsakCtrl', function($scope, DB, $rootScope, fileUpload) {
         }
     });  
     $scope.toDocProfile=function(id){
-        $scope.chosenDoc=$scope.Munkatarsak[id-1]
+        
     }
 });

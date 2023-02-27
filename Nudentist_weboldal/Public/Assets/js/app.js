@@ -52,6 +52,10 @@ app.config(function($routeProvider) {
             templateUrl: 'views/Passwordmod.html',
             controller: 'userCtrl'
         })
+        .when('/dokprofil:id', {
+            templateUrl: 'views/Doktorprofil.html',
+            controller: 'profilokCtrl'
+        })
         // admin funkciók
         .when('/idopontokkezelese', {
             resolve: {
