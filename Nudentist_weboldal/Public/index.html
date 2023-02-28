@@ -87,7 +87,7 @@
                                 
                                 
                                      <!-- admin functions -->
-                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='user')">
+                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='admin')">
                                     <i class='bx bx-calendar icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/idopontokkezelese">Időpontok</a>
                                 </li>
@@ -101,6 +101,10 @@
                                     <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>
                                 </li>   
                                 <!-- user functions -->
+                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='user')">
+                                    <i class='bx bx-calendar icon' ></i>
+                                    <a class="nav-link text nav-text" href="#!/idopontokkezelese">Időpontok</a>
+                                </li>
                                 <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='user')">
                                     <i class='bx bx-message icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>

@@ -45,30 +45,53 @@
             </tbody>
           </table>
       </div>
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="user.name">
-      <label for="floatingInput">Név <em>*</em></label>
-  </div>
-  <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="user.email">
-      <label for="floatingInput">E-mail cím <em>*</em></label>
-  </div>
-  
-  <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="user.phone">
-      <label for="floatingInput">Telefonszám</label>
-  </div>
-  
-  <div class="form-floating mb-3">
-      <input type="date" class="form-control" id="floatingPassword" placeholder="Dátum" ng-model="user.datum">
-      <label for="floatingPassword">Dátum<em>*</em></label>
-  </div>
-  
-  <div class="form-floating mb-3">
-      <input type="time" class="form-control" id="floatingPassword" placeholder="Időpont" ng-model="user.idopont">
-      <label for="floatingPassword">Időpont<em>*</em></label>
-  </div>
-  
-  <p class="mb-3 text-muted">A <em>*</em>-al jelölt adatok megadása kötelező!</p>
-  
-  <button class="btn btn-primary mb-3" ng-click="foglalas()">Időpont véglegesítése</button>
+      <div ng-if="loggedUser && (loggedUser.jogok==='user')">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="user.name">
+          <label for="floatingInput">Név <em>*</em></label>
+      </div>
+      <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="user.email">
+          <label for="floatingInput">E-mail cím <em>*</em></label>
+      </div>
+      
+      <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="user.phone">
+          <label for="floatingInput">Telefonszám</label>
+      </div>
+      
+      <div class="form-floating mb-3">
+          <input type="date" class="form-control" id="floatingPassword" placeholder="Dátum" ng-model="user.datum">
+          <label for="floatingPassword">Dátum<em>*</em></label>
+      </div>
+      
+      <div class="form-floating mb-3">
+          <input type="time" class="form-control" id="floatingPassword" placeholder="Időpont" ng-model="user.idopont">
+          <label for="floatingPassword">Időpont<em>*</em></label>
+      </div>
+      
+      <p class="mb-3 text-muted">A <em>*</em>-al jelölt adatok megadása kötelező!</p>
+      
+      <button class="btn btn-primary mb-3" ng-click="foglalas()">Időpont véglegesítése</button>
+      </div>
+      <div ng-if="loggedUser && (loggedUser.jogok==='admin')">
+        <div class="row row-cols-1 row-cols-md-3 g-4" >
+          <div class="col" ng-repeat="idopont in idopontok">
+            <div class="card h-100"> 
+              <img src="./Assets/HelperImages/img_462658.png" class="card-img-top" alt="...">
+              <div class="card-body"  >
+                <h5 class="card-title">{{idopont.nev}}</h5>
+                <p class="card-text">{{idopont.email}}</p>
+                <p class="card-text">{{idopont.telefonszam}}</p>
+                <p class="card-text">{{idopont.datum}}</p>
+                <p class="card-text">{{idopont.idopont}}</p>
+                <button class="button btn-secondary">Elfogadás</button>
+                <button class="button btn-dark">Elutasítás</button>
+              </div>
+            </div>
+          </div>
+            
+            
+          </div>
+      </div>
+    

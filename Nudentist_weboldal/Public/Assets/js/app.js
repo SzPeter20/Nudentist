@@ -61,7 +61,7 @@ app.config(function($routeProvider) {
         .when('/idopontokkezelese', {
             resolve: {
                 function($rootScope, $location) {
-                    if ($rootScope.loggedUser.jogok != 'user') {
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin') {
                         $location.path('/');
                     }
                 }
