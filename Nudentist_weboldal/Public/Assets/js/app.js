@@ -67,7 +67,7 @@ app.config(function($routeProvider) {
                 }
             },
             templateUrl: 'views/Idopontok.html',
-            controller: 'IdopontokCtrl'
+            controller: 'IdopontCtrl'
         })
         .when('/uzenetek', {
             resolve: {

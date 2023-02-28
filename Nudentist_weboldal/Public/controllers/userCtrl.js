@@ -45,14 +45,15 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
 
                     DB.update('users',$rootScope.loggedUser.ID, data).then(function(res) {
                         if (res.data.affectedRows != 0) {
-                            alert('A regisztráció sikeres! Beléphetsz az oldalra!');
+                            alert('Adatok sikeresen megváltoztatva!');
                             $scope.user = {};
                         } else {
                             alert('Váratlan hiba történt az adatbázis művelet során!');
                         }
-                    });
                 }
-            };
+            );
+        }
+    };
      
    
 

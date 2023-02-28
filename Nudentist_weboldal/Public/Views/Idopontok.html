@@ -10,9 +10,6 @@
     <title>Időpontok</title>
 </head>
 <h1>Időpontok</h1>
-
-
-  
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -48,69 +45,30 @@
             </tbody>
           </table>
       </div>
-      <div class="formbold-main-wrapper">
-        <!-- Author: FormBold Team -->
-        <!-- Learn More: https://formbold.com -->
-        <div class="formbold-form-wrapper">
-          
-            <div class="formbold-mb-5">
-              <label for="name" class="formbold-form-label"> Teljes név </label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Teljes név"
-                class="formbold-form-input"
-              />
-            </div>
-            <div class="formbold-mb-5">
-              <label for="phone" class="formbold-form-label"> Telefonszám </label>
-              <input
-                type="text"
-                name="phone"
-                id="phone"
-                placeholder="Telefonszám"
-                class="formbold-form-input"
-              />
-            </div>
-            <div class="formbold-mb-5">
-              <label for="email" class="formbold-form-label"> Email-cím </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email-cím"
-                class="formbold-form-input"
-              />
-            </div>
-            <div class="flex flex-wrap formbold--mx-3">
-              <div class="w-full sm:w-half formbold-px-3">
-                <div class="formbold-mb-5 w-full">
-                  <label for="date" class="formbold-form-label"> Dátum </label>
-                  <input
-                    type="date"
-                    name="date"
-                    id="date"
-                    class="formbold-form-input"
-                  />
-                </div>
-              </div>
-              <div class="w-full sm:w-half formbold-px-3">
-                <div class="formbold-mb-5">
-                  <label for="time" class="formbold-form-label">Időpont</label>
-                  <input
-                    type="time"
-                    name="time"
-                    id="time"
-                    class="formbold-form-input"
-                  />
-                </div>
-              </div>
-            </div>
-            <div>
-              <button class="formbold-btn" ng-click="foglalas()">Időpont foglalás</button>
-            </div>
-         
-        </div>
-      </div>
-    
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="user.name">
+      <label for="floatingInput">Név <em>*</em></label>
+  </div>
+  <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="user.email">
+      <label for="floatingInput">E-mail cím <em>*</em></label>
+  </div>
+  
+  <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="user.phone">
+      <label for="floatingInput">Telefonszám</label>
+  </div>
+  
+  <div class="form-floating mb-3">
+      <input type="date" class="form-control" id="floatingPassword" placeholder="Dátum" ng-model="user.datum">
+      <label for="floatingPassword">Dátum<em>*</em></label>
+  </div>
+  
+  <div class="form-floating mb-3">
+      <input type="time" class="form-control" id="floatingPassword" placeholder="Időpont" ng-model="user.idopont">
+      <label for="floatingPassword">Időpont<em>*</em></label>
+  </div>
+  
+  <p class="mb-3 text-muted">A <em>*</em>-al jelölt adatok megadása kötelező!</p>
+  
+  <button class="btn btn-primary mb-3" ng-click="foglalas()">Időpont véglegesítése</button>
