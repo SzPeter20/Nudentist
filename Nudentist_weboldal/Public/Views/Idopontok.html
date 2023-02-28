@@ -47,26 +47,26 @@
       </div>
       <div ng-if="loggedUser && (loggedUser.jogok==='user')">
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="user.name">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="idopont.nev">
           <label for="floatingInput">Név <em>*</em></label>
       </div>
       <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="user.email">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="idopont.email">
           <label for="floatingInput">E-mail cím <em>*</em></label>
       </div>
       
       <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="user.phone">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="idopont.phone">
           <label for="floatingInput">Telefonszám</label>
       </div>
       
       <div class="form-floating mb-3">
-          <input type="date" class="form-control" id="floatingPassword" placeholder="Dátum" ng-model="user.datum">
+          <input type="date" class="form-control" id="floatingPassword" placeholder="Dátum" ng-model="idopont.datum">
           <label for="floatingPassword">Dátum<em>*</em></label>
       </div>
       
       <div class="form-floating mb-3">
-          <input type="time" class="form-control" id="floatingPassword" placeholder="Időpont" ng-model="user.idopont">
+          <input type="time" class="form-control" id="floatingPassword" placeholder="Időpont" ng-model="idopont.idopont">
           <label for="floatingPassword">Időpont<em>*</em></label>
       </div>
       
@@ -75,15 +75,15 @@
       <button class="btn btn-primary mb-3" ng-click="foglalas()">Időpont véglegesítése</button>
       </div>
       <div ng-if="loggedUser && (loggedUser.jogok==='admin')">
-        <div class="row row-cols-1 row-cols-md-3 g-4" >
+        <div class="row row-cols-1 row-cols-md-4 g-4" >
           <div class="col" ng-repeat="idopont in idopontok">
-            <div class="card h-100"> 
-              <img src="./Assets/HelperImages/img_462658.png" class="card-img-top" alt="...">
+            <div class="card h-100 w-75"> 
+              <img src="./Assets/HelperImages/img_462658.png" class="card-img-top w-75" alt="...">
               <div class="card-body"  >
                 <h5 class="card-title">{{idopont.nev}}</h5>
                 <p class="card-text">{{idopont.email}}</p>
                 <p class="card-text">{{idopont.telefonszam}}</p>
-                <p class="card-text">{{idopont.datum}}</p>
+                <p class="card-text">{{idopont.datum | date:'yyyy/MM/dd'}}</p>
                 <p class="card-text">{{idopont.idopont}}</p>
                 <button class="button btn-secondary">Elfogadás</button>
                 <button class="button btn-dark">Elutasítás</button>

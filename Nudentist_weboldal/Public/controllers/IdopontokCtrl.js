@@ -1,4 +1,4 @@
-app.controller('IdopontCtrl', function($scope, DB, $rootScope, $location) {
+app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     $scope.idopont={};
     $scope.idopontok={};
     DB.selectAll('idopontok').then(function(res) {
@@ -6,16 +6,17 @@ app.controller('IdopontCtrl', function($scope, DB, $rootScope, $location) {
     });  
 
     $scope.foglalas=function() {
-        if ($scope.user.name == null || $scope.user.email == null) {
+        if ($scope.idopont.nev == null || $scope.idopont.email == null) {
             alert('Nem adtál meg minden kötelező adatot!');
         } else {
+            
                     let data = {
-                        nev: $scope.user.name,
-                        email: $scope.user.email,
-                        telefonszam: $scope.user.phone,
-                        datum:$scope.user.datum,
-                        idopont:$scope.user.idopont,
-                        paciensID:$rootScope.loggedUser.ID,
+                        nev: $scope.idopont.nev,
+                        email: $scope.idopont.email,
+                        telefonszam: $scope.idopont.phone,
+                        datum:moment(new Date($scope.idopont.datum)).format('YYYY-MM-DD'),
+                        idopont:$scope.idopont.idopont,
+                        paciensID:$rootScope.loggedUser.ID
                         
                     }
 
