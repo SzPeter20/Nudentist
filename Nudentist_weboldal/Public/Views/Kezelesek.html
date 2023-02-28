@@ -12,7 +12,7 @@
                 <div class="accordion-body ">
                   <ul>
                     <li ng-repeat="kezeles in kezelesek"  ng-if="kezeles.kategoria==kategoria.kategoria">
-                      <a href="#!/kezeles"><p>{{kezeles.neve}}</p></a>
+                      <a href="#!/kezeles"> <p  ng-click="chooseKezeles(kezeles)">{{kezeles.neve}}</p></a>
                     </li>
                   </ul>
                 </div>
