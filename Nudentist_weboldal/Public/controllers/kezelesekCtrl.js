@@ -1,6 +1,8 @@
+
 app.controller('kezelesekCtrl', function($scope, DB, $rootScope,$location) {
 
     $scope.chosenKezeles={};
+
     $scope.kategoriak=[];
     $scope.kezelesek=[];
 
@@ -15,9 +17,11 @@ app.controller('kezelesekCtrl', function($scope, DB, $rootScope,$location) {
     $scope.chooseKezeles=function(id){
         console.log(id)
         $location.path('/kezeles/' + id)
+
     }
     
     $scope.cheatsheet=function(){
+
         console.log($scope.chosenKezeles)
     }
 });
