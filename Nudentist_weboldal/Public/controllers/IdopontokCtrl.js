@@ -14,10 +14,10 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
         if ($scope.idopont.nev == null || $scope.idopont.email == null || $scope.idopont.orvos==null) {
             alert('Nem adtál meg minden kötelező adatot!');
         } else {
-                    let idx=$scope.Munkatarsak.findIndex(item => (item.orvosID == $scope.idopont.orvos));
+                   //let idx=$scope.Munkatarsak.findIndex(item => (item.orvosID == $scope.idopont.orvos));
                     let data = {
                         
-                        orvosID:$scope.Munkatarsak[idx].ID,
+                        //orvosID:$scope.Munkatarsak[idx].ID,
                         nev: $scope.idopont.nev,
                         email: $scope.idopont.email,
                         telefonszam: $scope.idopont.phone,

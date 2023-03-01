@@ -34,7 +34,7 @@ app.config(function($routeProvider) {
         })
         .when('/munkatarsak', {
             templateUrl: 'views/Munkatarsak.html',
-            controller: 'munkatarsakCtrl'
+            controller: 'MunkatarsakCtrl'
         })
         .when('/kezelesek', {
             templateUrl: 'views/Kezelesek.html',
@@ -49,7 +49,7 @@ app.config(function($routeProvider) {
         })
         .when('/elerhetoseg', {
             templateUrl: 'views/Elerhetosegek.html',
-            controller: 'munkatarsakCtrl'
+            controller: 'MunkatarsakCtrl'
         })
         .when('/passwordmod', {
             templateUrl: 'views/Passwordmod.html',
