@@ -13,10 +13,11 @@ app.controller('kezelesekCtrl', function($scope, DB, $rootScope,$location) {
     DB.selectDistinct('kezelesek','kategoria').then(function(res){
         $scope.kategoriak=res.data;
     })
-    $scope.chooseKezeles=function(kezeles){
-        console.log(kezeles)
-        $scope.chosenKezeles=kezeles;
-        $location.path('/kezeles')
+
+    $scope.chooseKezeles=function(id){
+        console.log(id)
+        $location.path('/kezeles/' + id)
+
     }
     
     $scope.cheatsheet=function(){
