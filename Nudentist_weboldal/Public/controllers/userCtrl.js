@@ -55,6 +55,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
             );
         }
     };
+
     $scope.passwdmod=function(){
         var pwd_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
         if($scope.user.password1==null||$scope.user.password2==null||$scope.password1!=$scope.password2){
@@ -80,6 +81,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
             })
         }
     }
+
    
 
     $scope.login = function() {

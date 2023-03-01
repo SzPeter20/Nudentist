@@ -1,20 +1,23 @@
 
     <section class="home">
         <div class="szoveges_desc">
-            <h1>{{doktor.name}}</h1>
+            <h1>{{doktor.nev}}</h1>
             <h4>Elérhetőségek</h4>
-            <p> {{doktor.contacts}} </p>
+            <p> {{doktor.email}} </p>
+            <p> {{doktor.telefonszam}} </p>
+
+            <p>{{doktor.bemutatkozas}}</p>
             <h4>
                 Szakterület
             </h4>
             <p>
-                {{doktor.szakter}}
+                {{doktor.szakterulet}}
             </p>
             <h4>
                 Taulmányok
             </h4>
             <p>
-                {{doktor.studies}}
+                {{doktor.tanulmanyok}}
             </p>
         </div>
         
@@ -35,9 +38,9 @@
             
         </div>
         <div class="text"><h1>Szakterület</h1></div>
-        <p> {{doktor.field}} </p>
+        <p> {{doktor.szakterulet}} </p>
         <div class="text"><h1>Tanulmányok</h1></div>
-        <p> {{doktor.studies}} </p>
+        <p> {{doktor.tanulmanyok}} </p>
         <table>
             <tr>
                 <th>
