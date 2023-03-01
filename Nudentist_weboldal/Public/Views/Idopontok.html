@@ -45,7 +45,15 @@
             </tbody>
           </table>
       </div>
+      
       <div ng-if="loggedUser && (loggedUser.jogok==='user')">
+        <div class="form-floating col-lg-3 mb-3">
+          <select class="form-select" id="orvos" ng-model="idopont.orvos">
+            <option selected>Válassz...</option>
+            <option value="{{ Munkatars }}" ng-repeat="Munkatars in Munkatarsak">{{ Munkatars.nev }}</option>
+          </select>
+          <label for="orvos">Orvos</label>
+      </div>
         <div class="form-floating mb-3">
           <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="idopont.nev">
           <label for="floatingInput">Név <em>*</em></label>
@@ -80,6 +88,7 @@
             <div class="card h-100 w-75"> 
               <img src="./Assets/HelperImages/img_462658.png" class="card-img-top w-75" alt="...">
               <div class="card-body"  >
+                
                 <h5 class="card-title">{{idopont.nev}}</h5>
                 <p class="card-text">{{idopont.email}}</p>
                 <p class="card-text">{{idopont.telefonszam}}</p>
@@ -94,4 +103,4 @@
             
           </div>
       </div>
-    
+      
