@@ -62,8 +62,8 @@ body{
     width: 80px;
     padding: 10px 14px;
     background-color: var(--sidebar-color);
-    transition: var(--tran-05);
-    z-index:50;  
+    
+    z-index:60;  
 }
 .menu{
     margin-top: 40px;
@@ -129,7 +129,7 @@ header .toggle{
     position: absolute;
     top: 50%;
     right: -25px;
-    transform: translateY(-50%) rotate(180deg);
+    
     height: 25px;
     width: 25px;
     background-color: var(--primary-color);
@@ -174,7 +174,6 @@ header .toggle{
     border-spacing: 50px;
     width: 20%;  
 }
-
 .home .mapouter{
     padding-left: 65px;
     width: 700px;

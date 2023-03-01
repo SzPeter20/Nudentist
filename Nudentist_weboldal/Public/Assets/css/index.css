@@ -124,13 +124,15 @@ body{
     display: none;
 }
 .home{
-   
+    margin-left: auto;
+    margin-right: auto;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    height: max-content;
+    height: fit-content;
+
     width: calc(100% - 250px);
-    
+    border: 2px solid black;
     
 }
 header .toggle{
@@ -197,8 +199,6 @@ table{
   font-weight: bold;
   margin-left: auto;
   margin-right: auto;
-  
-  
   
 }
 

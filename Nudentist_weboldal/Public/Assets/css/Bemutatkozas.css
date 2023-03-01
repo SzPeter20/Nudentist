@@ -119,8 +119,10 @@ body{
     display: none;
 }
 
+
 .text-tartalom{
     font-size: 20px;
+
     font-weight: 500;
     color: var(--bodytext-color);
     backdrop-filter: blur(10px);

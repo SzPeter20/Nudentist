@@ -1,5 +1,7 @@
+
 app.controller('profilokCtrl', function($scope, DB, $rootScope,){
 
+    $scope.doktorok=[];
     $scope.uzenetek;
     $scope.comms;
     $scope.stringrating;
@@ -7,6 +9,9 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,){
     $scope.message;
     $scope.csillagok;
 
+    DB.selectAll("orvosok").then(function(res){
+        $scope.doktorok=res.data;
+    })
     DB.selectAll("uzenetek").then(function(res){
         $scope.uzenetek=res.data;
     })
