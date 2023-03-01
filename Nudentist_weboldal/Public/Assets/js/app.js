@@ -34,25 +34,25 @@ app.config(function($routeProvider) {
         })
         .when('/munkatarsak', {
             templateUrl: 'views/Munkatarsak.html',
-            controller: 'MunkatarsakCtrl'
+            controller: 'munkatarsakCtrl'
         })
         .when('/kezelesek', {
             templateUrl: 'views/Kezelesek.html',
             controller: 'kezelesekCtrl'
         })
-        .when('/kezeles', {
+        .when('/kezeles/:id', {
             templateUrl: 'views/Kezeles.html',
-            controller: 'kezelesekCtrl'
+            controller: 'kezelesCtrl'
         })
         .when('/elerhetoseg', {
             templateUrl: 'views/Elerhetosegek.html',
-            controller: 'MunkatarsakCtrl'
+            controller: 'munkatarsakCtrl'
         })
         .when('/passwordmod', {
             templateUrl: 'views/Passwordmod.html',
             controller: 'userCtrl'
         })
-        .when('/dokprofil:id', {
+        .when('/dokprofil/:id', {
             templateUrl: 'views/Doktorprofil.html',
             controller: 'profilokCtrl'
         })

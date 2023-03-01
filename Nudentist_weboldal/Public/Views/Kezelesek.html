@@ -11,8 +11,8 @@
               <div id="{{kategoria.kategoria}}collapse" class="accordion-collapse collapse in" aria-labelledby="heading{{kategoria.id}}" data-bs-parent="#accordionExample">
                 <div class="accordion-body ">
                   <ul>
-                    <li ng-repeat="kezeles in kezelesek"  ng-if="kezeles.kategoria==kategoria.kategoria">
-                      <a href="#!/kezeles"> <p  ng-click="chooseKezeles(kezeles)">{{kezeles.neve}}</p></a>
+                    <li ng-repeat="kezeles in kezelesek"  ng-if="kezeles.kategoria==kategoria.kategoria"  ng-click="chooseKezeles(kezeles.ID)">
+                      <p >{{kezeles.neve}}</p>
                     </li>
                   </ul>
                 </div>
