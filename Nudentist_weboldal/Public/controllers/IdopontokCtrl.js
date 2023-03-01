@@ -1,16 +1,23 @@
 app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     $scope.idopont={};
     $scope.idopontok={};
+    $scope.Munkatarsak = [];
+    $scope.Munkatars = {};
     DB.selectAll('idopontok').then(function(res) {
         $scope.idopontok = res.data;
+    });
+    DB.selectAll('orvosok').then(function(res) {
+        $scope.Munkatarsak = res.data;
     });  
 
     $scope.foglalas=function() {
-        if ($scope.idopont.nev == null || $scope.idopont.email == null) {
+        if ($scope.idopont.nev == null || $scope.idopont.email == null || $scope.idopont.orvos==null) {
             alert('Nem adtál meg minden kötelező adatot!');
         } else {
-            
+                    let idx=$scope.Munkatarsak.findIndex(item => (item.orvosID == $scope.idopont.orvos));
                     let data = {
+                        
+                        orvosID:$scope.Munkatarsak[idx].ID,
                         nev: $scope.idopont.nev,
                         email: $scope.idopont.email,
                         telefonszam: $scope.idopont.phone,
@@ -32,4 +39,5 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
         }
     };
 }
+
 );
