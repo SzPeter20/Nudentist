@@ -11,16 +11,17 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     });  
 
     $scope.foglalas=function() {
-        if ($scope.idopont.nev == null || $scope.idopont.email == null || $scope.idopont.orvos==null) {
+        console.log($scope.idopont.id)
+        if ( $scope.idopont.idopont==null||$scope.idopont.datum==null ||$scope.idopont.id==null) {
             alert('Nem adtál meg minden kötelező adatot!');
         } else {
-                    let idx=$scope.Munkatarsak.findIndex(item => (item.orvosID == $scope.idopont.orvos));
+                    
                     let data = {
                         
-                        orvosID:$scope.Munkatarsak[idx].ID,
-                        nev: $scope.idopont.nev,
-                        email: $scope.idopont.email,
-                        telefonszam: $scope.idopont.phone,
+                        orvosID:$scope.idopont.id,
+                        nev: $rootScope.loggedUser.nev,
+                        email: $rootScope.loggedUser.email,
+                        telefonszam: $rootScope.loggedUser.telefonszam,
                         datum:moment(new Date($scope.idopont.datum)).format('YYYY-MM-DD'),
                         idopont:$scope.idopont.idopont,
                         paciensID:$rootScope.loggedUser.ID

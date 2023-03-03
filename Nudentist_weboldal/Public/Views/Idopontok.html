@@ -48,26 +48,12 @@
       
       <div ng-if="loggedUser && (loggedUser.jogok==='user')">
         <div class="form-floating col-lg-3 mb-3">
-          <select class="form-select" id="orvos" ng-model="idopont.orvos">
+          <select class="form-select" id="orvos" ng-model="idopont.id">
             <option selected>Válassz...</option>
-            <option value="{{ Munkatars }}" ng-repeat="Munkatars in Munkatarsak">{{ Munkatars.nev }}</option>
+            <option value="{{ Munkatars.ID }}"  ng-repeat="Munkatars in Munkatarsak">{{Munkatars.nev}}</option>
           </select>
           <label for="orvos">Orvos</label>
       </div>
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="idopont.nev">
-          <label for="floatingInput">Név <em>*</em></label>
-      </div>
-      <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="idopont.email">
-          <label for="floatingInput">E-mail cím <em>*</em></label>
-      </div>
-      
-      <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="idopont.phone">
-          <label for="floatingInput">Telefonszám</label>
-      </div>
-      
       <div class="form-floating mb-3">
           <input type="date" class="form-control" id="floatingPassword" placeholder="Dátum" ng-model="idopont.datum">
           <label for="floatingPassword">Dátum<em>*</em></label>

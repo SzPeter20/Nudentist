@@ -22,7 +22,7 @@ app.config(function($routeProvider) {
     // bárki számára
         .when('/', {
             templateUrl: 'views/Homepage.html',
-            controller: 'MunkatarsakCtrl'
+            controller: 'munkatarsakCtrl'
         })
         .when('/reg', {
             templateUrl: 'views/registration.html',
