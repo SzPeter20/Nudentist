@@ -1,7 +1,10 @@
 
     <section class="home">
         <div class="szoveges_desc">
-            <h1>{{doktor.nev}}</h1>
+            <header>
+                <h1>{{doktor.nev}}</h1>
+            </header>
+            
             <h4>Elérhetőségek</h4>
             <p> {{doktor.email}} </p>
             <p> {{doktor.telefonszam}} </p>
@@ -62,11 +65,13 @@
             </tr>
             <tr>
                 <td>
-                    <button type="submit" ng-click="message()">Küldés</button>
+                    <button type="submit" ng-click="message()" class="btn btn-primary">Küldés</button>
                 </td>
                 <td>
-                    <button type="submit" ng-click="rate()">Küldés</button>
+                    <button type="submit" ng-click="rate()"class="btn btn-primary">Küldés</button>
                 </td>
             </tr>
         </table>
     </section>
+        
+  
