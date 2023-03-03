@@ -329,3 +329,13 @@ table{
       display: none;
     }
   }
+  .kezeles{
+    color: cornflowerblue;
+    cursor:pointer;
+  }
+  .kezeles:hover{
+    color: hotpink;
+  }
+.mail{
+  font-size: 40px;
+}

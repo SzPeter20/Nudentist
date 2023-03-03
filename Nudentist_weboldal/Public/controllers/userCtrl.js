@@ -1,6 +1,21 @@
 app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
+    $scope.uzenetek=[];
+    $scope.doktorok=[];
+    $scope.sender={}
 
-    $scope.user = {};
+    if($rootScope.loggedUser!=null){
+        DB.select('uzenetek','ID',$rootScope.loggedUser.ID).then(function(res){
+            $scope.uzenetek=res.data;
+        })
+    }
+    
+    DB.selectAll('orvosok').then(function(res){
+        $scope.doktorok=res.data;
+    })
+
+    for (let i = 0; i < $scope.uzenetek.length; i++) {
+        
+      }
 
     $scope.registration = function() {
         if ($scope.user.name == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null) {
@@ -80,6 +95,9 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                 }
             })
         }
+    }
+    $scope.tomail=function(){
+        $location.path('/uzenetek')
     }
 
    

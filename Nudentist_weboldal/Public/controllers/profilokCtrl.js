@@ -42,7 +42,8 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
             })
         }
     }
-    $scope.pointrate= function(){
+    $scope.pointrate= function(starnum){
         
     }
+    
 });

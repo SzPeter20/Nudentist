@@ -6,20 +6,20 @@
             <th>Tárgy</th>
             <th>Dátum</th>
         </tr>
-        <tr >
-            <td>
+        <tr for="uzenet in uzenetek">
+            <td >
                 <p>
-
+                    {{sender}}
                 </p>
             </td>
-            <td>
+            <td >
                 <p>
-                    
+                    {{uzenet.title}}
                 </p>
             </td>
-            <td>
+            <td >
                 <p>
-                    
+                    {{uzenet.datum}}
                 </p>
             </td>
         </tr>

@@ -22,7 +22,7 @@ app.config(function($routeProvider) {
     // bárki számára
         .when('/', {
             templateUrl: 'views/Homepage.html',
-            controller: 'MunkatarsakCtrl'
+            controller: 'munkatarsakCtrl'
         })
         .when('/reg', {
             templateUrl: 'views/registration.html',
@@ -70,7 +70,7 @@ app.config(function($routeProvider) {
                 }
             },
             templateUrl: 'views/Uzenetek.html',
-            controller: 'uzenetCtrl'
+            controller: 'userCtrl'
         })
         // user funkciók
         .when('/idopontokkezelese', {
@@ -92,8 +92,8 @@ app.config(function($routeProvider) {
                     }
                 }
             },
-            templateUrl: 'views/uzenetek.html',
-            controller: 'uzenetCtrl'
+            templateUrl: 'views/Uzenetek.html',
+            controller: 'userCtrl'
         })
         .when('/profilom', {
             resolve: {
