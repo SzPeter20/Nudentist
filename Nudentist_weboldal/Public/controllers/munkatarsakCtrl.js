@@ -1,4 +1,4 @@
-app.controller('munkatarsakCtrl', function($scope, DB, $rootScope, fileUpload,$location) {
+app.controller('MunkatarsakCtrl', function($scope, DB, $rootScope, fileUpload,$location) {
 
     $scope.Munkatarsak = [];
     $scope.Munkatars = {};
