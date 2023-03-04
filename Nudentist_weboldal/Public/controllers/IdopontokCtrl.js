@@ -9,7 +9,14 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     DB.selectAll('orvosok').then(function(res) {
         $scope.Munkatarsak = res.data;
     });  
+    $scope.elfogad=function(){
+        
+    }
 
+    $scope.elutasit=function(){
+        
+        
+    }
     $scope.foglalas=function() {
         console.log($scope.idopont.id)
         if ( $scope.idopont.idopont==null||$scope.idopont.datum==null ||$scope.idopont.id==null) {
@@ -27,7 +34,7 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
                         paciensID:$rootScope.loggedUser.ID
                         
                     }
-
+                    console.log(data);
                     DB.insert('idopontok', data).then(function(res) {
                         if (res.data.affectedRows != 0) {
                             alert('Sikeres időpont foglalás');
