@@ -15,8 +15,17 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
 
     for (let i = 0; i < $scope.uzenetek.length; i++) {
         
-      }
+    }
+    /*
+      55555555557777777777777777777777777777777777222222222222
+      2
 
+      2
+      1
+      1561461611
+      131
+      31
+    */
     $scope.registration = function() {
         if ($scope.user.name == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null) {
             alert('Nem adtál meg minden kötelező adatot!');
@@ -52,7 +61,26 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
         console.log($rootScope.loggedUser)
         if ($scope.user.name == null || $scope.user.email == null) {
             alert('Nem adtál meg minden kötelező adatot!');
-        } else {
+        }else if($rootScope.loggedUser.jogok==='doktor')
+        {
+            let data = {
+                nev: $scope.user.name,
+                email: $scope.user.email,
+                telefonszam: $scope.user.phone,
+                szakterulet:$scope.user.field,
+                tanulmanyok:$scope.user.studies,
+                bemutatkozas:$scope.user.desc
+            }
+            DB.update('orvosok',$rootScope.loggedUser.ID, data).then(function(res) {
+                if (res.data.affectedRows != 0) {
+                    alert('Adatok sikeresen megváltoztatva!');
+                    $scope.user = {};
+                } else {
+                    alert('Váratlan hiba történt az adatbázis művelet során!');
+                }
+        })
+        }
+         else {
                     let data = {
                         nev: $scope.user.name,
                         email: $scope.user.email,
@@ -111,11 +139,35 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                 email: $scope.user.email,
                 password: CryptoJS.SHA1($scope.user.pass1).toString()
             }
+            let data2 = {
+                table: 'orvosok',
+                email: $scope.user.email,
+                password: CryptoJS.SHA1($scope.user.pass1).toString()
+            }
 
             DB.logincheck(data).then(function(res) {
                 console.log(res.data);
                 if (res.data.length == 0) {
-                    alert('Hibás belépési adatok!');
+                    DB.logincheck(data2).then(function(res) {
+                        console.log(res.data);
+                        if (res.data.length == 0) {
+                            alert('Hibás belépési adatok!');
+                        } else {
+                            if (res.data[0].status == 0) {
+                                alert('Tiltott felhasználó!');
+                            } else {
+        
+                                res.data[0].last = moment(new Date()).format('YYYY-MM-DD H:m:s');
+                                $rootScope.loggedUser = res.data[0];
+                                let data2 = {
+                                    last: res.data[0].last
+                                }
+                                DB.update('orvosok', res.data[0].ID, data2).then(function(res) {
+                                    sessionStorage.setItem('NudentistAPP', angular.toJson($rootScope.loggedUser));
+                                });
+                            }
+                        }
+                    });
                 } else {
                     if (res.data[0].status == 0) {
                         alert('Tiltott felhasználó!');
@@ -132,6 +184,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                     }
                 }
             });
+            
         }
     }
 

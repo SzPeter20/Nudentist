@@ -109,7 +109,7 @@
                                     <i class='bx bx-message icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>
                                 </li>
-                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='user')">
+                                <li class="nav-item" ng-if="loggedUser && ((loggedUser.jogok==='user')||loggedUser.jogok==='doktor')">
                                     <i class='bx bx-user-voice icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/profilom">Profilom</a>
                                 </li> 

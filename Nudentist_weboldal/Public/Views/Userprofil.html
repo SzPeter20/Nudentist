@@ -34,8 +34,13 @@
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels">Telefonszám</label><input type="text" class="form-control" placeholder="Adja meg Telefonszámát" ng-model="user.phone"></div>
                     <div class="col-md-12"><label class="labels">E-mail cím</label><input type="text" class="form-control" placeholder="Adja meg e-mail címét" ng-model="user.email"></div>
+                    <div class="col-md-12"><label class="labels">Tanulmányok</label><input type="text" class="form-control" placeholder="Adja meg tanulmányait" ng-model="user.studies"></div>
+                    <div class="col-md-12"><label class="labels">Szakterület</label><input type="text" class="form-control" placeholder="Adja meg szakterületét" ng-model="user.field"></div>
+                    <div class="col-md-12"><label class="labels">Bemutatkozás</label> <textarea name="desctextarea" id="desctextarea" cols="30" rows="10" placeholder="Adja meg bemutatkozását" ng-model="user.desc"></textarea> </div>
+
                 </div>
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" ng-click="mod()">Profil módosítás mentése</button></div>
+                
 
                 <a href="#!/passwordmod"> <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" >Jelszó megváltoztatása</button> </div></a>
 

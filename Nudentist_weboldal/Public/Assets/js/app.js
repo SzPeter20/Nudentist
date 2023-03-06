@@ -76,7 +76,7 @@ app.config(function($routeProvider) {
         .when('/idopontokkezelese', {
             resolve: {
                 function($rootScope, $location) {
-                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin') {
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
                         $location.path('/');
                     }
                 }
@@ -87,7 +87,7 @@ app.config(function($routeProvider) {
         .when('/uzenetek', {
             resolve: {
                 function($rootScope, $location) {
-                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin') {
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
                         $location.path('/');
                     }
                 }
@@ -98,7 +98,7 @@ app.config(function($routeProvider) {
         .when('/profilom', {
             resolve: {
                 function($rootScope, $location) {
-                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin') {
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
                         $location.path('/');
                     }
                 }
@@ -111,7 +111,7 @@ app.config(function($routeProvider) {
         .when('/jelszomod', {
             resolve: {
                 function($rootScope, $location) {
-                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin') {
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
                         $location.path('/');
                     }
                 }
