@@ -1,25 +1,40 @@
 app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     $scope.idopont={};
     $scope.idopontok={};
+    $scope.Munkatarsak = [];
+    $scope.Munkatars = {};
     DB.selectAll('idopontok').then(function(res) {
         $scope.idopontok = res.data;
+    });
+    DB.selectAll('orvosok').then(function(res) {
+        $scope.Munkatarsak = res.data;
     });  
+    $scope.elfogad=function(){
+        
+    }
 
+    $scope.elutasit=function(){
+        
+        
+    }
     $scope.foglalas=function() {
-        if ($scope.idopont.nev == null || $scope.idopont.email == null) {
+        console.log($scope.idopont.id)
+        if ( $scope.idopont.idopont==null||$scope.idopont.datum==null ||$scope.idopont.id==null) {
             alert('Nem adtál meg minden kötelező adatot!');
         } else {
-            
+                    
                     let data = {
-                        nev: $scope.idopont.nev,
-                        email: $scope.idopont.email,
-                        telefonszam: $scope.idopont.phone,
+                        
+                        orvosID:$scope.idopont.id,
+                        nev: $rootScope.loggedUser.nev,
+                        email: $rootScope.loggedUser.email,
+                        telefonszam: $rootScope.loggedUser.telefonszam,
                         datum:moment(new Date($scope.idopont.datum)).format('YYYY-MM-DD'),
                         idopont:$scope.idopont.idopont,
                         paciensID:$rootScope.loggedUser.ID
                         
                     }
-
+                    console.log(data);
                     DB.insert('idopontok', data).then(function(res) {
                         if (res.data.affectedRows != 0) {
                             alert('Sikeres időpont foglalás');
@@ -32,4 +47,5 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
         }
     };
 }
+
 );

@@ -1,2 +1,10 @@
-
+.container-fluid{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    box-shadow: 4px 4px 4px 4px black;
+    padding: auto;
+    margin-bottom: 10px;
+}
   

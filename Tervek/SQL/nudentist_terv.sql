@@ -3,7 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Feb 10. 09:19
+
+-- Létrehozás ideje: 2023. Feb 24. 11:03
 -- Kiszolgáló verziója: 10.4.6-MariaDB
 -- PHP verzió: 7.3.8
 
@@ -21,6 +22,9 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `nudentist_terv`
 --
+
+CREATE DATABASE IF NOT EXISTS `nudentist_terv` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+USE `nudentist_terv`;
 
 -- --------------------------------------------------------
 
@@ -78,11 +82,13 @@ CREATE TABLE `kezelesek` (
 INSERT INTO `kezelesek` (`ID`, `neve`, `ar`, `leiras`, `kategoria`) VALUES
 (1, 'PRoba', 5000, 'proba', 'probakategoria'),
 (2, 'Periapikális röntgen', 10000, 'Az ún. periapikális (foggyökércsúcs körüli) röntgenfelvétellel a fog koronájának legfelső pontjától egészen a gyökér legalsó pontjáig mindent láthatunk, a fogat megtámasztó csontállománnyal együtt.', 'rontgen'),
-(3, 'Korona', 5000, 'desc', 'potlas'),
-(4, 'Ideiglenes fogtömés', 3500, 'desc', 'potlas'),
-(5, 'Nyitott kürett foganként', 45000, 'desc', 'parodontologia'),
-(6, 'Csontpótlás', 49500, 'desc', 'szajsebeszet'),
-(7, 'Láthatatlan fogszabályozás', 299900, 'desc', 'lathatatlanok');
+
+(3, 'Korona', 5000, 'Maga a pápa kiállt ki királlyá vagy beteg leszel', 'potlas'),
+(4, 'Ideiglenes fogtömés', 3500, 'Nem végleges fogtömés', 'potlas'),
+(5, 'Nyitott kürett foganként', 45000, 'Nem tom ez mi', 'parodontologia'),
+(6, 'Csontpótlás', 49500, 'Nincs csont van csont', 'szajsebeszet'),
+(7, 'Láthatatlan fogszabályozás', 299900, 'Észrevéhetetlen, nem meglátható fogakat elhelyező aparáció', 'lathatatlanok');
+
 
 -- --------------------------------------------------------
 
@@ -109,7 +115,12 @@ CREATE TABLE `orvosok` (
 --
 
 INSERT INTO `orvosok` (`ID`, `nev`, `email`, `password`, `bemutatkozas`, `szakterulet`, `tanulmanyok`, `idopontID`, `kezelesekID`, `telefonszam`, `kep`) VALUES
-(1, 'Próba Orvos', 'probaorvos@gmail.com', 'Turr513A', 'fkjdewfhdoa', 'szakterproba', 'egyetemproba', 1, 1, '+36205365214', NULL);
+
+(1, 'Próba Orvos', 'probaorvos@gmail.com', 'Turr513A', 'fkjdewfhdoa', 'szakterproba', 'egyetemproba', 1, 1, '+36205365214', NULL),
+(2, 'Hank Meat', 'Heat@gmail.com', 'asd123', 'sdfgh', 'fva', 'awef', NULL, NULL, '+3456789', NULL),
+(3, 'Vlajimir Wielkikutas', 'VIk@Wukk.com', 'asd123', 'asd123', 'asd', '123', NULL, NULL, '', NULL),
+(4, 'Vámp Yrokfékegyokrsznak', 'cit@roma.ilhu', 'qwe456', 'qwe456', 'ewq654', 'ewq654', NULL, NULL, '', NULL);
+
 
 -- --------------------------------------------------------
 
@@ -136,7 +147,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`ID`, `nev`, `email`, `password`, `telefonszam`, `jogok`, `reg`, `last`, `kedvencekID`, `kep`) VALUES
 (1, 'Próba Pista', 'probapista@nudentits.com', 'Turr513A', '+3620696969', 'user', '2023-02-02', '2023-02-03', 1, NULL),
-(2, 'ADMIN', 'admin@nudentist.com', 'AdminJelszo123', '+36201478965', 'admin', '2023-02-07', '2023-02-07', NULL, NULL);
+
+(2, 'ADMIN', 'admin@nudentist.com', 'AdminJelszo123', '+36201478965', 'admin', '2023-02-07', '2023-02-07', NULL, NULL),
+(3, 'a', 'a@a.a', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '1', 'user', '2023-02-20', '2023-02-21', NULL, NULL),
+(4, 'Zsuga', 'hg@dfgh.rth', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+8971436', 'user', '2023-02-21', '0000-00-00', NULL, NULL);
+
 
 -- --------------------------------------------------------
 
@@ -149,7 +164,7 @@ CREATE TABLE `uzenetek` (
   `orvosID` int(11) NOT NULL,
   `paciensID` int(11) NOT NULL,
   `tartalom` varchar(500) COLLATE utf8_hungarian_ci NOT NULL,
-  `targy` varchar(100) COLLATE utf8_hungarian_ci DEFAULT NULL,
+
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -228,13 +243,17 @@ ALTER TABLE `kezelesek`
 -- AUTO_INCREMENT a táblához `orvosok`
 --
 ALTER TABLE `orvosok`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 
 --
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 
 --
 -- AUTO_INCREMENT a táblához `uzenetek`

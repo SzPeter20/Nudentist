@@ -1,8 +1,9 @@
-app.controller('MunkatarsakCtrl', function($scope, DB, $rootScope, fileUpload) {
+app.controller('MunkatarsakCtrl', function($scope, DB, $rootScope, fileUpload,$location) {
 
     $scope.Munkatarsak = [];
     $scope.Munkatars = {};
     $scope.db = [];
+    $scope.chosenDoc;
 
     DB.selectAll('orvosok').then(function(res) {
         $scope.Munkatarsak = res.data;
@@ -10,4 +11,7 @@ app.controller('MunkatarsakCtrl', function($scope, DB, $rootScope, fileUpload) {
             $scope.db[i] = 1;
         }
     });  
+    $scope.toDocProfile=function(id){
+        $location.path('/dokprofil/' + id)
+    }
 });

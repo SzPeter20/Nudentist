@@ -16,9 +16,6 @@
     --text-color:#DDD ;
     --icon-color:#151515; 
     --bodytext-color:#000000;
-
-    
-    
 }
 
 footer {
@@ -124,14 +121,27 @@ body{
     display: none;
 }
 .home{
-   
+    margin-left: auto;
+    margin-right: auto;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    height: max-content;
+    height: fit-content;
+    box-shadow: 5px 5px 5px 2px black;
     width: calc(100% - 250px);
-    
-    
+    border: 2px solid black;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+header{
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  height: fit-content;
+  background-color: ghostwhite ;
+  border: 1px solid lightblue;
+  border-radius: 25px;
 }
 header .toggle{
     position: absolute;
@@ -197,8 +207,6 @@ table{
   font-weight: bold;
   margin-left: auto;
   margin-right: auto;
-  
-  
   
 }
 

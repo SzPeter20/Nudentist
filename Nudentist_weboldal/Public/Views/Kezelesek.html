@@ -1,18 +1,22 @@
 
 <input type="submit" value="cucc" ng-click="cheatsheet()">
     <section class="home">
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item" ng-repeat="kategoria in kategoriak">
+
+        <div class="accordion" id="accordionKezelesek">
+            <div class="accordion-item " ng-repeat="kategoria in kategoriak">
+
               <h2 class="accordion-header" id="heading{{kategoria.id}}">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{kategoria.kategoria}}collapse" aria-expanded="true" aria-controls="{{kategoria.kategoria}}collapse">
                   {{kategoria.kategoria}}
                 </button>
               </h2>
-              <div id="{{kategoria.kategoria}}collapse" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
+
+              <div id="{{kategoria.kategoria}}collapse" class="accordion-collapse collapse in" aria-labelledby="heading{{kategoria.id}}" data-bs-parent="#accordionExample">
+                <div class="accordion-body ">
                   <ul>
-                    <li ng-repeat="kezeles in kezelesek"  ng-if="kezeles.kategoria==kategoria.kategoria">
-                      <a href="#!/kezeles"><p>{{kezeles.neve}}</p></a>
+                    <li ng-repeat="kezeles in kezelesek"  ng-if="kezeles.kategoria==kategoria.kategoria"  ng-click="chooseKezeles(kezeles.ID)">
+                      <p >{{kezeles.neve}}</p>
+
                     </li>
                   </ul>
                 </div>

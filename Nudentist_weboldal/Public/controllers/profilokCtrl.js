@@ -1,5 +1,7 @@
-app.controller('profilokCtrl', function($scope, DB, $rootScope,){
 
+app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
+
+    $scope.doktor={};
     $scope.uzenetek;
     $scope.comms;
     $scope.stringrating;
@@ -7,7 +9,14 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,){
     $scope.message;
     $scope.csillagok;
 
-    DB.selectAll("uzenetek").then(function(res){
+    if($routeParams.id!=null){
+        DB.select('orvosok','ID',$routeParams.id).then(function(res){
+            $scope.doktor=res.data[0];
+        })
+    }
+
+    
+    DB.selectAll('uzenetek').then(function(res){
         $scope.uzenetek=res.data;
     })
 

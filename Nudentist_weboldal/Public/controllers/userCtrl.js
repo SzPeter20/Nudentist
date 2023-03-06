@@ -34,6 +34,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
         }
     };
     $scope.mod = function() {
+        console.log($rootScope.loggedUser)
         if ($scope.user.name == null || $scope.user.email == null) {
             alert('Nem adtál meg minden kötelező adatot!');
         } else {
@@ -54,7 +55,33 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
             );
         }
     };
-     
+
+    $scope.passwdmod=function(){
+        var pwd_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        if($scope.user.password1==null||$scope.user.password2==null||$scope.password1!=$scope.password2){
+            alert('A megadott jelszavak nem egyeznek meg!')
+        }else if($rootScope.loggedUser.password==$scope.user.password1){
+            alert('Az új jelszó nem egyezhet a régi jelszóval!')
+        }else if($scope.user.password1!=$scope.user.password2){
+            alert('A megadott jelszavak nem egyeznek meg!')
+        }else if(!$scope.user.password1.match(pwd_pattern)){
+            alert('A megadott jelszó nem felel meg a minimális biztonsági követelményeknek!');
+        }
+        else{
+            let data={
+                password:CryptoJS.SHA1($scope.user.password1).toString()
+            }
+            DB.update('users',$rootScope.loggedUser.ID,data).then(function(res){
+                if (res.data.affectedRows != 0) {
+                    alert('Jelszó sikeresen megváltoztatva!');
+                    $scope.user = {};
+                } else {
+                    alert('Váratlan hiba történt az adatbázis művelet során!');
+                }
+            })
+        }
+    }
+
    
 
     $scope.login = function() {

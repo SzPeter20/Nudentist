@@ -39,10 +39,25 @@ app.config(function($routeProvider) {
         .when('/kezelesek', {
             templateUrl: 'views/Kezelesek.html',
             controller: 'kezelesekCtrl'
+
+        })
+        .when('/kezeles/:id', {
+            templateUrl: 'views/Kezeles.html',
+
+            controller: 'kezelesCtrl'
+
         })
         .when('/elerhetoseg', {
             templateUrl: 'views/Elerhetosegek.html',
-            controller: 'MunkatarsakCtrl'
+            controller: 'munkatarsakCtrl'
+        })
+        .when('/passwordmod', {
+            templateUrl: 'views/Passwordmod.html',
+            controller: 'userCtrl'
+        })
+        .when('/dokprofil/:id', {
+            templateUrl: 'views/Doktorprofil.html',
+            controller: 'profilokCtrl'
         })
         // admin funkciók
         
@@ -91,6 +106,7 @@ app.config(function($routeProvider) {
             templateUrl: 'views/Userprofil.html',
             controller: 'userCtrl'
         })
+
         .otherwise('/')
         .when('/jelszomod', {
             resolve: {
@@ -104,6 +120,7 @@ app.config(function($routeProvider) {
             controller: 'userCtrl'
         })
         .otherwise('/')
+
 });
 
 app.directive('fileModel', function($parse) {
