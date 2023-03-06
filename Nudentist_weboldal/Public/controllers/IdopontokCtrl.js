@@ -31,8 +31,8 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
                         telefonszam: $rootScope.loggedUser.telefonszam,
                         datum:moment(new Date($scope.idopont.datum)).format('YYYY-MM-DD'),
                         idopont:$scope.idopont.idopont,
-                        paciensID:$rootScope.loggedUser.ID
-                        
+                        paciensID:$rootScope.loggedUser.ID,
+                        status:'Elfogadásra vár'
                     }
                     console.log(data);
                     DB.insert('idopontok', data).then(function(res) {
