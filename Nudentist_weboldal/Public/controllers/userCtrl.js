@@ -66,11 +66,35 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                 email: $scope.user.email,
                 password: CryptoJS.SHA1($scope.user.pass1).toString()
             }
+            let data2 = {
+                table: 'orvosok',
+                email: $scope.user.email,
+                password: CryptoJS.SHA1($scope.user.pass1).toString()
+            }
 
             DB.logincheck(data).then(function(res) {
                 console.log(res.data);
                 if (res.data.length == 0) {
-                    alert('Hibás belépési adatok!');
+                    DB.logincheck(data2).then(function(res) {
+                        console.log(res.data);
+                        if (res.data.length == 0) {
+                            alert('Hibás belépési adatok!');
+                        } else {
+                            if (res.data[0].status == 0) {
+                                alert('Tiltott felhasználó!');
+                            } else {
+        
+                                res.data[0].last = moment(new Date()).format('YYYY-MM-DD H:m:s');
+                                $rootScope.loggedUser = res.data[0];
+                                let data2 = {
+                                    last: res.data[0].last
+                                }
+                                DB.update('orvosok', res.data[0].ID, data2).then(function(res) {
+                                    sessionStorage.setItem('NudentistAPP', angular.toJson($rootScope.loggedUser));
+                                });
+                            }
+                        }
+                    });
                 } else {
                     if (res.data[0].status == 0) {
                         alert('Tiltott felhasználó!');
@@ -87,6 +111,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                     }
                 }
             });
+            
         }
     }
 
