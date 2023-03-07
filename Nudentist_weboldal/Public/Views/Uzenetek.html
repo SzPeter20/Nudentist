@@ -6,15 +6,16 @@
             <th>Tárgy</th>
             <th>Dátum</th>
         </tr>
-        <tr for="uzenet in uzenetek">
+        <button ng-click="message()">asdawa</button>
+        <tr ng-repeat="uzenet in uzenetek"  ng-if="uzenet.recipientID==loggedUser.ID" class="kezeles" ng-click="toMessageContent(uzenet.ID)">
             <td >
                 <p>
-                    {{sender}}
+                    {{$index+1}}
                 </p>
             </td>
             <td >
                 <p>
-                    {{uzenet.title}}
+                    {{uzenet.tartalom}}
                 </p>
             </td>
             <td >

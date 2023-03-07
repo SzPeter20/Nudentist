@@ -1,20 +1,41 @@
 app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     $scope.uzenetek=[];
     $scope.doktorok=[];
-    $scope.sender={}
+    $scope.userek=[];
+    $scope.sender=[];
 
     if($rootScope.loggedUser!=null){
-        DB.select('uzenetek','ID',$rootScope.loggedUser.ID).then(function(res){
+        DB.selectAll('uzenetek').then(function(res){
             $scope.uzenetek=res.data;
         })
+    }
+    $scope.message=function(){
+        console.log($scope.uzenetek[0])
+    }
+    $scope.toMessageContent=function(id){
+        $location.path('/uzenet/' + id)
     }
     
     DB.selectAll('orvosok').then(function(res){
         $scope.doktorok=res.data;
     })
+    DB.selectAll('users').then(function(res){
+        $scope.userek=res.data;
+    })
 
     for (let i = 0; i < $scope.uzenetek.length; i++) {
-        
+        for (let j = 0; j < $scope.doktorok.length; j++) {
+            if($scope.uzenetek[i].senderType==='doktor'){
+                if($scope.doktorok[i].ID===$scope.uzenetek[j].senderID){
+                    $scope.sender.push($scope.doktorok[i].nev)
+                }
+            }else{
+                if($scope.userek[i].ID===$scope.uzenetek[j].senderID){
+                    $scope.sender.push($scope.userek[i].nev)
+                }
+            }
+            
+        }
     }
     /*
       55555555557777777777777777777777777777777777222222222222

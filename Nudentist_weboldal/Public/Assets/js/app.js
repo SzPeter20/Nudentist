@@ -61,17 +61,7 @@ app.config(function($routeProvider) {
         })
         // admin funkciók
         
-        .when('/uzenetek', {
-            resolve: {
-                function($rootScope, $location) {
-                    if ($rootScope.loggedUser.jogok != 'admin') {
-                        $location.path('/');
-                    }
-                }
-            },
-            templateUrl: 'views/Uzenetek.html',
-            controller: 'userCtrl'
-        })
+        
         // user funkciók
         .when('/idopontokkezelese', {
             resolve: {
@@ -94,6 +84,17 @@ app.config(function($routeProvider) {
             },
             templateUrl: 'views/Uzenetek.html',
             controller: 'userCtrl'
+        })
+        .when('/uzenet/:id', {
+            resolve: {
+                function($rootScope, $location) {
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+                        $location.path('/');
+                    }
+                }
+            },
+            templateUrl: 'views/Uzenet.html',
+            controller: 'uzenetCtrl'
         })
         .when('/profilom', {
             resolve: {
