@@ -112,22 +112,13 @@
                       <a href="tel:{{idopont.telefonszam}}"><small>Hívás</small></a>
                     </td>
                     <td ng-repeat="Munkatars in Munkatarsak">
-                      <h6 class="mb-0"ng-if="Munkatars.ID==idopont.orvosid">{{Munkatars.nev}}</h6>
-                    </td>
-                    <td>
-                      <div class="dropdown open">
-                        
-                        
-                          <a class="dropdown-item" href="#"><i class="fa fa-pencil mr-1"></i> Edit</a>
-                          <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Delete</a>
-                        
-                      </div>
+                      <h6 class="mb-0"ng-if="Munkatars.ID==idopont.orvosID">{{Munkatars.nev}}</h6>
                     </td>
                   </tr>
                 </div>
             </div>
         </section>
-            <!--  
+           
       <div ng-if="loggedUser && (loggedUser.jogok==='admin')">
         <div class="row row-cols-1 row-cols-md-4 g-4" >
           <div class="col" ng-if="idopont.status=='Elfogadásra vár'" ng-repeat="idopont in idopontok">
@@ -197,4 +188,3 @@
               </div>
       </div>
       
--->
