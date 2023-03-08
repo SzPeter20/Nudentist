@@ -9,11 +9,11 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     DB.selectAll('orvosok').then(function(res) {
         $scope.Munkatarsak = res.data;
     });  
-    $scope.elfogad=function(){
-        
+    $scope.elfogad=function(id){
+    
     }
 
-    $scope.elutasit=function(){
+    $scope.elutasit=function(id){
         
         
     }

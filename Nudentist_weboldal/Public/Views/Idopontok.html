@@ -111,14 +111,22 @@
                       <h6 class="mb-0">{{idopont.telefonszam}}</h6>
                       <a href="tel:{{idopont.telefonszam}}"><small>Hívás</small></a>
                     </td>
-                    <td ng-repeat="Munkatars in Munkatarsak">
-                      <h6 class="mb-0"ng-if="Munkatars.ID==idopont.orvosID">{{Munkatars.nev}}</h6>
-                    </td>
+                    
+                      <td>
+                        <div ng-repeat="Munkatars in Munkatarsak">
+                        <h6 class="mb-0" ng-if="Munkatars.ID==idopont.orvosID">{{Munkatars.nev}}</h6>
+                      </div>
+                      </td>
+                      <td>
+                        <span class="bx bx-bible" ng-click="elfogad(idopont.ID)">Elfogadás</span>
+                        <span class="bx bxs-x-circle" ng-click="elutasit(idopont.ID)">Elutasítás</span>
+                      </td>
+                    
                   </tr>
                 </div>
             </div>
         </section>
-           
+           <!--  
       <div ng-if="loggedUser && (loggedUser.jogok==='admin')">
         <div class="row row-cols-1 row-cols-md-4 g-4" >
           <div class="col" ng-if="idopont.status=='Elfogadásra vár'" ng-repeat="idopont in idopontok">
@@ -187,4 +195,4 @@
                 
               </div>
       </div>
-      
+      -->
