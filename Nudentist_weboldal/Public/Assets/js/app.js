@@ -51,10 +51,7 @@ app.config(function($routeProvider) {
             templateUrl: 'views/Elerhetosegek.html',
             controller: 'munkatarsakCtrl'
         })
-        .when('/passwordmod', {
-            templateUrl: 'views/Passwordmod.html',
-            controller: 'userCtrl'
-        })
+        
         .when('/dokprofil/:id', {
             templateUrl: 'views/Doktorprofil.html',
             controller: 'profilokCtrl'
@@ -63,6 +60,14 @@ app.config(function($routeProvider) {
         
         
         // user funkciók
+        .when('/passwordmod', {
+            templateUrl: 'views/Passwordmod.html',
+            controller: 'userCtrl'
+        })
+        .when('/mail', {
+            templateUrl: 'views/Mail.html',
+            controller: 'uzenetCtrl'
+        })
         .when('/idopontokkezelese', {
             resolve: {
                 function($rootScope, $location) {

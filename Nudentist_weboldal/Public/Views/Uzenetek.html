@@ -6,11 +6,17 @@
             <th>Tárgy</th>
             <th>Dátum</th>
         </tr>
+        <a href="#!/mail"> <button ng-cick="newmessage()">Új üzenet írása</button></a>
         <button ng-click="message()">asdawa</button>
         <tr ng-repeat="uzenet in uzenetek"  ng-if="uzenet.recipientID==loggedUser.ID" class="kezeles" ng-click="toMessageContent(uzenet.ID)">
-            <td >
-                <p>
-                    {{$index+1}}
+            <td ng-repeat="doktor in doktorok" ng-if="uzenet.senderType==='doktor' && doktor.ID===uzenet.senderID">
+                <p >
+                    {{doktor.nev}}
+                </p>
+            </td>
+            <td ng-repeat="user in userek" ng-if="uzenet.senderType==='user' && user.ID===uzenet.senderID">
+                <p >
+                    {{user.nev}}
                 </p>
             </td>
             <td >

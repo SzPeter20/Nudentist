@@ -49,7 +49,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     */
     $scope.registration = function() {
         if ($scope.user.name == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null) {
-            alert('Nem adtál meg minden kötelező adatot!');
+            alert('Nem adtál meg(helyesen) minden kötelező adatot!');
         } else {
             if ($scope.user.pass1 != $scope.user.pass2) {
                 alert('A megadott jelszavak nem egyeznek!');
