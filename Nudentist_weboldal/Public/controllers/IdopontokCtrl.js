@@ -10,7 +10,7 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
         $scope.Munkatarsak = res.data;
     });  
     $scope.elfogad=function(id){
-    
+        
     }
 
     $scope.elutasit=function(id){
