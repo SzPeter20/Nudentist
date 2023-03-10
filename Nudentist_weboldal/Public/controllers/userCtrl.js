@@ -3,6 +3,21 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     $scope.doktorok=[];
     $scope.userek=[];
     $scope.sender=[];
+    $scope.vanOlvasattlanUzenet=false;
+
+    for (let i = 0; i < $scope.uzenetek.length; i++){
+        if($scope.uzenetek[i].olvasottsag=='olvasatlan'){
+            $scope.vanOlvasattlanUzenet=true;
+        }
+    }
+
+
+
+
+
+
+
+
 
     if($rootScope.loggedUser!=null){
         DB.selectAll('uzenetek').then(function(res){
@@ -13,6 +28,11 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
         console.log($scope.uzenetek[0])
     }
     $scope.toMessageContent=function(id){
+        for (let i = 0; i < $scope.uzenetek.length; i++){
+            if($scope.uzenetek[i].ID===id){
+                $scope.uzenetek[i].olvasottsag='olvasott'
+            }
+        }
         $location.path('/uzenet/' + id)
     }
     

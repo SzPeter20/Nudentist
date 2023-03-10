@@ -1,5 +1,6 @@
-<input type="text" name="cimzett" id="cimzett">
+<input type="text" name="cimzett" id="cimzett" ng-model="cimzett">
 <label for="cimzett">Címzett</label>
-<input type="text" name="szoveg" id="szoveg">
-<label for="szoveg">Tartalom</label>
-<button>Küldés</button>
+<input type="text" name="cim" id="cim" ng-model="mail.cim">
+<label for="cim">Cím</label>
+<textarea name="szoveg" id="szoveg" cols="30" rows="10" ng-model="mail.tartalom"></textarea><label for="szoveg">Tartalom</label>
+<button ng-click="sendMessage()">Küldés</button>
