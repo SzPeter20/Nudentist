@@ -61,10 +61,10 @@
       </div>
       
       <div class="form-floating mb-3">
-          <input type="time" class="form-control" id="floatingPassword" placeholder="Időpont" ng-model="idopont.idopont" min="08:00" max="16:00">
+          <input type="time" class="form-control" id="floatingPassword" placeholder="Időpont" ng-model="idopont.idopont" min="08:00" max="20:00">
           <label for="floatingPassword">Időpont<em>*</em></label>
       </div>
-      
+      <p class="mb-3 text-muted">Az Időpontnak 8 és 20 óra közöttinek kell lennie</p>
       <p class="mb-3 text-muted">A <em>*</em>-al jelölt adatok megadása kötelező!</p>
       
       <button class="btn btn-primary mb-3" ng-click="foglalas()">Időpont véglegesítése</button>
@@ -75,9 +75,9 @@
             
           </div>
           <section class="main-content">
-            <div class="container">
+          <div class="container">
           <div ng-if="loggedUser && (loggedUser.jogok==='admin')">
-            
+            <div class="table-responsive">
               <table class="table">
                 <thead>
                   <tr>
@@ -126,6 +126,8 @@
                       </td>
                     
                   </tr>
+            </div>
+              
                 </div>
             </div>
         </section>
