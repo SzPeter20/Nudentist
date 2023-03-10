@@ -1,6 +1,6 @@
 app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     $scope.idopont={};
-    $scope.idopontok={};
+    $scope.idopontok=[];
     $scope.Munkatarsak = [];
     
     DB.selectAll('idopontok').then(function(res) {
@@ -14,7 +14,6 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     }
 
     $scope.elutasit=function(id){
-        
         
     }
     $scope.foglalas=function() {
