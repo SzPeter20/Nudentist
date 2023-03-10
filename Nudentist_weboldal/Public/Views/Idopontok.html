@@ -99,9 +99,9 @@
                       </div>
                     </td>
                     <td>
-                      <span ng-if="idopont.status=='Elfogadásra vár'"class="btn btn-warning">{{idopont.status}}</span>
-                      <span ng-if="idopont.status=='Elutasítva'"class="btn btn-danger">{{idopont.status}}</span>
-                      <span ng-if="idopont.status=='Elfogadva'"class="btn btn-success">{{idopont.status}}</span>
+                      <span ng-if="idopont.status=='Elfogadásra vár'"class="btn btn-warning status" readonly>{{idopont.status}}</span>
+                      <span ng-if="idopont.status=='Elutasítva'"class="btn btn-danger status" readonly>{{idopont.status}}</span>
+                      <span ng-if="idopont.status=='Elfogadva'"class="btn btn-success status" readonly>{{idopont.status}}</span>
                     </td>
                     <td>
                       <h6 class="mb-0">{{idopont.idopont}}</h6>
@@ -117,9 +117,12 @@
                         <h6 class="mb-0" ng-if="Munkatars.ID==idopont.orvosID">{{Munkatars.nev}}</h6>
                       </div>
                       </td>
-                      <td>
-                        <span class="bx bx-bible" ng-click="elfogad(idopont.ID)">Elfogadás</span>
-                        <span class="bx bxs-x-circle" ng-click="elutasit(idopont.ID)">Elutasítás</span>
+                      <td >
+                        <div ng-if="idopont.status=='Elfogadásra vár'">
+                          <span class="bx bx-bible" ng-click="elfogad(idopont.ID)">Elfogadás</span>
+                          <span class="bx bxs-x-circle" ng-click="elutasit(idopont.ID)">Elutasítás</span>
+                        </div>
+                        
                       </td>
                     
                   </tr>

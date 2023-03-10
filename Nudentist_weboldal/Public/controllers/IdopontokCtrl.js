@@ -1,6 +1,6 @@
 app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     $scope.idopont={};
-    $scope.idopontok={};
+    $scope.idopontok=[];
     $scope.Munkatarsak = [];
     
     DB.selectAll('idopontok').then(function(res) {
@@ -10,11 +10,33 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
         $scope.Munkatarsak = res.data;
     });  
     $scope.elfogad=function(id){
-    
+        for (let i = 0; i < $scope.idopontok.length; i++) {
+            if( $scope.idopontok[i].ID==id){
+                $scope.idopontok[i].status='Elfogadva'
+                let values={
+                    status:'Elfogadva'
+                }
+                DB.update('idopontok', id,values).then(function(res) {
+                    
+                })
+            }
+            
+        }
     }
 
     $scope.elutasit=function(id){
-        
+        for (let i = 0; i < $scope.idopontok.length; i++) {
+            if( $scope.idopontok[i].ID==id){
+                $scope.idopontok[i].status='Elutasítva'
+                let values={
+                    status:'Elutasítva'
+                }
+                DB.update('idopontok', id,values).then(function(res) {
+                    
+                })
+            }
+            
+        }
         
     }
     $scope.foglalas=function() {
