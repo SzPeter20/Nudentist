@@ -12,7 +12,9 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                 var pwd_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
                 if (!$scope.user.pass1.match(pwd_pattern)) {
                     alert('A megadott jelszó nem felel meg a minimális biztonsági követelményeknek!');
-                } else {
+                    if (!$scope.user.email.match(/(?:[a-z0-9+!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/gi)) {
+                        alert('Rossz email');
+                    }else{
                     let data = {
                         nev: $scope.user.name,
                         email: $scope.user.email,
@@ -30,6 +32,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                         }
                     });
                 }
+            }
             }
         }
     };
