@@ -76,7 +76,7 @@
           </div>
           <section class="main-content">
           <div class="container">
-          <div ng-if="loggedUser && (loggedUser.jogok==='admin')">
+          <div ng-if="loggedUser && (loggedUser.jogok==='admin') ">
             <div class="table-responsive">
               <table class="table">
                 <thead>
@@ -90,7 +90,7 @@
                   </tr>
                 </thead>
                 <tbody ng-repeat="idopont in idopontok">
-                  <tr>
+                  <tr ng-if="loggedUser.ID==idopont.orvosID">
                     <td>
                       <div class="user-info">
                         <div class="user-info__basic">
