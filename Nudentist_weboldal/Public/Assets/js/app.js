@@ -49,7 +49,7 @@ app.config(function($routeProvider) {
         })
         .when('/elerhetoseg', {
             templateUrl: 'views/Elerhetosegek.html',
-            controller: 'munkatarsakCtrl'
+            controller: 'MunkatarsakCtrl'
         })
         .when('/passwordmod', {
             templateUrl: 'views/Passwordmod.html',

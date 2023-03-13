@@ -44,6 +44,7 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
         if ( $scope.idopont.idopont==null||$scope.idopont.datum==null ||$scope.idopont.orvosid==null) {
             alert('Nem adtál meg minden kötelező adatot!');
         } else {
+
                     
                     let data = {
                         
@@ -51,6 +52,7 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
                         nev: $rootScope.loggedUser.nev,
                         email: $rootScope.loggedUser.email,
                         telefonszam: $rootScope.loggedUser.telefonszam,
+
                         datum:moment(new Date($scope.idopont.datum)).format('YYYY-MM-DD'),
                         idopont:$scope.idopont.idopont,
                         paciensID:$rootScope.loggedUser.ID,
