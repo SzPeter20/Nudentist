@@ -76,7 +76,7 @@
           </div>
           <section class="main-content">
           <div class="container">
-          <div ng-if="loggedUser && (loggedUser.jogok==='admin') ">
+          <div ng-if="loggedUser && (loggedUser.jogok==='doktor') ">
             <div class="table-responsive">
               <table class="table">
                 <thead>
@@ -89,8 +89,8 @@
                     
                   </tr>
                 </thead>
-                <tbody ng-repeat="idopont in idopontok">
-                  <tr ng-if="loggedUser.ID==idopont.orvosID">
+                <tbody ng-repeat="idopont in idopontok | orderBy:'+status'">
+                  <tr ng-if="loggedUser.ID==idopont.orvosID && loggedUser.jogok=='doktor'">
                     <td>
                       <div class="user-info">
                         <div class="user-info__basic">
@@ -98,7 +98,7 @@
                         </div>
                       </div>
                     </td>
-                    <td>
+                    <td orderBy: idop>
                       <span ng-if="idopont.status=='Elfogadásra vár'"class="btn btn-warning status" readonly>{{idopont.status}}</span>
                       <span ng-if="idopont.status=='Elutasítva'"class="btn btn-danger status" readonly>{{idopont.status}}</span>
                       <span ng-if="idopont.status=='Elfogadva'"class="btn btn-success status" readonly>{{idopont.status}}</span>
