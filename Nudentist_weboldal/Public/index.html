@@ -84,32 +84,27 @@
                                         <span class="text nav-text">Bemutatkozás</span>
                                     </a>
                                 </li>
-                                
+                               
                                 
                                      <!-- admin functions -->
-                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='admin')">
+                                <li class="nav-link" ng-if="loggedUser && (loggedUser.jogok==='doktor')">
                                     <i class='bx bx-calendar icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/idopontokkezelese">Időpontok</a>
                                 </li>
-    
-                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='admin')">
-                                    <i class='bx bx-calendar-edit icon' ></i>
-                                    <a class="nav-link text nav-text" href="#!/paciensek">Páciensek</a>
-                                </li>
-                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='admin')">
+                                <li class="nav-link" ng-if="loggedUser && (loggedUser.jogok==='doktor')">
                                     <i class='bx bx-message icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>
                                 </li>   
                                 <!-- user functions -->
-                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='user')">
+                                <li class="nav-link"ng-if="loggedUser && (loggedUser.jogok==='user')">
                                     <i class='bx bx-calendar icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/idopontokkezelese">Időpontok</a>
                                 </li>
-                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='user')">
+                                <li class="nav-link" ng-if="loggedUser && (loggedUser.jogok==='user')">
                                     <i class='bx bx-message icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>
                                 </li>
-                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='user')">
+                                <li class="nav-link" ng-if="loggedUser && (loggedUser.jogok==='user')">
                                     <i class='bx bx-user-voice icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/profilom">Profilom</a>
                                 </li> 
@@ -141,9 +136,7 @@
         
 
     </div>
-    <footer>
-        {{ settings.company }} - {{ settings.author }} 
-    </footer>
+    
     <script src="./assets/js/bootstrap.min.js"></script>
     <script src="./assets/js/swiper-bundle.min.js"></script>
     <script src="./assets/js/script.js"></script>
@@ -155,6 +148,8 @@
     <script src="./assets/js/moment.min.js"></script>
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/dbFactory.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     
     <!-- controllers -->
     <script src="./controllers/kezelesCtrl.js"></script>
@@ -167,7 +162,9 @@
 
     <script src="./controllers/MunkatarsakCtrl.js"></script>
     
-
+    <footer>
+        {{ settings.company }} - {{ settings.author }} 
+    </footer>
 </body>
 
 </html>

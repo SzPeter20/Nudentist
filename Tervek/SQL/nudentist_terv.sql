@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
-
--- Létrehozás ideje: 2023. Feb 24. 11:03
--- Kiszolgáló verziója: 10.4.6-MariaDB
--- PHP verzió: 7.3.8
+-- Létrehozás ideje: 2023. Már 10. 21:32
+-- Kiszolgáló verziója: 10.4.25-MariaDB
+-- PHP verzió: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -22,7 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `nudentist_terv`
 --
-
 CREATE DATABASE IF NOT EXISTS `nudentist_terv` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
 USE `nudentist_terv`;
 
@@ -49,17 +46,27 @@ CREATE TABLE `ertekelesek` (
 CREATE TABLE `idopontok` (
   `ID` int(11) NOT NULL,
   `orvosID` int(11) NOT NULL,
-  `idopont` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  `idopont` time NOT NULL,
   `datum` date NOT NULL,
-  `paciensID` int(11) NOT NULL
+  `paciensID` int(11) NOT NULL,
+  `nev` varchar(500) COLLATE utf8_hungarian_ci NOT NULL,
+  `email` varchar(500) COLLATE utf8_hungarian_ci NOT NULL,
+  `telefonszam` varchar(500) COLLATE utf8_hungarian_ci NOT NULL,
+  `status` varchar(200) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `idopontok`
 --
 
-INSERT INTO `idopontok` (`ID`, `orvosID`, `idopont`, `datum`, `paciensID`) VALUES
-(1, 1, '9-12', '2023-02-14', 1);
+INSERT INTO `idopontok` (`ID`, `orvosID`, `idopont`, `datum`, `paciensID`, `nev`, `email`, `telefonszam`, `status`) VALUES
+(4, 1, '14:29:00', '2023-03-07', 3, 'admin@nudentist.com', 'admin@nudentist.com', '+5151354615515614', 'Elfogadva'),
+(5, 4, '11:55:00', '2023-03-16', 3, 'Zámbó Illés', 'admin@nudentist.com', '+36205988683', 'Elutasítva'),
+(6, 2, '14:29:00', '2023-03-24', 3, 'Lajos@gmail.com', 'Lajos@gmail.com', 'Lajos@gmail.com', 'Elfogadva'),
+(7, 2, '14:31:00', '2023-03-28', 3, 'iza@gmail.com', 'Lajos@gmail.com', 'iza@gmail.com', 'Elfogadva'),
+(8, 1, '13:50:00', '2023-03-23', 3, 'Lajos', 'Lajos@gmail.com', '0694251567428541', 'Elfogadva'),
+(9, 4, '23:04:00', '2036-07-29', 5, 'Szabó Péter', 'szpeter20@gmail.com', '+3620584561825', 'Elfogadva'),
+(10, 4, '12:54:00', '2023-03-15', 6, 'Zámbó Illés', 'zamboilles@gmail.com', '+36205988683', 'Elfogadva');
 
 -- --------------------------------------------------------
 
@@ -82,13 +89,11 @@ CREATE TABLE `kezelesek` (
 INSERT INTO `kezelesek` (`ID`, `neve`, `ar`, `leiras`, `kategoria`) VALUES
 (1, 'PRoba', 5000, 'proba', 'probakategoria'),
 (2, 'Periapikális röntgen', 10000, 'Az ún. periapikális (foggyökércsúcs körüli) röntgenfelvétellel a fog koronájának legfelső pontjától egészen a gyökér legalsó pontjáig mindent láthatunk, a fogat megtámasztó csontállománnyal együtt.', 'rontgen'),
-
-(3, 'Korona', 5000, 'Maga a pápa kiállt ki királlyá vagy beteg leszel', 'potlas'),
-(4, 'Ideiglenes fogtömés', 3500, 'Nem végleges fogtömés', 'potlas'),
-(5, 'Nyitott kürett foganként', 45000, 'Nem tom ez mi', 'parodontologia'),
-(6, 'Csontpótlás', 49500, 'Nincs csont van csont', 'szajsebeszet'),
-(7, 'Láthatatlan fogszabályozás', 299900, 'Észrevéhetetlen, nem meglátható fogakat elhelyező aparáció', 'lathatatlanok');
-
+(3, 'Korona', 5000, 'desc', 'potlas'),
+(4, 'Ideiglenes fogtömés', 3500, 'desc', 'potlas'),
+(5, 'Nyitott kürett foganként', 45000, 'desc', 'parodontologia'),
+(6, 'Csontpótlás', 49500, 'desc', 'szajsebeszet'),
+(7, 'Láthatatlan fogszabályozás', 299900, 'desc', 'lathatatlanok');
 
 -- --------------------------------------------------------
 
@@ -107,20 +112,21 @@ CREATE TABLE `orvosok` (
   `idopontID` int(11) DEFAULT NULL,
   `kezelesekID` int(11) DEFAULT NULL,
   `telefonszam` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
-  `kep` varchar(200) COLLATE utf8_hungarian_ci DEFAULT NULL
+  `kep` varchar(200) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `last` datetime NOT NULL DEFAULT current_timestamp(),
+  `reg` datetime NOT NULL,
+  `jogok` varchar(100) COLLATE utf8_hungarian_ci NOT NULL DEFAULT 'admin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `orvosok`
 --
 
-INSERT INTO `orvosok` (`ID`, `nev`, `email`, `password`, `bemutatkozas`, `szakterulet`, `tanulmanyok`, `idopontID`, `kezelesekID`, `telefonszam`, `kep`) VALUES
-
-(1, 'Próba Orvos', 'probaorvos@gmail.com', 'Turr513A', 'fkjdewfhdoa', 'szakterproba', 'egyetemproba', 1, 1, '+36205365214', NULL),
-(2, 'Hank Meat', 'Heat@gmail.com', 'asd123', 'sdfgh', 'fva', 'awef', NULL, NULL, '+3456789', NULL),
-(3, 'Vlajimir Wielkikutas', 'VIk@Wukk.com', 'asd123', 'asd123', 'asd', '123', NULL, NULL, '', NULL),
-(4, 'Vámp Yrokfékegyokrsznak', 'cit@roma.ilhu', 'qwe456', 'qwe456', 'ewq654', 'ewq654', NULL, NULL, '', NULL);
-
+INSERT INTO `orvosok` (`ID`, `nev`, `email`, `password`, `bemutatkozas`, `szakterulet`, `tanulmanyok`, `idopontID`, `kezelesekID`, `telefonszam`, `kep`, `last`, `reg`, `jogok`) VALUES
+(1, 'Kiss Tamás', 'kisstamas@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Kiss Tamás profi fogorvos', 'Gyermek fogorvos', 'Fogorvos egyetem', 1, 1, '+36205365214', NULL, '2023-03-06 12:54:03', '0000-00-00 00:00:00', 'admin'),
+(2, 'Tamás Klára', 't.klara@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Tamás Klára másik fogorvos', 'fogkő', 'Fogorvos egyetem', NULL, NULL, '06323512612', NULL, '2023-03-06 12:54:03', '0000-00-00 00:00:00', 'admin'),
+(3, 'Ifjabb Kiss Pista Tamás ', 'IGFPN@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Tamás a legprofibb fogszabályzókkal foglalkozó orvos', 'Fogkőfényesítő', 'Fogorvos egyetem', NULL, NULL, '616546462484', NULL, '2023-03-06 12:54:03', '0000-00-00 00:00:00', 'admin'),
+(4, 'Kerék Tomázia Éva ', 'k.teve@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Világelső fogorvos', 'Minden is', 'Fogorvos egyetem', 2, 2, '+362045963211', NULL, '2023-03-10 21:32:24', '0000-00-00 00:00:00', 'admin');
 
 -- --------------------------------------------------------
 
@@ -147,11 +153,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`ID`, `nev`, `email`, `password`, `telefonszam`, `jogok`, `reg`, `last`, `kedvencekID`, `kep`) VALUES
 (1, 'Próba Pista', 'probapista@nudentits.com', 'Turr513A', '+3620696969', 'user', '2023-02-02', '2023-02-03', 1, NULL),
-
-(2, 'ADMIN', 'admin@nudentist.com', 'AdminJelszo123', '+36201478965', 'admin', '2023-02-07', '2023-02-07', NULL, NULL),
-(3, 'a', 'a@a.a', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '1', 'user', '2023-02-20', '2023-02-21', NULL, NULL),
-(4, 'Zsuga', 'hg@dfgh.rth', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+8971436', 'user', '2023-02-21', '0000-00-00', NULL, NULL);
-
+(3, 'Lajos', 'Lajos@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '0694251567428541', 'user', '2023-02-18', '2023-03-06', NULL, NULL),
+(4, 'admin', 'admin@nudentist.com', '7af2d10b73ab7cd8f603937f7697cb5fe432c7ff', '+36205988683', 'admin', '2023-02-19', '2023-03-10', NULL, NULL),
+(5, 'Szabó Péter', 'szpeter20@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620584561825', 'user', '2023-03-03', '2023-03-03', NULL, NULL),
+(6, 'Zámbó Illés', 'zamboilles@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36205988683', 'user', '2023-03-03', '2023-03-03', NULL, NULL),
+(7, 'Foki Zoltán', 'turrfz@turr.hu', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36125525235652', 'user', '2023-03-03', '2023-03-03', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -164,9 +170,17 @@ CREATE TABLE `uzenetek` (
   `orvosID` int(11) NOT NULL,
   `paciensID` int(11) NOT NULL,
   `tartalom` varchar(500) COLLATE utf8_hungarian_ci NOT NULL,
-
+  `targy` varchar(100) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `uzenetek`
+--
+
+INSERT INTO `uzenetek` (`ID`, `orvosID`, `paciensID`, `tartalom`, `targy`, `datum`) VALUES
+(1, 0, 0, '', NULL, '0000-00-00'),
+(2, 0, 0, '', NULL, '0000-00-00');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -231,7 +245,7 @@ ALTER TABLE `ertekelesek`
 -- AUTO_INCREMENT a táblához `idopontok`
 --
 ALTER TABLE `idopontok`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT a táblához `kezelesek`
@@ -243,23 +257,19 @@ ALTER TABLE `kezelesek`
 -- AUTO_INCREMENT a táblához `orvosok`
 --
 ALTER TABLE `orvosok`
-
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 
 --
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT a táblához `uzenetek`
 --
 ALTER TABLE `uzenetek`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
