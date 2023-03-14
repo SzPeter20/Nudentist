@@ -52,7 +52,7 @@ body{
 
 ::selection{
     background-color: var(--primary-color);
-    color: #fff;
+    color:#e90fb2;
 }
 .sidebar{
     position: fixed;
