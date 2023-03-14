@@ -13,12 +13,6 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
 
 
 
-
-
-
-
-
-
     if($rootScope.loggedUser!=null){
         DB.selectAll('uzenetek').then(function(res){
             $scope.uzenetek=res.data;

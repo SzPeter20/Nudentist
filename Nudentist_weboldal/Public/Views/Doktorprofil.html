@@ -29,11 +29,11 @@
             <span class="text nav-text" ng-click="favourite()">Kedvencekhez adás</span>
             <img src={{doktor.image}}>
             <p>
-                <i class="bi bi-star" id="star1" ng-click="pointrate(1)"></i>
-                <i class="bi bi-star" id="star2" ng-click="pointrate(2)"></i>
-                <i class="bi bi-star" id="star3" ng-click="pointrate(3)"></i>
-                <i class="bi bi-star" id="star4" ng-click="pointrate(4)"></i>
-                <i class="bi bi-star" id="star5" ng-click="pointrate(5)"></i>
+                <i class="bi bi-star star" id="star1" ng-click="pointrate(1)"></i>
+                <i class="bi bi-star star" id="star2" ng-click="pointrate(2)"></i>
+                <i class="bi bi-star star" id="star3" ng-click="pointrate(3)"></i>
+                <i class="bi bi-star star" id="star4" ng-click="pointrate(4)"></i>
+                <i class="bi bi-star star" id="star5" ng-click="pointrate(5)"></i>
             </p>
             
         </div>
@@ -41,7 +41,7 @@
         <p> {{doktor.szakterulet}} </p>
         <div class="text"><h1>Tanulmányok</h1></div>
         <p> {{doktor.tanulmanyok}} </p>
-        <table>
+        <table ng-if="loggedUser&& loggedUser.jogok=='user'">
             <tr>
                 <th>
                     Üzenet írása:
@@ -49,6 +49,12 @@
                 <th>
                     Szöveges értékelés:
                 </th>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Cím:</h3>
+                    <p> <input type="text" name="messageTitle" id="messageTitle" ng-model="comms.title"></p>
+                </td>
             </tr>
             <tr>
                 <td>

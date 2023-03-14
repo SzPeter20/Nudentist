@@ -8,7 +8,6 @@ app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams){
 
     $scope.cimzett;
     $scope.mail;
-    $scope.ma= new Date();
     $scope.sendMessage=function(){
         if($rootScope.loggedUser.jogok==='users'){
             let data = {
