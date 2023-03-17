@@ -24,6 +24,21 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     DB.selectAll('uzenetek').then(function(res){
         $scope.uzenetek=res.data;
     })
+    $scope.favourite=function(id){
+
+        console.log(id)
+        let data={
+            kedvencekID:id
+        }
+        DB.update('users',$rootScope.loggedUser.ID,data).then(function(res){
+            if (res.data.affectedRows != 0) {
+                alert('Kedvenc orvos sikeresen felvéve!');
+                
+            } else {
+                alert('Váratlan hiba történt az adatbázis művelet során!');
+            }
+        })
+    }
 
     $scope.rate= function(){
         $scope.alreadyRated=true;

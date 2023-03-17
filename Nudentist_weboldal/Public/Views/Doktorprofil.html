@@ -23,12 +23,12 @@
         
         <div class="profil">
             
-            <svg ng-click="favourite()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+            <svg ng-if="loggedUser&& loggedUser.jogok=='user'" ng-click="favourite(doktor.ID)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
               </svg>
-            <span class="text nav-text" ng-click="favourite()">Kedvencekhez adás</span>
+            <span ng-if="loggedUser&& loggedUser.jogok=='user'" class="text nav-text" >Kedvencekhez adás</span>
             <img src={{doktor.image}}>
-            <p>
+            <p ng-if="loggedUser&& loggedUser.jogok=='user'">
                 <i class="bi bi-star star" id="star1" ng-click="pointrate(1)"></i>
                 <i class="bi bi-star star" id="star2" ng-click="pointrate(2)"></i>
                 <i class="bi bi-star star" id="star3" ng-click="pointrate(3)"></i>

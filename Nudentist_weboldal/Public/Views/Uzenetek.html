@@ -5,10 +5,11 @@
             <th>Feladó</th>
             <th>Tárgy</th>
             <th>Dátum</th>
+            <th>Törlés</th>
         </tr>
         <a href="#!/mail"> <button ng-cick="newmessage()">Új üzenet írása</button></a>
         <button ng-click="message()">asdawa</button>
-        <tr ng-repeat="uzenet in uzenetek"  ng-if="uzenet.recipientID==loggedUser.ID" class="kezeles" ng-click="toMessageContent(uzenet.ID)">
+        <tr ng-repeat="uzenet in uzenetek"  ng-if="uzenet.recipientID==loggedUser.ID" class="kezeles" >
             <td ng-repeat="doktor in doktorok" ng-if="uzenet.senderType==='doktor' && doktor.ID===uzenet.senderID">
                 <p >
                     {{doktor.nev}}
@@ -20,13 +21,18 @@
                 </p>
             </td>
             <td >
-                <p>
+                <p ng-click="toMessageContent(uzenet.ID)">
                     {{uzenet.tartalom}}
                 </p>
             </td>
             <td >
                 <p>
                     {{uzenet.datum}}
+                </p>
+            </td>
+            <td >
+                <p>
+                    <i class="bi bi-trash-fill" ng-click="deleteMessage(uzenet.ID)"></i>
                 </p>
             </td>
         </tr>

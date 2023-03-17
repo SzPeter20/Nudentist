@@ -18,6 +18,11 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
             $scope.uzenetek=res.data;
         })
     }
+    $scope.deleteMessage=function(id){
+        DB.delete('uzenetek','ID',id).then(function(res){
+            alert('Üzenet sikeresen törölve!');
+        })
+    }
     $scope.message=function(){
         console.log($scope.uzenetek[0])
     }
