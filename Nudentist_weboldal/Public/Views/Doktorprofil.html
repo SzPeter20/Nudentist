@@ -2,13 +2,13 @@
     
     <section class="home">
         <a href="#!/munkatarsak" class="btn bx bx-briefcase btn-primary" rel="noopener noreferrer">Vissza</a>
-        <div class="szoveges_desc">
+        <div class="container-fluid">
             <header>
                 
                     
               
                 <h1>{{doktor.nev}}</h1>
-                <img src="./Assets/HelperImages/{{doktor.kep}}.jpg" alt="" srcset="">
+                <img src="./Assets/HelperImages/{{doktor.kep}}.jpg" class="img-fluid" alt="" srcset="">
             </header>
             
             <h4>Elérhetőségek</h4>
@@ -50,7 +50,7 @@
         <p> {{doktor.szakterulet}} </p>
         <div class="text"><h1>Tanulmányok</h1></div>
         <p> {{doktor.tanulmanyok}} </p>
-        <table>
+        <table class="table-responsive">
             <tr>
                 <th>
                     Üzenet írása:
