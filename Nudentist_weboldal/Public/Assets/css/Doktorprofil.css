@@ -52,7 +52,7 @@ body{
 
 ::selection{
     background-color: var(--primary-color);
-    color: #fff;
+    color:#e90fb2;
 }
 .sidebar{
     position: fixed;
@@ -124,8 +124,8 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    height: max-content;
-    width: calc(100% - 250px);
+    
+    
     overflow-y: scroll;
     
 }
@@ -152,36 +152,12 @@ header .toggle{
     text-align: center;
     color: red;
 }
-.home .idopontok{
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--bodytext-color);
-    margin-left:30%;
-    text-align: center;
-    line-height: 80px;
-}
-.home .slogen{
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--bodytext-color);
-    padding: 12px 60px;
-    text-align: left;
-}
-.home table{
-    border-spacing: 30px;
-    width: 80%;
-}
+
 .home table td{
     margin-left: auto;
     margin-right: auto;
     border-spacing: 50px;
     width: 20%;  
-}
-
-.home .mapouter{
-    padding-left: 65px;
-    width: 700px;
-    height: 700px;
 }
 .menugomb{
     margin: 20px;

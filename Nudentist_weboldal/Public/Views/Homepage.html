@@ -6,12 +6,12 @@
       <div class="slide-container swiper">
         <div class="slide-content" >
             <div class="card-wrapper swiper-wrapper" >
-                <div class="card swiper-slide" ng-repeat="Munkatars in Munkatarsak">
+                <div class="card swiper-slide" ng-repeat="Munkatars in Munkatarsak" ng-if="Munkatars.jogok=='doktor'">
                     <div class="image-content">
                         <span class="overlay"></span>
 
                         <div class="card-image">
-                            <img src="./Assets/HelperImages/idosebbtalacs.jpg" alt="" srcset=""  class="card-img">
+                            <img src="./Assets/HelperImages/{{Munkatars.kep}}.jpg" alt="" srcset=""  class="card-img">
                         </div>
                     </div>
 
@@ -21,7 +21,9 @@
                         <p class="card-text">{{ Munkatars.szakterulet }}</p>
                         <p class="card-text">{{ Munkatars.tanulmanyok }}</p>
                         
-                        <button class="button"  ng-click="toDocProfile(Munkatars.ID)">Megtekintés</button>
+
+                        <button class="button" ng-click="toDocProfile(Munkatars.ID)">Megtekintés</button>
+
                     </div>
                 </div>
                 </div>

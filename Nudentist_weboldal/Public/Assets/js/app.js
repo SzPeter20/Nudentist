@@ -34,7 +34,7 @@ app.config(function($routeProvider) {
         })
         .when('/munkatarsak', {
             templateUrl: 'views/Munkatarsak.html',
-            controller: 'munkatarsakCtrl'
+            controller: 'MunkatarsakCtrl'
         })
         .when('/kezelesek', {
             templateUrl: 'views/Kezelesek.html',
@@ -49,7 +49,7 @@ app.config(function($routeProvider) {
         })
         .when('/elerhetoseg', {
             templateUrl: 'views/Elerhetosegek.html',
-            controller: 'munkatarsakCtrl'
+            controller: 'MunkatarsakCtrl'
         })
         
         .when('/dokprofil/:id', {
@@ -71,7 +71,9 @@ app.config(function($routeProvider) {
         .when('/idopontokkezelese', {
             resolve: {
                 function($rootScope, $location) {
+
                     if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+
                         $location.path('/');
                     }
                 }
@@ -82,7 +84,9 @@ app.config(function($routeProvider) {
         .when('/uzenetek', {
             resolve: {
                 function($rootScope, $location) {
+
                     if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+
                         $location.path('/');
                     }
                 }
@@ -93,7 +97,9 @@ app.config(function($routeProvider) {
         .when('/uzenet/:id', {
             resolve: {
                 function($rootScope, $location) {
+
                     if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+
                         $location.path('/');
                     }
                 }
@@ -104,7 +110,9 @@ app.config(function($routeProvider) {
         .when('/profilom', {
             resolve: {
                 function($rootScope, $location) {
+
                     if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+
                         $location.path('/');
                     }
                 }
@@ -117,7 +125,9 @@ app.config(function($routeProvider) {
         .when('/jelszomod', {
             resolve: {
                 function($rootScope, $location) {
+
                     if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+
                         $location.path('/');
                     }
                 }
