@@ -111,27 +111,7 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
         }
     }
     $scope.pointrate= function(starnum){
-        switch(starnum)
-        {
-            case 1:
-                $scope.pointrating=1;
-            break;
-            case 2:
-                $scope.pointrating=2;
-            break;
-
-            case 3:
-                $scope.pointrating=3;
-            break;
-
-            case 4:
-                $scope.pointrating=4;
-            break;
-
-            case 5:
-                $scope.pointrating=5;
-            break;
-        }
+            $scope.pointrating=starnum;
         console.log($scope.pointrating)
     }
     
