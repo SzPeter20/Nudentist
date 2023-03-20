@@ -334,7 +334,7 @@ table{
     cursor:pointer;
   }
   .kezeles:hover{
-    color: hotpink;
+    background-color: hotpink;
   }
 .mail{
   font-size: 40px;

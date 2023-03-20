@@ -8,7 +8,6 @@
             <th>Törlés</th>
         </tr>
         <a href="#!/mail"> <button ng-cick="newmessage()">Új üzenet írása</button></a>
-        <button ng-click="message()">asdawa</button>
         <tr ng-repeat="uzenet in uzenetek"  ng-if="uzenet.recipientID==loggedUser.ID" class="kezeles" >
             <td ng-repeat="doktor in doktorok" ng-if="uzenet.senderType==='doktor' && doktor.ID===uzenet.senderID">
                 <p >

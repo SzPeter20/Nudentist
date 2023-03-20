@@ -5,12 +5,16 @@ app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams){
             $scope.uzenet = res.data[0]
         }
     )}
+    $scope.message={};
     $scope.userek=[];
     $scope.cimzett;
     $scope.mail;
-    $scope.cimzettid
+    $scope.cimzettid;
 
-    $scope.userek=DB.selectAll('users')
+    DB.selectAll('users').then(function(res) {
+        $scope.userek= res.data;
+        
+    });
 
     $scope.sendMessage=function(){
 
@@ -19,14 +23,11 @@ app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams){
                 $scope.cimzettid=$scope.userek.ID
             }
         }
-        if($scope.cimzettid==null){
-            alert()
-        }else{
             if($rootScope.loggedUser.jogok=='users'){
                 let data = {
                     senderid: $rootScope.loggedUser.ID,
                     sendertype: $rootScope.loggedUser.jogok,
-                    recipientID: $scope.cimzettid,
+                    recipientID: $scope.message.user,
                     recipienttype: 'doktor',
                     title: $scope.cim,
                     tartalom: $scope.tartalom,
@@ -45,7 +46,7 @@ app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams){
                 let data = {
                     senderid: $rootScope.loggedUser.ID,
                     sendertype: $rootScope.loggedUser.jogok,
-                    recipientID: $scope.cimzettid,
+                    recipientID: $scope.message.user,
                     recipienttype: 'user',
                     title: $scope.mail.cim,
                     tartalom: $scope.mail.tartalom,
@@ -62,7 +63,7 @@ app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams){
                 });
                 
             }
-        }
+        
         
         
 

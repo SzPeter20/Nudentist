@@ -1,5 +1,5 @@
-<select name="" id="">
-    <option value="user.nev" ng-repeat="user in userek">{{user.nev}}</option>
+<select name="" id="" ng-model="message.user">
+    <option value="{{user.ID}}" ng-repeat="user in userek">{{user.nev}}</option>
 </select>
 <label for="cimzett">Címzett</label>
 <input type="text" name="cim" id="cim" ng-model="mail.cim">
