@@ -98,9 +98,10 @@
                         </div>
                       </div>
                     </td>
-                    <td orderBy: idop>
-                      <span ng-if="idopont.status=='Elfogadásra vár'"class="btn btn-warning status" readonly>{{idopont.status}}</span>
+                    <td>
+                      
                       <span ng-if="idopont.status=='Elutasítva'"class="btn btn-danger status" readonly>{{idopont.status}}</span>
+                      <span ng-if="idopont.status=='Elfogadásra vár'"class="btn btn-warning status" readonly>{{idopont.status}}</span>
                       <span ng-if="idopont.status=='Elfogadva'"class="btn btn-success status" readonly>{{idopont.status}}</span>
                     </td>
                     <td>
