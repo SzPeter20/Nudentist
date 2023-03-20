@@ -51,7 +51,7 @@
         <div class="form-floating col-lg-3 mb-3">
           <select class="form-select" id="orvos" ng-model="idopont.orvosid">
             <option selected>Válassz...</option>
-            <option value="{{ Munkatars.ID }}"  ng-repeat="Munkatars in Munkatarsak">{{Munkatars.nev}}</option>
+            <option value="{{ Munkatars.ID }}"  ng-repeat="Munkatars in Munkatarsak" ng-if="Munkatars.jogok=='doktor'">{{Munkatars.nev}}</option>
           </select>
           <label for="orvos">Orvos</label>
       </div>
