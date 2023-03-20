@@ -1,8 +1,14 @@
 
+    
     <section class="home">
-        <div class="szoveges_desc">
+        <a href="#!/munkatarsak" class="btn bx bx-briefcase btn-primary" rel="noopener noreferrer">Vissza</a>
+        <div class="container-fluid">
             <header>
+                
+                    
+              
                 <h1>{{doktor.nev}}</h1>
+                <img src="./Assets/HelperImages/{{doktor.kep}}.jpg" class="img-fluid" alt="" srcset="">
             </header>
             
             <h4>Elérhetőségek</h4>
@@ -26,17 +32,17 @@
         
         <div class="profil">
             
-            <svg ng-click="favourite()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+            <svg ng-if="loggedUser&& loggedUser.jogok=='user'" ng-click="favourite(doktor.ID)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
               </svg>
-            <span class="text nav-text" ng-click="favourite()">Kedvencekhez adás</span>
-            <img src={{doktor.image}} alt={{ doktor.name }}>
-            <p>
-                <i class="bi bi-star" id="star1" ng-click="pointrate(id)"></i>
-                <i class="bi bi-star" id="star2" ng-click="pointrate(id)"></i>
-                <i class="bi bi-star" id="star3" ng-click="pointrate(id)"></i>
-                <i class="bi bi-star" id="star4" ng-click="pointrate(id)"></i>
-                <i class="bi bi-star" id="star5" ng-click="pointrate(id)"></i>
+            <span ng-if="loggedUser&& loggedUser.jogok=='user'" class="text nav-text" >Kedvencekhez adás</span>
+            <img src={{doktor.image}}>
+            <p ng-if="loggedUser&& loggedUser.jogok=='user'">
+                <i class="bi bi-star star" id="star1" ng-click="pointrate(1)"></i>
+                <i class="bi bi-star star" id="star2" ng-click="pointrate(2)"></i>
+                <i class="bi bi-star star" id="star3" ng-click="pointrate(3)"></i>
+                <i class="bi bi-star star" id="star4" ng-click="pointrate(4)"></i>
+                <i class="bi bi-star star" id="star5" ng-click="pointrate(5)"></i>
             </p>
             
         </div>
@@ -44,7 +50,9 @@
         <p> {{doktor.szakterulet}} </p>
         <div class="text"><h1>Tanulmányok</h1></div>
         <p> {{doktor.tanulmanyok}} </p>
-        <table>
+
+        <table class="table-responsive" ng-if="loggedUser&& loggedUser.jogok=='user'">
+
             <tr>
                 <th>
                     Üzenet írása:
@@ -52,6 +60,12 @@
                 <th>
                     Szöveges értékelés:
                 </th>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Cím:</h3>
+                    <p> <input type="text" name="messageTitle" id="messageTitle" ng-model="comms.title"></p>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -71,6 +85,7 @@
                     <button type="submit" ng-click="rate()"class="btn btn-primary">Küldés</button>
                 </td>
             </tr>
+            
         </table>
     </section>
         

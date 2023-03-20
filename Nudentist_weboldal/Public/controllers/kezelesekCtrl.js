@@ -20,8 +20,4 @@ app.controller('kezelesekCtrl', function($scope, DB, $rootScope,$location) {
 
     }
     
-    $scope.cheatsheet=function(){
-
-        console.log($scope.chosenKezeles)
-    }
 });

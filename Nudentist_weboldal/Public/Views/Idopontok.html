@@ -51,7 +51,7 @@
         <div class="form-floating col-lg-3 mb-3">
           <select class="form-select" id="orvos" ng-model="idopont.orvosid">
             <option selected>Válassz...</option>
-            <option value="{{ Munkatars.ID }}"  ng-repeat="Munkatars in Munkatarsak">{{Munkatars.nev}}</option>
+            <option value="{{ Munkatars.ID }}"  ng-repeat="Munkatars in Munkatarsak" ng-if="Munkatars.jogok=='doktor'">{{Munkatars.nev}}</option>
           </select>
           <label for="orvos">Orvos</label>
       </div>
@@ -89,7 +89,7 @@
                     
                   </tr>
                 </thead>
-                <tbody ng-repeat="idopont in idopontok | orderBy:'+status'">
+                <tbody ng-repeat="idopont in idopontok | orderBy:'+status'" class="shadow p-3 mb-5 bg-body-tertiary rounded">
                   <tr ng-if="loggedUser.ID==idopont.orvosID && loggedUser.jogok=='doktor'">
                     <td>
                       <div class="user-info">

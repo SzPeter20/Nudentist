@@ -52,7 +52,7 @@ body{
 
 ::selection{
     background-color: var(--primary-color);
-    color: #fff;
+    color:#e90fb2;
 }
 .sidebar{
     position: fixed;
@@ -124,8 +124,8 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    height: max-content;
-    width: calc(100% - 250px);
+    
+    
     overflow-y: scroll;
     
 }

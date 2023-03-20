@@ -6,13 +6,5 @@ app.controller('kezelesCtrl', function($scope, DB, $rootScope,$routeParams){
         }
 )}
 
-
-
-
-
-
-
-
-
     }
 )
