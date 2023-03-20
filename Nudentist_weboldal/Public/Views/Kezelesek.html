@@ -1,5 +1,4 @@
 
-<input type="submit" value="cucc" ng-click="cheatsheet()">
     <section class="home">
 
         <div class="accordion" id="accordionKezelesek">
@@ -15,7 +14,7 @@
                 <div class="accordion-body ">
                   <ul>
                     <li ng-repeat="kezeles in kezelesek"  ng-if="kezeles.kategoria==kategoria.kategoria"  ng-click="chooseKezeles(kezeles.ID)">
-                      <p >{{kezeles.neve}}</p>
+                      <p class="kezeles">{{kezeles.neve}}</p>
 
                     </li>
                   </ul>

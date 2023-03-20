@@ -22,7 +22,7 @@ app.config(function($routeProvider) {
     // bárki számára
         .when('/', {
             templateUrl: 'views/Homepage.html',
-            controller: 'MunkatarsakCtrl'
+            controller: 'munkatarsakCtrl'
         })
         .when('/reg', {
             templateUrl: 'views/registration.html',
@@ -51,32 +51,29 @@ app.config(function($routeProvider) {
             templateUrl: 'views/Elerhetosegek.html',
             controller: 'MunkatarsakCtrl'
         })
-        .when('/passwordmod', {
-            templateUrl: 'views/Passwordmod.html',
-            controller: 'userCtrl'
-        })
+        
         .when('/dokprofil/:id', {
             templateUrl: 'views/Doktorprofil.html',
             controller: 'profilokCtrl'
         })
         // admin funkciók
         
-        .when('/uzenetek', {
-            resolve: {
-                function($rootScope, $location) {
-                    if ($rootScope.loggedUser.jogok != 'doktor') {
-                        $location.path('/');
-                    }
-                }
-            },
-            templateUrl: 'views/Uzenetek.html',
+        
+        // user funkciók
+        .when('/passwordmod', {
+            templateUrl: 'views/Passwordmod.html',
+            controller: 'userCtrl'
+        })
+        .when('/mail', {
+            templateUrl: 'views/Mail.html',
             controller: 'uzenetCtrl'
         })
-        // user funkciók
         .when('/idopontokkezelese', {
             resolve: {
                 function($rootScope, $location) {
-                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'doktor') {
+
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+
                         $location.path('/');
                     }
                 }
@@ -87,18 +84,35 @@ app.config(function($routeProvider) {
         .when('/uzenetek', {
             resolve: {
                 function($rootScope, $location) {
-                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'doktor') {
+
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+
                         $location.path('/');
                     }
                 }
             },
-            templateUrl: 'views/uzenetek.html',
+            templateUrl: 'views/Uzenetek.html',
+            controller: 'userCtrl'
+        })
+        .when('/uzenet/:id', {
+            resolve: {
+                function($rootScope, $location) {
+
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+
+                        $location.path('/');
+                    }
+                }
+            },
+            templateUrl: 'views/Uzenet.html',
             controller: 'uzenetCtrl'
         })
         .when('/profilom', {
             resolve: {
                 function($rootScope, $location) {
-                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'doktor') {
+
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+
                         $location.path('/');
                     }
                 }
@@ -111,7 +125,9 @@ app.config(function($routeProvider) {
         .when('/jelszomod', {
             resolve: {
                 function($rootScope, $location) {
-                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'doktor') {
+
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+
                         $location.path('/');
                     }
                 }
