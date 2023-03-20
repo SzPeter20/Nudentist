@@ -25,13 +25,10 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     
   </div>
-        <div class="offcanvas-body">
-            <Header>
-                <i class='bx bx-chevron-right toggle' data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"></i>
-            </Header>
+        <div class="offcanvas-body">s
                 <nav class="navbar">
                     <div class="menu-bar">
-                        
+                        <img class="rounded-circle mt-4 w-25 m-auto"  src="./Assets/HelperImages/{{loggedUser.kep}}.jpg">
                         <div class="menu">
                             <form role="search" ng-controller="userCtrl" ng-if="!loggedUser">
 
@@ -95,6 +92,10 @@
                                     <i class='bx bx-message icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>
                                 </li>   
+                                <li class="nav-link" ng-if="loggedUser && (loggedUser.jogok==='doktor')">
+                                    <i class='bx bx-user-voice icon' ></i>
+                                    <a class="nav-link text nav-text" href="#!/profilom">Profilom</a>
+                                </li> 
                                 <!-- user functions -->
                                 <li class="nav-link"ng-if="loggedUser && (loggedUser.jogok==='user')">
                                     <i class='bx bx-calendar icon' ></i>
