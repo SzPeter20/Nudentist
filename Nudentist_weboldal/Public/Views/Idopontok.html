@@ -89,7 +89,7 @@
                     
                   </tr>
                 </thead>
-                <tbody ng-repeat="idopont in idopontok | orderBy:'+status'">
+                <tbody ng-repeat="idopont in idopontok | orderBy:'+status'" class="shadow p-3 mb-5 bg-body-tertiary rounded">
                   <tr ng-if="loggedUser.ID==idopont.orvosID && loggedUser.jogok=='doktor'">
                     <td>
                       <div class="user-info">
