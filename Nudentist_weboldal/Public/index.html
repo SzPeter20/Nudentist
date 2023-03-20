@@ -105,7 +105,9 @@
                                     <i class='bx bx-message icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>
                                 </li>
-                                <li class="nav-link" ng-if="loggedUser && (loggedUser.jogok==='user')">
+
+                                <li class="nav-item" ng-if="loggedUser && ((loggedUser.jogok==='user')||loggedUser.jogok==='doktor')">
+
                                     <i class='bx bx-user-voice icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/profilom">Profilom</a>
                                 </li> 
@@ -155,13 +157,11 @@
     <!-- controllers -->
     <script src="./controllers/kezelesCtrl.js"></script>
     <script src="./controllers/userCtrl.js"></script>
-
+    <script src="./controllers/uzenetCtrl.js"></script>
     <script src="./controllers/profilokCtrl.js"></script>
     <script src="./controllers/kezelesekCtrl.js"></script>
-
-    <script src="./controllers/IdopontokCtrl.js"></script>
-
-    <script src="./controllers/MunkatarsakCtrl.js"></script>
+    <script src="./controllers/idopontokCtrl.js"></script>
+    <script src="./controllers/munkatarsakCtrl.js"></script>
     
     <footer>
         {{ settings.company }} - {{ settings.author }} 

@@ -337,3 +337,16 @@ table{
       display: none;
     }
   }
+  .kezeles{
+    color: cornflowerblue;
+    cursor:pointer;
+  }
+  .kezeles:hover{
+    background-color: hotpink;
+  }
+.mail{
+  font-size: 40px;
+}
+.star:hover{
+
+}

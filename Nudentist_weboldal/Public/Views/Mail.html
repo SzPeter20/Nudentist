@@ -1,0 +1,8 @@
+<select name="" id="" ng-model="message.user">
+    <option value="{{user.ID}}" ng-repeat="user in userek">{{user.nev}}</option>
+</select>
+<label for="cimzett">Címzett</label>
+<input type="text" name="cim" id="cim" ng-model="mail.cim">
+<label for="cim">Cím</label>
+<textarea name="szoveg" id="szoveg" cols="30" rows="10" ng-model="mail.tartalom"></textarea><label for="szoveg">Tartalom</label>
+<button ng-click="sendMessage()">Küldés</button>
