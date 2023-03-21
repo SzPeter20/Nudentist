@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Már 21. 08:06
+-- Létrehozás ideje: 2023. Már 21. 09:28
 -- Kiszolgáló verziója: 10.4.6-MariaDB
 -- PHP verzió: 7.3.8
 
@@ -144,14 +144,14 @@ CREATE TABLE `orvosok` (
 --
 
 INSERT INTO `orvosok` (`ID`, `nev`, `email`, `password`, `bemutatkozas`, `szakterulet`, `tanulmanyok`, `idopontID`, `kezelesekID`, `telefonszam`, `kep`, `last`, `reg`, `jogok`) VALUES
-(1, 'Kiss Tamás', 'kisstamas@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Kiss Tamás profi fogorvos', 'Gyermek fogorvos', 'Fogorvos egyetem', 1, 1, '+36205365214', 'IbrahimLajos', '2023-03-17 11:34:33', '0000-00-00 00:00:00', 'doktor'),
+(1, 'Kiss Tamás', 'kisstamas@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Kiss Tamás profi fogorvos', 'Gyermek fogorvos', 'Fogorvos egyetem', 1, 1, '+36205365214', 'IbrahimLajos', '2023-03-21 08:09:38', '0000-00-00 00:00:00', 'doktor'),
 (2, 'Tamás Klára', 't.klara@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Tamás Klára másik fogorvos', 'fogkő', 'Fogorvos egyetem', 3, 1, '06323512612', 'LajosneKlara', '2023-03-06 12:54:03', '0000-00-00 00:00:00', 'doktor'),
 (3, 'Ifjabb Kiss Pista Tamás ', 'IGFPN@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Tamás a legprofibb fogszabályzókkal foglalkozó orvos', 'Fogkőfényesítő', 'Fogorvos egyetem', 1, 3, '616546462484', 'Asztalossimon', '2023-03-06 12:54:03', '0000-00-00 00:00:00', 'doktor'),
 (4, 'Kerék Tomázia Éva ', 'k.teve@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Világelső fogorvos', 'Minden is', 'Fogorvos egyetem', 2, 2, '+362045963211', 'kerektomazia', '2023-03-06 12:54:03', '0000-00-00 00:00:00', 'doktor'),
 (5, 'Zámbó Ilona', 'zamboilona89@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Sziasztok ', 'Szájhigénia', 'Fogorvos egyetem', 1, 2, '0696969696', 'zamboilona', '2023-03-14 09:20:40', '2023-03-20 12:31:00', 'doktor'),
 (6, 'Szomorú Ágnes', 'dr.szomoruagnes@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Sziasztok', 'Fogtechnikus', 'Fogorvos egyetem', 2, 3, '0620584212', 'szomoruagnes', '2023-03-14 09:27:22', '2023-03-13 14:09:00', 'doktor'),
 (7, 'Simonfi Tamás', 'simifi@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Sziasztok', 'Általános fogorvos\r\n', 'Fogorvos egyetem', 4, 5, '0620458598', 'SimonfiTamas', '2023-03-14 09:32:17', '2023-03-13 14:19:00', 'doktor'),
-(8, 'Szabó Petra', 'szpetra20@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Sziasztok', 'Fogorvos asszisztens', 'Fogorvos egyetem', 2, 2, '06923145812515', 'szabopetra', '2023-03-17 10:58:58', '2023-03-17 11:00:00', 'doktor'),
+(8, 'Szabó Petra', 'szpetra20@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Sziasztok', 'Fogorvos asszisztens', 'Fogorvos egyetem', 2, 2, '06923145812515', 'szabopetra', '2023-03-21 09:02:47', '2023-03-17 11:00:00', 'doktor'),
 (9, 'Lakatos Viktoria', 'lak.vik@gmail.com', '-', 'Sziasztok', 'Takarító', '', NULL, NULL, '', 'lakatosviktoria', '2023-03-17 11:08:04', '2023-03-17 11:00:00', '-'),
 (10, 'Csongrádi Daniella', 'csongiD@gmail.com', '-', 'Sziasztok', 'Pénzügyi tanácsadó ', 'Budapesti Gazdasági Egyetem', NULL, NULL, '+36206945221', 'csongradidaniela', '2023-03-17 11:14:04', '2023-03-17 12:00:00', '-'),
 (11, 'Féreg Julianna', 'fefejul@gmail.com', '-', 'Egy féreg vagyok', 'Humán erőforrás', 'SOTER-LINE', NULL, NULL, '+25814581455', 'feregjulianna', '2023-03-17 11:16:44', '2023-03-17 14:00:00', '-'),
@@ -175,7 +175,7 @@ CREATE TABLE `users` (
   `reg` date NOT NULL DEFAULT current_timestamp(),
   `last` date NOT NULL,
   `kedvencekID` int(11) DEFAULT NULL,
-  `kep` varchar(200) COLLATE utf8_hungarian_ci DEFAULT NULL
+  `kep` varchar(200) COLLATE utf8_hungarian_ci DEFAULT 'admin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
@@ -183,13 +183,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `nev`, `email`, `password`, `telefonszam`, `jogok`, `reg`, `last`, `kedvencekID`, `kep`) VALUES
-(1, 'Próba Pista', 'probapista@nudentits.com', 'Turr513A', '+3620696969', 'user', '2023-02-02', '2023-02-03', 1, NULL),
-(3, 'Lajos', 'Lajos@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '0694251567428541', 'user', '2023-02-18', '2023-03-13', NULL, NULL),
-(4, 'admin', 'admin@nudentist.com', '7af2d10b73ab7cd8f603937f7697cb5fe432c7ff', '+36205988683', 'admin', '2023-02-19', '2023-03-13', NULL, NULL),
-(5, 'Szabó Péter', 'szpeter20@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620584561825', 'user', '2023-03-03', '2023-03-21', 6, NULL),
-(6, 'Zámbó Illés', 'zamboilles@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36205988683', 'user', '2023-03-03', '2023-03-14', NULL, NULL),
-(7, 'Foki Zoltán', 'turrfz@turr.hu', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36125525235652', 'user', '2023-03-03', '2023-03-17', NULL, NULL),
-(11, 'fiszfoszxd70', 'fiszfosz.0000@00000000.0000000000', '3810f3c42b21d2bc4f26609152909346c5a04923', '+3ddddddd6xddd', 'user', '2023-03-20', '0000-00-00', NULL, NULL);
+(1, 'Próba Pista', 'probapista@nudentits.com', 'Turr513A', '+3620696969', 'user', '2023-02-02', '2023-02-03', 1, 'admin'),
+(3, 'Lajos', 'Lajos@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '0694251567428541', 'user', '2023-02-18', '2023-03-21', NULL, 'ramona'),
+(4, 'admin', 'admin@nudentist.com', '7af2d10b73ab7cd8f603937f7697cb5fe432c7ff', '+36205988683', 'admin', '2023-02-19', '2023-03-21', NULL, 'admin'),
+(5, 'Szabó Péter', 'szpeter20@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620584561825', 'user', '2023-03-03', '2023-03-21', 6, 'szabopetra'),
+(6, 'Zámbó Illés', 'zamboilles@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36205988683', 'user', '2023-03-03', '2023-03-21', NULL, 'Zambo3'),
+(7, 'Foki Zoltán', 'turrfz@turr.hu', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36125525235652', 'user', '2023-03-03', '2023-03-21', NULL, 'fokizoltan'),
+(11, 'fiszfoszxd70', 'fiszfosz.0000@00000000.0000000000', '3810f3c42b21d2bc4f26609152909346c5a04923', '+3ddddddd6xddd', 'user', '2023-03-20', '0000-00-00', NULL, 'admin'),
+(12, 'Vigh Ákos', 'vighakos@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620696969', 'user', '2023-03-21', '2023-03-21', NULL, 'admin'),
+(13, 'Baranyi Dániel', 'baranyidaniel@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620696969', 'user', '2023-03-21', '2023-03-21', NULL, 'admin');
 
 -- --------------------------------------------------------
 
@@ -300,13 +302,13 @@ ALTER TABLE `orvosok`
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT a táblához `uzenetek`
 --
 ALTER TABLE `uzenetek`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
