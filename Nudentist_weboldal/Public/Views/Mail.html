@@ -1,7 +1,11 @@
-<select name="" id="" ng-model="message.user">
-    <option value="{{user.ID}}" ng-repeat="user in userek">{{user.nev}}</option>
-</select>
-<label for="cimzett">Címzett</label>
+<div class="form-floating mb-3"></div>
+    <select name="cimzett" id="cimzett" ng-model="message.user">
+        <option value="{{user.ID}}" ng-repeat="user in userek">{{user.nev}}</option>
+    </select>
+</div>
+<div class="form-floating mb-3">
+    <label for="cimzett">Címzett</label>
+</div>
 <input type="text" name="cim" id="cim" ng-model="mail.cim">
 <label for="cim">Cím</label>
 <textarea name="szoveg" id="szoveg" cols="30" rows="10" ng-model="mail.tartalom"></textarea><label for="szoveg">Tartalom</label>

@@ -50,7 +50,7 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
         }
 
 
-        if(false){
+        if($scope.comms.rating_text.length>500){
             alert("Kérjük értékelése tartalmazzon maximum 500 karaktert")
         }else{
             let data={

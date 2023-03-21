@@ -128,7 +128,7 @@ body{
     position: relative;
     height: fit-content;
     box-shadow: 5px 5px 5px 2px black;
-    width: calc(100% - 250px);
+    width:100%;
     border: 2px solid black;
     padding: 10px;
     margin-bottom: 5px;
@@ -361,4 +361,19 @@ table{
   margin-left: auto;
   margin-right: auto;
   width: 80%!important;
+}
+.dokprofhead{
+  width: 50%;
+  height: 50%;
+}
+.dokprofimage{
+  width: fit-content;
+  height: fit-content;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+.tablewidth{
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 }

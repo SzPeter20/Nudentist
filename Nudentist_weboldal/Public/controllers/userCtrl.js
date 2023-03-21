@@ -5,26 +5,26 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     $scope.sender=[];
     $scope.vanOlvasattlanUzenet=false;
 
-    for (let i = 0; i < $scope.uzenetek.length; i++){
-        if($scope.uzenetek[i].olvasottsag=='olvasatlan'){
-            $scope.vanOlvasattlanUzenet=true;
-        }
-    }
+    
 
 
 
     if($rootScope.loggedUser!=null){
-        DB.selectAll('uzenetek').then(function(res){
+        DB.select('uzenetek','recipientID',$rootScope.loggedUser.ID).then(function(res){
             $scope.uzenetek=res.data;
         })
+        for (let i = 0; i < $scope.uzenetek.length; i++){
+            if($scope.uzenetek[i].olvasottsag=='olvasatlan'){
+                $scope.vanOlvasattlanUzenet=true;
+            }
+        }
     }
+    
+    
     $scope.deleteMessage=function(id){
         DB.delete('uzenetek','ID',id).then(function(res){
             alert('Üzenet sikeresen törölve!');
         })
-    }
-    $scope.message=function(){
-        console.log($scope.uzenetek[0])
     }
     $scope.toMessageContent=function(id){
         for (let i = 0; i < $scope.uzenetek.length; i++){
