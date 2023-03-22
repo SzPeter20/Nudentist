@@ -57,6 +57,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
         }
     }
     /*
+    Vigh Ákos müve:
       55555555557777777777777777777777777777777777222222222222
       2
 

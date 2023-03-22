@@ -87,21 +87,12 @@
                                 <li class="nav-link" ng-if="loggedUser && (loggedUser.jogok==='doktor')">
                                     <i class='bx bx-calendar icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/idopontokkezelese">Időpontok</a>
-                                </li>
-                                <li class="nav-link" ng-if="loggedUser && (loggedUser.jogok==='doktor')">
-                                    <i class='bx bx-message icon' ></i>
-                                    <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>
                                 </li>   
                                 <!-- user functions -->
                                 <li class="nav-link"ng-if="loggedUser && (loggedUser.jogok==='user')">
                                     <i class='bx bx-calendar icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/idopontokkezelese">Időpontok</a>
                                 </li>
-                                <li class="nav-link" ng-if="loggedUser && (loggedUser.jogok==='user')">
-                                    <i class='bx bx-message icon' ></i>
-                                    <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>
-                                </li>
-
                                 <li class="nav-item" ng-if="loggedUser && ((loggedUser.jogok==='user')||loggedUser.jogok==='doktor')">
 
                                     <i class='bx bx-user-voice icon' ></i>
