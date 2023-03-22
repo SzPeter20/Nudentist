@@ -1,4 +1,4 @@
-app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams){
+app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams, $location){
     $scope.uzenet={};
     if($routeParams.id!=null){1
         DB.select('uzenetek','ID',$routeParams.id).then(function(res){
@@ -11,10 +11,22 @@ app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams){
     $scope.mail;
     $scope.cimzettid;
 
-    DB.selectAll('users').then(function(res) {
-        $scope.userek= res.data;
-        
-    });
+    if($rootScope.loggedUser.jogok=='user'){
+        DB.selectAll('orvosok').then(function(res) {
+            $scope.userek= res.data;
+            
+        });
+    }else{
+        DB.selectAll('users').then(function(res) {
+            $scope.userek= res.data;
+            
+        });
+    }
+    
+    
+    $scope.backToMessages=function(){
+        $location.path('/uzenetek')
+    }
 
     $scope.sendMessage=function(){
 

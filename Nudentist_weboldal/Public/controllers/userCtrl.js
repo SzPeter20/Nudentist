@@ -13,11 +13,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
         DB.select('uzenetek','recipientID',$rootScope.loggedUser.ID).then(function(res){
             $scope.uzenetek=res.data;
         })
-        for (let i = 0; i < $scope.uzenetek.length; i++){
-            if($scope.uzenetek[i].olvasottsag=='olvasatlan'){
-                $scope.vanOlvasattlanUzenet=true;
-            }
-        }
+        
     }
     
     
@@ -28,11 +24,13 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     }
     $scope.toMessageContent=function(id){
         for (let i = 0; i < $scope.uzenetek.length; i++){
-            if($scope.uzenetek[i].ID===id){
-                $scope.uzenetek[i].olvasottsag='olvasott'
+            if($scope.uzenetek[i].ID==id){
+                data={olvasottsag:'olvasott'}
+                DB.update('uzenetek',id,data)
             }
         }
-        $location.path('/uzenet/' + id)
+        $location.path('/uzenet/'+id)
+        
     }
     
     DB.selectAll('orvosok').then(function(res){

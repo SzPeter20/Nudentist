@@ -377,3 +377,13 @@ table{
   margin-right: auto;
   width: 80%;
 }
+.mailInputs{
+  width: 30%;
+  margin-bottom: 1%;
+}
+.mailTextArea{
+  width: 600px !important;
+}
+.dokProfileFav{
+  margin-left: 40%;
+}
