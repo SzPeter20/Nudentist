@@ -7,8 +7,6 @@ app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams, $loca
     )}
     $scope.message={};
     $scope.userek=[];
-    $scope.cimzett;
-    $scope.mail;
     $scope.cimzettid;
 
     if($rootScope.loggedUser.jogok=='user'){
@@ -29,57 +27,58 @@ app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams, $loca
     }
 
     $scope.sendMessage=function(){
-
-        for (let i = 0; i < $scope.userek.length; i++){
-            if($scope.userek[i].nev==$scope.cimzett){
-                $scope.cimzettid=$scope.userek.ID
+        if($scope.message.cim==null||$scope.tartalom==null||$scope.message.user==null){
+            alert('Nem adott meg minden szükséges adatot!')
+        }else{
+            for (let i = 0; i < $scope.userek.length; i++){
+                if($scope.userek[i].nev==$scope.message.user){
+                    $scope.cimzettid=$scope.userek[i].ID
+                }
             }
+            console.log($scope.message.user);
+            console.log('anyád');
+    
+                if($rootScope.loggedUser.jogok=='user'){
+                    let data = {
+                        senderid: $rootScope.loggedUser.ID,
+                        sendertype: $rootScope.loggedUser.jogok,
+                        recipientID: $scope.cimzettid,
+                        recipienttype: 'doktor',
+                        title: $scope.message.cim,
+                        tartalom: $scope.message.tartalom,
+                        datum: moment(new Date()).format('YYYY-MM-DD')
+                    }
+                    DB.insert('uzenetek', data).then(function(res) {
+                        if (res.data.affectedRows != 0) {
+                            alert('Üzenet sikeresen elküldve!');
+                            $scope.cimzettid = '';
+                            $scope.message = '';
+                        } else {
+                            alert('Váratlan hiba történt az adatbázis művelet során!');
+                        }
+                    });
+                }else if($rootScope.loggedUser.jogok=='doktor'){
+                    let data = {
+                        senderid: $rootScope.loggedUser.ID,
+                        sendertype: $rootScope.loggedUser.jogok,
+                        recipientID: $scope.cimzettid,
+                        recipienttype: 'user',
+                        title: $scope.message.cim,
+                        tartalom: $scope.message.tartalom,
+                        datum: moment(new Date()).format('YYYY-MM-DD')
+                    }
+                    DB.insert('uzenetek', data).then(function(res) {
+                        if (res.data.affectedRows != 0) {
+                            alert('Üzenet sikeresen elküldve!');
+                            $scope.cimzettid = '';
+                            $scope.message = '';
+                        } else {
+                            alert('Váratlan hiba történt az adatbázis művelet során!');
+                        }
+                    });
+                    
+                }
         }
-            if($rootScope.loggedUser.jogok=='users'){
-                let data = {
-                    senderid: $rootScope.loggedUser.ID,
-                    sendertype: $rootScope.loggedUser.jogok,
-                    recipientID: $scope.message.user,
-                    recipienttype: 'doktor',
-                    title: $scope.cim,
-                    tartalom: $scope.tartalom,
-                    datum: moment(new Date()).format('YYYY-MM-DD')
-                }
-                DB.insert('uzenetek', data).then(function(res) {
-                    if (res.data.affectedRows != 0) {
-                        alert('Üzenet sikeresen elküldve!');
-                        $scope.cimzett = '';
-                        $scope.mail = '';
-                    } else {
-                        alert('Váratlan hiba történt az adatbázis művelet során!');
-                    }
-                });
-            }else if($rootScope.loggedUser.jogok=='doktor'){
-                let data = {
-                    senderid: $rootScope.loggedUser.ID,
-                    sendertype: $rootScope.loggedUser.jogok,
-                    recipientID: $scope.message.user,
-                    recipienttype: 'user',
-                    title: $scope.mail.cim,
-                    tartalom: $scope.mail.tartalom,
-                    datum: moment(new Date()).format('YYYY-MM-DD')
-                }
-                DB.insert('uzenetek', data).then(function(res) {
-                    if (res.data.affectedRows != 0) {
-                        alert('Üzenet sikeresen elküldve!');
-                        $scope.cimzett = '';
-                        $scope.mail = '';
-                    } else {
-                        alert('Váratlan hiba történt az adatbázis művelet során!');
-                    }
-                });
-                
-            }
-        
-        
-        
-
-        
     }
     
     $scope.cucc=function(){

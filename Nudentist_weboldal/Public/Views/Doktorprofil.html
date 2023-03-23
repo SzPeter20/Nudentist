@@ -21,11 +21,11 @@
             
             <img src={{doktor.image}}>
             <p ng-if="loggedUser&& loggedUser.jogok=='user'" class="dokProfileFav">
-                <i class="bi bi-star star" id="star1" ng-click="pointrate(1)"></i>
-                <i class="bi bi-star star" id="star2" ng-click="pointrate(2)"></i>
-                <i class="bi bi-star star" id="star3" ng-click="pointrate(3)"></i>
-                <i class="bi bi-star star" id="star4" ng-click="pointrate(4)"></i>
-                <i class="bi bi-star star" id="star5" ng-click="pointrate(5)"></i>
+                <i class="bi bi-star star" id="star_1" ng-click="pointrate(1)"  ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{doktor.ID}}"></i>
+                <i class="bi bi-star star" id="star_2" ng-click="pointrate(2)"  ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{recept.id}}"></i>
+                <i class="bi bi-star star" id="star_3" ng-click="pointrate(3)"  ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{recept.id}}"></i>
+                <i class="bi bi-star star" id="star_4" ng-click="pointrate(4)"  ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{recept.id}}"></i>
+                <i class="bi bi-star star" id="star_5" ng-click="pointrate(5)"  ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{recept.id}}"></i>
             </p>
             
         </div>

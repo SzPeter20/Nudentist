@@ -86,32 +86,46 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
             }
     }
     $scope.message= function(){
-        if($scope.message.length>500){
-            alert("Kérjük üzenete tartalmazzon maximum 500 karaktert")
-        }else{
-            let data={
-                senderID:$rootScope.loggedUser.ID,
-                senderType:$rootScope.loggedUser.jogok,
-                recipientID:$scope.doktor.ID,
-                recipientType:$scope.doktor.jogok,
-                title:$scope.comms.title,
-                tartalom:$scope.comms.message_text,
-                datum:moment(new Date()).format('YYYY-MM-DD'),
-                olvasottsag:'olvasatlan'
-            }
-
-            DB.insert("uzenetek",data).then(function(res){
-                if (res.data.affectedRows != 0) {
-                    alert('Sikeres üzenet küldés!');
-                    $scope.comms = {};
-                } else {
-                    alert('Váratlan hiba történt!');
-                }
-            })
+        if($scope.message_text==null||$scope.title==null){
+            alert('Nem adott meg minden szükséges adatot!')
         }
+        else{
+            if($scope.message_text.length>500){
+                alert("Kérjük üzenete tartalmazzon maximum 500 karaktert")
+            }else{
+                let data={
+                    senderID:$rootScope.loggedUser.ID,
+                    senderType:$rootScope.loggedUser.jogok,
+                    recipientID:$scope.doktor.ID,
+                    recipientType:$scope.doktor.jogok,
+                    title:$scope.comms.title,
+                    tartalom:$scope.comms.message_text,
+                    datum:moment(new Date()).format('YYYY-MM-DD'),
+                    olvasottsag:'olvasatlan'
+                }
+    
+                DB.insert("uzenetek",data).then(function(res){
+                    if (res.data.affectedRows != 0) {
+                        alert('Sikeres üzenet küldés!');
+                        $scope.comms = {};
+                    } else {
+                        alert('Váratlan hiba történt!');
+                    }
+                })
+            }
+        }
+        
     }
     $scope.pointrate= function(starnum){
             $scope.pointrating=starnum;
     }
-    
+    $scope.starHover = function(id) {
+        document.getElementById('star_' + id).classList.remove('bi-star')
+        document.getElementById('star_' + id).classList.add('bi-star-fill')
+    }
+
+    $scope.starLeave = function(id) {
+        document.getElementById('star_' + id).classList.remove('bi-star-fill')
+        document.getElementById('star_' + id).classList.add('bi-star')
+    }
 });
