@@ -25,19 +25,37 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
         $scope.uzenetek=res.data;
     })
     $scope.favourite=function(id){
-
-        console.log(id)
-        let data={
-            kedvencekID:id
-        }
-        DB.update('users',$rootScope.loggedUser.ID,data).then(function(res){
-            if (res.data.affectedRows != 0) {
-                alert('Kedvenc orvos sikeresen felvéve!');
-                
-            } else {
-                alert('Váratlan hiba történt az adatbázis művelet során!');
+        if($rootScope.loggedUser.kedvencekID==$scope.doktor.ID){
+            document.getElementById('heart').classList.remove('bi-heart-fill')
+            document.getElementById('heart').classList.add('bi-heart')
+            let data={
+                kedvencekID:null
             }
-        })
+            DB.update('users',$rootScope.loggedUser.ID,data).then(function(res){
+                if (res.data.affectedRows != 0) {
+                    alert('Kedvenc orvos sikeresen eltávolítva!');
+                    
+                } else {
+                    alert('Váratlan hiba történt az adatbázis művelet során!');
+            }})
+            $rootScope.loggedUser.kedvencekID=0;
+        }else{
+            document.getElementById('heart').classList.remove('bi-heart')
+            document.getElementById('heart').classList.add('bi-heart-fill')
+            $rootScope.loggedUser.kedvencekID=id;
+            let data={
+                kedvencekID:id
+            }
+            DB.update('users',$rootScope.loggedUser.ID,data).then(function(res){
+                if (res.data.affectedRows != 0) {
+                    alert('Kedvenc orvos sikeresen felvéve!');
+                    
+                } else {
+                    alert('Váratlan hiba történt az adatbázis művelet során!');
+                }
+            })
+        }
+        
     }
 
     $scope.rate= function(){
@@ -85,12 +103,13 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
             
             }
     }
+    
     $scope.message= function(){
-        if($scope.message_text==null||$scope.title==null){
+        if($scope.comms.message_text==null||$scope.comms.title==null){
             alert('Nem adott meg minden szükséges adatot!')
         }
         else{
-            if($scope.message_text.length>500){
+            if($scope.comms.message_text.length>500){
                 alert("Kérjük üzenete tartalmazzon maximum 500 karaktert")
             }else{
                 let data={
@@ -119,13 +138,106 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     $scope.pointrate= function(starnum){
             $scope.pointrating=starnum;
     }
-    $scope.starHover = function(id) {
-        document.getElementById('star_' + id).classList.remove('bi-star')
-        document.getElementById('star_' + id).classList.add('bi-star-fill')
+    $scope.heartHover=function(){
+        document.getElementById('heart').classList.remove('bi-heart')
+        document.getElementById('heart').classList.add('bi-heart-fill')
+    }
+    $scope.heartLeave=function(){
+        document.getElementById('heart').classList.add('bi-heart')
+        document.getElementById('heart').classList.remove('bi-heart-fill')
+    }
+    $scope.starHover = function(num) {
+        switch(num)
+        {
+            case 1:
+                document.getElementById('star_1').classList.remove('bi-star')
+                document.getElementById('star_1').classList.add('bi-star-fill')
+                break;
+            case 2:
+                document.getElementById('star_1').classList.remove('bi-star')
+                document.getElementById('star_1').classList.add('bi-star-fill')
+                document.getElementById('star_2').classList.remove('bi-star')
+                document.getElementById('star_2').classList.add('bi-star-fill')
+                break;
+            case 3:
+                document.getElementById('star_1').classList.remove('bi-star')
+                document.getElementById('star_1').classList.add('bi-star-fill')
+                document.getElementById('star_2').classList.remove('bi-star')
+                document.getElementById('star_2').classList.add('bi-star-fill')
+                document.getElementById('star_3').classList.remove('bi-star')
+                document.getElementById('star_3').classList.add('bi-star-fill')
+                break;
+            case 4:
+                document.getElementById('star_1').classList.remove('bi-star')
+                document.getElementById('star_1').classList.add('bi-star-fill')
+                document.getElementById('star_2').classList.remove('bi-star')
+                document.getElementById('star_2').classList.add('bi-star-fill')
+                document.getElementById('star_3').classList.remove('bi-star')
+                document.getElementById('star_3').classList.add('bi-star-fill')
+                document.getElementById('star_4').classList.remove('bi-star')
+                document.getElementById('star_4').classList.add('bi-star-fill')
+
+                break;
+            case 5:
+                document.getElementById('star_1').classList.remove('bi-star')
+                document.getElementById('star_1').classList.add('bi-star-fill')
+                document.getElementById('star_2').classList.remove('bi-star')
+                document.getElementById('star_2').classList.add('bi-star-fill')
+                document.getElementById('star_3').classList.remove('bi-star')
+                document.getElementById('star_3').classList.add('bi-star-fill')
+                document.getElementById('star_4').classList.remove('bi-star')
+                document.getElementById('star_4').classList.add('bi-star-fill')
+                document.getElementById('star_5').classList.remove('bi-star')
+                document.getElementById('star_5').classList.add('bi-star-fill')
+                break;
+        }
+        
     }
 
-    $scope.starLeave = function(id) {
-        document.getElementById('star_' + id).classList.remove('bi-star-fill')
-        document.getElementById('star_' + id).classList.add('bi-star')
+    $scope.starLeave = function(num) {
+        switch(num)
+        {
+            case 1:
+                document.getElementById('star_1').classList.remove('bi-star-fill')
+                document.getElementById('star_1').classList.add('bi-star')
+                break;
+            case 2:
+                document.getElementById('star_1').classList.remove('bi-star-fill')
+                document.getElementById('star_1').classList.add('bi-star')
+                document.getElementById('star_2').classList.remove('bi-star-fill')
+                document.getElementById('star_2').classList.add('bi-star')
+                break;
+            case 3:
+                document.getElementById('star_1').classList.remove('bi-star-fill')
+                document.getElementById('star_1').classList.add('bi-star')
+                document.getElementById('star_2').classList.remove('bi-star-fill')
+                document.getElementById('star_2').classList.add('bi-star')
+                document.getElementById('star_3').classList.remove('bi-star-fill')
+                document.getElementById('star_3').classList.add('bi-star')
+                break;
+            case 4:
+                document.getElementById('star_1').classList.remove('bi-star-fill')
+                document.getElementById('star_1').classList.add('bi-star')
+                document.getElementById('star_2').classList.remove('bi-star-fill')
+                document.getElementById('star_2').classList.add('bi-star')
+                document.getElementById('star_3').classList.remove('bi-star-fill')
+                document.getElementById('star_3').classList.add('bi-star')
+                document.getElementById('star_4').classList.remove('bi-star-fill')
+                document.getElementById('star_4').classList.add('bi-star')
+                break;
+            case 5:
+                document.getElementById('star_1').classList.remove('bi-star-fill')
+                document.getElementById('star_1').classList.add('bi-star')
+                document.getElementById('star_2').classList.remove('bi-star-fill')
+                document.getElementById('star_2').classList.add('bi-star')
+                document.getElementById('star_3').classList.remove('bi-star-fill')
+                document.getElementById('star_3').classList.add('bi-star')
+                document.getElementById('star_4').classList.remove('bi-star-fill')
+                document.getElementById('star_4').classList.add('bi-star')
+                document.getElementById('star_5').classList.remove('bi-star-fill')
+                document.getElementById('star_5').classList.add('bi-star')
+                break;
+        }
+        
     }
 });

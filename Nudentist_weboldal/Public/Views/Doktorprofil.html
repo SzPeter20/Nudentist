@@ -11,21 +11,21 @@
                 <img src="./Assets/HelperImages/{{doktor.kep}}.jpg" class="img-fluid  dokprofimage" alt="" srcset="">
             </header>
         <div class="profil">
-            <div class="dokProfileFav">
-                <svg ng-if="loggedUser&& loggedUser.jogok=='user'" ng-click="favourite(doktor.ID)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                  </svg>
+            <div class="dokProfileFav" ng-if="loggedUser&& loggedUser.jogok=='user'">
+                
+                  <i class="bi bi-heart" ng-mouseover="heartHover()" ng-mouseleave="heartLeave()" id="heart"  ng-click="favourite(doktor.ID)"></i>
+
                   <span ng-if="loggedUser&& loggedUser.jogok=='user'" class="text nav-text" >Kedvencekhez adás</span>
 
             </div>
             
             <img src={{doktor.image}}>
             <p ng-if="loggedUser&& loggedUser.jogok=='user'" class="dokProfileFav">
-                <i class="bi bi-star star" id="star_1" ng-click="pointrate(1)"  ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{doktor.ID}}"></i>
-                <i class="bi bi-star star" id="star_2" ng-click="pointrate(2)"  ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{recept.id}}"></i>
-                <i class="bi bi-star star" id="star_3" ng-click="pointrate(3)"  ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{recept.id}}"></i>
-                <i class="bi bi-star star" id="star_4" ng-click="pointrate(4)"  ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{recept.id}}"></i>
-                <i class="bi bi-star star" id="star_5" ng-click="pointrate(5)"  ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{recept.id}}"></i>
+                <i class="bi bi-star star" id="star_1" ng-click="pointrate(1)"  ng-mouseover="starHover(1)" ng-mouseleave="starLeave(1)"></i>
+                <i class="bi bi-star star" id="star_2" ng-click="pointrate(2)"  ng-mouseover="starHover(2)" ng-mouseleave="starLeave(2)"></i>
+                <i class="bi bi-star star" id="star_3" ng-click="pointrate(3)"  ng-mouseover="starHover(3)" ng-mouseleave="starLeave(3)"></i>
+                <i class="bi bi-star star" id="star_4" ng-click="pointrate(4)"  ng-mouseover="starHover(4)" ng-mouseleave="starLeave(4)"></i>
+                <i class="bi bi-star star" id="star_5" ng-click="pointrate(5)"  ng-mouseover="starHover(5)" ng-mouseleave="starLeave(5)"></i>
             </p>
             
         </div>

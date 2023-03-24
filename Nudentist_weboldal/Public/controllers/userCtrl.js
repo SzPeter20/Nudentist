@@ -5,9 +5,6 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     $scope.sender=[];
     $scope.vanOlvasattlanUzenet=false;
 
-    
-
-
 
     if($rootScope.loggedUser!=null){
         DB.select('uzenetek','recipientID',$rootScope.loggedUser.ID).then(function(res){
@@ -189,7 +186,6 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
             }
 
             DB.logincheck(data).then(function(res) {
-                console.log(res.data);
                 if (res.data.length == 0) {
                     DB.logincheck(data2).then(function(res) {
                         console.log(res.data);
