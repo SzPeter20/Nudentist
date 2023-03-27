@@ -27,16 +27,12 @@ app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams, $loca
     }
 
     $scope.sendMessage=function(){
-        if($scope.message.cim==null||$scope.tartalom==null||$scope.message.user==null){
-            alert('Nem adott meg minden szükséges adatot!')
-        }else{
+        
             for (let i = 0; i < $scope.userek.length; i++){
                 if($scope.userek[i].nev==$scope.message.user){
                     $scope.cimzettid=$scope.userek[i].ID
                 }
             }
-            console.log($scope.message.user);
-            console.log('anyád');
     
                 if($rootScope.loggedUser.jogok=='user'){
                     let data = {
@@ -79,7 +75,7 @@ app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams, $loca
                     
                 }
         }
-    }
+    
     
     $scope.cucc=function(){
         console.log($scope.uzenet)

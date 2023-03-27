@@ -387,3 +387,9 @@ table{
 .dokProfileFav{
   margin-left: 40%;
 }
+#heart{
+  cursor:pointer ;
+}
+.star{
+  cursor:pointer ;
+}

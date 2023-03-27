@@ -26,34 +26,35 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     })
     $scope.favourite=function(id){
         if($rootScope.loggedUser.kedvencekID==$scope.doktor.ID){
-            document.getElementById('heart').classList.remove('bi-heart-fill')
-            document.getElementById('heart').classList.add('bi-heart')
+            
             let data={
                 kedvencekID:null
             }
             DB.update('users',$rootScope.loggedUser.ID,data).then(function(res){
                 if (res.data.affectedRows != 0) {
-                    alert('Kedvenc orvos sikeresen eltávolítva!');
+                    //alert('Kedvenc orvos sikeresen eltávolítva!');
                     
                 } else {
-                    alert('Váratlan hiba történt az adatbázis művelet során!');
+                    //alert('Váratlan hiba történt az adatbázis művelet során!');
             }})
             $rootScope.loggedUser.kedvencekID=0;
+            document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
         }else{
-            document.getElementById('heart').classList.remove('bi-heart')
-            document.getElementById('heart').classList.add('bi-heart-fill')
+            
             $rootScope.loggedUser.kedvencekID=id;
             let data={
                 kedvencekID:id
             }
             DB.update('users',$rootScope.loggedUser.ID,data).then(function(res){
                 if (res.data.affectedRows != 0) {
-                    alert('Kedvenc orvos sikeresen felvéve!');
+                    //alert('Kedvenc orvos sikeresen felvéve!');
                     
                 } else {
-                    alert('Váratlan hiba történt az adatbázis művelet során!');
+                    //alert('Váratlan hiba történt az adatbázis művelet során!');
                 }
             })
+            document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart') 
+            
         }
         
     }
@@ -136,59 +137,71 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
         
     }
     $scope.pointrate= function(starnum){
-            $scope.pointrating=starnum;
+        
+        $scope.pointrating=starnum;
     }
     $scope.heartHover=function(){
-        document.getElementById('heart').classList.remove('bi-heart')
-        document.getElementById('heart').classList.add('bi-heart-fill')
+        if($rootScope.loggedUser.kedvencekID!=$scope.doktor.ID){
+            if(document.getElementById('heart').classList.contains('bi-heart-fill')){
+                document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
+            }else if(document.getElementById('heart').classList.contains('bi-heart')){
+                document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
+            }
+        }else if($rootScope.loggedUser.kedvencekID==$scope.doktor.ID){
+            if(document.getElementById('heart').classList.contains('bi-heart')){
+                document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
+            }else if(document.getElementById('heart').classList.contains('bi-heart-fill')){
+                document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
+            }
+        }
+        
+        
     }
     $scope.heartLeave=function(){
-        document.getElementById('heart').classList.add('bi-heart')
-        document.getElementById('heart').classList.remove('bi-heart-fill')
+        if($rootScope.loggedUser.kedvencekID!=$scope.doktor.ID){
+            if(document.getElementById('heart').classList.contains('bi-heart')){
+                document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
+            }else if(document.getElementById('heart').classList.contains('bi-heart-fill')){
+                document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
+            }
+        }else if($rootScope.loggedUser.kedvencekID==$scope.doktor.ID){
+            if(document.getElementById('heart').classList.contains('bi-heart-fill')){
+                document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
+            }else if(document.getElementById('heart').classList.contains('bi-heart')){
+                document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
+            }
+        }
+        
     }
     $scope.starHover = function(num) {
         switch(num)
         {
             case 1:
-                document.getElementById('star_1').classList.remove('bi-star')
-                document.getElementById('star_1').classList.add('bi-star-fill')
+                document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
                 break;
             case 2:
-                document.getElementById('star_1').classList.remove('bi-star')
-                document.getElementById('star_1').classList.add('bi-star-fill')
-                document.getElementById('star_2').classList.remove('bi-star')
-                document.getElementById('star_2').classList.add('bi-star-fill')
+                document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
                 break;
             case 3:
-                document.getElementById('star_1').classList.remove('bi-star')
-                document.getElementById('star_1').classList.add('bi-star-fill')
-                document.getElementById('star_2').classList.remove('bi-star')
-                document.getElementById('star_2').classList.add('bi-star-fill')
-                document.getElementById('star_3').classList.remove('bi-star')
-                document.getElementById('star_3').classList.add('bi-star-fill')
+                document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
                 break;
             case 4:
-                document.getElementById('star_1').classList.remove('bi-star')
-                document.getElementById('star_1').classList.add('bi-star-fill')
-                document.getElementById('star_2').classList.remove('bi-star')
-                document.getElementById('star_2').classList.add('bi-star-fill')
-                document.getElementById('star_3').classList.remove('bi-star')
-                document.getElementById('star_3').classList.add('bi-star-fill')
-                document.getElementById('star_4').classList.remove('bi-star')
-                document.getElementById('star_4').classList.add('bi-star-fill')
+                
+                document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
+                document.getElementById('star_4').classList.replace('bi-star','bi-star-fill')
 
                 break;
             case 5:
-                document.getElementById('star_1').classList.remove('bi-star')
-                document.getElementById('star_1').classList.add('bi-star-fill')
-                document.getElementById('star_2').classList.remove('bi-star')
-                document.getElementById('star_2').classList.add('bi-star-fill')
-                document.getElementById('star_3').classList.remove('bi-star')
-                document.getElementById('star_3').classList.add('bi-star-fill')
-                document.getElementById('star_4').classList.remove('bi-star')
-                document.getElementById('star_4').classList.add('bi-star-fill')
-                document.getElementById('star_5').classList.remove('bi-star')
-                document.getElementById('star_5').classList.add('bi-star-fill')
+                document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
+                document.getElementById('star_4').classList.replace('bi-star','bi-star-fill')
+                document.getElementById('star_5').classList.replace('bi-star','bi-star-fill')
                 break;
         }
         
@@ -198,44 +211,31 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
         switch(num)
         {
             case 1:
-                document.getElementById('star_1').classList.remove('bi-star-fill')
-                document.getElementById('star_1').classList.add('bi-star')
+                document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
                 break;
             case 2:
-                document.getElementById('star_1').classList.remove('bi-star-fill')
-                document.getElementById('star_1').classList.add('bi-star')
-                document.getElementById('star_2').classList.remove('bi-star-fill')
-                document.getElementById('star_2').classList.add('bi-star')
+                document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
+                document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
                 break;
             case 3:
-                document.getElementById('star_1').classList.remove('bi-star-fill')
-                document.getElementById('star_1').classList.add('bi-star')
-                document.getElementById('star_2').classList.remove('bi-star-fill')
-                document.getElementById('star_2').classList.add('bi-star')
-                document.getElementById('star_3').classList.remove('bi-star-fill')
-                document.getElementById('star_3').classList.add('bi-star')
+                document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
+                document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
+                document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
                 break;
             case 4:
-                document.getElementById('star_1').classList.remove('bi-star-fill')
-                document.getElementById('star_1').classList.add('bi-star')
-                document.getElementById('star_2').classList.remove('bi-star-fill')
-                document.getElementById('star_2').classList.add('bi-star')
-                document.getElementById('star_3').classList.remove('bi-star-fill')
-                document.getElementById('star_3').classList.add('bi-star')
-                document.getElementById('star_4').classList.remove('bi-star-fill')
-                document.getElementById('star_4').classList.add('bi-star')
+                
+                document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
+                document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
+                document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
+                document.getElementById('star_4').classList.replace('bi-star-fill','bi-star')
+
                 break;
             case 5:
-                document.getElementById('star_1').classList.remove('bi-star-fill')
-                document.getElementById('star_1').classList.add('bi-star')
-                document.getElementById('star_2').classList.remove('bi-star-fill')
-                document.getElementById('star_2').classList.add('bi-star')
-                document.getElementById('star_3').classList.remove('bi-star-fill')
-                document.getElementById('star_3').classList.add('bi-star')
-                document.getElementById('star_4').classList.remove('bi-star-fill')
-                document.getElementById('star_4').classList.add('bi-star')
-                document.getElementById('star_5').classList.remove('bi-star-fill')
-                document.getElementById('star_5').classList.add('bi-star')
+                document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
+                document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
+                document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
+                document.getElementById('star_4').classList.replace('bi-star-fill','bi-star')
+                document.getElementById('star_5').classList.replace('bi-star-fill','bi-star')
                 break;
         }
         
