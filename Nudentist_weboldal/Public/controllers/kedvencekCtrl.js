@@ -1,6 +1,5 @@
 app.controller('kedvencekCtrl', function($scope, DB, $rootScope, $location) {
     $scope.Munkatarsak = [];
-    $scope.kedvencek=[];
     $scope.userek=[];
 
     DB.selectAll('orvosok').then(function(res) {
