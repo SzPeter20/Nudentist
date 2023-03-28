@@ -56,9 +56,6 @@ app.config(function($routeProvider) {
             templateUrl: 'views/Doktorprofil.html',
             controller: 'profilokCtrl'
         })
-        // admin funkciók
-        
-        
         // user funkciók
         .when('/passwordmod', {
             templateUrl: 'views/Passwordmod.html',
@@ -67,6 +64,23 @@ app.config(function($routeProvider) {
         .when('/mail', {
             templateUrl: 'views/Mail.html',
             controller: 'uzenetCtrl'
+        })
+        .when('/kedvencek',{
+            templateUrl: 'views/Kedvencek.html',
+            controller: 'kedvencekCtrl'
+        })
+        .when('/kedvencek', {
+            resolve: {
+                function($rootScope, $location) {
+
+                    if ($rootScope.loggedUser.jogok != 'user') {
+
+                        $location.path('/');
+                    }
+                }
+            },
+            templateUrl: 'views/Kedvencek.html',
+            controller: 'kedvencekCtrl'
         })
         .when('/idopontokkezelese', {
             resolve: {
