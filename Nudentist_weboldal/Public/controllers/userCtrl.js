@@ -4,7 +4,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     $scope.userek=[];
     $scope.sender=[];
     $scope.vanOlvasattlanUzenet=false;
-
+    $scope.user={};
 
     if($rootScope.loggedUser!=null){
         DB.select('uzenetek','recipientID',$rootScope.loggedUser.ID).then(function(res){
@@ -99,7 +99,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     };
     $scope.mod = function() {
         console.log($rootScope.loggedUser)
-        if ($scope.user.name == null || $scope.user.email == null) {
+        if ($scope.user.nev == null || $scope.user.email == null) {
             alert('Nem adtál meg minden kötelező adatot!');
         }else if($rootScope.loggedUser.jogok==='doktor')
         {

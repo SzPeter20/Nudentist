@@ -5,9 +5,10 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     $scope.uzenetek=[];
     $scope.comms={};
     $scope.pointrating;
+    $scope.assignedpoints=false;
     $scope.message;
     $scope.csillagok;
-    $scope.ertekelesek;
+    $scope.ertekelesek=[];
     $scope.modositandoID;
 
     DB.selectAll('ertekelesek').then(function(res) {
@@ -38,7 +39,7 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
                     //alert('Váratlan hiba történt az adatbázis művelet során!');
             }})
             $rootScope.loggedUser.kedvencekID=0;
-            document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
+            document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
         }else{
             
             $rootScope.loggedUser.kedvencekID=id;
@@ -53,7 +54,7 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
                     //alert('Váratlan hiba történt az adatbázis művelet során!');
                 }
             })
-            document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart') 
+            document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill') 
             
         }
         
@@ -137,107 +138,106 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
         
     }
     $scope.pointrate= function(starnum){
+        if($scope.assignedpoints==false){
+            $scope.assignedpoints=true;
+            switch(starnum){
+                case 1:
+                    if(document.getElementById('star_1').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                    }
+                    
+                    break;
+                case 2:
+                    if(document.getElementById('star_2').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                    }
+                    
+                    break;
+                case 3:
+                    if(document.getElementById('star_3').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
+                    }
+                    
+                    break;
+                case 4:
+                    if(document.getElementById('star_4').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_4').classList.replace('bi-star','bi-star-fill')
+                    }
+                    break;
+                case 5:
+                    if(document.getElementById('star_5').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_4').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_5').classList.replace('bi-star','bi-star-fill')
+                    }
+                    
+                    break;
+            }
+        }else if($scope.assignedpoints)
+        {
+            $scope.assignedpoints=false;
+            switch(starnum){
+                case 1:
+                    if(document.getElementById('star_1').classList.contains('bi-star-fill')&&!document.getElementById('star_5').classList.contains('bi-star-fill')&&!document.getElementById('star_4').classList.contains('bi-star-fill')&&!document.getElementById('star_3').classList.contains('bi-star-fill')){
+                        document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
+                    }
+                    
+                    document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
+                    document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
+                    document.getElementById('star_4').classList.replace('bi-star-fill','bi-star')
+                    document.getElementById('star_5').classList.replace('bi-star-fill','bi-star')
+                    break;
+                case 2:
+                    if(document.getElementById('star_2').classList.contains('bi-star-fill')&&!document.getElementById('star_5').classList.contains('bi-star-fill')&&!document.getElementById('star_4').classList.contains('bi-star-fill')&&!document.getElementById('star_3').classList.contains('bi-star-fill')){
+                        document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
+                    }
+                    document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
+                    document.getElementById('star_4').classList.replace('bi-star-fill','bi-star')
+                    document.getElementById('star_5').classList.replace('bi-star-fill','bi-star')
+                    break;
+                case 3:
+                    if(document.getElementById('star_3').classList.contains('bi-star-fill')&&!document.getElementById('star_5').classList.contains('bi-star-fill')&&!document.getElementById('star_4').classList.contains('bi-star-fill')){
+                        document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
+                    }
+                    document.getElementById('star_4').classList.replace('bi-star-fill','bi-star')
+                    document.getElementById('star_5').classList.replace('bi-star-fill','bi-star')
+                    break;
+                case 4:
+                    if(document.getElementById('star_4').classList.contains('bi-star-fill')&&!document.getElementById('star_5').classList.contains('bi-star-fill')){
+                        document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_4').classList.replace('bi-star-fill','bi-star')
+                    }
+                    document.getElementById('star_5').classList.replace('bi-star-fill','bi-star')
+    
+                    break;
+                case 5:
+                    if(document.getElementById('star_5').classList.contains('bi-star-fill')){
+                        document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_4').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_5').classList.replace('bi-star-fill','bi-star')
+                    }
+                    
+                    break;
+            }
+
+        }
         
         $scope.pointrating=starnum;
     }
-    $scope.heartHover=function(){
-        if($rootScope.loggedUser.kedvencekID!=$scope.doktor.ID){
-            if(document.getElementById('heart').classList.contains('bi-heart-fill')){
-                document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
-            }else if(document.getElementById('heart').classList.contains('bi-heart')){
-                document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
-            }
-        }else if($rootScope.loggedUser.kedvencekID==$scope.doktor.ID){
-            if(document.getElementById('heart').classList.contains('bi-heart')){
-                document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
-            }else if(document.getElementById('heart').classList.contains('bi-heart-fill')){
-                document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
-            }
-        }
-        
-        
-    }
-    $scope.heartLeave=function(){
-        if($rootScope.loggedUser.kedvencekID!=$scope.doktor.ID){
-            if(document.getElementById('heart').classList.contains('bi-heart')){
-                document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
-            }else if(document.getElementById('heart').classList.contains('bi-heart-fill')){
-                document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
-            }
-        }else if($rootScope.loggedUser.kedvencekID==$scope.doktor.ID){
-            if(document.getElementById('heart').classList.contains('bi-heart-fill')){
-                document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
-            }else if(document.getElementById('heart').classList.contains('bi-heart')){
-                document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
-            }
-        }
-        
-    }
-    $scope.starHover = function(num) {
-        switch(num)
-        {
-            case 1:
-                document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
-                break;
-            case 2:
-                document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
-                document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
-                break;
-            case 3:
-                document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
-                document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
-                document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
-                break;
-            case 4:
-                
-                document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
-                document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
-                document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
-                document.getElementById('star_4').classList.replace('bi-star','bi-star-fill')
-
-                break;
-            case 5:
-                document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
-                document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
-                document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
-                document.getElementById('star_4').classList.replace('bi-star','bi-star-fill')
-                document.getElementById('star_5').classList.replace('bi-star','bi-star-fill')
-                break;
-        }
-        
-    }
-
-    $scope.starLeave = function(num) {
-        switch(num)
-        {
-            case 1:
-                document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
-                break;
-            case 2:
-                document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
-                document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
-                break;
-            case 3:
-                document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
-                document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
-                document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
-                break;
-            case 4:
-                
-                document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
-                document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
-                document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
-                document.getElementById('star_4').classList.replace('bi-star-fill','bi-star')
-
-                break;
-            case 5:
-                document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
-                document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
-                document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
-                document.getElementById('star_4').classList.replace('bi-star-fill','bi-star')
-                document.getElementById('star_5').classList.replace('bi-star-fill','bi-star')
-                break;
-        }
-        
-    }
+    
 });
