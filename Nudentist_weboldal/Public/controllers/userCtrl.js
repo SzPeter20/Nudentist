@@ -173,6 +173,9 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     $scope.tomail=function(){
         $location.path('/uzenetek')
     }
+    $scope.tokedvencek=function(){
+        $location.path('/kedvencek')
+    }
 
    
 
