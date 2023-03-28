@@ -8,6 +8,8 @@ app.controller('kedvencekCtrl', function($scope, DB, $rootScope, $location) {
     DB.selectAll('users').then(function(res){
         $scope.userek=res.data;
     })
-
+    $scope.toDocProfile=function(id){
+        $location.path('/dokprofil/' + id)
+    }
 
 });
