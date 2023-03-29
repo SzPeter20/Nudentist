@@ -22,7 +22,7 @@ app.config(function($routeProvider) {
     // bárki számára
         .when('/', {
             templateUrl: 'views/Homepage.html',
-            controller: 'munkatarsakCtrl'
+            controller: 'MunkatarsakCtrl'
         })
         .when('/reg', {
             templateUrl: 'views/Registration.html',
@@ -56,9 +56,6 @@ app.config(function($routeProvider) {
             templateUrl: 'views/Doktorprofil.html',
             controller: 'profilokCtrl'
         })
-        // admin funkciók
-        
-        
         // user funkciók
         .when('/passwordmod', {
             resolve: {
@@ -85,6 +82,23 @@ app.config(function($routeProvider) {
             },
             templateUrl: 'views/Mail.html',
             controller: 'uzenetCtrl'
+        })
+        .when('/kedvencek',{
+            templateUrl: 'views/Kedvencek.html',
+            controller: 'kedvencekCtrl'
+        })
+        .when('/kedvencek', {
+            resolve: {
+                function($rootScope, $location) {
+
+                    if ($rootScope.loggedUser.jogok != 'user') {
+
+                        $location.path('/');
+                    }
+                }
+            },
+            templateUrl: 'views/Kedvencek.html',
+            controller: 'kedvencekCtrl'
         })
         .when('/idopontokkezelese', {
             resolve: {
