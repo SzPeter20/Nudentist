@@ -87,11 +87,13 @@
                                 <li class="nav-link" ng-if="loggedUser && (loggedUser.jogok==='doktor')">
                                     <i class='bx bx-calendar icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/idopontokkezelese">Időpontok</a>
+
                                 </li>
                                 <li class="nav-link" ng-if="loggedUser && (loggedUser.jogok==='doktor')">
                                     <i class='bx bx-message icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>
                                 </li>
+
                                 <!-- user functions -->
                                 <li class="nav-link"ng-if="loggedUser && (loggedUser.jogok==='user')">
                                     <i class='bx bx-calendar icon' ></i>
@@ -121,7 +123,7 @@
         
         <main>
             
-            <div class="container-fluid" ng-view>
+            <div class="container-fluid shadow p-3 mb-5 bg-body-tertiary rounded" ng-view>
                 tartalom
             </div>
         </main>
@@ -153,8 +155,10 @@
     <script src="./controllers/profilokCtrl.js"></script>
     <script src="./controllers/kezelesekCtrl.js"></script>
     <script src="./controllers/idopontokCtrl.js"></script>
-    <script src="./controllers/MunkatarsakCtrl.js"></script>
-    
+
+    <script src="./controllers/munkatarsakCtrl.js"></script>
+    <script src="./controllers/kedvencekCtrl.js"></script>
+
     <footer>
         {{ settings.company }} - {{ settings.author }} 
     </footer>
