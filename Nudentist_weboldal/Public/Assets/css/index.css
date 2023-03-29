@@ -393,3 +393,7 @@ table{
 .star{
   cursor:pointer ;
 }
+.bemutatkozas_image{
+  width: 40%;
+  height: 40%;
+}

@@ -1,8 +1,9 @@
 <h1>Üzenet írás</h1>
+<a href="#!/uzenetek"> <button class="btn btn-primary">Vissza</button></a>
 <div class="form-floating mb-3"></div>
     <p>Címzett</p>
     <select name="cimzett" class="form-select mailInputs" id="cimzett" ng-model="message.user">
-        <option value="{{user.nev}}" ng-repeat="user in userek" ng-if="user.jogok=='doktor'">{{user.nev}}</option>
+        <option value="{{user.nev}}" ng-repeat="user in userek">{{user.nev}}</option>
     </select>
 </div>
 
