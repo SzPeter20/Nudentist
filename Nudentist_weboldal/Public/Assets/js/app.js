@@ -25,7 +25,7 @@ app.config(function($routeProvider) {
             controller: 'MunkatarsakCtrl'
         })
         .when('/reg', {
-            templateUrl: 'views/registration.html',
+            templateUrl: 'views/Registration.html',
             controller: 'userCtrl'
         })
         .when('/bemutatkozas', {
@@ -34,7 +34,7 @@ app.config(function($routeProvider) {
         })
         .when('/munkatarsak', {
             templateUrl: 'views/Munkatarsak.html',
-            controller: 'MunkatarsakCtrl'
+            controller: 'munkatarsakCtrl'
         })
         .when('/kezelesek', {
             templateUrl: 'views/Kezelesek.html',
@@ -49,7 +49,7 @@ app.config(function($routeProvider) {
         })
         .when('/elerhetoseg', {
             templateUrl: 'views/Elerhetosegek.html',
-            controller: 'MunkatarsakCtrl'
+            controller: 'munkatarsakCtrl'
         })
         
         .when('/dokprofil/:id', {
@@ -58,10 +58,28 @@ app.config(function($routeProvider) {
         })
         // user funkciók
         .when('/passwordmod', {
+            resolve: {
+                function($rootScope, $location) {
+
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+
+                        $location.path('/');
+                    }
+                }
+            },
             templateUrl: 'views/Passwordmod.html',
             controller: 'userCtrl'
         })
         .when('/mail', {
+            resolve: {
+                function($rootScope, $location) {
+
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+
+                        $location.path('/');
+                    }
+                }
+            },
             templateUrl: 'views/Mail.html',
             controller: 'uzenetCtrl'
         })

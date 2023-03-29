@@ -5,9 +5,10 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     $scope.uzenetek=[];
     $scope.comms={};
     $scope.pointrating;
+    $scope.assignedpoints=false;
     $scope.message;
     $scope.csillagok;
-    $scope.ertekelesek;
+    $scope.ertekelesek=[];
     $scope.modositandoID;
 
     DB.selectAll('ertekelesek').then(function(res) {
@@ -25,19 +26,38 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
         $scope.uzenetek=res.data;
     })
     $scope.favourite=function(id){
-
-        console.log(id)
-        let data={
-            kedvencekID:id
-        }
-        DB.update('users',$rootScope.loggedUser.ID,data).then(function(res){
-            if (res.data.affectedRows != 0) {
-                alert('Kedvenc orvos sikeresen felvéve!');
-                
-            } else {
-                alert('Váratlan hiba történt az adatbázis művelet során!');
+        if($rootScope.loggedUser.kedvencekID==$scope.doktor.ID){
+            
+            let data={
+                kedvencekID:null
             }
-        })
+            DB.update('users',$rootScope.loggedUser.ID,data).then(function(res){
+                if (res.data.affectedRows != 0) {
+                    //alert('Kedvenc orvos sikeresen eltávolítva!');
+                    
+                } else {
+                    //alert('Váratlan hiba történt az adatbázis művelet során!');
+            }})
+            $rootScope.loggedUser.kedvencekID=0;
+            document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
+        }else{
+            
+            $rootScope.loggedUser.kedvencekID=id;
+            let data={
+                kedvencekID:id
+            }
+            DB.update('users',$rootScope.loggedUser.ID,data).then(function(res){
+                if (res.data.affectedRows != 0) {
+                    //alert('Kedvenc orvos sikeresen felvéve!');
+                    
+                } else {
+                    //alert('Váratlan hiba történt az adatbázis művelet során!');
+                }
+            })
+            document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill') 
+            
+        }
+        
     }
 
     $scope.rate= function(){
@@ -50,7 +70,7 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
         }
 
 
-        if(false){
+        if($scope.comms.rating_text.length>500){
             alert("Kérjük értékelése tartalmazzon maximum 500 karaktert")
         }else{
             let data={
@@ -85,54 +105,139 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
             
             }
     }
+    
     $scope.message= function(){
-        if($scope.message.length>500){
-            alert("Kérjük üzenete tartalmazzon maximum 500 karaktert")
-        }else{
-            let data={
-                senderID:$rootScope.loggedUser.ID,
-                senderType:$rootScope.loggedUser.jogok,
-                recipientID:$scope.doktor.ID,
-                recipientType:$scope.doktor.jogok,
-                title:$scope.comms.title,
-                tartalom:$scope.comms.message_text,
-                datum:moment(new Date()).format('YYYY-MM-DD'),
-                olvasottsag:'olvasatlan'
-            }
-
-            DB.insert("uzenetek",data).then(function(res){
-                if (res.data.affectedRows != 0) {
-                    alert('Sikeres üzenet küldés!');
-                    $scope.comms = {};
-                } else {
-                    alert('Váratlan hiba történt!');
-                }
-            })
+        if($scope.comms.message_text==null||$scope.comms.title==null){
+            alert('Nem adott meg minden szükséges adatot!')
         }
+        else{
+            if($scope.comms.message_text.length>500){
+                alert("Kérjük üzenete tartalmazzon maximum 500 karaktert")
+            }else{
+                let data={
+                    senderID:$rootScope.loggedUser.ID,
+                    senderType:$rootScope.loggedUser.jogok,
+                    recipientID:$scope.doktor.ID,
+                    recipientType:$scope.doktor.jogok,
+                    title:$scope.comms.title,
+                    tartalom:$scope.comms.message_text,
+                    datum:moment(new Date()).format('YYYY-MM-DD'),
+                    olvasottsag:'olvasatlan'
+                }
+    
+                DB.insert("uzenetek",data).then(function(res){
+                    if (res.data.affectedRows != 0) {
+                        alert('Sikeres üzenet küldés!');
+                        $scope.comms = {};
+                    } else {
+                        alert('Váratlan hiba történt!');
+                    }
+                })
+            }
+        }
+        
     }
     $scope.pointrate= function(starnum){
-        switch(starnum)
+        if($scope.assignedpoints==false){
+            $scope.assignedpoints=true;
+            switch(starnum){
+                case 1:
+                    if(document.getElementById('star_1').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                    }
+                    
+                    break;
+                case 2:
+                    if(document.getElementById('star_2').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                    }
+                    
+                    break;
+                case 3:
+                    if(document.getElementById('star_3').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
+                    }
+                    
+                    break;
+                case 4:
+                    if(document.getElementById('star_4').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_4').classList.replace('bi-star','bi-star-fill')
+                    }
+                    break;
+                case 5:
+                    if(document.getElementById('star_5').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_4').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_5').classList.replace('bi-star','bi-star-fill')
+                    }
+                    
+                    break;
+            }
+        }else if($scope.assignedpoints)
         {
-            case 1:
-                $scope.pointrating=1;
-            break;
-            case 2:
-                $scope.pointrating=2;
-            break;
+            $scope.assignedpoints=false;
+            switch(starnum){
+                case 1:
+                    if(document.getElementById('star_1').classList.contains('bi-star-fill')&&!document.getElementById('star_5').classList.contains('bi-star-fill')&&!document.getElementById('star_4').classList.contains('bi-star-fill')&&!document.getElementById('star_3').classList.contains('bi-star-fill')){
+                        document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
+                    }
+                    
+                    document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
+                    document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
+                    document.getElementById('star_4').classList.replace('bi-star-fill','bi-star')
+                    document.getElementById('star_5').classList.replace('bi-star-fill','bi-star')
+                    break;
+                case 2:
+                    if(document.getElementById('star_2').classList.contains('bi-star-fill')&&!document.getElementById('star_5').classList.contains('bi-star-fill')&&!document.getElementById('star_4').classList.contains('bi-star-fill')&&!document.getElementById('star_3').classList.contains('bi-star-fill')){
+                        document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
+                    }
+                    document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
+                    document.getElementById('star_4').classList.replace('bi-star-fill','bi-star')
+                    document.getElementById('star_5').classList.replace('bi-star-fill','bi-star')
+                    break;
+                case 3:
+                    if(document.getElementById('star_3').classList.contains('bi-star-fill')&&!document.getElementById('star_5').classList.contains('bi-star-fill')&&!document.getElementById('star_4').classList.contains('bi-star-fill')){
+                        document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
+                    }
+                    document.getElementById('star_4').classList.replace('bi-star-fill','bi-star')
+                    document.getElementById('star_5').classList.replace('bi-star-fill','bi-star')
+                    break;
+                case 4:
+                    if(document.getElementById('star_4').classList.contains('bi-star-fill')&&!document.getElementById('star_5').classList.contains('bi-star-fill')){
+                        document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_4').classList.replace('bi-star-fill','bi-star')
+                    }
+                    document.getElementById('star_5').classList.replace('bi-star-fill','bi-star')
+    
+                    break;
+                case 5:
+                    if(document.getElementById('star_5').classList.contains('bi-star-fill')){
+                        document.getElementById('star_1').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_2').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_3').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_4').classList.replace('bi-star-fill','bi-star')
+                        document.getElementById('star_5').classList.replace('bi-star-fill','bi-star')
+                    }
+                    
+                    break;
+            }
 
-            case 3:
-                $scope.pointrating=3;
-            break;
-
-            case 4:
-                $scope.pointrating=4;
-            break;
-
-            case 5:
-                $scope.pointrating=5;
-            break;
         }
-        console.log($scope.pointrating)
+        
+        $scope.pointrating=starnum;
     }
     
 });

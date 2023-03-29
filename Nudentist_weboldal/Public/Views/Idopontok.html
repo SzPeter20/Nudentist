@@ -11,7 +11,7 @@
     <title>Időpontok</title>
 </head>
 <h1>Időpontok</h1>
-    <div class="table-responsive">
+    <div class="table-responsive tablewidth">
         <table class="table">
             <thead>
               <tr>
@@ -46,27 +46,30 @@
             </tbody>
           </table>
       </div>
-      <div class="form-floating mb-3">
-        <div ng-if="loggedUser && (loggedUser.jogok==='user')">
-        <div class="form-floating col-lg-3 mb-3">
+    <div class="form-floating col-lg-3 mb-3 doktorselect" ng-if="loggedUser && (loggedUser.jogok==='user')">
+
+        <div class="form-floating  mb-3 selecter">
+          
           <select class="form-select" id="orvos" ng-model="idopont.orvosid">
             <option selected>Válassz...</option>
             <option value="{{ Munkatars.ID }}"  ng-repeat="Munkatars in Munkatarsak" ng-if="Munkatars.jogok=='doktor'">{{Munkatars.nev}}</option>
           </select>
           <label for="orvos">Orvos</label>
-      </div>
-      <div class="form-floating mb-3">
-          <input type="date" class="form-control" id="floatingPassword" placeholder="Dátum" ng-model="idopont.datum" min="2023-01-01" max="2023-12-31" itemid="datum" value="Today">
-          <label for="floatingPassword">Dátum<em>*</em></label>
-      </div>
-      
-      <div class="form-floating mb-3">
-          <input type="time" class="form-control" id="floatingPassword" placeholder="Időpont" ng-model="idopont.idopont" min="08:00" max="20:00">
-          <label for="floatingPassword">Időpont<em>*</em></label>
-      </div>
-      <p class="mb-3 text-muted">Az Időpontnak 8 és 20 óra közöttinek kell lennie</p>
-      <p class="mb-3 text-muted">A <em>*</em>-al jelölt adatok megadása kötelező!</p>
-      
+        </div>
+        <div class="form-floating mb-3 foglalas">
+          <div ng-if="loggedUser && (loggedUser.jogok==='user')">
+          
+        <div class="form-floating mb-3">
+            <input type="date" class="form-control" id="floatingPassword" placeholder="Dátum" ng-model="idopont.datum" min="2023-01-01" max="2023-12-31" itemid="datum" value="Today">
+            <label for="floatingPassword">Dátum</label>
+        </div>
+        
+        <div class="form-floating mb-3">
+            <input type="time" class="form-control" id="floatingPassword" placeholder="Időpont" ng-model="idopont.idopont" min="08:00" max="20:00">
+            <label for="floatingPassword">Időpont</label>
+        </div>
+        <p class="mb-3 text-muted">Az Időpontnak 8 és 20 óra közöttinek kell lennie</p>
+    </div>
       <button class="btn btn-primary mb-3" ng-click="foglalas()">Időpont véglegesítése</button>
       </div>
       </div>

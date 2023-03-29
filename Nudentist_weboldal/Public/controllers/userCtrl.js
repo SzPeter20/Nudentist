@@ -4,35 +4,30 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     $scope.userek=[];
     $scope.sender=[];
     $scope.vanOlvasattlanUzenet=false;
-
-    for (let i = 0; i < $scope.uzenetek.length; i++){
-        if($scope.uzenetek[i].olvasottsag=='olvasatlan'){
-            $scope.vanOlvasattlanUzenet=true;
-        }
-    }
-
-
+    $scope.user={};
 
     if($rootScope.loggedUser!=null){
-        DB.selectAll('uzenetek').then(function(res){
+        DB.select('uzenetek','recipientID',$rootScope.loggedUser.ID).then(function(res){
             $scope.uzenetek=res.data;
         })
+        
     }
+    
+    
     $scope.deleteMessage=function(id){
         DB.delete('uzenetek','ID',id).then(function(res){
             alert('Üzenet sikeresen törölve!');
         })
     }
-    $scope.message=function(){
-        console.log($scope.uzenetek[0])
-    }
     $scope.toMessageContent=function(id){
         for (let i = 0; i < $scope.uzenetek.length; i++){
-            if($scope.uzenetek[i].ID===id){
-                $scope.uzenetek[i].olvasottsag='olvasott'
+            if($scope.uzenetek[i].ID==id){
+                data={olvasottsag:'olvasott'}
+                DB.update('uzenetek',id,data)
             }
         }
-        $location.path('/uzenet/' + id)
+        $location.path('/uzenet/'+id)
+        
     }
     
     DB.selectAll('orvosok').then(function(res){
@@ -105,7 +100,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     };
     $scope.mod = function() {
         console.log($rootScope.loggedUser)
-        if ($scope.user.name == null || $scope.user.email == null) {
+        if ($scope.user.nev == null || $scope.user.email == null) {
             alert('Nem adtál meg minden kötelező adatot!');
         }else if($rootScope.loggedUser.jogok==='doktor')
         {
@@ -195,7 +190,6 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
             }
 
             DB.logincheck(data).then(function(res) {
-                console.log(res.data);
                 if (res.data.length == 0) {
                     DB.logincheck(data2).then(function(res) {
                         console.log(res.data);

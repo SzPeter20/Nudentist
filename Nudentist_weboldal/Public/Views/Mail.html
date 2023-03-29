@@ -1,8 +1,20 @@
-<select name="" id="" ng-model="message.user">
-    <option value="{{user.ID}}" ng-repeat="user in userek">{{user.nev}}</option>
-</select>
-<label for="cimzett">Címzett</label>
-<input type="text" name="cim" id="cim" ng-model="mail.cim">
-<label for="cim">Cím</label>
-<textarea name="szoveg" id="szoveg" cols="30" rows="10" ng-model="mail.tartalom"></textarea><label for="szoveg">Tartalom</label>
-<button ng-click="sendMessage()">Küldés</button>
+<h1>Üzenet írás</h1>
+<div class="form-floating mb-3"></div>
+    <p>Címzett</p>
+    <select name="cimzett" class="form-select mailInputs" id="cimzett" ng-model="message.user">
+        <option value="{{user.nev}}" ng-repeat="user in userek" ng-if="user.jogok=='doktor'">{{user.nev}}</option>
+    </select>
+</div>
+
+    
+
+<div class="form-floating mb-3 mailTitle">
+    <input type="text"  class="form-control mailInputs" name="cim" id="cim" ng-model="message.cim">
+    <label for="cim">Cím</label>
+</div>
+
+<div class="mailTextArea">
+    <p>Tartalom</p>
+    <textarea name="szoveg"  id="szoveg" cols="80" rows="10" ng-model="message.tartalom"></textarea>
+    <button class="button" ng-click="sendMessage()">Küldés</button>
+</div>
