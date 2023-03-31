@@ -22,7 +22,7 @@ app.config(function($routeProvider) {
     // bárki számára
         .when('/', {
             templateUrl: 'views/Homepage.html',
-            controller: 'MunkatarsakCtrl'
+            controller: 'munkatarsakCtrl'
         })
         .when('/reg', {
             templateUrl: 'views/registration.html',
@@ -34,7 +34,7 @@ app.config(function($routeProvider) {
         })
         .when('/munkatarsak', {
             templateUrl: 'views/Munkatarsak.html',
-            controller: 'MunkatarsakCtrl'
+            controller: 'munkatarsakCtrl'
         })
         .when('/kezelesek', {
             templateUrl: 'views/Kezelesek.html',
@@ -49,7 +49,7 @@ app.config(function($routeProvider) {
         })
         .when('/elerhetoseg', {
             templateUrl: 'views/Elerhetosegek.html',
-            controller: 'MunkatarsakCtrl'
+            controller: 'munkatarsakCtrl'
         })
         
         .when('/dokprofil/:id', {

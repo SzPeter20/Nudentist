@@ -23,7 +23,7 @@
   margin-right: auto;
   padding: auto;
   margin-bottom: auto;
-  backdrop-filter: blur(2px);
+  backdrop-filter: none|blur|initial|inherit;
 }
 footer {
   background-color: black;
@@ -276,7 +276,7 @@ table{
     height: 150px;
     width: 150px;
     border-radius: 50%;
-    background: #e90fb2;
+    background: whitesmoke;
     padding: 3px;
   }
   .card-image .card-img{
