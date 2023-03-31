@@ -60,13 +60,13 @@
           <div ng-if="loggedUser && (loggedUser.jogok==='user')">
           
         <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="floatingPassword" placeholder="Dátum" ng-model="idopont.datum" min="2023-01-01" max="2023-12-31" itemid="datum" value="Today">
-            <label for="floatingPassword">Dátum</label>
+            <input type="date" class="form-control" id="floatingDatum" placeholder="Dátum" ng-model="idopont.datum" min="2023-01-01" max="2023-12-31" itemid="datum" value="Today" ng-click="setmin()">
+            <label for="floatingDatum">Dátum</label>
         </div>
         
         <div class="form-floating mb-3">
-            <input type="time" class="form-control" id="floatingPassword" placeholder="Időpont" ng-model="idopont.idopont" min="08:00" max="20:00">
-            <label for="floatingPassword">Időpont</label>
+            <input type="time" class="form-control" id="floatingTime" placeholder="Időpont" ng-model="idopont.idopont" min="08:00" max="20:00">
+            <label for="floatingTime">Időpont</label>
         </div>
         <p class="mb-3 text-muted">Az Időpontnak 8 és 20 óra közöttinek kell lennie</p>
     </div>

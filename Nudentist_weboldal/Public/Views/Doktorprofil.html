@@ -9,34 +9,40 @@
               
                 <h1>{{doktor.nev}}</h1>
                 <img src="./Assets/HelperImages/{{doktor.kep}}.jpg" class="img-fluid  dokprofimage" alt="" srcset="">
+                <div class="profil">
+                    <div class="dokProfileFav" ng-if="loggedUser&& loggedUser.jogok=='user'">
+                        
+                          <i class="bi bi-heart" id="heart"  ng-click="favourite(doktor.ID)"></i>
+        
+                          <span ng-if="loggedUser&& loggedUser.jogok=='user'" class="text nav-text" >Kedvencekhez adás</span>
+        
+                    </div>
+                    
+                    <img src={{doktor.image}}>
+                    <p ng-if="loggedUser&& loggedUser.jogok=='user'" class="dokProfileFav">
+                        <i class="bi bi-star star" id="star_1" ng-click="pointrate(1)"></i>
+                        <i class="bi bi-star star" id="star_2" ng-click="pointrate(2)"></i>
+                        <i class="bi bi-star star" id="star_3" ng-click="pointrate(3)"></i>
+                        <i class="bi bi-star star" id="star_4" ng-click="pointrate(4)"></i>
+                        <i class="bi bi-star star" id="star_5" ng-click="pointrate(5)"></i>
+                    </p>
+                    
+                </div>
             </header>
             <div>
-                <div class="text"><h1>Bemutatkozás</h1></div>
+                <h2>Elérhetőségek</h2>
+                <p>Telefonszám: {{doktor.telefonszam}}</p>
+                <p>Email-cím: {{doktor.email}}</p>
+            </div>
+            <div>
+                <div class="text"><h2>Bemutatkozás</h2></div>
                 <p> {{doktor.bemutatkozas}} </p>
             </div>
-        <div class="profil">
-            <div class="dokProfileFav" ng-if="loggedUser&& loggedUser.jogok=='user'">
-                
-                  <i class="bi bi-heart" id="heart"  ng-click="favourite(doktor.ID)"></i>
-
-                  <span ng-if="loggedUser&& loggedUser.jogok=='user'" class="text nav-text" >Kedvencekhez adás</span>
-
-            </div>
-            
-            <img src={{doktor.image}}>
-            <p ng-if="loggedUser&& loggedUser.jogok=='user'" class="dokProfileFav">
-                <i class="bi bi-star star" id="star_1" ng-click="pointrate(1)"></i>
-                <i class="bi bi-star star" id="star_2" ng-click="pointrate(2)"></i>
-                <i class="bi bi-star star" id="star_3" ng-click="pointrate(3)"></i>
-                <i class="bi bi-star star" id="star_4" ng-click="pointrate(4)"></i>
-                <i class="bi bi-star star" id="star_5" ng-click="pointrate(5)"></i>
-            </p>
-            
-        </div>
+        
         <div  ng-if="doktor.jogok==='doktor'">
-            <div class="text"><h1>Szakterület</h1></div>
+            <div class="text"><h2>Szakterület</h2></div>
             <p> {{doktor.szakterulet}} </p>
-            <div class="text"><h1>Tanulmányok</h1></div>
+            <div class="text"><h2>Tanulmányok</h2></div>
             <p> {{doktor.tanulmanyok}} </p>
     
         </div>

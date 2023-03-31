@@ -3,6 +3,7 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     $scope.idopontok=[];
     $scope.Munkatarsak = [];
     
+    
     DB.selectAll('idopontok').then(function(res) {
         $scope.idopontok = res.data;
     });
@@ -22,6 +23,9 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
             }
             
         }
+    }
+    $scope.setmin()=function(){
+        $scope.idopont.datum.min=moment();
     }
 
     $scope.elutasit=function(id){

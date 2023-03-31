@@ -183,6 +183,13 @@ header .toggle{
     text-align: center;
     color: red;
 }
+h2{
+    
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: red;
+}
  .slogen{
     font-size: 45px;
     font-weight: 500;
