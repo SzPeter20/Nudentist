@@ -24,9 +24,6 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
             
         }
     }
-    $scope.setmin()=function(){
-        $scope.idopont.datum.min=moment();
-    }
 
     $scope.elutasit=function(id){
         for (let i = 0; i < $scope.idopontok.length; i++) {

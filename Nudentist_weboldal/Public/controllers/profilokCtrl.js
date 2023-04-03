@@ -18,9 +18,69 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     if($routeParams.id!=null){
         DB.select('orvosok','ID',$routeParams.id).then(function(res){
             $scope.doktor=res.data[0];
+            $scope.setup(res.data[0].ID);
         })
+        
     }
 
+    $scope.setup=function(ID){
+        for(let i = 0; i < $scope.ertekelesek.length; i++){
+            if(ID==$scope.ertekelesek[i].orvosID&&$rootScope.loggedUser.ID==$scope.ertekelesek[i].paciensID){
+                $scope.loaduserdata($scope.ertekelesek[i].csillagok,ID);
+                break;
+            }
+        }
+    }
+    $scope.loaduserdata=function(csillagok,ID){
+        if($rootScope.loggedUser.kedvencekID==ID){
+            
+            if(!document.getElementById('heart').classList.contains('bi-heart-fill')){
+                document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
+            }
+            
+        }
+        switch(csillagok){
+            case 1:
+                    if(document.getElementById('star_1').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                    }
+                    
+                    break;
+                case 2:
+                    if(document.getElementById('star_2').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                    }
+                    
+                    break;
+                case 3:
+                    if(document.getElementById('star_3').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
+                    }
+                    
+                    break;
+                case 4:
+                    if(document.getElementById('star_4').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_4').classList.replace('bi-star','bi-star-fill')
+                    }
+                    break;
+                case 5:
+                    if(document.getElementById('star_5').classList.contains('bi-star')){
+                        document.getElementById('star_1').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_2').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_3').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_4').classList.replace('bi-star','bi-star-fill')
+                        document.getElementById('star_5').classList.replace('bi-star','bi-star-fill')
+                    }
+                    
+                    break;
+        }
+    }
     
     DB.selectAll('uzenetek').then(function(res){
         $scope.uzenetek=res.data;
@@ -41,7 +101,7 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
             $rootScope.loggedUser.kedvencekID=0;
             document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
         }else{
-            
+            $scope.setup(id)
             $rootScope.loggedUser.kedvencekID=id;
             let data={
                 kedvencekID:id
