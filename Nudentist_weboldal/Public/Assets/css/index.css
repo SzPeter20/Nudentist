@@ -23,7 +23,7 @@
   margin-right: auto;
   padding: auto;
   margin-bottom: auto;
-  backdrop-filter: none|blur|initial|inherit;
+ backdrop-filter: blur(2px);
 }
 footer {
   background-color: black;

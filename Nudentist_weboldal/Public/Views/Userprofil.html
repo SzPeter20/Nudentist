@@ -37,7 +37,7 @@
                     <div class="col-md-12" ng-if="loggedUser.jogok==='doktor'"><label class="labels">Tanulmányok</label><input type="text" class="form-control" placeholder="Adja meg tanulmányait" ng-model="user.studies"></div>
                     <div class="col-md-12" ng-if="loggedUser.jogok==='doktor'"><label class="labels">Szakterület</label><input type="text" class="form-control" placeholder="Adja meg szakterületét" ng-model="user.field"></div>
                     <div class="col-md-12" ng-if="loggedUser.jogok==='doktor'"><label class="labels">Bemutatkozás</label> <textarea name="desctextarea" id="desctextarea" cols="30" rows="10" placeholder="Adja meg bemutatkozását" ng-model="user.desc"></textarea> </div>
-                    <div class="col-md-12 mb-3 p-3"><input type="file" id="img" name="img" accept="image/*" ng-model="user.picture"></div>
+                    <div class="col-md-12 mb-3 p-3"><input type="file" id="img" name="img" accept="image/*" file-model="user.picture"></div>
                     
                     
                 </div>
