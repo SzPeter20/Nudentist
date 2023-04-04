@@ -23,7 +23,9 @@
   margin-right: auto;
   padding: auto;
   margin-bottom: auto;
- backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  
+  
 }
 footer {
   background-color: black;
