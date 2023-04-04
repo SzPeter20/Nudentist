@@ -3,6 +3,8 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     $scope.alreadyRated;
     $scope.doktor={};
     $scope.uzenetek=[];
+    $scope.orvosok=[];
+    $scope.userek=[];
     $scope.comms={};
     $scope.pointrating;
     $scope.assignedpoints=false;
@@ -14,6 +16,12 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     DB.selectAll('ertekelesek').then(function(res) {
         $scope.ertekelesek = res.data;
     });
+    DB.selectAll('orvosok').then(function(res) {
+        $scope.orvosok = res.data;
+    });
+    DB.selectAll('users').then(function(res) {
+        $scope.userek = res.data;
+    });
 
     if($routeParams.id!=null){
         DB.select('orvosok','ID',$routeParams.id).then(function(res){
@@ -24,21 +32,23 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     }
 
     $scope.setup=function(ID){
-        for(let i = 0; i < $scope.ertekelesek.length; i++){
-            if(ID==$scope.ertekelesek[i].orvosID&&$rootScope.loggedUser.ID==$scope.ertekelesek[i].paciensID){
-                $scope.loaduserdata($scope.ertekelesek[i].csillagok,ID);
-                break;
+        if($rootScope.loggedUser){
+            for(let i = 0; i < $scope.ertekelesek.length; i++){
+                if( $rootScope.loggedUser.kedvencekID==ID){
+                    if(!document.getElementById('heart').classList.contains('bi-heart-fill')){
+                        document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
+                    }
+                }
+                if(ID==$scope.ertekelesek[i].orvosID&&$rootScope.loggedUser.ID==$scope.ertekelesek[i].paciensID){
+                    $scope.loaduserdata($scope.ertekelesek[i].csillagok,ID);
+                    break;
+                }
             }
         }
+        
     }
     $scope.loaduserdata=function(csillagok,ID){
-        if($rootScope.loggedUser.kedvencekID==ID){
-            
-            if(!document.getElementById('heart').classList.contains('bi-heart-fill')){
-                document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
-            }
-            
-        }
+        
         switch(csillagok){
             case 1:
                     if(document.getElementById('star_1').classList.contains('bi-star')){

@@ -75,13 +75,42 @@
             </tr>
             <tr>
                 <td>
-                    <button type="submit" ng-click="message()" class="btn btn-primary">Küldés</button>
+                    <button type="submit" ng-click="message()" class="btn btn-primary">Üzenet küldése</button>
                 </td>
                 <td>
                     <button type="submit" ng-click="rate()"class="btn btn-primary">Értékelés</button>
                 </td>
             </tr>
             
+        </table>
+        <table class="table-responsive rating_table">
+            <thead>
+                <tr>
+                    <th>
+                        <p>Felhasználó</p>
+                    </th>
+                    <th>
+                        <p>Szöveges értékelés</p>
+                    </th>
+                    <th>
+                        <p>Csillagos értékelés</p>
+                    </th>
+                </tr>
+            </thead>
+            <h2>Értékelések:</h2>
+            <tbody>
+                <tr ng-repeat="ertekeles in ertekelesek" ng-if="doktor.ID==ertekeles.orvosID">
+                    <td ng-repeat="user in userek" ng-if="user.ID==ertekeles.paciensID">
+                        {{user.nev}}
+                    </td>
+                    <td>
+                        {{ertekeles.szoveges}}
+                    </td>
+                    <td>
+                        {{ertekeles.csillagok}}
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </section>
         

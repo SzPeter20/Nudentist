@@ -412,3 +412,17 @@ table{
   width: 40%;
   height: 40%;
 }
+
+.rating_table td{
+  width: 40%;
+  padding: 2%;
+  background-color: #fdc5c6;
+  border-top: hotpink solid 1px;
+}
+.rating_table th{
+  padding: 1%;
+  background-color: #fdc5c6;
+}
+.rating_table{
+  border: #000000 solid 1px;
+}

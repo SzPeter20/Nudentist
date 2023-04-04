@@ -11,7 +11,7 @@
         <a href="#!/mail"> <button class="btn btn-primary" ng-cick="newmessage()">Új üzenet írása</button></a>
         <tr ng-repeat="uzenet in uzenetek"  ng-if="uzenet.recipientID==loggedUser.ID && uzenet.recipientType==loggedUser.jogok" class="kezeles" >
             <td ng-repeat="user in userek" ng-if="user.ID===uzenet.senderID">
-                <p >
+                <p  ng-click="toMessageContent(uzenet.ID)">
                     {{user.nev}}
                 </p>
             </td>
@@ -21,7 +21,7 @@
                 </p>
             </td>
             <td >
-                <p>
+                <p  ng-click="toMessageContent(uzenet.ID)">
                     {{uzenet.datum | date:'yyyy:MM:dd'}}
                 </p>
             </td>
