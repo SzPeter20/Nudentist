@@ -132,48 +132,83 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
 
     $scope.rate= function(){
         $scope.alreadyRated=true;
-        for (let i = 0; i < $scope.ertekelesek.length; i++){
-            if($scope.ertekelesek[i].orvosID==$scope.doktor.ID&&$scope.ertekelesek[i].paciensID==$rootScope.loggedUser.ID){
-                $scope.modositandoID=$scope.ertekelesek[i].ID
-                $scope.alreadyRated=false;
-            }
-        }
-
-
-        if($scope.comms.rating_text.length>500){
-            alert("Kérjük értékelése tartalmazzon maximum 500 karaktert")
-        }else{
+        if($scope.comms.rating_text==null){
             let data={
-                orvosID:$scope.doktor.ID,
-                paciensID:$rootScope.loggedUser.ID,
-                szoveges:$scope.comms.rating_text,
-                csillagok:$scope.pointrating
+                    orvosID:$scope.doktor.ID,
+                    paciensID:$rootScope.loggedUser.ID,
+                    szoveges:'',
+                    csillagok:$scope.pointrating
             }
             if($scope.alreadyRated){
-                DB.insert("ertekelesek",data).then(function(res){
-                    if (res.data.affectedRows != 0) {
-                        alert('Sikeres értékelés!');
-                        $scope.comms.rating_text='';
-                        $scope.stringrating = '';
-                        $scope.pointrating = 1;
-                    } else {
-                        alert('Váratlan hiba történt!');
-                    }
-                })
-            }else{
-                DB.update("ertekelesek",$scope.modositandoID,data).then(function(res){
-                    if (res.data.affectedRows != 0) {
-                        alert('Értékelés sikeresen megváltoztatva!');
-                        $scope.comms.rating_text='';
-                        $scope.stringrating = '';
-                        $scope.pointrating = 1;
-                    } else {
-                        alert('Váratlan hiba történt az adatbázis művelet során!');
-                    }
-                })
-            }
+
+                    DB.insert("ertekelesek",data).then(function(res){
+                        if (res.data.affectedRows != 0) {
+                            alert('Sikeres értékelés!');
+                            $scope.comms.rating_text='';
+                            $scope.stringrating = '';
+                            $scope.pointrating = 1;
+                        } else {
+                            alert('Váratlan hiba történt!');
+                        }
+                    })
+                }else{
+                    DB.update("ertekelesek",$scope.modositandoID,data).then(function(res){
+                        if (res.data.affectedRows != 0) {
+                            alert('Értékelés sikeresen megváltoztatva!');
+                            $scope.comms.rating_text='';
+                            $scope.stringrating = '';
+                            $scope.pointrating = 1;
+                        } else {
+                            alert('Váratlan hiba történt az adatbázis művelet során!');
+                        }
+                    })
+                }
+        }
+            else{
+
             
+            for (let i = 0; i < $scope.ertekelesek.length; i++){
+                if($scope.ertekelesek[i].orvosID==$scope.doktor.ID&&$scope.ertekelesek[i].paciensID==$rootScope.loggedUser.ID){
+                    $scope.modositandoID=$scope.ertekelesek[i].ID
+                    $scope.alreadyRated=false;
+                }
             }
+            if($scope.comms.rating_text.length>500){
+                alert("Kérjük értékelése tartalmazzon maximum 500 karaktert")
+            }else{
+                let data={
+                    orvosID:$scope.doktor.ID,
+                    paciensID:$rootScope.loggedUser.ID,
+                    szoveges:$scope.comms.rating_text,
+                    csillagok:$scope.pointrating
+                }
+                if($scope.alreadyRated){
+                    DB.insert("ertekelesek",data).then(function(res){
+                        if (res.data.affectedRows != 0) {
+                            alert('Sikeres értékelés!');
+                            $scope.comms.rating_text='';
+                            $scope.stringrating = '';
+                            $scope.pointrating = 1;
+                        } else {
+                            alert('Váratlan hiba történt!');
+                        }
+                    })
+                }else{
+                    DB.update("ertekelesek",$scope.modositandoID,data).then(function(res){
+                        if (res.data.affectedRows != 0) {
+                            alert('Értékelés sikeresen megváltoztatva!');
+                            $scope.comms.rating_text='';
+                            $scope.stringrating = '';
+                            $scope.pointrating = 1;
+                        } else {
+                            alert('Váratlan hiba történt az adatbázis művelet során!');
+                        }
+                    })
+                }
+                
+                }
+        }
+        
     }
     
     $scope.message= function(){
