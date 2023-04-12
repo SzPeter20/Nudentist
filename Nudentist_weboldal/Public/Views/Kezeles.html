@@ -6,8 +6,11 @@
         <p>{{kezeles.leiras}}</p>
         <p>{{kezeles.ar}}</p>
         <img src="./Assets/HelperImages/{{kezeles.kep}}" class="img-fluid rounded float-right mx-auto hover-shadow w-50 " alt="{{kezeles.neve}}" title="{{kezeles.neve}}" srcset="">
-        
-        
+        <h6>Kezeléshez elérhető orvosok:</h6>
+        <div ng-repeat="Munkatars in Munkatarsak">
+            <p class="kezeles text-dark-emphasis animate__animated animate__bounceInUp" ng-if="Munkatars.kezelesekID==kezeles.ID" ng-click="toDocProfile(Munkatars.ID)">{{Munkatars.nev}}</p>
+          </div>
+          
     </div>
 </section>
 
