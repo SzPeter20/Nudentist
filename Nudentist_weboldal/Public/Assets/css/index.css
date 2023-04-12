@@ -349,6 +349,7 @@ table{
   .kezeles{
     color: cornflowerblue;
     cursor:pointer;
+    width: fit-content;
   }
   .kezeles:hover{
     background-color: hotpink;

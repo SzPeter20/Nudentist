@@ -75,6 +75,63 @@
             
           </div>
           <section class="main-content">
+            <div class="container">
+            <div ng-if="loggedUser && (loggedUser.jogok==='user') ">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Páciens</th>
+                      <th>Status</th>
+                      <th>Időpont</th>
+                      <th>Telefonszám</th>
+                      <th>Orvos</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody ng-repeat="idopont in idopontok | orderBy:'+status'" class="shadow p-3 mb-5 bg-body-tertiary rounded">
+                    <tr ng-if="loggedUser.ID==idopont.orvosID && loggedUser.jogok=='doktor'">
+                      <td>
+                        <div class="user-info">
+                          <div class="user-info__basic">
+                            <h5 class="mb-0">{{idopont.nev}}</h5>
+                          </div>
+                        </div>
+                      </td>
+                      <td orderBy: idop>
+                        <span ng-if="idopont.status=='Elfogadásra vár'"class="btn btn-warning status" readonly>{{idopont.status}}</span>
+                        <span ng-if="idopont.status=='Elutasítva'"class="btn btn-danger status" readonly>{{idopont.status}}</span>
+                        <span ng-if="idopont.status=='Elfogadva'"class="btn btn-success status" readonly>{{idopont.status}}</span>
+                      </td>
+                      <td>
+                        <h6 class="mb-0">{{idopont.idopont}}</h6>
+                        <small>{{idopont.datum | date:'yyyy/MM/dd'}}</small>
+                      </td>
+                      <td>
+                        <h6 class="mb-0">{{idopont.telefonszam}}</h6>
+                        <a href="tel:{{idopont.telefonszam}}"><small>Hívás</small></a>
+                      </td>
+                      
+                        <td>
+                          <div ng-repeat="Munkatars in Munkatarsak">
+                          <h6 class="mb-0" ng-if="Munkatars.ID==idopont.orvosID">{{Munkatars.nev}}</h6>
+                        </div>
+                        </td>
+                        <td >
+                          <div ng-if="idopont.status=='Elfogadásra vár'">
+                            <span class="bx bx-bible" ng-click="elfogad(idopont.ID)">Elfogadás</span>
+                            <span class="bx bxs-x-circle" ng-click="elutasit(idopont.ID)">Elutasítás</span>
+                          </div>
+                          
+                        </td>
+                      
+                    </tr>
+              </div>
+                
+                  </div>
+              </div>
+          </section>
+          <section class="main-content">
           <div class="container">
           <div ng-if="loggedUser && (loggedUser.jogok==='doktor') ">
             <div class="table-responsive">
