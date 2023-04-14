@@ -2,11 +2,21 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     $scope.idopont={};
     $scope.idopontok=[];
     $scope.Munkatarsak = [];
-    
+    $scope.sajatIdopontok=[];
+    $scope.dates={};
+
+    $scope.dates.minDate=moment().add(1, 'days').calendar();
+    $scope.dates.maxDate=moment().add(10, 'days').calendar();
     
     DB.selectAll('idopontok').then(function(res) {
         $scope.idopontok = res.data;
     });
+
+        DB.select('idopontok','paciensID',$rootScope.loggedUser.ID).then(function(res){
+            $scope.sajatIdopontok=res.data;
+        })
+    
+    
     DB.selectAll('orvosok').then(function(res) {
         $scope.Munkatarsak = res.data;
     });  
@@ -43,11 +53,12 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     $scope.foglalas=function() {
         console.log($scope.idopont.id)
         if ( $scope.idopont.idopont==null||$scope.idopont.datum==null ||$scope.idopont.orvosid==null) {
-            alert('Nem adtál meg minden kötelező adatot!');
+            alert('Nem adott meg minden kötelező adatot!');
         } else {
 
-                    
-                    let data = {
+            
+                    let data = 
+                    {
                         
                         orvosID:$scope.idopont.orvosid,
                         nev: $rootScope.loggedUser.nev,
@@ -71,6 +82,7 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
                 }
             );
         }
+
     };
 }
 

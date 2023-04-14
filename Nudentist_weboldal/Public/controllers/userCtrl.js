@@ -64,7 +64,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     */
     $scope.registration = function() {
         if ($scope.user.name == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null) {
-            alert('Nem adtál meg(helyesen) minden kötelező adatot!');
+            alert('Nem adott meg(helyesen) minden kötelező adatot!');
         } else {
             if ($scope.user.pass1 != $scope.user.pass2) {
                 alert('A megadott jelszavak nem egyeznek!');
@@ -101,7 +101,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     $scope.mod = function() {
         console.log($rootScope.loggedUser)
         if ($scope.user.nev == null || $scope.user.email == null) {
-            alert('Nem adtál meg minden kötelező adatot!');
+            alert('Nem adott meg minden kötelező adatot!');
         }else if($rootScope.loggedUser.jogok==='doktor')
         {
             let data = {
@@ -176,7 +176,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
 
     $scope.login = function() {
         if ($scope.user.email == null || $scope.user.pass1 == null) {
-            alert('Nem adtál meg minden kötelező adatot!');
+            alert('Nem adott meg minden kötelező adatot!');
         } else {
             let data = {
                 table: 'users',
