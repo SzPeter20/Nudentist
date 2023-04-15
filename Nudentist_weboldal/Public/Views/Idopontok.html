@@ -129,6 +129,39 @@
             </div>
               
                 </div>
+                <table>
+                  
+                  <tbody>
+                    <tr>
+                      <th>
+                        <p>Orvos</p> 
+                      </th>
+                      <th>
+                        <p>Dátum</p>
+                      </th>
+                      <th>
+                        <p>Időpont</p>
+                      </th>
+                      <th>
+                        <p>Elfogadási állapot</p>
+                      </th>
+                    </tr>
+                    <tr  ng-repeat="idopont in sajatIdopontok">
+                      <td ng-repeat="munkatars in Munkatarsak" ng-if="munkatars.ID==idopont.orvosID">
+                        {{munkatars.nev}}
+                      </td>
+                      <td>
+                        <p>{{idopont.datum | date:'yyyy/MM/dd'}}</p>
+                      </td>
+                      <td>
+                        <p>{{idopont.idopont}}</p>
+                      </td>
+                      <td>
+                        <p>{{idopont.status}}</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
             </div>
         </section>
           
