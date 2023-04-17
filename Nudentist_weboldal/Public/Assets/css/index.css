@@ -430,3 +430,9 @@ table{
 .passwd-button{
   margin-top: 6%;
 }
+.delete-trash:hover{
+  background-color:darkorange;
+}
+.regret-trash:hover{
+  background-color:red;
+}

@@ -49,12 +49,12 @@
           <div ng-if="loggedUser && (loggedUser.jogok==='user')">
           
         <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="floatingDatum" placeholder="Dátum" ng-model="idopont.datum" min="{{dates.minDate}}" max="{{dates.maxDate}}" itemid="datum" value="Today" ng-click="setmin()">
+            <input type="date" class="form-control" id="floatingDatum" placeholder="Dátum" ng-model="idopont.datum" min="{{dates.minDate}}" max="{{dates.maxDate}}" itemid="datum" ng-click="setmin()">
             <label for="floatingDatum">Dátum</label>
         </div>
         
         <div class="form-floating mb-3">
-            <input type="time" class="form-control" id="floatingTime" placeholder="Időpont" ng-model="idopont.idopont" min="08:00" max="20:00">
+            <input type="time" class="form-control" id="floatingTime" placeholder="Időpont" ng-model="idopont.idopont" min="times.minDate" max="20:00" step="00:30">
             <label for="floatingTime">Időpont</label>
         </div>
         <p class="mb-3 text-muted">Az Időpontnak 8 és 20 óra közöttinek kell lennie</p>
@@ -141,6 +141,9 @@
                       <th>
                         <p>Elfogadási állapot</p>
                       </th>
+                      <th>
+                        <p></p>
+                      </th>
                     </tr>
                     <tr  ng-repeat="idopont in sajatIdopontok">
                       <td ng-repeat="munkatars in Munkatarsak" ng-if="munkatars.ID==idopont.orvosID">
@@ -154,6 +157,14 @@
                       </td>
                       <td>
                         <p>{{idopont.status}}</p>
+                      </td>
+                      <td>
+                        <p ng-if="idopont.status=='Elutasítva'">
+                          <i class="bi bi-trash-fill delete-trash" ng-click="removeApp(idopont.ID)" title="Törlés"></i>
+                        </p>
+                        <p ng-if="idopont.status!='Elutasítva'">
+                          <i class="bi bi-trash-fill regret-trash" ng-click="removeApp(idopont.ID)" title="Visszavonás"></i>
+                        </p>
                       </td>
                     </tr>
                   </tbody>
