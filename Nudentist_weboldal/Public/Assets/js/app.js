@@ -25,7 +25,7 @@ app.config(function($routeProvider) {
             controller: 'munkatarsakCtrl'
         })
         .when('/reg', {
-            templateUrl: 'views/registration.html',
+            templateUrl: 'views/Registration.html',
             controller: 'userCtrl'
         })
         .when('/bemutatkozas', {
@@ -58,10 +58,28 @@ app.config(function($routeProvider) {
         })
         // user funkciók
         .when('/passwordmod', {
+            resolve: {
+                function($rootScope, $location) {
+
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+
+                        $location.path('/');
+                    }
+                }
+            },
             templateUrl: 'views/Passwordmod.html',
             controller: 'userCtrl'
         })
         .when('/mail', {
+            resolve: {
+                function($rootScope, $location) {
+
+                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
+
+                        $location.path('/');
+                    }
+                }
+            },
             templateUrl: 'views/Mail.html',
             controller: 'uzenetCtrl'
         })

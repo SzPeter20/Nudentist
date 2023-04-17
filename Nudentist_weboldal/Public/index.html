@@ -22,7 +22,7 @@
         
            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><img src="./Assets/HelperImages/logo1.png" class="img-fluid w-25" alt="" srcset="">Menü</h5>
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"> <a href="#!/"><img src="./Assets/HelperImages/logo1.png" class="img-fluid w-25" alt="" srcset=""></a> Menü</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     
   </div>
@@ -88,12 +88,19 @@
                                 <li class="nav-link" ng-if="loggedUser && (loggedUser.jogok==='doktor')">
                                     <i class='bx bx-calendar icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/idopontokkezelese">Időpontok</a>
-                                </li>   
+
+                                </li>
+                                <li class="nav-link" ng-if="loggedUser && (loggedUser.jogok==='doktor')">
+                                    <i class='bx bx-message icon' ></i>
+                                    <a class="nav-link text nav-text" href="#!/uzenetek">Üzenetek</a>
+                                </li>
+
                                 <!-- user functions -->
                                 <li class="nav-link"ng-if="loggedUser && (loggedUser.jogok==='user')">
                                     <i class='bx bx-calendar icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/idopontokkezelese">Időpontok</a>
                                 </li>
+
                                 <li class="nav-item" ng-if="loggedUser && ((loggedUser.jogok==='user')||loggedUser.jogok==='doktor')">
 
                                     <i class='bx bx-user-voice icon' ></i>
@@ -149,8 +156,10 @@
     <script src="./controllers/profilokCtrl.js"></script>
     <script src="./controllers/kezelesekCtrl.js"></script>
     <script src="./controllers/idopontokCtrl.js"></script>
+
     <script src="./controllers/munkatarsakCtrl.js"></script>
     <script src="./controllers/kedvencekCtrl.js"></script>
+
     <footer>
         {{ settings.company }} - {{ settings.author }} 
     </footer>

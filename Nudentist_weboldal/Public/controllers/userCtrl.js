@@ -4,35 +4,43 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     $scope.userek=[];
     $scope.sender=[];
     $scope.vanOlvasattlanUzenet=false;
-
-    for (let i = 0; i < $scope.uzenetek.length; i++){
-        if($scope.uzenetek[i].olvasottsag=='olvasatlan'){
-            $scope.vanOlvasattlanUzenet=true;
-        }
-    }
-
-
+    $scope.user={};
 
     if($rootScope.loggedUser!=null){
-        DB.selectAll('uzenetek').then(function(res){
+        DB.select('uzenetek','recipientID',$rootScope.loggedUser.ID).then(function(res){
             $scope.uzenetek=res.data;
+            for(let i = 0; i < $scope.uzenetek.length; i++){
+                if($scope.uzenetek[i].olvasottsag=='olvasatlan'){
+                    $scope.vanOlvasattlanUzenet=true;
+    
+                }
+            }
         })
+        
+        
     }
+    
+    
     $scope.deleteMessage=function(id){
+        for(let i = 0; i < $scope.uzenetek.length; i++){
+            if($scope.uzenetek[i].recipientID==$rootScope.loggedUser.ID&&$scope.uzenetek[i].ID==id){
+                $scope.uzenetek.splice(i)
+            }
+        }
         DB.delete('uzenetek','ID',id).then(function(res){
             alert('Üzenet sikeresen törölve!');
         })
-    }
-    $scope.message=function(){
-        console.log($scope.uzenetek[0])
+
     }
     $scope.toMessageContent=function(id){
         for (let i = 0; i < $scope.uzenetek.length; i++){
-            if($scope.uzenetek[i].ID===id){
-                $scope.uzenetek[i].olvasottsag='olvasott'
+            if($scope.uzenetek[i].ID==id){
+                data={olvasottsag:'olvasott'}
+                DB.update('uzenetek',id,data)
             }
         }
-        $location.path('/uzenet/' + id)
+        $location.path('/uzenet/'+id)
+        
     }
     
     DB.selectAll('orvosok').then(function(res){
@@ -42,20 +50,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
         $scope.userek=res.data;
     })
 
-    for (let i = 0; i < $scope.uzenetek.length; i++) {
-        for (let j = 0; j < $scope.doktorok.length; j++) {
-            if($scope.uzenetek[i].senderType==='doktor'){
-                if($scope.doktorok[i].ID===$scope.uzenetek[j].senderID){
-                    $scope.sender.push($scope.doktorok[i].nev)
-                }
-            }else{
-                if($scope.userek[i].ID===$scope.uzenetek[j].senderID){
-                    $scope.sender.push($scope.userek[i].nev)
-                }
-            }
-            
-        }
-    }
+    
     /*
     Vigh Ákos müve:
       55555555557777777777777777777777777777777777222222222222
@@ -69,7 +64,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     */
     $scope.registration = function() {
         if ($scope.user.name == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null) {
-            alert('Nem adtál meg(helyesen) minden kötelező adatot!');
+            alert('Nem adott meg(helyesen) minden kötelező adatot!');
         } else {
             if ($scope.user.pass1 != $scope.user.pass2) {
                 alert('A megadott jelszavak nem egyeznek!');
@@ -105,8 +100,8 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     };
     $scope.mod = function() {
         console.log($rootScope.loggedUser)
-        if ($scope.user.name == null || $scope.user.email == null) {
-            alert('Nem adtál meg minden kötelező adatot!');
+        if ($scope.user.nev == null || $scope.user.email == null) {
+            alert('Nem adott meg minden kötelező adatot!');
         }else if($rootScope.loggedUser.jogok==='doktor')
         {
             let data = {
@@ -196,7 +191,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
 
     $scope.login = function() {
         if ($scope.user.email == null || $scope.user.pass1 == null) {
-            alert('Nem adtál meg minden kötelező adatot!');
+            alert('Nem adott meg minden kötelező adatot!');
         } else {
             let data = {
                 table: 'users',
@@ -210,7 +205,6 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
             }
 
             DB.logincheck(data).then(function(res) {
-                console.log(res.data);
                 if (res.data.length == 0) {
                     DB.logincheck(data2).then(function(res) {
                         console.log(res.data);

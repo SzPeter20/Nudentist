@@ -136,9 +136,10 @@ body{
     background-size: cover;
     position: relative;
     height: fit-content;
-    
-    width: calc(100% - 250px);
-    
+
+    box-shadow: 5px 5px 5px 2px black;
+    width:100%;
+    border: 2px solid black;
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
@@ -183,6 +184,13 @@ header .toggle{
     margin-right: auto;
     text-align: center;
     color: red;
+}
+h2{
+    
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: red;
 }
  .slogen{
     font-size: 45px;
@@ -356,6 +364,67 @@ table{
 .mail{
   font-size: 40px;
 }
-.star:hover{
+.foglalas{
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+.selecter{
+  
+  margin-left: 10%;
+  width: 80%!important;
+}
+.doktorselect{
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%!important;
+}
+.dokprofhead{
+  width: 50%;
+  height: 50%;
+}
+.dokprofimage{
+  width: fit-content;
+  height: fit-content;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+.tablewidth{
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+.mailInputs{
+  width: 30%;
+  margin-bottom: 1%;
+}
+.mailTextArea{
+  width: 600px !important;
+}
+.dokProfileFav{
+  margin-left: 40%;
+}
+#heart{
+  cursor:pointer ;
+}
+.star{
+  cursor:pointer ;
+}
+.bemutatkozas_image{
+  width: 40%;
+  height: 40%;
+}
 
+.rating_table td{
+  width: 40%;
+  padding: 2%;
+  background-color: #fdc5c6;
+  border-top: hotpink solid 1px;
+}
+.rating_table th{
+  padding: 1%;
+  background-color: #fdc5c6;
+}
+.rating_table{
+  border: #000000 solid 1px;
 }
