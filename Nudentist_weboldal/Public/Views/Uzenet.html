@@ -1,10 +1,11 @@
-
-<button ng-click="cucc()"></button>
+<button class="btn btn-primary" ng-click="backToMessages()">
+    Vissza
+</button>
 <h1>
     {{uzenet.title}}
 </h1>
 <h4>
-    {{uzenet.datum}}
+    {{uzenet.datum | date:'yyyy:MM:dd'}}
 </h4>
 <p>
     {{uzenet.tartalom}}

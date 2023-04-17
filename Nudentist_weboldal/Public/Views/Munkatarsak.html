@@ -13,7 +13,7 @@
 <div class="row row-cols-1 row-cols-md-3 g-4" >
   <div class="col" ng-repeat="Munkatars in Munkatarsak">
     <div class="card h-100"> 
-      <img src="./Assets/HelperImages/{{Munkatars.kep}}.jpg" class="card-img-top" alt="{{Munkatars.nev}}" title="{{Munkatars.nev}}">
+      <img src="./Assets/HelperImages/{{Munkatars.kep}}.jpg" class="card-img-top" alt="{{Munkatars.nev}}" title="{{Munkatars.nev}}" ng-click="toDocProfile(Munkatars.ID)">
       <div class="card-body"  >
         <h5 class="card-title">{{Munkatars.nev}}</h5>
         <p class="card-text">{{Munkatars.bemutatkozas}}</p>
