@@ -39,12 +39,15 @@
                     <div class="col-md-12" ng-if="loggedUser.jogok==='doktor'"><label class="labels">Szakterület</label><input type="text" class="form-control" placeholder="Adja meg szakterületét" ng-model="user.field"></div>
                     <div class="col-md-12" ng-if="loggedUser.jogok==='doktor'"><label class="labels">Bemutatkozás</label> <textarea name="desctextarea" id="desctextarea" cols="30" rows="10" placeholder="Adja meg bemutatkozását" ng-model="user.desc"></textarea> </div>
 
+
                     <div>A *-al jelölt adatok megadása kötelező</div>
 
                     <!-- <div class="col-md-12"><input type="file" id="img" name="img" accept="image/*"></div> -->
+
                     
 
                 </div>
+                <button type="submit" class="btn btn-primary" ng-click="pictureupload()"><i class="bi bi-cloud-arrow-up"></i>Feltöltés</button>
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" ng-click="mod()">Profil módosítás mentése</button></div>
                 
 
