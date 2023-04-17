@@ -97,20 +97,24 @@
                     </th>
                 </tr>
             </thead>
-            <h2>Értékelések:</h2>
-            <tbody>
-                <tr ng-repeat="ertekeles in ertekelesek" ng-if="doktor.ID==ertekeles.orvosID">
-                    <td ng-repeat="user in userek" ng-if="user.ID==ertekeles.paciensID">
-                        {{user.nev}}
-                    </td>
-                    <td>
-                        {{ertekeles.szoveges}}
-                    </td>
-                    <td>
-                        {{ertekeles.csillagok}}/5
-                    </td>
-                </tr>
-            </tbody>
+        
+            <div>
+                <h2>Értékelések:</h2>
+                <tbody ng-if="sajatErtekeles">
+                    <tr ng-repeat="ertekeles in sajatErtekeles" ng-if="doktor.ID==ertekeles.orvosID">
+                        <td ng-repeat="user in userek" ng-if="user.ID==ertekeles.paciensID">
+                            {{user.nev}}
+                        </td>
+                        <td>
+                            {{ertekeles.szoveges}}
+                        </td>
+                        <td>
+                            {{ertekeles.csillagok}}/5
+                        </td>
+                    </tr>
+                </tbody>
+            </div>
+            
         </table>
     </section>
         

@@ -8,6 +8,7 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     $scope.comms={};
     $scope.pointrating;
     $scope.assignedpoints=false;
+    $scope.sajatErtekeles=[];
     $scope.message;
     $scope.csillagok;
     $scope.ertekelesek=[];
@@ -94,6 +95,10 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     
     DB.selectAll('uzenetek').then(function(res){
         $scope.uzenetek=res.data;
+    })
+    DB.select('ertekelesek','orvosID',$routeParams.id).then(function(res){
+        $scope.sajatErtekeles=res.data;
+        console.log($scope.sajatErtekeles);
     })
     $scope.favourite=function(id){
         if($rootScope.loggedUser.kedvencekID==$scope.doktor.ID){

@@ -411,6 +411,7 @@ table{
 .bemutatkozas_image{
   width: 40%;
   height: 40%;
+  margin: 2%;
 }
 
 .rating_table td{
@@ -425,4 +426,7 @@ table{
 }
 .rating_table{
   border: #000000 solid 1px;
+}
+.passwd-button{
+  margin-top: 6%;
 }

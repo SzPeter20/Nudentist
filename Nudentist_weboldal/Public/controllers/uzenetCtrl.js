@@ -29,9 +29,7 @@ app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams, $loca
     $scope.sendMessage=function(){
         if($scope.message.tartalom==null||$scope.message.cim==null||$scope.message.user==null){
             alert('Nem adott meg minden kötelező adatot!')
-            console.log($scope.message.tartalom);
-            console.log($scope.message.cim);
-            console.log($scope.message.user);
+            
         }else{
             for (let i = 0; i < $scope.userek.length; i++){
                 if($scope.userek[i].nev==$scope.message.user){
@@ -83,8 +81,6 @@ app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams, $loca
         }
     
     
-    $scope.cucc=function(){
-        console.log($scope.uzenet)
-    }
+    
     }
 )

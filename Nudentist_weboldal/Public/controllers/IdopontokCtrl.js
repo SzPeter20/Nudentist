@@ -51,7 +51,7 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
         
     }
     $scope.foglalas=function() {
-        console.log($scope.idopont.id)
+        
         if ( $scope.idopont.idopont==null||$scope.idopont.datum==null ||$scope.idopont.orvosid==null) {
             alert('Nem adott meg minden kötelező adatot!');
         } else {
@@ -70,7 +70,7 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
                         paciensID:$rootScope.loggedUser.ID,
                         status:'Elfogadásra vár'
                     }
-                    console.log(data);
+                    
                     
                     DB.insert('idopontok', data).then(function(res) {
                         if (res.data.affectedRows != 0) {
