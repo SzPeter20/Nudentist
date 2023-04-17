@@ -3,9 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
-
--- Létrehozás ideje: 2023. Ápr 03. 13:54
-
+-- Létrehozás ideje: 2023. Ápr 17. 09:02
 -- Kiszolgáló verziója: 10.4.6-MariaDB
 -- PHP verzió: 7.3.8
 
@@ -115,13 +113,13 @@ CREATE TABLE `kezelesek` (
 --
 
 INSERT INTO `kezelesek` (`ID`, `neve`, `ar`, `leiras`, `kategoria`, `kep`) VALUES
-(1, 'PRoba', 5000, 'proba', 'probakategoria', 'semmi'),
-(2, 'Periapikális röntgen', 10000, 'Az ún. periapikális (foggyökércsúcs körüli) röntgenfelvétellel a fog koronájának legfelső pontjától egészen a gyökér legalsó pontjáig mindent láthatunk, a fogat megtámasztó csontállománnyal együtt.', 'rontgen', 'peri.jpg'),
-(3, 'Korona', 5000, 'desc', 'potlas', 'Korona.jpg'),
-(4, 'Ideiglenes fogtömés', 3500, 'desc', 'potlas', 'fogtomes-utan.jpg'),
-(5, 'Nyitott kürett foganként', 45000, 'desc', 'parodontologia', 'tasakKezeles.png'),
-(6, 'Csontpótlás', 49500, 'desc', 'szajsebeszet', 'csontpot.png'),
-(7, 'Láthatatlan fogszabályozás', 299900, 'desc', 'lathatatlanok', 'lathatatlan.jpg');
+(1, 'PRoba', 5000, 'proba', 'Próbakategória', 'semmi'),
+(2, 'Periapikális röntgen', 10000, 'Az ún. periapikális (foggyökércsúcs körüli) röntgenfelvétellel a fog koronájának legfelső pontjától egészen a gyökér legalsó pontjáig mindent láthatunk, a fogat megtámasztó csontállománnyal együtt.', 'Röntgen', 'peri.jpg'),
+(3, 'Korona', 5000, 'desc', 'Pótlás', 'Korona.jpg'),
+(4, 'Ideiglenes fogtömés', 3500, 'desc', 'Pótlás', 'fogtomes-utan.jpg'),
+(5, 'Nyitott kürett foganként', 45000, 'desc', 'Parodontológia', 'tasakKezeles.png'),
+(6, 'Csontpótlás', 49500, 'desc', 'Szájsebészet', 'csontpot.png'),
+(7, 'Láthatatlan fogszabályozás', 299900, 'desc', 'Láthatatlanok', 'lathatatlan.jpg');
 
 -- --------------------------------------------------------
 
@@ -190,7 +188,6 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `nev`, `email`, `password`, `telefonszam`, `jogok`, `reg`, `last`, `kedvencekID`, `kep`) VALUES
-
 (1, 'Próba Pista', 'probapista@nudentits.com', 'Turr513A', '+3620696969', 'user', '2023-02-02', '2023-02-03', 1, 'admin'),
 (3, 'Lajos', 'Lajos@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '0694251567428541', 'user', '2023-02-18', '2023-04-03', NULL, 'ramona'),
 (4, 'admin', 'admin@nudentist.com', '7af2d10b73ab7cd8f603937f7697cb5fe432c7ff', '+36205988683', 'admin', '2023-02-19', '2023-03-27', NULL, 'admin'),
@@ -200,7 +197,6 @@ INSERT INTO `users` (`ID`, `nev`, `email`, `password`, `telefonszam`, `jogok`, `
 (11, 'fiszfoszxd70', 'fiszfosz.0000@00000000.0000000000', '3810f3c42b21d2bc4f26609152909346c5a04923', '+3ddddddd6xddd', 'user', '2023-03-20', '0000-00-00', NULL, 'admin'),
 (12, 'Vigh Ákos', 'vighakos@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620696969', 'user', '2023-03-21', '2023-03-21', NULL, 'admin'),
 (13, 'Baranyi Dániel', 'baranyidaniel@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620696969', 'user', '2023-03-21', '2023-03-21', NULL, 'admin');
-
 
 -- --------------------------------------------------------
 
@@ -228,11 +224,9 @@ INSERT INTO `uzenetek` (`ID`, `senderID`, `senderType`, `recipientID`, `recipien
 (1, 0, '', 0, '', '', NULL, '0000-00-00', 'olvasatlan'),
 (2, 0, '', 0, '', '', NULL, '0000-00-00', 'olvasatlan'),
 (3, 0, '', 0, '', '', NULL, '0000-00-00', 'olvasatlan'),
-
 (4, 5, 'user', 2, 'doktor', '245gtrh', 'ethtrhtr', '2023-03-20', 'olvasatlan'),
 (6, 1, 'doktor', 6, 'user', 'sdafs', 'scdasda', '2023-03-22', 'olvasott'),
 (7, 6, 'user', 6, 'doktor', 'sdafs', 'mmhb , bvhmb  m', '2023-03-29', 'olvasatlan');
-
 
 --
 -- Indexek a kiírt táblákhoz
@@ -315,17 +309,13 @@ ALTER TABLE `orvosok`
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
 
 --
 -- AUTO_INCREMENT a táblához `uzenetek`
 --
 ALTER TABLE `uzenetek`
-
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
