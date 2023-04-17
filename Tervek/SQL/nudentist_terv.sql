@@ -116,16 +116,6 @@ CREATE TABLE `kezelesek` (
 -- A tábla adatainak kiíratása `kezelesek`
 --
 
-<<<<<<< HEAD
-INSERT INTO `kezelesek` (`ID`, `neve`, `ar`, `leiras`, `kategoria`, `kep`, `logo`) VALUES
-(1, 'Próba', 5000, 'proba', 'Próbakategória', 'semmi', 'fa-solid fa-tooth'),
-(2, 'Periapikális röntgen', 10000, 'Az ún. periapikális (foggyökércsúcs körüli) röntgenfelvétellel a fog koronájának legfelső pontjától egészen a gyökér legalsó pontjáig mindent láthatunk, a fogat megtámasztó csontállománnyal együtt.', 'Röntgen', 'peri.jpg', 'bi bi-radioactive'),
-(3, 'Korona', 5000, 'desc', 'Pótlás', 'Korona.jpg', 'bi bi-clipboard-heart'),
-(4, 'Ideiglenes fogtömés', 3500, 'desc', 'Pótlás', 'fogtomes-utan.jpg', 'bi bi-cloud-upload-fill'),
-(5, 'Nyitott kürett foganként', 45000, 'desc', 'Parodontológia', 'tasakKezeles.png', 'fa-solid fa-tooth'),
-(6, 'Csontpótlás', 49500, 'desc', 'Szájsebészet', 'csontpot.png', 'bi bi-display-fill'),
-(7, 'Láthatatlan fogszabályozás', 299900, 'desc', 'Láthatatlanok', 'lathatatlan.jpg', 'fa-solid fa-tooth');
-=======
 INSERT INTO `kezelesek` (`ID`, `neve`, `ar`, `leiras`, `kategoria`, `kep`) VALUES
 (1, 'Próba', 5000, 'próba', 'Próbakategória', 'dental-drill.jpg'),
 (2, 'Periapikális röntgen', 10000, 'Az ún. periapikális (foggyökércsúcs körüli) röntgenfelvétellel a fog koronájának legfelső pontjától egészen a gyökér legalsó pontjáig mindent láthatunk, a fogat megtámasztó csontállománnyal együtt.', 'Röntgen', 'peri.jpg'),
@@ -134,7 +124,6 @@ INSERT INTO `kezelesek` (`ID`, `neve`, `ar`, `leiras`, `kategoria`, `kep`) VALUE
 (5, 'Nyitott kürett foganként', 45000, 'Lényege ennek a kezelésnek is az, hogy helyreállítsuk a fog rögzítő apparátus megfelelő kapcsolatát. A beavatkozást lehet foganként, valamint kvadránsokként (7-8 fog) végezni, a fogágybetegség mértékétől függően.\r\n', 'Parodontológia', 'tasakKezeles.png'),
 (6, 'Csontpótlás', 49500, 'Fogorvosi tekintetben csontpótlásról több esetben beszélhetünk, kezdve az implantációs beavatkozásokat megelőző, a csont térfogatát növelő ún. augmentációs beavatkozásoktól a regeneratív, új csont képződésével járó parodontális műtétekig.\r\nA különböző szituációk és célok más-más eljárást, technikát és csontpótló anyagot is kívánnak. Az alábbiakban ezeket vesszük sorra', 'Szájsebészet', 'csontpot.png'),
 (7, 'Láthatatlan fogszabályozás', 299900, 'desc', 'Láthatatlanok', 'lathatatlan.jpg');
->>>>>>> 72ce0b44ac823f7cb107ac202e8464f5784de51f
 
 -- --------------------------------------------------------
 
@@ -164,16 +153,6 @@ CREATE TABLE `orvosok` (
 --
 
 INSERT INTO `orvosok` (`ID`, `nev`, `email`, `password`, `bemutatkozas`, `szakterulet`, `tanulmanyok`, `idopontID`, `kezelesekID`, `telefonszam`, `kep`, `last`, `reg`, `jogok`) VALUES
-<<<<<<< HEAD
-(1, 'Kiss Tamás', 'kisstamas@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Kiss Tamás profi fogorvos', 'Gyermek fogorvos', 'Fogorvos egyetem', 1, 1, '+36205365214', 'IbrahimLajos', '2023-04-04 08:42:18', '0000-00-00 00:00:00', 'doktor'),
-(2, 'Tamás Klára', 't.klara@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Tamás Klára másik fogorvos', 'fogkő', 'Fogorvos egyetem', 3, 1, '06323512612', 'LajosneKlara', '2023-03-06 12:54:03', '0000-00-00 00:00:00', 'doktor'),
-(3, 'Ifjabb Kiss Pista Tamás ', 'IGFPN@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Tamás a legprofibb fogszabályzókkal foglalkozó orvos', 'Fogkőfényesítő', 'Fogorvos egyetem', 1, 3, '616546462484', 'Asztalossimon', '2023-03-06 12:54:03', '0000-00-00 00:00:00', 'doktor'),
-(4, 'Kerék Tomázia Éva ', 'k.teve@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Világelső fogorvos', 'Minden is', 'Fogorvos egyetem', 2, 2, '+362045963211', 'kerektomazia', '2023-04-04 08:31:36', '0000-00-00 00:00:00', 'doktor'),
-(5, 'Zámbó Ilona', 'zamboilona89@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Sziasztok ', 'Szájhigénia', 'Fogorvos egyetem', 1, 2, '0696969696', 'zamboilona', '2023-03-14 09:20:40', '2023-03-20 12:31:00', 'doktor'),
-(6, 'Szomorú Ágnes', 'dr.szomoruagnes@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Sziasztok', 'Fogtechnikus', 'Fogorvos egyetem', 2, 3, '0620584212', 'szomoruagnes', '2023-03-14 09:27:22', '2023-03-13 14:09:00', 'doktor'),
-(7, 'Simonfi Tamás', 'simifi@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Sziasztok', 'Általános fogorvos\r\n', 'Fogorvos egyetem', 4, 5, '0620458598', 'SimonfiTamas', '2023-03-14 09:32:17', '2023-03-13 14:19:00', 'doktor'),
-(8, 'Szabó Petra', 'szpetra20@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Sziasztok', 'Fogorvos asszisztens', 'Fogorvos egyetem', 2, 2, '06923145812515', 'szabopetra', '2023-03-28 09:02:18', '2023-03-17 11:00:00', 'doktor'),
-=======
 (1, 'Kiss Tamás', 'kisstamas@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Kiss Tamás profi fogorvos', 'Gyermek fogorvos', 'Fogorvos egyetem', 1, 1, '+36205365214', 'IbrahimLajos', '2023-04-17 09:28:25', '0000-00-00 00:00:00', 'doktor'),
 (2, 'Tamás Klára', 't.klara@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Tamás Klára másik fogorvos', 'fogkő', 'Fogorvos egyetem', 3, 2, '06323512612', 'LajosneKlara', '2023-03-06 12:54:03', '0000-00-00 00:00:00', 'doktor'),
 (3, 'Ifjabb Kiss Pista Tamás ', 'IGFPN@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Tamás a legprofibb fogszabályzókkal foglalkozó orvos', 'Fogkőfényesítő', 'Fogorvos egyetem', 1, 3, '616546462484', 'Asztalossimon', '2023-03-06 12:54:03', '0000-00-00 00:00:00', 'doktor'),
@@ -182,7 +161,6 @@ INSERT INTO `orvosok` (`ID`, `nev`, `email`, `password`, `bemutatkozas`, `szakte
 (6, 'Szomorú Ágnes', 'dr.szomoruagnes@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Sziasztok', 'Fogtechnikus', 'Fogorvos egyetem', 2, 6, '0620584212', 'szomoruagnes', '2023-03-14 09:27:22', '2023-03-13 14:09:00', 'doktor'),
 (7, 'Simonfi Tamás', 'simifi@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Sziasztok', 'Általános fogorvos\r\n', 'Fogorvos egyetem', 4, 7, '0620458598', 'SimonfiTamas', '2023-03-14 09:32:17', '2023-03-13 14:19:00', 'doktor'),
 (8, 'Szabó Petra', 'szpetra20@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Sziasztok', 'Fogorvos asszisztens', 'Fogorvos egyetem', 2, 3, '06923145812515', 'szabopetra', '2023-03-28 09:02:18', '2023-03-17 11:00:00', 'doktor'),
->>>>>>> 72ce0b44ac823f7cb107ac202e8464f5784de51f
 (9, 'Lakatos Viktoria', 'lak.vik@gmail.com', '-', 'Sziasztok', 'Takarító', '', NULL, NULL, '', 'lakatosviktoria', '2023-03-17 11:08:04', '2023-03-17 11:00:00', '-'),
 (10, 'Csongrádi Daniella', 'csongiD@gmail.com', '-', 'Sziasztok', 'Pénzügyi tanácsadó ', 'Budapesti Gazdasági Egyetem', NULL, NULL, '+36206945221', 'csongradidaniela', '2023-03-17 11:14:04', '2023-03-17 12:00:00', '-'),
 (11, 'Féreg Julianna', 'fefejul@gmail.com', '-', 'Egy féreg vagyok', 'Humán erőforrás', 'SOTER-LINE', NULL, NULL, '+25814581455', 'feregjulianna', '2023-03-17 11:16:44', '2023-03-17 14:00:00', '-'),
@@ -218,13 +196,8 @@ INSERT INTO `users` (`ID`, `nev`, `email`, `password`, `telefonszam`, `jogok`, `
 (3, 'Ramóna', 'ramona@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '025592545', 'user', '2023-02-18', '2023-04-04', NULL, 'ramona'),
 (4, 'admin', 'admin@nudentist.com', '7af2d10b73ab7cd8f603937f7697cb5fe432c7ff', '+36205988683', 'admin', '2023-02-19', '2023-03-27', NULL, 'admin'),
 (5, 'Szabó Péter', 'szpeter20@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620584561825', 'user', '2023-03-03', '2023-03-21', 6, 'szabopetra'),
-<<<<<<< HEAD
-(6, 'Zámbó Illés', 'zamboilles@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '0691132401', 'user', '2023-03-03', '2023-04-12', 8, 'Zambo3'),
-(7, 'Foki Zoltán', 'turrfz@turr.hu', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36125525235652', 'user', '2023-03-03', '2023-04-05', NULL, 'fokizoltan'),
-=======
 (6, 'Zámbó Illés', 'zamboilles@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36205988683', 'user', '2023-03-03', '2023-04-17', 8, 'Zambo3'),
 (7, 'Foki Zoltán', 'turrfz@turr.hu', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36125525235652', 'user', '2023-03-03', '2023-03-27', NULL, 'fokizoltan'),
->>>>>>> 72ce0b44ac823f7cb107ac202e8464f5784de51f
 (11, 'fiszfoszxd70', 'fiszfosz.0000@00000000.0000000000', '3810f3c42b21d2bc4f26609152909346c5a04923', '+3ddddddd6xddd', 'user', '2023-03-20', '0000-00-00', NULL, 'admin'),
 (12, 'Vigh Ákos', 'vighakos@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620696969', 'user', '2023-03-21', '2023-03-21', NULL, 'admin'),
 (13, 'Baranyi Dániel', 'baranyidaniel@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620696969', 'user', '2023-03-21', '2023-03-21', NULL, 'admin');

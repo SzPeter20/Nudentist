@@ -7,12 +7,6 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
 
     $scope.dates.minDate=moment().add(1, 'days').calendar();
     $scope.dates.maxDate=moment().add(10, 'days').calendar();
-    
-    $scope.sajatIdopontok=[];
-    $scope.dates={};
-
-    $scope.dates.minDate=moment().add(1, 'days').calendar();
-    $scope.dates.maxDate=moment().add(10, 'days').calendar();
 
     DB.selectAll('idopontok').then(function(res) {
         $scope.idopontok = res.data;
