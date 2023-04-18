@@ -85,7 +85,7 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     };
     $scope.setmin=function(){
         $scope.dates.minDate=moment().add(1, 'days').format('YYYY-MM-DD');
-        $scope.dates.maxDate=moment().add(10, 'days').format('YYYY-MM-DD');
+        $scope.dates.maxDate=moment().add(14, 'days').format('YYYY-MM-DD');
         //$scope.times.minDate=moment();
     }
     $scope.removeApp=function(id){
