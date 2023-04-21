@@ -83,7 +83,7 @@
             
         </table>
 
-        <table class="table-responsive rating_table">
+        <table class="table-responsive rating_table"  ng-if="wasRated==true">
             <thead>
                 <tr>
                     <th>
@@ -99,9 +99,9 @@
             </thead>
         
             <div>
-                <h2>Értékelések:</h2>
-                <tbody ng-if="sajatErtekeles">
-                    <tr ng-repeat="ertekeles in sajatErtekeles" ng-if="doktor.ID==ertekeles.orvosID">
+                <h2  ng-if="wasRated==true">Értékelések:</h2>
+                <tbody>
+                    <tr ng-repeat="ertekeles in sajatErtekeles"  ng-if="doktor.ID==ertekeles.orvosID">
                         <td ng-repeat="user in userek" ng-if="user.ID==ertekeles.paciensID">
                             {{user.nev}}
                         </td>

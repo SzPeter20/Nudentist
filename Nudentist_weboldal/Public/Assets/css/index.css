@@ -54,7 +54,10 @@ form{
 }
 body{
     background-image: url(../HelperImages/pink_background.png);
-    
+    background-repeat: no-repeat;
+    background-size:cover;
+    position:absolute;
+    height:max-content;
     padding: 10px;
     margin: 10px;
     background-repeat:no-repeat;
@@ -131,10 +134,10 @@ body{
     margin-left: auto;
     margin-right: auto;
     background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    height: fit-content;
-
+    background-size:cover;
+    position:absolute;
+    height:max-content;
+    background-color: var(--body-color);;
     box-shadow: 5px 5px 5px 2px black;
     width:100%;
     border: 2px solid black;
