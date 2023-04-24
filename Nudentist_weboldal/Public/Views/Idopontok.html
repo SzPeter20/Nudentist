@@ -149,7 +149,9 @@
                           <p>Elfogadási állapot</p>
                         </th>
                       </tr>
+
                       <tr  ng-repeat="idopont in sajatIdopontok | orderBy:'+status'">
+
                         <td ng-repeat="munkatars in Munkatarsak" ng-if="munkatars.ID==idopont.orvosID">
                           {{munkatars.nev}}
                         </td>
