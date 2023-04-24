@@ -61,7 +61,7 @@
         </div>
         
         <div class="form-floating mb-3">
-            <input type="time" class="form-control" id="floatingTime" placeholder="Időpont" ng-model="idopont.idopont" min="08:00" max="20:00">
+            <input type="time" class="form-control" id="floatingTime" placeholder="Időpont" ng-model="idopont.idopont" min="08:00" step="600">
             <label for="floatingTime">Időpont</label>
         </div>
         <p class="mb-3 text-muted">Az Időpontnak 8 és 20 óra közöttinek kell lennie</p>
@@ -104,8 +104,8 @@
                       <span ng-if="idopont.status=='Elfogadva'"class="btn btn-success status" readonly>{{idopont.status}}</span>
                     </td>
                     <td>
-                      <h6 class="mb-0">{{idopont.idopont}}</h6>
-                      <small>{{idopont.datum | date:'yyyy/MM/dd'}}</small>
+                      <h6 class="mb-0">{{idopont.datum | date:'yyyy/MM/dd'}}</h6>
+                      <small>{{idopont.idopont}}</small>
                     </td>
                     <td>
                       <h6 class="mb-0">{{idopont.telefonszam}}</h6>
@@ -149,7 +149,9 @@
                           <p>Elfogadási állapot</p>
                         </th>
                       </tr>
-                      <tr  ng-repeat="idopont in sajatIdopontok">
+
+                      <tr  ng-repeat="idopont in sajatIdopontok | orderBy:'+status'">
+
                         <td ng-repeat="munkatars in Munkatarsak" ng-if="munkatars.ID==idopont.orvosID">
                           {{munkatars.nev}}
                         </td>
