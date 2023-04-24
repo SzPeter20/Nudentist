@@ -14,7 +14,12 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     $scope.ertekelesek=[];
     $scope.modositandoID;
     $scope.wasRated=false;
+    $scope.kedvencek=[];
 
+
+    DB.select('kedvencek','userID',$rootScope.loggedUser.ID).then(function(res){
+        $scope.kedvencek=res.data;
+    })
     DB.selectAll('ertekelesek').then(function(res) {
         $scope.ertekelesek = res.data;
     });
@@ -104,6 +109,36 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
         }
     })
     $scope.favourite=function(id){
+        $scope.fav=true;
+        
+        for (let i = 0; i < $scope.kedvencek.length; i++){
+            if($scope.kedvencek[i].orvosID==id){
+                $scope.helperid=$scop.kedvencek[i].ID;
+                document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
+                $scope.kedvencek.splice(i,1)
+                DB.delete('kedvencek','ID',helperid).then(function(res){
+                    alert('Sikeresen eltávolítva a kedvencek közül!');
+                })
+                break;
+            }
+        }
+
+        if($scope.kedvencek.length>2){
+            alert('Maximum 3 kedvenc orvos lehet.')
+        }else{
+            data={
+                'userID':$rootScope.loggedUser.ID,
+                'orvosID':id
+                
+            }
+            DB.insert('kedvencek',data).then(function(res){
+                alert('Kedvenc orvos felvéve.')
+                
+                document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
+            })
+        }
+
+        /*
         if($rootScope.loggedUser.kedvencekID==$scope.doktor.ID){
             
             let data={
@@ -135,7 +170,7 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
             document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill') 
             
         }
-        
+        */
     }
 
     $scope.rate= function(){
