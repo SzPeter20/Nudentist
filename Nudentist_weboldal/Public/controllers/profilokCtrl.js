@@ -13,6 +13,7 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     $scope.csillagok;
     $scope.ertekelesek=[];
     $scope.modositandoID;
+    $scope.wasRated=false;
 
     DB.selectAll('ertekelesek').then(function(res) {
         $scope.ertekelesek = res.data;
@@ -98,7 +99,9 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     })
     DB.select('ertekelesek','orvosID',$routeParams.id).then(function(res){
         $scope.sajatErtekeles=res.data;
-        console.log($scope.sajatErtekeles);
+        if($scope.sajatErtekeles.length>0){
+            $scope.wasRated=true;
+        }
     })
     $scope.favourite=function(id){
         if($rootScope.loggedUser.kedvencekID==$scope.doktor.ID){

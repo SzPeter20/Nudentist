@@ -105,7 +105,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
         }else if($rootScope.loggedUser.jogok==='doktor')
         {
             let data = {
-                nev: $scope.user.name,
+                nev: $scope.user.nev,
                 email: $scope.user.email,
                 telefonszam: $scope.user.phone,
                 szakterulet:$scope.user.field,
@@ -123,7 +123,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
         }
          else {
                     let data = {
-                        nev: $scope.user.name,
+                        nev: $scope.user.nev,
                         email: $scope.user.email,
                         telefonszam: $scope.user.phone
                     }
