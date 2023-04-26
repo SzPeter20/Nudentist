@@ -1,6 +1,6 @@
 app.controller('uzenetCtrl', function($scope, DB, $rootScope,$routeParams, $location){
     $scope.uzenet={};
-    if($routeParams.id!=null){1
+    if($routeParams.id!=null){
         DB.select('uzenetek','ID',$routeParams.id).then(function(res){
             $scope.uzenet = res.data[0]
         }

@@ -83,10 +83,6 @@ app.config(function($routeProvider) {
             templateUrl: 'views/Mail.html',
             controller: 'uzenetCtrl'
         })
-        .when('/kedvencek',{
-            templateUrl: 'views/Kedvencek.html',
-            controller: 'kedvencekCtrl'
-        })
         .when('/kedvencek', {
             resolve: {
                 function($rootScope, $location) {
@@ -154,20 +150,7 @@ app.config(function($routeProvider) {
         })
 
         .otherwise('/')
-        .when('/jelszomod', {
-            resolve: {
-                function($rootScope, $location) {
-
-                    if ($rootScope.loggedUser.jogok != 'user' && $rootScope.loggedUser.jogok != 'admin'&& $rootScope.loggedUser.jogok != 'doktor') {
-
-                        $location.path('/');
-                    }
-                }
-            },
-            templateUrl: 'views/Passwordmod.html',
-            controller: 'userCtrl'
-        })
-        .otherwise('/')
+        
 
 });
 
