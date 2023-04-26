@@ -24,6 +24,8 @@
   padding: auto;
   margin-bottom: auto;
   backdrop-filter: blur(2px);
+  
+  
 }
 footer {
   background-color: black;
@@ -358,9 +360,11 @@ table{
   .kezeles{
     color: cornflowerblue;
     cursor:pointer;
+    width: fit-content;
   }
   .kezeles:hover{
     background-color: hotpink;
+    width:fit-content;
   }
 .mail{
   font-size: 40px;

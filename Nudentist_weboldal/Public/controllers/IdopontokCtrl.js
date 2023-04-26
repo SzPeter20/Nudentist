@@ -4,9 +4,13 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     $scope.Munkatarsak = [];
     $scope.sajatIdopontok=[];
     $scope.dates={};
+
     $scope.times={};
-    
-    
+
+    $scope.dates.minDate=moment().add(1, 'days').calendar();
+    $scope.dates.maxDate=moment().add(10, 'days').calendar();
+
+
     DB.selectAll('idopontok').then(function(res) {
         $scope.idopontok = res.data;
     });
@@ -16,6 +20,7 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
         })
     
     
+
     DB.selectAll('orvosok').then(function(res) {
         $scope.Munkatarsak = res.data;
     });  

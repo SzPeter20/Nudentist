@@ -171,7 +171,22 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
     $scope.tokedvencek=function(){
         $location.path('/kedvencek')
     }
-
+    $scope.pictureupload=function(){
+       if ($scope.user.picture==null) {
+           alert('Hiba')
+       } else {
+        let data = {
+            kep:$scope.user.picture
+        }
+           DB.update('users',$rootScope.loggedUser.ID,data).then(function(res){
+            if (res.data.affectedRows != 0) {
+                alert('Sikeres képfeltöltés');
+            } else {
+                alert('Sikertelen');
+            }
+           })
+       }
+    }
    
 
     $scope.login = function() {

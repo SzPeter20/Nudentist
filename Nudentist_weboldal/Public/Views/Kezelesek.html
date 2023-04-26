@@ -14,12 +14,12 @@
                 <div class="accordion-body ">
                   <ul>
                     <li ng-repeat="kezeles in kezelesek"  ng-if="kezeles.kategoria==kategoria.kategoria"  ng-click="chooseKezeles(kezeles.ID)">
-                      <p class="kezeles">{{kezeles.neve}}</p>
+                      <p class="kezeles"><i class="{{kezeles.logo}}"></i> {{kezeles.neve}}</p>
 
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div><i class="fa-solid fa-tooth"></i>
             </div>
             
           </div>
