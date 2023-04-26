@@ -5,8 +5,11 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
     $scope.sajatIdopontok=[];
     $scope.dates={};
 
+    $scope.times={};
+
     $scope.dates.minDate=moment().add(1, 'days').calendar();
     $scope.dates.maxDate=moment().add(10, 'days').calendar();
+
 
     DB.selectAll('idopontok').then(function(res) {
         $scope.idopontok = res.data;
@@ -52,15 +55,12 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
         
     }
     $scope.foglalas=function() {
-        console.log($scope.idopont.id)
+        
         if ( $scope.idopont.idopont==null||$scope.idopont.datum==null ||$scope.idopont.orvosid==null) {
             alert('Nem adott meg minden kötelező adatot!');
         } else {
-
-            
                     let data = 
                     {
-                        
                         orvosID:$scope.idopont.orvosid,
                         nev: $rootScope.loggedUser.nev,
                         email: $rootScope.loggedUser.email,
@@ -71,12 +71,15 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
                         paciensID:$rootScope.loggedUser.ID,
                         status:'Elfogadásra vár'
                     }
-                    console.log(data);
+                    
                     
                     DB.insert('idopontok', data).then(function(res) {
                         if (res.data.affectedRows != 0) {
                             alert('Sikeres időpont foglalás');
                             $scope.idopont = {};
+                            DB.select('idopontok','paciensID',$rootScope.loggedUser.ID).then(function(res){
+                                $scope.sajatIdopontok=res.data;
+                            })
                         } else {
                             alert('Váratlan hiba történt!');
                         }
@@ -85,6 +88,20 @@ app.controller('IdopontokCtrl', function($scope, DB, $rootScope, $location) {
         }
 
     };
+    $scope.setmin=function(){
+        $scope.dates.minDate=moment().add(1, 'days').format('YYYY-MM-DD');
+        $scope.dates.maxDate=moment().add(14, 'days').format('YYYY-MM-DD');
+        //$scope.times.minDate=moment();
+    }
+    $scope.removeApp=function(id){
+        DB.delete('idopontok','ID',id).then(function(res){
+            DB.select('idopontok','paciensID',$rootScope.loggedUser.ID).then(function(res){
+                $scope.sajatIdopontok=res.data;
+            })
+            alert('Időpont sikeresen törölve!')
+        })
+        
+    }
 }
 
 );

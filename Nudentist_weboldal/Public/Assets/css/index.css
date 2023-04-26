@@ -56,7 +56,10 @@ form{
 }
 body{
     background-image: url(../HelperImages/pink_background.png);
-    
+    background-repeat: no-repeat;
+    background-size:cover;
+    position:absolute;
+    height:max-content;
     padding: 10px;
     margin: 10px;
     background-repeat:no-repeat;
@@ -133,10 +136,10 @@ body{
     margin-left: auto;
     margin-right: auto;
     background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    height: fit-content;
-
+    background-size:cover;
+    position:absolute;
+    height:max-content;
+    background-color: var(--body-color);;
     box-shadow: 5px 5px 5px 2px black;
     width:100%;
     border: 2px solid black;
@@ -415,6 +418,7 @@ table{
 .bemutatkozas_image{
   width: 40%;
   height: 40%;
+  margin: 2%;
 }
 
 .rating_table td{
@@ -429,4 +433,13 @@ table{
 }
 .rating_table{
   border: #000000 solid 1px;
+}
+.passwd-button{
+  margin-top: 6%;
+}
+.delete-trash:hover{
+  background-color:darkorange;
+}
+.regret-trash:hover{
+  background-color:red;
 }
