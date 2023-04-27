@@ -11,7 +11,7 @@ const fs = require('fs');
 var storage = multer.diskStorage({
     destination: '../Public/uploads/',
     filename: function(req, file, cb) {
-        let file_name = file.originalname.replace(path.extname(file.originalname), "") + '-' + Date.now() + path.extname(file.originalname);
+        let file_name = file.originalname.replace(path.extname(file.originalname), path.extname(file.originalname).substring(0, path.extname(file.originalname).lastIndexOf('.'))+'.jpg');
         cb(null, file_name);
     }
 });
@@ -38,7 +38,7 @@ app.use(express.json());
 
 // file upload
 app.post('/fileUpload', upload.single('file'), (req, res) => {
-    log(req.socket.remoteAddress, `1 File uploaded to /Public/uploads (${req.file.filename}`);
+    log(req.socket.remoteAddress, `1 File uploaded to /Public/uploads ${req.file.filename}`);
     res.status(200).json(req.file);
 });
 

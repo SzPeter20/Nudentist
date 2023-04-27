@@ -2,7 +2,7 @@
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="./Assets/HelperImages/{{loggedUser.kep}}.jpg">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="./uploads/{{loggedUser.kep}}.jpg">
                 <span class="font-weight-bold">{{loggedUser.nev}}</span>
                 <span class="text-black-50">{{loggedUser.email}}</span>
                 <span class="text-black-50">{{loggedUser.telefonszam}}</span>
@@ -26,7 +26,7 @@
                     <div class="col-md-12" ng-if="loggedUser.jogok==='doktor'"><label class="labels">Tanulmányok</label><input type="text" class="form-control" placeholder="Adja meg tanulmányait" ng-model="user.studies"></div>
                     <div class="col-md-12" ng-if="loggedUser.jogok==='doktor'"><label class="labels">Szakterület</label><input type="text" class="form-control" placeholder="Adja meg szakterületét" ng-model="user.field"></div>
                     <div class="col-md-12" ng-if="loggedUser.jogok==='doktor'"><label class="labels">Bemutatkozás</label> <br> <textarea name="desctextarea" id="desctextarea" cols="30" rows="10" placeholder="Adja meg bemutatkozását" ng-model="user.desc"></textarea> </div>
-
+                    <div class="col-md-12"><label class="labels">Kép</label><input type="file" class="form-control"placeholder="Profilkép:" file-model="user.picture" accept="image/*"></div>
 
                     <div>A *-al jelölt adatok megadása kötelező</div>
 
@@ -37,7 +37,7 @@
                 </div>
                
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" ng-click="mod()">Profil módosítás mentése</button></div>
-                
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" ng-click="imageUpload()">Kép módosítása</button></div>
 
                 <a href="#!/passwordmod"> <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" >Jelszó megváltoztatása</button> </div></a>
 
