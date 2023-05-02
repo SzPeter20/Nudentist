@@ -102,10 +102,12 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location,fileUpload
         let data={};
         
 
-        
-
-        
         if($rootScope.loggedUser.jogok=='doktor'){
+            if($scope.user.nev==null&&$scope.user.email==null&&$scope.user.phone==null&&$scope.user.studies==null&&$scope.user.field==null&&$scope.user.desc==null){
+                alert('Nem változtat meg semmilyen adatot.')
+            }else{
+
+            
             if($scope.user.nev!=null){
                 data.nev=$scope.user.nev;
             }
@@ -147,8 +149,11 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location,fileUpload
                     }
                 })
             }
-            
+        }
         }else {
+            if($scope.user.nev==null&&$scope.user.email==null&&$scope.user.phone==null){
+                alert('Nem változtat meg semmilyen adatot.')
+            }else{
                     if($scope.user.nev!=null){
                         data.nev=$scope.user.nev;
                     }
@@ -171,8 +176,9 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location,fileUpload
                             }
                         );
                     }
-                    
+                }
         }
+    
     };
 
     $scope.passwdmod=function(){

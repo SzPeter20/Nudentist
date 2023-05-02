@@ -1,10 +1,23 @@
 app.controller('kedvencekCtrl', function($scope, DB, $rootScope, $location) {
     $scope.Munkatarsak = [];
     $scope.userek=[];
+    $scope.kedvencek=[];
+    $scope.sajatkedvencek=[];
 
-    DB.selectAll('orvosok').then(function(res) {
-        $scope.Munkatarsak = res.data;
-    });
+    DB.select('kedvencek','userID',$rootScope.loggedUser.ID).then(function(res){
+        $scope.kedvencek=res.data;
+        for(let i = 0; i < $scope.Munkatarsak.length; i++){
+            for(let j = 0; j < $scope.kedvencek.length; j++){
+                if($scope.Munkatarsak[i].ID&&$scope.kedvencek[j].orvosID){
+                    $scope.sajatkedvencek.add($scope.kedvencek[j])
+                }
+            }
+            
+        }
+    })
+    DB.selectAll('orvosok').then(function(res){
+        $scope.Munkatarsak=res.data;
+    })
     DB.selectAll('users').then(function(res){
         $scope.userek=res.data;
     })

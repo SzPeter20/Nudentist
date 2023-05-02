@@ -17,7 +17,7 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     $scope.kedvencek=[];
 
 
-    if($rootScope.loggedUser){
+    if($rootScope.loggedUser!=null){
         DB.select('kedvencek','userID',$rootScope.loggedUser.ID).then(function(res){
             $scope.kedvencek=res.data;
         })
@@ -114,23 +114,25 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
         }
     })
     $scope.favourite=function(id){
+        console.log($scope.kedvencek.length);
         let notfav=true;
         let helperid;
-        for (let i = 0; i < $scope.kedvencek.length; i++){
-            if($scope.kedvencek[i].orvosID==id){
-                helperid=$scope.kedvencek[i].ID;
-                document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
-                $scope.kedvencek.splice(i,1)
-                DB.delete('kedvencek','ID',helperid).then(function(res){
-                    alert('Sikeresen eltávolítva a kedvencek közül!');
-                })
-                notfav=false;
-                break;
+        if($scope.kedvencek.length>0){
+            for (let i = 0; i < $scope.kedvencek.length; i++){
+                if($scope.kedvencek[i].orvosID==id){
+                    helperid=$scope.kedvencek[i].ID;
+                    document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
+                    $scope.kedvencek.splice(i,1)
+                    DB.delete('kedvencek','ID',helperid).then(function(res){
+                        alert('Sikeresen eltávolítva a kedvencek közül!');
+                    })
+                    notfav=false;
+                    break;
+                }
             }
-        }
-        if($scope.kedvencek.length>2){
+        }else if($scope.kedvencek.length>2){
             alert('Maximum 3 kedvenc orvos lehet.')
-        }else if(notfav&&$scope.kedvencek.length>0){
+        }else if(notfav&&$scope.kedvencek.length>0&&$scope.kedvencek.length<3){
             for(let i = 0; i < $scope.kedvencek.length; i++){
                 if(notfav&&$scope.kedvencek[i].orvosID!=id){
                     data={
@@ -145,7 +147,7 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
                     
                 }
             }
-        }else if(notfav){
+        }else if(notfav&&$scope.kedvencek.length==0){
             data={
                 'userID':$rootScope.loggedUser.ID,
                 'orvosID':id
