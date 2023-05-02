@@ -130,7 +130,7 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
         }
         if($scope.kedvencek.length>2){
             alert('Maximum 3 kedvenc orvos lehet.')
-        }else{
+        }else if(notfav&&$scope.kedvencek.length>0){
             for(let i = 0; i < $scope.kedvencek.length; i++){
                 if(notfav&&$scope.kedvencek[i].orvosID!=id){
                     data={
@@ -145,6 +145,16 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
                     
                 }
             }
+        }else if(notfav){
+            data={
+                'userID':$rootScope.loggedUser.ID,
+                'orvosID':id
+                }
+            DB.insert('kedvencek',data).then(function(res){
+                alert('Kedvenc orvos felvéve.')
+                    
+                document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
+            })
         }
         
         
