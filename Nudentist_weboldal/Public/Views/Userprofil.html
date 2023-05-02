@@ -22,7 +22,7 @@
                     <div class="col-md-12"><label class="labels">Név*</label><input type="text" class="form-control" placeholder="Adja meg a nevét" ng-model="user.nev"></div>     
 
                     <div class="col-md-12"><label class="labels">Telefonszám</label><input type="text" class="form-control" placeholder="Adja meg Telefonszámát" ng-model="user.phone"></div>
-                    <div class="col-md-12"><label class="labels">E-mail cím*</label><input type="text" class="form-control" placeholder="Adja meg e-mail címét" ng-model="user.email"></div>
+                    <div class="col-md-12"><label class="labels">E-mail cím*</label><input type="email" class="form-control" placeholder="Adja meg e-mail címét" ng-model="user.email"></div>
                     <div class="col-md-12" ng-if="loggedUser.jogok==='doktor'"><label class="labels">Tanulmányok</label><input type="text" class="form-control" placeholder="Adja meg tanulmányait" ng-model="user.studies"></div>
                     <div class="col-md-12" ng-if="loggedUser.jogok==='doktor'"><label class="labels">Szakterület</label><input type="text" class="form-control" placeholder="Adja meg szakterületét" ng-model="user.field"></div>
                     <div class="col-md-12" ng-if="loggedUser.jogok==='doktor'"><label class="labels">Bemutatkozás</label> <br> <textarea name="desctextarea" id="desctextarea" cols="30" rows="10" placeholder="Adja meg bemutatkozását" ng-model="user.desc"></textarea> </div>
