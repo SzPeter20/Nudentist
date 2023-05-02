@@ -15,7 +15,7 @@ app.controller('kezelesekCtrl', function($scope, DB, $rootScope,$location) {
     })
 
     $scope.chooseKezeles=function(id){
-        console.log(id)
+        
         $location.path('/kezeles/' + id)
 
     }

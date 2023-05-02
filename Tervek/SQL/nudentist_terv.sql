@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Ápr 18. 09:21
+-- Létrehozás ideje: 2023. Ápr 24. 13:02
 -- Kiszolgáló verziója: 10.4.6-MariaDB
 -- PHP verzió: 7.3.8
 
@@ -198,7 +198,7 @@ INSERT INTO `users` (`ID`, `nev`, `email`, `password`, `telefonszam`, `jogok`, `
 (3, 'Ramóna', 'ramona@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '025592545', 'user', '2023-02-18', '2023-04-04', NULL, 'ramona'),
 (4, 'admin', 'admin@nudentist.com', '7af2d10b73ab7cd8f603937f7697cb5fe432c7ff', '+36205988683', 'admin', '2023-02-19', '2023-03-27', NULL, 'admin'),
 (5, 'Szabó Péter', 'szpeter20@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620584561825', 'user', '2023-03-03', '2023-03-21', 6, 'szabopetra'),
-(6, 'Zámbó Illés', 'zamboilles@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36205988683', 'user', '2023-03-03', '2023-04-18', 8, 'Zambo3'),
+(6, 'Zámbó Illés', 'zamboilles@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36205988683', 'user', '2023-03-03', '2023-04-24', 8, 'Zambo3'),
 (7, 'Foki Zoltán', 'turrfz@turr.hu', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36125525235652', 'user', '2023-03-03', '2023-03-27', NULL, 'fokizoltan'),
 (11, 'fiszfoszxd70', 'fiszfosz.0000@00000000.0000000000', '3810f3c42b21d2bc4f26609152909346c5a04923', '+3ddddddd6xddd', 'user', '2023-03-20', '0000-00-00', NULL, 'admin'),
 (12, 'Vigh Ákos', 'vighakos@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620696969', 'user', '2023-03-21', '2023-03-21', NULL, 'admin'),

@@ -99,13 +99,13 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
         }
     };
     $scope.mod = function() {
-        console.log($rootScope.loggedUser)
+        
         if ($scope.user.nev == null || $scope.user.email == null) {
             alert('Nem adott meg minden kötelező adatot!');
         }else if($rootScope.loggedUser.jogok==='doktor')
         {
             let data = {
-                nev: $scope.user.name,
+                nev: $scope.user.nev,
                 email: $scope.user.email,
                 telefonszam: $scope.user.phone,
                 szakterulet:$scope.user.field,
@@ -123,7 +123,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
         }
          else {
                     let data = {
-                        nev: $scope.user.name,
+                        nev: $scope.user.nev,
                         email: $scope.user.email,
                         telefonszam: $scope.user.phone
                     }
@@ -207,7 +207,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
             DB.logincheck(data).then(function(res) {
                 if (res.data.length == 0) {
                     DB.logincheck(data2).then(function(res) {
-                        console.log(res.data);
+                        
                         if (res.data.length == 0) {
                             alert('Hibás belépési adatok!');
                         } else {
