@@ -1,4 +1,4 @@
-app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
+app.controller('userCtrl', function($scope, DB, $rootScope, $location,fileUpload) {
     $scope.uzenetek=[];
     $scope.doktorok=[];
     $scope.userek=[];
@@ -99,44 +99,79 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
         }
     };
     $scope.mod = function() {
+        let data={};
         
-        if ($scope.user.nev == null || $scope.user.email == null) {
-            alert('Nem adott meg minden kötelező adatot!');
-        }else if($rootScope.loggedUser.jogok==='doktor')
-        {
-            let data = {
-                nev: $scope.user.nev,
-                email: $scope.user.email,
-                telefonszam: $scope.user.phone,
-                szakterulet:$scope.user.field,
-                tanulmanyok:$scope.user.studies,
-                bemutatkozas:$scope.user.desc
-            }
-            DB.update('orvosok',$rootScope.loggedUser.ID, data).then(function(res) {
-                if (res.data.affectedRows != 0) {
-                    alert('Adatok sikeresen megváltoztatva!');
-                    $scope.user = {};
-                } else {
-                    alert('Váratlan hiba történt az adatbázis művelet során!');
-                }
-        })
-        }
-         else {
-                    let data = {
-                        nev: $scope.user.nev,
-                        email: $scope.user.email,
-                        telefonszam: $scope.user.phone
-                    }
 
-                    DB.update('users',$rootScope.loggedUser.ID, data).then(function(res) {
-                        if (res.data.affectedRows != 0) {
-                            alert('Adatok sikeresen megváltoztatva!');
-                            $scope.user = {};
-                        } else {
-                            alert('Váratlan hiba történt az adatbázis művelet során!');
-                        }
-                }
-            );
+        
+
+        
+        if($rootScope.loggedUser.jogok=='doktor'){
+            if($scope.user.nev!=null){
+                data.nev=$scope.user.nev;
+            }
+            if($scope.user.email!=null){
+                data.email=$scope.user.email;
+            }
+            if($scope.user.telefonszam!=null){
+                data.telefonszam=$scope.user.telefonszam;
+            }
+            if($scope.user.szakterulet!=null){
+                data.szakterulet=$scope.user.szakterulet;
+            }
+            if($scope.user.tanulmanyok!=null){
+                data.tanulmanyok=$scope.user.tanulmanyok;
+            }
+            if($scope.user.bemutatkozas!=null){
+                data.bemutatkozas=$scope.user.bemutatkozas;
+            }
+            if(file!=null){
+            
+                console.log(file.filename);
+                let uploadUrl='http://localhost:3000/fileupload';
+                fileUpload.uploadFile(file, uploadUrl).then(function(res) {
+                    filename = res.data.filename;
+                    //filename.substring(0, filename.lastIndexOf('.'));
+                    data.kep=filename;
+                    console.log(filename);
+                    console.log(file.filename);
+                    alert('aaaa')
+                })
+            }
+            if(data!=null){
+                DB.update('orvosok',$rootScope.loggedUser.ID, data).then(function(res) {
+                    if (res.data.affectedRows != 0) {
+                        alert('Adatok sikeresen megváltoztatva!');
+                        $scope.user = {};
+                    } else {
+                        alert('Váratlan hiba történt az adatbázis művelet során!');
+                    }
+                })
+            }
+            
+        }else {
+                    if($scope.user.nev!=null){
+                        data.nev=$scope.user.nev;
+                    }
+                    if($scope.user.email!=null){
+                        data.email=$scope.user.email;
+                    }
+                    if($scope.user.telefonszam!=null){
+                        data.telefonszam=$scope.user.telefonszam;
+                    }
+                    
+                    if(data!=null){
+                        console.log(data);
+                        DB.update('users',$rootScope.loggedUser.ID, data).then(function(res) {
+                            if (res.data.affectedRows != 0) {
+                                alert('Adatok sikeresen megváltoztatva!');
+                                $scope.user = {};
+                            } else {
+                                alert('Váratlan hiba történt az adatbázis művelet során!');
+                                }
+                            }
+                        );
+                    }
+                    
         }
     };
 
@@ -164,7 +199,29 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location) {
                 }
             })
         }
+    };
+    $scope.imageUpload = function() {
+        let file=$scope.user.picture;
+        let filename = '';
+        if(file!=null){
+            console.log(file);
+            let uploadUrl='http://localhost:3000/fileupload';
+            fileUpload.uploadFile(file, uploadUrl).then(function(res) {
+                filename = res.data.filename;
+                console.log(filename);
+                filename= filename.substring(0, filename.lastIndexOf('.'))
+                console.log(filename);
+                DB.update('users', $rootScope.loggedUser.ID, { kep: filename }).then(function(res) {
+                    if (res.data.affectedRows != 0) {
+                        alert('Kép feltöltve!');
+                    } else {
+                        alert('Váratlan hiba történt az adatbázis művelet során!');
+                    }
+                });
+            })
+        }
     }
+
     $scope.tomail=function(){
         $location.path('/uzenetek')
     }

@@ -17,9 +17,12 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
     $scope.kedvencek=[];
 
 
-    DB.select('kedvencek','userID',$rootScope.loggedUser.ID).then(function(res){
-        $scope.kedvencek=res.data;
-    })
+    if($rootScope.loggedUser){
+        DB.select('kedvencek','userID',$rootScope.loggedUser.ID).then(function(res){
+            $scope.kedvencek=res.data;
+        })
+    }
+    
     DB.selectAll('ertekelesek').then(function(res) {
         $scope.ertekelesek = res.data;
     });
@@ -38,16 +41,18 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
         
     }
 
-    $scope.setup=function(ID){
+    $scope.setup=function(id){
         if($rootScope.loggedUser){
             for(let i = 0; i < $scope.ertekelesek.length; i++){
-                if( $rootScope.loggedUser.kedvencekID==ID){
-                    if(!document.getElementById('heart').classList.contains('bi-heart-fill')){
-                        document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
+                for(let i = 0; i < $scope.kedvencek.length; i++){
+                    if( $scope.kedvencek[i].orvosID==id){
+                        if(!document.getElementById('heart').classList.contains('bi-heart-fill')){
+                            document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
+                        }
                     }
                 }
-                if(ID==$scope.ertekelesek[i].orvosID&&$rootScope.loggedUser.ID==$scope.ertekelesek[i].paciensID){
-                    $scope.loaduserdata($scope.ertekelesek[i].csillagok,ID);
+                if(id==$scope.ertekelesek[i].orvosID&&$rootScope.loggedUser.ID==$scope.ertekelesek[i].paciensID){
+                    $scope.loaduserdata($scope.ertekelesek[i].csillagok,id);
                     break;
                 }
             }
@@ -109,34 +114,52 @@ app.controller('profilokCtrl', function($scope, DB, $rootScope,$routeParams){
         }
     })
     $scope.favourite=function(id){
-        $scope.fav=true;
-        
+        let notfav=true;
+        let helperid;
         for (let i = 0; i < $scope.kedvencek.length; i++){
             if($scope.kedvencek[i].orvosID==id){
-                $scope.helperid=$scop.kedvencek[i].ID;
+                helperid=$scope.kedvencek[i].ID;
                 document.getElementById('heart').classList.replace('bi-heart-fill','bi-heart')
                 $scope.kedvencek.splice(i,1)
                 DB.delete('kedvencek','ID',helperid).then(function(res){
                     alert('Sikeresen eltávolítva a kedvencek közül!');
                 })
+                notfav=false;
                 break;
             }
         }
-
         if($scope.kedvencek.length>2){
             alert('Maximum 3 kedvenc orvos lehet.')
-        }else{
+        }else if(notfav&&$scope.kedvencek.length>0){
+            for(let i = 0; i < $scope.kedvencek.length; i++){
+                if(notfav&&$scope.kedvencek[i].orvosID!=id){
+                    data={
+                        'userID':$rootScope.loggedUser.ID,
+                        'orvosID':id
+                        }
+                    DB.insert('kedvencek',data).then(function(res){
+                        alert('Kedvenc orvos felvéve.')
+                            
+                        document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
+                    })
+                    
+                }
+            }
+        }else if(notfav){
             data={
                 'userID':$rootScope.loggedUser.ID,
                 'orvosID':id
-                
-            }
+                }
             DB.insert('kedvencek',data).then(function(res){
                 alert('Kedvenc orvos felvéve.')
-                
+                    
                 document.getElementById('heart').classList.replace('bi-heart','bi-heart-fill')
             })
         }
+        
+        
+
+        
 
         /*
         if($rootScope.loggedUser.kedvencekID==$scope.doktor.ID){

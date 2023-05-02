@@ -172,7 +172,7 @@ app.directive('fileModel', function($parse) {
 
 app.service('fileUpload', function($http, $q) {
 
-    this.uploadFileToUrl = function(file, uploadUrl) {
+    this.uploadFile = function(file, uploadUrl) {
         var fd = new FormData();
         fd.append('file', file);
 
