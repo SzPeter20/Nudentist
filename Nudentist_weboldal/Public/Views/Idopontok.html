@@ -76,7 +76,7 @@
             
           </div>
           <section class="main-content">
-          <div class="container">
+          <div class="container-fluid">
           <div ng-if="loggedUser && (loggedUser.jogok==='doktor') ">
             <div class="table-responsive">
               <table class="table">
@@ -132,11 +132,9 @@
                 </table>
             </div>
               </div>
-                </div>
-                <div class="container" ng-if="loggedUser && (loggedUser.jogok==='user')">
+                </div class="container-fluid">
+                <div class="container-fluid" ng-if="loggedUser && (loggedUser.jogok==='user')">
                   <table class="table">
-                  
-
                     <tbody>
                       <tr>
                         <th>
