@@ -23,6 +23,7 @@
   margin-right: auto;
   padding: auto;
   margin-bottom: auto;
+  -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   
   
