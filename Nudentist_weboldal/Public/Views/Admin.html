@@ -1,0 +1,9 @@
+<table>
+    <tr ng-repeat="user in userek">
+        <td>{{user.nev}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.telefonszam}}</td>
+        <td><button class="btn btn-warning mb-3" ng-click="kitilt(user.ID)">Tiltás</button></td>
+        <td><button class="btn btn-danger mb-3" ng-click="kitorol(user.ID)">Törlés</button></td>
+    </tr>
+</table>

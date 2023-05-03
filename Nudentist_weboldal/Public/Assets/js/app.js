@@ -24,6 +24,10 @@ app.config(function($routeProvider) {
             templateUrl: 'views/Homepage.html',
             controller: 'munkatarsakCtrl'
         })
+        .when('/userkezeles',{
+            templateUrl: 'views/Admin.html',
+            controller: 'userCtrl'
+        })
         .when('/reg', {
             templateUrl: 'views/Registration.html',
             controller: 'userCtrl'

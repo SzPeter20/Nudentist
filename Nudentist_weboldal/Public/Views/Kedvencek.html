@@ -13,16 +13,16 @@
 <a href="#!/profilom"> <button class="btn btn-primary">Vissza</button></a>
 <h1>Kedvenc orvos</h1>
 <div class="row row-cols-1 row-cols-md-3 g-4" >
-    <div class="col" ng-repeat="sajatkedvenc in sajatkedvencek">
+    <div class="col" ng-repeat="munkatars in Munkatarsak">
       <div class="card h-100"> 
-        <img src="./Assets/HelperImages/{{sajatkedvenc.kep}}.jpg" class="card-img-top" alt="{{sajatkedvenc.nev}}" title="{{sajatkedvenc.nev}}">
-        <div class="card-body"  >
-          <h5 class="card-title">{{sajatkedvenc.nev}}</h5>
-          <p class="card-text">{{sajatkedvenc.bemutatkozas}}</p>
-          <p class="card-text">{{sajatkedvenc.elerhetosegek}}</p>
-          <p class="card-text">{{sajatkedvenc.szakterulet}}</p>
-          <p class="card-text">{{sajatkedvenc.tanulmanyok}}</p>
-          <button class="button" ng-click="toDocProfile(sajatkedvenc.ID)">Megtekintés</button>
+        <img src="./Assets/HelperImages/{{munkatars.kep}}.jpg" class="card-img-top" alt="{{munkatars.nev}}" title="{{munkatars.nev}}">
+        <div class="card-body" ng-if="sajatkedvencek.uncludes(munkatars)">
+          <h5 class="card-title">{{munkatars.nev}}</h5>
+          <p class="card-text">{{munkatars.bemutatkozas}}</p>
+          <p class="card-text">{{munkatars.elerhetosegek}}</p>
+          <p class="card-text">{{munkatars.szakterulet}}</p>
+          <p class="card-text">{{munkatars.tanulmanyok}}</p>
+          <button class="button" ng-click="toDocProfile(munkatars.ID)">Megtekintés</button>
         </div>
       </div>
     </div>

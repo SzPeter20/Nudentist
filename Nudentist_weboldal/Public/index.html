@@ -101,7 +101,11 @@
                                     <i class='bx bx-user-voice icon' ></i>
                                     <a class="nav-link text nav-text" href="#!/profilom">Profilom</a>
                                 </li> 
-                                   
+                                <li class="nav-item" ng-if="loggedUser && (loggedUser.jogok==='admin')">
+
+                                    <i class='bx bx-user-voice icon' ></i>
+                                    <a class="nav-link text nav-text" href="#!/userkezeles">Felhasználó kezelés</a>
+                                </li> 
                             </ul>
                         </div>
                         

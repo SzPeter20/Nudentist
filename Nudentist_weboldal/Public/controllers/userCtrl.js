@@ -19,7 +19,19 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location,fileUpload
         
         
     }
-    
+    $scope.kitilt=function(id){
+        data={
+            jogok:'tiltott'
+        }
+        DB.update('users',id,data).then(function(res){
+
+        })
+    }
+    $scope.kitorol=function(id){
+        DB.delete('users',id).then(function(res){
+            
+        })
+    }
     
     $scope.deleteMessage=function(id){
         for(let i = 0; i < $scope.uzenetek.length; i++){
@@ -274,7 +286,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location,fileUpload
                         if (res.data.length == 0) {
                             alert('Hibás belépési adatok!');
                         } else {
-                            if (res.data[0].status == 0) {
+                            if (res.data[0].jogok == 'tiltott') {
                                 alert('Tiltott felhasználó!');
                             } else {
         
@@ -290,7 +302,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location,fileUpload
                         }
                     });
                 } else {
-                    if (res.data[0].status == 0) {
+                    if (res.data[0].jogok == 'tiltott') {
                         alert('Tiltott felhasználó!');
                     } else {
 
