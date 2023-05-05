@@ -23,10 +23,8 @@
   margin-right: auto;
   padding: auto;
   margin-bottom: auto;
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
-  
-  
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
 }
 footer {
   background-color: black;
@@ -61,9 +59,8 @@ body{
     background-size:cover;
     position:absolute;
     height:max-content;
-    padding: 10px;
-    margin: 10px;
-    background-repeat:no-repeat;
+    padding: 8px;
+    margin: 8px;
     background-size:cover;
     position:relative;
     background-position:center;
@@ -183,7 +180,7 @@ header .toggle{
 }
  h1{
     
-    font-size: 65px;
+    
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -197,7 +194,7 @@ h2{
   color: red;
 }
  .slogen{
-    font-size: 45px;
+    font-size: 55px;
     font-weight: 500;
     color: var(--bodytext-color);
     padding: 12px 60px;
@@ -205,8 +202,8 @@ h2{
 }
 table{
   width: 100%;
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
   
 }
 .table td{
