@@ -1,7 +1,7 @@
 <h1>Üzenetek</h1>
 <a href="#!/profilom"> <button class="btn btn-primary">Vissza</button></a>
 
-    <table>
+    <table ng-if="loggedUser.jogok=='user'">
         <tr>
             <th>Feladó</th>
             <th>Tárgy</th>
@@ -10,7 +10,38 @@
         </tr>
         <a href="#!/mail"> <button class="btn btn-primary" ng-cick="newmessage()">Új üzenet írása</button></a>
         <tr ng-repeat="uzenet in uzenetek"  ng-if="uzenet.recipientID==loggedUser.ID && uzenet.recipientType==loggedUser.jogok" class="kezeles" >
-            <td ng-repeat="user in userek" ng-if="user.ID===uzenet.senderID">
+            <td ng-repeat="orvos in doktorok" ng-if="orvos.ID==uzenet.senderID">
+                <p  ng-click="toMessageContent(uzenet.ID)">
+                    {{orvos.nev}}
+                </p>
+            </td>
+            <td >
+                <p ng-click="toMessageContent(uzenet.ID)">
+                    {{uzenet.title}}
+                </p>
+            </td>
+            <td >
+                <p  ng-click="toMessageContent(uzenet.ID)">
+                    {{uzenet.datum | date:'yyyy:MM:dd'}}
+                </p>
+            </td>
+            <td >
+                <p>
+                    <i class="bi bi-trash-fill" ng-click="deleteMessage(uzenet.ID)"></i>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table ng-if="loggedUser.jogok=='doktor'">
+        <tr>
+            <th>Feladó</th>
+            <th>Tárgy</th>
+            <th>Dátum</th>
+            <th>Törlés</th>
+        </tr>
+        <a href="#!/mail"> <button class="btn btn-primary" ng-cick="newmessage()">Új üzenet írása</button></a>
+        <tr ng-repeat="uzenet in uzenetek"  ng-if="uzenet.recipientID==loggedUser.ID && uzenet.recipientType==loggedUser.jogok" class="kezeles" >
+            <td ng-repeat="user in userek" ng-if="user.ID==uzenet.senderID">
                 <p  ng-click="toMessageContent(uzenet.ID)">
                     {{user.nev}}
                 </p>
