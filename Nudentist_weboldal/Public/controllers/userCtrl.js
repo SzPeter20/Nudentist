@@ -51,17 +51,7 @@ app.controller('userCtrl', function($scope, DB, $rootScope, $location,fileUpload
     })
 
     
-    /*
-    Vigh Ákos müve:
-      55555555557777777777777777777777777777777777222222222222
-      2
-
-      2
-      1
-      1561461611
-      131
-      31
-    */
+    
     $scope.registration = function() {
         if ($scope.user.name == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null) {
             alert('Nem adott meg(helyesen) minden kötelező adatot!');
