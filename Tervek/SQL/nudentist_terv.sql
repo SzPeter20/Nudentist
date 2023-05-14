@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Máj 07. 12:24
--- Kiszolgáló verziója: 10.4.25-MariaDB
--- PHP verzió: 8.1.10
+-- Létrehozás ideje: 2023. Máj 14. 11:39
+-- Kiszolgáló verziója: 10.4.18-MariaDB
+-- PHP verzió: 8.0.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,10 +42,10 @@ CREATE TABLE `ertekelesek` (
 --
 
 INSERT INTO `ertekelesek` (`ID`, `orvosID`, `paciensID`, `szoveges`, `csillagok`) VALUES
-(1, 6, 5, 'cunci az Ákos', 5),
 (2, 3, 6, '', 4),
 (3, 4, 6, '', 5),
-(4, 1, 6, 'Nagyon jól végezte a kezelést!', 5);
+(4, 1, 6, 'Nagyon jól végezte a kezelést!', 5),
+(5, 5, 5, '', 4);
 
 -- --------------------------------------------------------
 
@@ -95,6 +95,26 @@ INSERT INTO `idopontok` (`ID`, `orvosID`, `idopont`, `datum`, `paciensID`, `nev`
 (29, 4, '12:01:00', '2023-04-01', 6, 'Zámbó Illés', 'zamboilles@gmail.com', '+36205988683', 'Elfogadásra vár'),
 (30, 4, '08:01:00', '2023-04-01', 6, 'Zámbó Illés', 'zamboilles@gmail.com', '+36205988683', 'Elfogadásra vár'),
 (31, 1, '11:28:00', '2023-03-29', 6, 'Zámbó Illés', 'zamboilles@gmail.com', '0691132401', 'Elfogadva');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `kedvencek`
+--
+
+CREATE TABLE `kedvencek` (
+  `ID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `orvosID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `kedvencek`
+--
+
+INSERT INTO `kedvencek` (`ID`, `userID`, `orvosID`) VALUES
+(1, 5, 3),
+(2, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -165,7 +185,6 @@ INSERT INTO `orvosok` (`ID`, `nev`, `email`, `password`, `bemutatkozas`, `szakte
 (10, 'Tamás Klára', 't.klara@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', 'Tamás Klára másik fogorvos', 'Szájsebész', 'Szegedi Tudományegyetem - Fogorvostudományi Kar', 3, 2, '06323512612', 'LajosneKlara', '2023-03-06 12:54:03', '0000-00-00 00:00:00', 'doktor'),
 (11, 'Lakatos Viktoria', 'lak.vik@gmail.com', '-', 'Sziasztok', 'Takarító', '', NULL, NULL, '', 'lakatosviktoria', '2023-03-17 11:08:04', '2023-03-17 11:00:00', '-'),
 (12, 'Csongrádi Daniella', 'csongiD@gmail.com', '-', 'Sziasztok', 'Pénzügyi tanácsadó ', 'Budapesti Gazdasági Egyetem', NULL, NULL, '+36206945221', 'csongradidaniela', '2023-03-17 11:14:04', '2023-03-17 12:00:00', '-'),
-(13, 'Féreg Julianna', 'fefejul@gmail.com', '-', 'Az új munkatársak keresése a feladatom', 'Humán erőforrás', 'SOTER-LINE', NULL, NULL, '+25814581455', 'feregjulianna', '2023-03-17 11:16:44', '2023-03-17 14:00:00', '-'),
 (14, 'Györök Ferina', 'gyferi@gmail.com', '-', 'Sziasztok', 'Titkárnő', 'Bajai Szakképzési Centrum Türr István Technikum', NULL, NULL, '+3620456251226', 'gyorokferina', '2023-03-17 11:18:53', '2023-03-17 14:00:00', '-'),
 (15, 'Kemény Rozália', 'kemenyrozi@gmail.com', '-', '-', 'Biztonságiőr', '-', NULL, NULL, '', 'kemenyrozalia', '2023-03-17 11:32:38', '0000-00-00 00:00:00', '-'),
 (16, 'Kéményseprő Pál', 'kemenyPal@gmail.com', '-', '-', 'Biztonságiőr', '-', NULL, NULL, '-', 'kemenysepropal', '2023-03-17 11:33:54', '2023-03-17 15:00:00', '-');
@@ -185,7 +204,6 @@ CREATE TABLE `users` (
   `jogok` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   `reg` date NOT NULL DEFAULT current_timestamp(),
   `last` date NOT NULL,
-  `kedvencekID` int(11) DEFAULT NULL,
   `kep` varchar(200) COLLATE utf8_hungarian_ci DEFAULT 'admin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -193,16 +211,13 @@ CREATE TABLE `users` (
 -- A tábla adatainak kiíratása `users`
 --
 
-INSERT INTO `users` (`ID`, `nev`, `email`, `password`, `telefonszam`, `jogok`, `reg`, `last`, `kedvencekID`, `kep`) VALUES
-(1, 'Próba Pista', 'probapista@nudentits.com', 'Turr513A', '+3620696969', 'user', '2023-02-02', '2023-02-03', 1, 'idosebbtalacs'),
-(3, 'Ramóna', 'ramona@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '025592545', 'user', '2023-02-18', '2023-04-04', NULL, 'ramona'),
-(4, 'admin', 'admin@nudentist.com', '7af2d10b73ab7cd8f603937f7697cb5fe432c7ff', '+36205988683', 'admin', '2023-02-19', '2023-03-27', NULL, 'admin'),
-(5, 'Szabó Péter', 'szpeter20@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620584561825', 'user', '2023-03-03', '2023-03-21', 6, 'szabopetra'),
-(6, 'Zámbó Illés', 'zamboilles@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36205988683', 'user', '2023-03-03', '2023-05-07', 8, 'Zambo3'),
-(7, 'Foki Zoltán', 'turrfz@turr.hu', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36125525235652', 'user', '2023-03-03', '2023-03-27', NULL, 'fokizoltan'),
-(11, 'fiszfoszxd70', 'fiszfosz.0000@00000000.0000000000', '3810f3c42b21d2bc4f26609152909346c5a04923', '+3ddddddd6xddd', 'user', '2023-03-20', '0000-00-00', NULL, 'admin'),
-(12, 'Vigh Ákos', 'vighakos@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620696969', 'user', '2023-03-21', '2023-03-21', NULL, 'admin'),
-(13, 'Baranyi Dániel', 'baranyidaniel@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620696969', 'user', '2023-03-21', '2023-03-21', NULL, 'admin');
+INSERT INTO `users` (`ID`, `nev`, `email`, `password`, `telefonszam`, `jogok`, `reg`, `last`, `kep`) VALUES
+(1, 'Próba Pista', 'probapista@nudentits.com', 'Turr513A', '+3620696969', 'user', '2023-02-02', '2023-02-03', 'idosebbtalacs'),
+(4, 'admin', 'admin@nudentist.com', '7af2d10b73ab7cd8f603937f7697cb5fe432c7ff', '+36205988683', 'admin', '2023-02-19', '2023-03-27', 'admin'),
+(5, 'Szabó Péter', 'szpeter20@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620584561825', 'user', '2023-03-03', '2023-05-14', 'szabopetra'),
+(6, 'Zámbó Illés', 'zamboilles@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+36205988683', 'user', '2023-03-03', '2023-05-07', 'Zambo3'),
+(12, 'Vigh Ákos', 'vighakos@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620696969', 'user', '2023-03-21', '2023-03-21', 'admin'),
+(13, 'Baranyi Dániel', 'baranyidaniel@gmail.com', '170bec8a686f790c7eb8dfa2fae3cc04d24394d2', '+3620696969', 'user', '2023-03-21', '2023-03-21', 'admin');
 
 -- --------------------------------------------------------
 
@@ -254,6 +269,12 @@ ALTER TABLE `idopontok`
   ADD KEY `paciensID` (`paciensID`);
 
 --
+-- A tábla indexei `kedvencek`
+--
+ALTER TABLE `kedvencek`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- A tábla indexei `kezelesek`
 --
 ALTER TABLE `kezelesek`
@@ -271,8 +292,7 @@ ALTER TABLE `orvosok`
 -- A tábla indexei `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `kedvencekID` (`kedvencekID`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- A tábla indexei `uzenetek`
@@ -290,13 +310,19 @@ ALTER TABLE `uzenetek`
 -- AUTO_INCREMENT a táblához `ertekelesek`
 --
 ALTER TABLE `ertekelesek`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT a táblához `idopontok`
 --
 ALTER TABLE `idopontok`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT a táblához `kedvencek`
+--
+ALTER TABLE `kedvencek`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT a táblához `kezelesek`
